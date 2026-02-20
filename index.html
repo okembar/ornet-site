@@ -1787,377 +1787,571 @@
                             d'expérience issus de nos missions. Pas de contenu SEO creux — uniquement du concret.</p>
                     </div>
 
-                    <!-- Article 1 : Wi-Fi 7 -->
-                    <article class="glass-card rounded-2xl p-8 mb-6 fade-in" id="blog-wifi7">
-                        <div class="flex flex-wrap items-center gap-3 mb-4">
-                            <img src="img/romaric-avatar.jpg" alt="Avatar Romaric Okemba"
-                                class="w-6 h-6 rounded-full object-cover border border-white/10">
-                            <span class="text-xs text-gray-300 font-medium">Romaric Okemba</span>
-                            <span class="text-gray-600">·</span>
-                            <span
-                                class="text-xs font-semibold px-2.5 py-1 rounded-full bg-accent-cyan/15 text-accent-cyan">Wi-Fi</span>
-                            <span class="text-xs text-gray-500">12 min · Fév. 2025</span>
+                    <div class="grid lg:grid-cols-3 gap-8 items-start">
+                        <!-- Colonne Articles -->
+                        <div class="lg:col-span-2 space-y-6">
+
+                            <!-- Article 1 : Wi-Fi 7 -->
+                            <article class="glass-card rounded-2xl p-8 mb-6 fade-in" id="blog-wifi7">
+                                <div class="flex flex-wrap items-center gap-3 mb-4">
+                                    <img src="img/romaric-avatar.jpg" alt="Avatar Romaric Okemba"
+                                        class="w-6 h-6 rounded-full object-cover border border-white/10">
+                                    <span class="text-xs text-gray-300 font-medium">Romaric Okemba</span>
+                                    <span class="text-gray-600">·</span>
+                                    <span
+                                        class="text-xs font-semibold px-2.5 py-1 rounded-full bg-accent-cyan/15 text-accent-cyan">Wi-Fi</span>
+                                    <span class="text-xs text-gray-500">12 min · Fév. 2025</span>
+                                </div>
+                                <h3 class="text-xl font-bold mb-3">Wi-Fi 7 (802.11be) : faut-il migrer maintenant ?</h3>
+                                <p class="text-gray-400 text-sm leading-relaxed mb-4">Multi-Link Operation, 320 MHz,
+                                    4096-QAM :
+                                    les promesses sont séduisantes. Mais entre la maturité du silicium client et les
+                                    gains réels
+                                    en entreprise, le ROI reste à démontrer. Analyse complète.</p>
+                                <button
+                                    onclick="this.parentElement.querySelector('.blog-full').classList.toggle('open');this.textContent=this.textContent==='Lire la suite ↓'?'Réduire ↑':'Lire la suite ↓'"
+                                    class="text-accent-cyan text-sm font-medium hover:underline mb-4">Lire la suite
+                                    ↓</button>
+                                <div class="blog-full">
+                                    <div class="border-t border-white/5 pt-6 mt-2 space-y-6">
+                                        <div>
+                                            <h4 class="font-semibold text-white mb-2">Qu'est-ce que Wi-Fi 7 ?</h4>
+                                            <p class="text-sm text-gray-400 leading-relaxed">Wi-Fi 7 (IEEE 802.11be) est
+                                                la
+                                                prochaine évolution majeure du Wi-Fi. Il introduit le <strong
+                                                    class="text-white">Multi-Link Operation (MLO)</strong> — la capacité
+                                                d'agréger simultanément plusieurs bandes (2.4 + 5 + 6 GHz) —, des canaux
+                                                de
+                                                <strong class="text-white">320 MHz</strong> en 6 GHz, et la modulation
+                                                <strong class="text-white">4096-QAM</strong>. Théoriquement, les débits
+                                                dépassent
+                                                les 46 Gbit/s (PHY rate).
+                                            </p>
+                                        </div>
+                                        <div class="grid md:grid-cols-2 gap-6">
+                                            <div class="bg-dark-800 rounded-xl p-5">
+                                                <h5 class="text-accent-green font-semibold text-sm mb-3">✅ Avantages
+                                                </h5>
+                                                <ul class="space-y-2 text-xs text-gray-400">
+                                                    <li>• <strong class="text-white">MLO</strong> : résilience et
+                                                        agrégation
+                                                        multi-bande, réduction drastique de la latence</li>
+                                                    <li>• <strong class="text-white">320 MHz</strong> : débits 2x
+                                                        supérieurs au
+                                                        Wi-Fi 6E en bande 6 GHz</li>
+                                                    <li>• <strong class="text-white">4096-QAM</strong> : +20%
+                                                        d'efficacité
+                                                        spectrale à portée courte</li>
+                                                    <li>• <strong class="text-white">Preamble puncturing</strong> :
+                                                        utilisation
+                                                        des canaux partiellement occupés par radar DFS</li>
+                                                    <li>• Prépare l'infrastructure pour les 5-7 prochaines années</li>
+                                                </ul>
+                                            </div>
+                                            <div class="bg-dark-800 rounded-xl p-5">
+                                                <h5 class="text-red-400 font-semibold text-sm mb-3">❌ Inconvénients</h5>
+                                                <ul class="space-y-2 text-xs text-gray-400">
+                                                    <li>• <strong class="text-white">Maturité client</strong> : très peu
+                                                        de
+                                                        terminaux Wi-Fi 7 en entreprise (2025)</li>
+                                                    <li>• <strong class="text-white">Coût</strong> : AP Wi-Fi 7 = 2x le
+                                                        prix
+                                                        d'un AP Wi-Fi 6E équivalent</li>
+                                                    <li>• <strong class="text-white">MLO limité</strong> : la plupart
+                                                        des
+                                                        chipsets client ne supportent que 2 liens simultanés</li>
+                                                    <li>• <strong class="text-white">6 GHz</strong> : réglementation
+                                                        EIRP encore
+                                                        restrictive en Europe (LPI/VLP)</li>
+                                                    <li>• ROI difficilement justifiable avant 2027 pour la plupart des
+                                                        entreprises</li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                        <div>
+                                            <h4 class="font-semibold text-white mb-2">Notre recommandation</h4>
+                                            <p class="text-sm text-gray-400 leading-relaxed">Sauf cas d'usage AR/VR,
+                                                vidéo 8K ou
+                                                latence critique, <strong class="text-white">nous recommandons Wi-Fi 6E
+                                                    aujourd'hui</strong>. Si vous achetez de nouveaux AP en 2025,
+                                                privilégiez
+                                                des modèles Wi-Fi 7 pour « future-proofing », mais ne justifiez pas un
+                                                refresh
+                                                uniquement pour le 802.11be.</p>
+                                        </div>
+                                        <div class="bg-dark-800 rounded-xl p-4">
+                                            <p class="text-xs text-gray-500"><strong class="text-gray-400">Sources
+                                                    :</strong><br>
+                                                • IEEE 802.11be Draft 5.0 — <a
+                                                    href="https://www.ieee802.org/11/Reports/tgbe_update.htm"
+                                                    class="text-accent-cyan hover:underline"
+                                                    target="_blank">ieee802.org</a><br>
+                                                • Wi-Fi Alliance Wi-Fi 7 Overview — <a
+                                                    href="https://www.wi-fi.org/discover-wi-fi/wi-fi-7"
+                                                    class="text-accent-cyan hover:underline"
+                                                    target="_blank">wi-fi.org</a><br>
+                                                • Cisco Wi-Fi 7 White Paper — <a
+                                                    href="https://www.cisco.com/c/en/us/solutions/enterprise-networks/802-11be.html"
+                                                    class="text-accent-cyan hover:underline"
+                                                    target="_blank">cisco.com</a></p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </article>
+
+                            <!-- Article 2 : Cisco ISE erreurs -->
+                            <article class="glass-card rounded-2xl p-8 mb-6 fade-in" id="blog-ise">
+                                <div class="flex flex-wrap items-center gap-3 mb-4">
+                                    <img src="img/romaric-avatar.jpg" alt="Avatar Romaric Okemba"
+                                        class="w-6 h-6 rounded-full object-cover border border-white/10">
+                                    <span class="text-xs text-gray-300 font-medium">Romaric Okemba</span>
+                                    <span class="text-gray-600">·</span>
+                                    <span
+                                        class="text-xs font-semibold px-2.5 py-1 rounded-full bg-accent-green/15 text-accent-green">NAC</span>
+                                    <span class="text-xs text-gray-500">15 min · Jan. 2025</span>
+                                </div>
+                                <h3 class="text-xl font-bold mb-3">Cisco ISE : les 5 erreurs fatales en production</h3>
+                                <p class="text-gray-400 text-sm leading-relaxed mb-4">Policy sets mal hiérarchisés,
+                                    profiling
+                                    désactivé, certificats expirés silencieusement. Cinq erreurs que nous corrigeons
+                                    systématiquement et qui causent 80 % des incidents NAC.</p>
+                                <button
+                                    onclick="this.parentElement.querySelector('.blog-full').classList.toggle('open');this.textContent=this.textContent==='Lire la suite ↓'?'Réduire ↑':'Lire la suite ↓'"
+                                    class="text-accent-cyan text-sm font-medium hover:underline mb-4">Lire la suite
+                                    ↓</button>
+                                <div class="blog-full">
+                                    <div class="border-t border-white/5 pt-6 mt-2 space-y-5">
+                                        <div class="border-l-2 border-red-500 pl-4">
+                                            <p class="text-sm font-medium text-white mb-1">1. Policy Sets en « catch-all
+                                                » sans
+                                                hiérarchie</p>
+                                            <p class="text-xs text-gray-400">Un seul policy set avec des dizaines de
+                                                règles →
+                                                ordre d'évaluation imprévisible. <strong
+                                                    class="text-white">Solution</strong> :
+                                                structurer en policy sets distincts par cas d'usage (Corporate, Guest,
+                                                BYOD,
+                                                IoT) avec conditions d'entrée claires.</p>
+                                        </div>
+                                        <div class="border-l-2 border-red-500 pl-4">
+                                            <p class="text-sm font-medium text-white mb-1">2. Profiling désactivé ou non
+                                                calibré
+                                            </p>
+                                            <p class="text-xs text-gray-400">ISE profiling est activé par défaut mais
+                                                ses sondes
+                                                (DHCP, HTTP, NMAP) sont souvent limitées. Résultat : 40 % des endpoints
+                                                classés
+                                                « Unknown ». <strong class="text-white">Solution</strong> : activer les
+                                                sondes
+                                                DHCP span + HTTP, calibrer les profils custom pour vos équipements.</p>
+                                        </div>
+                                        <div class="border-l-2 border-red-500 pl-4">
+                                            <p class="text-sm font-medium text-white mb-1">3. Certificats expirés sans
+                                                alerting
+                                            </p>
+                                            <p class="text-xs text-gray-400">Le certificat EAP du PSN expire → tous les
+                                                clients
+                                                PEAP/EAP-TLS sont rejetés. Pas d'alerte native. <strong
+                                                    class="text-white">Solution</strong> : monitoring externe (PRTG,
+                                                Nagios) sur
+                                                l'expiration des certificats ISE + renouvellement planifié.</p>
+                                        </div>
+                                        <div class="border-l-2 border-red-500 pl-4">
+                                            <p class="text-sm font-medium text-white mb-1">4. Pas de mode Monitor avant
+                                                Closed
+                                                Mode</p>
+                                            <p class="text-xs text-gray-400">Passer directement en mode fermé = coupure
+                                                réseau
+                                                garantie pour les devices non conformes. <strong
+                                                    class="text-white">Solution</strong> : déploiement progressif
+                                                Monitor →
+                                                Low-Impact → Closed avec période d'observation de 2-4 semaines par
+                                                phase.</p>
+                                        </div>
+                                        <div class="border-l-2 border-red-500 pl-4">
+                                            <p class="text-sm font-medium text-white mb-1">5. Pas de plan de rollback
+                                                documenté
+                                            </p>
+                                            <p class="text-xs text-gray-400">En cas de problème, revenir en arrière sans
+                                                documentation = chaos. <strong class="text-white">Solution</strong> :
+                                                snapshots
+                                                VM, export config, procédure de fallback testée AVANT le go-live.</p>
+                                        </div>
+                                        <div class="bg-dark-800 rounded-xl p-4">
+                                            <p class="text-xs text-gray-500"><strong class="text-gray-400">Sources
+                                                    :</strong><br>
+                                                • Cisco ISE Admin Guide 3.3 — <a
+                                                    href="https://www.cisco.com/c/en/us/td/docs/security/ise/3-3/admin_guide/b_ise_admin_3_3.html"
+                                                    class="text-accent-cyan hover:underline"
+                                                    target="_blank">cisco.com</a><br>
+                                                • « ISE Deployment Best Practices » — Cisco Live BRKSEC-3697<br>
+                                                • Cisco ISE Profiling Design Guide — <a
+                                                    href="https://community.cisco.com/t5/security-knowledge-base/ise-profiling-design-guide/ta-p/3739456"
+                                                    class="text-accent-cyan hover:underline"
+                                                    target="_blank">community.cisco.com</a></p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </article>
+
+                            <!-- Article 3 : Coupures RF logistique -->
+                            <article class="glass-card rounded-2xl p-8 mb-6 fade-in" id="blog-rf">
+                                <div class="flex flex-wrap items-center gap-3 mb-4">
+                                    <img src="img/romaric-avatar.jpg" alt="Avatar Romaric Okemba"
+                                        class="w-6 h-6 rounded-full object-cover border border-white/10">
+                                    <span class="text-xs text-gray-300 font-medium">Romaric Okemba</span>
+                                    <span class="text-gray-600">·</span>
+                                    <span
+                                        class="text-xs font-semibold px-2.5 py-1 rounded-full bg-accent-cyan/15 text-accent-cyan">Wi-Fi</span>
+                                    <span class="text-xs text-gray-500">10 min · Déc. 2024</span>
+                                </div>
+                                <h3 class="text-xl font-bold mb-3">Coupures RF en logistique : méthodologie de
+                                    diagnostic</h3>
+                                <p class="text-gray-400 text-sm leading-relaxed mb-4">Scanners Zebra qui décrochent,
+                                    latence
+                                    MQTT au changement d'AP. Retour d'expérience sur un entrepôt 40 000 m² avec
+                                    diagnostic
+                                    roaming et validation drive-test.</p>
+                                <button
+                                    onclick="this.parentElement.querySelector('.blog-full').classList.toggle('open');this.textContent=this.textContent==='Lire la suite ↓'?'Réduire ↑':'Lire la suite ↓'"
+                                    class="text-accent-cyan text-sm font-medium hover:underline mb-4">Lire la suite
+                                    ↓</button>
+                                <div class="blog-full">
+                                    <div class="border-t border-white/5 pt-6 mt-2 space-y-6">
+                                        <div>
+                                            <h4 class="font-semibold text-white mb-2">Le contexte</h4>
+                                            <p class="text-sm text-gray-400 leading-relaxed">Entrepôt logistique de 40
+                                                000 m²,
+                                                120 AP Cisco, 350+ terminaux Zebra MC3300. Symptômes : déconnexions
+                                                aléatoires
+                                                des scanners, latence MQTT > 2 s, perte de sessions applicatives lors
+                                                des
+                                                déplacements inter-allées.</p>
+                                        </div>
+                                        <div class="grid md:grid-cols-2 gap-6">
+                                            <div class="bg-dark-800 rounded-xl p-5">
+                                                <h5 class="text-accent-green font-semibold text-sm mb-3">✅ Ce qui a
+                                                    fonctionné
+                                                </h5>
+                                                <ul class="space-y-2 text-xs text-gray-400">
+                                                    <li>• Drive-test Ekahau avec Sidekick sur parcours opérateurs</li>
+                                                    <li>• Activation 802.11r/k/v sur le WLC Catalyst 9800</li>
+                                                    <li>• Réduction des data rates minimum à 12 Mbps</li>
+                                                    <li>• Ajustement Tx power pour réduire la taille des cellules</li>
+                                                    <li>• Latence roaming passée de 800 ms à 25 ms</li>
+                                                </ul>
+                                            </div>
+                                            <div class="bg-dark-800 rounded-xl p-5">
+                                                <h5 class="text-red-400 font-semibold text-sm mb-3">❌ Ce qui ne
+                                                    fonctionnait pas
+                                                </h5>
+                                                <ul class="space-y-2 text-xs text-gray-400">
+                                                    <li>• RRM automatique : canal switching intempestif en heure de
+                                                        pointe</li>
+                                                    <li>• Band steering agressif : incompatible avec les Zebra 2.4 GHz
+                                                        only</li>
+                                                    <li>• Cellules surdimensionnées : overlap > 50 % → sticky clients
+                                                    </li>
+                                                    <li>• Data rates legacy (1/2/5.5 Mbps) : consommaient 60 % de
+                                                        l'airtime</li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                        <div class="bg-dark-800 rounded-xl p-4">
+                                            <p class="text-xs text-gray-500"><strong class="text-gray-400">Sources
+                                                    :</strong><br>
+                                                • Cisco Catalyst 9800 RF Best Practices — <a
+                                                    href="https://www.cisco.com/c/en/us/support/docs/wireless/catalyst-9800-series-wireless-controllers/213911-best-practices.html"
+                                                    class="text-accent-cyan hover:underline"
+                                                    target="_blank">cisco.com</a><br>
+                                                • Zebra WLAN Planning Guide — <a
+                                                    href="https://www.zebra.com/us/en/support-downloads/knowledge-articles/wlan-planning-guide.html"
+                                                    class="text-accent-cyan hover:underline"
+                                                    target="_blank">zebra.com</a><br>
+                                                • Ekahau Best Practices for Warehouses — <a
+                                                    href="https://www.ekahau.com"
+                                                    class="text-accent-cyan hover:underline"
+                                                    target="_blank">ekahau.com</a></p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </article>
+
+                            <!-- Article 4 : Airtime Overhead -->
+                            <article class="glass-card rounded-2xl p-8 mb-6 fade-in" id="blog-airtime">
+                                <div class="flex flex-wrap items-center gap-3 mb-4">
+                                    <img src="img/romaric-avatar.jpg" alt="Avatar Romaric Okemba"
+                                        class="w-6 h-6 rounded-full object-cover border border-white/10">
+                                    <span class="text-xs text-gray-300 font-medium">Romaric Okemba</span>
+                                    <span class="text-gray-600">·</span>
+                                    <span
+                                        class="text-xs font-semibold px-2.5 py-1 rounded-full bg-accent-cyan/15 text-accent-cyan">Wi-Fi</span>
+                                    <span class="text-xs text-gray-500">8 min · Nov. 2024</span>
+                                </div>
+                                <h3 class="text-xl font-bold mb-3">Airtime Overhead & VoIP d'entreprise</h3>
+                                <p class="text-gray-400 text-sm leading-relaxed mb-4">Quand le MOS chute sans congestion
+                                    apparente, l'airtime overhead est le coupable invisible. Méthode de mesure PCAP
+                                    over-the-air
+                                    et stratégies de réduction.</p>
+                                <button
+                                    onclick="this.parentElement.querySelector('.blog-full').classList.toggle('open');this.textContent=this.textContent==='Lire la suite ↓'?'Réduire ↑':'Lire la suite ↓'"
+                                    class="text-accent-cyan text-sm font-medium hover:underline mb-4">Lire la suite
+                                    ↓</button>
+                                <div class="blog-full">
+                                    <div class="border-t border-white/5 pt-6 mt-2 space-y-6">
+                                        <div>
+                                            <h4 class="font-semibold text-white mb-2">Comprendre l'airtime</h4>
+                                            <p class="text-sm text-gray-400 leading-relaxed">Le Wi-Fi est un medium
+                                                partagé
+                                                (half-duplex). Chaque frame transmise — management, control ou data —
+                                                consomme
+                                                de l'«&nbsp;airtime&nbsp;». Quand l'utilisation dépasse 50-60 %, les
+                                                retries
+                                                augmentent, la latence explose, et les applications temps réel (VoIP,
+                                                vidéo) se
+                                                dégradent.</p>
+                                        </div>
+                                        <div class="grid md:grid-cols-2 gap-6">
+                                            <div class="bg-dark-800 rounded-xl p-5">
+                                                <h5 class="text-accent-green font-semibold text-sm mb-3">✅ Stratégies
+                                                    efficaces
+                                                </h5>
+                                                <ul class="space-y-2 text-xs text-gray-400">
+                                                    <li>• Désactiver les data rates < 12 Mbps (2.4 GHz) / < 24 Mbps (5
+                                                            GHz)</li>
+                                                    <li>• Réduire le beacon interval si possible (100 ms → 200 ms par
+                                                        SSID non
+                                                        critique)</li>
+                                                    <li>• Limiter le nombre de SSID à 3-4 max par radio</li>
+                                                    <li>• Activer DTPC et multicast-to-unicast conversion</li>
+                                                    <li>• QoS WMM : marquer le trafic voix en AC_VO</li>
+                                                </ul>
+                                            </div>
+                                            <div class="bg-dark-800 rounded-xl p-5">
+                                                <h5 class="text-red-400 font-semibold text-sm mb-3">❌ Fausses solutions
+                                                </h5>
+                                                <ul class="space-y-2 text-xs text-gray-400">
+                                                    <li>• Augmenter la puissance Tx (= plus d'interférences, pas moins
+                                                        de
+                                                        congestion)</li>
+                                                    <li>• Ajouter des AP sans plan RF (= plus de CCI)</li>
+                                                    <li>• Activer tous les SSID sur tous les AP</li>
+                                                    <li>• Ignorer les clients legacy qui consomment l'airtime</li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                        <div class="bg-dark-800 rounded-xl p-4">
+                                            <p class="text-xs text-gray-500"><strong class="text-gray-400">Sources
+                                                    :</strong><br>
+                                                • CWNA Study Guide, Chapter 14 : WLAN Troubleshooting — CWNP<br>
+                                                • « Understanding Airtime Fairness » — Revolution Wi-Fi — <a
+                                                    href="https://www.revolutionwifi.net"
+                                                    class="text-accent-cyan hover:underline"
+                                                    target="_blank">revolutionwifi.net</a><br>
+                                                • Cisco Wireless Best Practices — <a
+                                                    href="https://www.cisco.com/c/en/us/td/docs/wireless"
+                                                    class="text-accent-cyan hover:underline"
+                                                    target="_blank">cisco.com</a></p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </article>
+
+                            <!-- Article 5 : Shadow IT & IoT -->
+                            <article class="glass-card rounded-2xl p-8 mb-6 fade-in" id="blog-iot">
+                                <div class="flex flex-wrap items-center gap-3 mb-4">
+                                    <img src="img/romaric-avatar.jpg" alt="Avatar Romaric Okemba"
+                                        class="w-6 h-6 rounded-full object-cover border border-white/10">
+                                    <span class="text-xs text-gray-300 font-medium">Romaric Okemba</span>
+                                    <span class="text-gray-600">·</span>
+                                    <span
+                                        class="text-xs font-semibold px-2.5 py-1 rounded-full bg-accent-green/15 text-accent-green">NAC</span>
+                                    <span class="text-xs text-gray-500">10 min · Oct. 2024</span>
+                                </div>
+                                <h3 class="text-xl font-bold mb-3">Shadow IT & IoT : sécuriser sans bloquer</h3>
+                                <p class="text-gray-400 text-sm leading-relaxed mb-4">Caméras IP, capteurs Zigbee,
+                                    écrans
+                                    connectés : l'IoT sauvage représente 30 % des endpoints. Comment identifier,
+                                    profiler et
+                                    isoler sans impact opérationnel.</p>
+                                <button
+                                    onclick="this.parentElement.querySelector('.blog-full').classList.toggle('open');this.textContent=this.textContent==='Lire la suite ↓'?'Réduire ↑':'Lire la suite ↓'"
+                                    class="text-accent-cyan text-sm font-medium hover:underline mb-4">Lire la suite
+                                    ↓</button>
+                                <div class="blog-full">
+                                    <div class="border-t border-white/5 pt-6 mt-2 space-y-6">
+                                        <div>
+                                            <h4 class="font-semibold text-white mb-2">L'enjeu</h4>
+                                            <p class="text-sm text-gray-400 leading-relaxed">Selon Forescout, <strong
+                                                    class="text-white">30 % des endpoints</strong> connectés à un réseau
+                                                d'entreprise sont non-gérés et inconnus de l'IT. Ces devices
+                                                (imprimantes,
+                                                caméras, capteurs, smart TVs) ne supportent ni 802.1X ni agent de
+                                                sécurité. Ils
+                                                représentent un vecteur d'attaque latéral majeur.</p>
+                                        </div>
+                                        <div class="grid md:grid-cols-2 gap-6">
+                                            <div class="bg-dark-800 rounded-xl p-5">
+                                                <h5 class="text-accent-green font-semibold text-sm mb-3">✅ Approche
+                                                    recommandée
+                                                </h5>
+                                                <ul class="space-y-2 text-xs text-gray-400">
+                                                    <li>• <strong class="text-white">Phase 1</strong> : Inventaire et
+                                                        profiling
+                                                        exhaustif via ISE (DHCP fingerprint, HTTP User-Agent, OUI MAC)
+                                                    </li>
+                                                    <li>• <strong class="text-white">Phase 2</strong> : Classification
+                                                        par
+                                                        criticité (critique, standard, shadow)</li>
+                                                    <li>• <strong class="text-white">Phase 3</strong> : Segmentation par
+                                                        SGT/dACL — VLAN IoT dédié avec ACL restrictives</li>
+                                                    <li>• <strong class="text-white">Phase 4</strong> : Monitoring
+                                                        continu via
+                                                        pxGrid → Stealthwatch/XDR</li>
+                                                </ul>
+                                            </div>
+                                            <div class="bg-dark-800 rounded-xl p-5">
+                                                <h5 class="text-red-400 font-semibold text-sm mb-3">❌ Erreurs à éviter
+                                                </h5>
+                                                <ul class="space-y-2 text-xs text-gray-400">
+                                                    <li>• Ignorer l'IoT (« ce sont juste des imprimantes »)</li>
+                                                    <li>• Bloquer tous les endpoints inconnus d'un coup (= arrêt de
+                                                        production)
+                                                    </li>
+                                                    <li>• Se fier uniquement à l'adresse MAC (spoofable)</li>
+                                                    <li>• Ne pas monitorer après segmentation</li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                        <div class="bg-dark-800 rounded-xl p-4">
+                                            <p class="text-xs text-gray-500"><strong class="text-gray-400">Sources
+                                                    :</strong><br>
+                                                • Forescout « Enterprise of Things Security Report » 2024 — <a
+                                                    href="https://www.forescout.com/resources/"
+                                                    class="text-accent-cyan hover:underline"
+                                                    target="_blank">forescout.com</a><br>
+                                                • Cisco ISE Profiling Design Guide — <a
+                                                    href="https://community.cisco.com/t5/security-knowledge-base/ise-profiling-design-guide/ta-p/3739456"
+                                                    class="text-accent-cyan hover:underline"
+                                                    target="_blank">community.cisco.com</a><br>
+                                                • NIST SP 800-183 — Networks of Things — <a
+                                                    href="https://csrc.nist.gov/publications/detail/sp/800-183/final"
+                                                    class="text-accent-cyan hover:underline"
+                                                    target="_blank">nist.gov</a></p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </article>
+
                         </div>
-                        <h3 class="text-xl font-bold mb-3">Wi-Fi 7 (802.11be) : faut-il migrer maintenant ?</h3>
-                        <p class="text-gray-400 text-sm leading-relaxed mb-4">Multi-Link Operation, 320 MHz, 4096-QAM :
-                            les promesses sont séduisantes. Mais entre la maturité du silicium client et les gains réels
-                            en entreprise, le ROI reste à démontrer. Analyse complète.</p>
-                        <button
-                            onclick="this.parentElement.querySelector('.blog-full').classList.toggle('open');this.textContent=this.textContent==='Lire la suite ↓'?'Réduire ↑':'Lire la suite ↓'"
-                            class="text-accent-cyan text-sm font-medium hover:underline mb-4">Lire la suite ↓</button>
-                        <div class="blog-full">
-                            <div class="border-t border-white/5 pt-6 mt-2 space-y-6">
-                                <div>
-                                    <h4 class="font-semibold text-white mb-2">Qu'est-ce que Wi-Fi 7 ?</h4>
-                                    <p class="text-sm text-gray-400 leading-relaxed">Wi-Fi 7 (IEEE 802.11be) est la
-                                        prochaine évolution majeure du Wi-Fi. Il introduit le <strong
-                                            class="text-white">Multi-Link Operation (MLO)</strong> — la capacité
-                                        d'agréger simultanément plusieurs bandes (2.4 + 5 + 6 GHz) —, des canaux de
-                                        <strong class="text-white">320 MHz</strong> en 6 GHz, et la modulation <strong
-                                            class="text-white">4096-QAM</strong>. Théoriquement, les débits dépassent
-                                        les 46 Gbit/s (PHY rate).
-                                    </p>
+
+                        <!-- Colonne Widget / Toolkit -->
+                        <div class="col-span-1 lg:col-span-1 sticky top-24 space-y-6 fade-in">
+                            <div class="glass-card rounded-2xl p-6">
+                                <h3 class="text-xl font-bold mb-4 flex items-center gap-2">
+                                    <svg class="w-5 h-5 text-accent-cyan" fill="none" stroke="currentColor"
+                                        viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                            d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z">
+                                        </path>
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                            d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path>
+                                    </svg>
+                                    Toolkit Ingénieur
+                                </h3>
+
+                                <!-- Tabs -->
+                                <div class="flex gap-2 border-b border-white/10 mb-6">
+                                    <button onclick="switchToolkitTab('wifi')" id="tab-wifi"
+                                        class="pb-2 text-sm font-semibold text-accent-cyan border-b-2 border-accent-cyan transition-colors">Calcul
+                                        RF</button>
+                                    <button onclick="switchToolkitTab('dhcp')" id="tab-dhcp"
+                                        class="pb-2 text-sm font-medium text-gray-500 hover:text-gray-300 border-b-2 border-transparent transition-colors">DHCP
+                                        Opt 43</button>
                                 </div>
-                                <div class="grid md:grid-cols-2 gap-6">
-                                    <div class="bg-dark-800 rounded-xl p-5">
-                                        <h5 class="text-accent-green font-semibold text-sm mb-3">✅ Avantages</h5>
-                                        <ul class="space-y-2 text-xs text-gray-400">
-                                            <li>• <strong class="text-white">MLO</strong> : résilience et agrégation
-                                                multi-bande, réduction drastique de la latence</li>
-                                            <li>• <strong class="text-white">320 MHz</strong> : débits 2x supérieurs au
-                                                Wi-Fi 6E en bande 6 GHz</li>
-                                            <li>• <strong class="text-white">4096-QAM</strong> : +20% d'efficacité
-                                                spectrale à portée courte</li>
-                                            <li>• <strong class="text-white">Preamble puncturing</strong> : utilisation
-                                                des canaux partiellement occupés par radar DFS</li>
-                                            <li>• Prépare l'infrastructure pour les 5-7 prochaines années</li>
-                                        </ul>
+
+                                <!-- Outil 1 : RF Calculator -->
+                                <div id="tool-wifi" class="space-y-4">
+                                    <div>
+                                        <label class="block text-xs font-medium text-gray-400 mb-1">Puissance Tx</label>
+                                        <div class="flex gap-2">
+                                            <div class="relative flex-1">
+                                                <input type="number" id="calc-dbm" oninput="calcRF('dbm')"
+                                                    placeholder="Ex: 15"
+                                                    class="w-full bg-dark-900 border border-white/10 rounded-lg py-2 px-3 text-sm text-white focus:outline-none focus:border-accent-cyan transition-colors">
+                                                <span class="absolute right-3 top-2.5 text-xs text-gray-500">dBm</span>
+                                            </div>
+                                            <div class="relative flex-1">
+                                                <input type="number" id="calc-mw" oninput="calcRF('mw')"
+                                                    placeholder="Ex: 31.6"
+                                                    class="w-full bg-dark-900 border border-white/10 rounded-lg py-2 px-3 text-sm text-white focus:outline-none focus:border-accent-cyan transition-colors">
+                                                <span class="absolute right-3 top-2.5 text-xs text-gray-500">mW</span>
+                                            </div>
+                                        </div>
                                     </div>
-                                    <div class="bg-dark-800 rounded-xl p-5">
-                                        <h5 class="text-red-400 font-semibold text-sm mb-3">❌ Inconvénients</h5>
-                                        <ul class="space-y-2 text-xs text-gray-400">
-                                            <li>• <strong class="text-white">Maturité client</strong> : très peu de
-                                                terminaux Wi-Fi 7 en entreprise (2025)</li>
-                                            <li>• <strong class="text-white">Coût</strong> : AP Wi-Fi 7 = 2x le prix
-                                                d'un AP Wi-Fi 6E équivalent</li>
-                                            <li>• <strong class="text-white">MLO limité</strong> : la plupart des
-                                                chipsets client ne supportent que 2 liens simultanés</li>
-                                            <li>• <strong class="text-white">6 GHz</strong> : réglementation EIRP encore
-                                                restrictive en Europe (LPI/VLP)</li>
-                                            <li>• ROI difficilement justifiable avant 2027 pour la plupart des
-                                                entreprises</li>
-                                        </ul>
+                                    <div>
+                                        <label class="block text-xs font-medium text-gray-400 mb-1">Gain Antenne
+                                            (dBi)</label>
+                                        <div class="relative">
+                                            <input type="number" id="calc-dbi" oninput="calcRF('dbi')"
+                                                placeholder="Ex: 3"
+                                                class="w-full bg-dark-900 border border-white/10 rounded-lg py-2 px-3 text-sm text-white focus:outline-none focus:border-accent-cyan transition-colors">
+                                            <span class="absolute right-3 top-2.5 text-xs text-gray-500">dBi</span>
+                                        </div>
+                                    </div>
+                                    <div class="bg-dark-900 rounded-lg p-3 border border-white/5 mt-4">
+                                        <div class="text-xs text-gray-500 mb-1">EIRP / PIRE Résultante</div>
+                                        <div class="flex justify-between items-end">
+                                            <div class="text-xl font-bold text-white" id="eirp-dbm">-- <span
+                                                    class="text-sm font-normal text-gray-400">dBm</span></div>
+                                            <div class="text-lg font-medium text-accent-green" id="eirp-mw">-- <span
+                                                    class="text-sm font-normal text-accent-green/70">mW</span></div>
+                                        </div>
                                     </div>
                                 </div>
-                                <div>
-                                    <h4 class="font-semibold text-white mb-2">Notre recommandation</h4>
-                                    <p class="text-sm text-gray-400 leading-relaxed">Sauf cas d'usage AR/VR, vidéo 8K ou
-                                        latence critique, <strong class="text-white">nous recommandons Wi-Fi 6E
-                                            aujourd'hui</strong>. Si vous achetez de nouveaux AP en 2025, privilégiez
-                                        des modèles Wi-Fi 7 pour « future-proofing », mais ne justifiez pas un refresh
-                                        uniquement pour le 802.11be.</p>
-                                </div>
-                                <div class="bg-dark-800 rounded-xl p-4">
-                                    <p class="text-xs text-gray-500"><strong class="text-gray-400">Sources
-                                            :</strong><br>
-                                        • IEEE 802.11be Draft 5.0 — <a
-                                            href="https://www.ieee802.org/11/Reports/tgbe_update.htm"
-                                            class="text-accent-cyan hover:underline" target="_blank">ieee802.org</a><br>
-                                        • Wi-Fi Alliance Wi-Fi 7 Overview — <a
-                                            href="https://www.wi-fi.org/discover-wi-fi/wi-fi-7"
-                                            class="text-accent-cyan hover:underline" target="_blank">wi-fi.org</a><br>
-                                        • Cisco Wi-Fi 7 White Paper — <a
-                                            href="https://www.cisco.com/c/en/us/solutions/enterprise-networks/802-11be.html"
-                                            class="text-accent-cyan hover:underline" target="_blank">cisco.com</a></p>
+
+                                <!-- Outil 2 : DHCP Option 43 -->
+                                <div id="tool-dhcp" class="space-y-4 hidden">
+                                    <p class="text-xs text-gray-400 mb-3">Générateur Cisco WLC (Type F1)</p>
+                                    <div>
+                                        <label class="block text-xs font-medium text-gray-400 mb-1">Adresse(s) IP WLC
+                                            (Séparées par virgules)</label>
+                                        <input type="text" id="wlc-ips" oninput="generateOption43()"
+                                            placeholder="192.168.1.10, 10.0.0.5"
+                                            class="w-full bg-dark-900 border border-white/10 rounded-lg py-2 px-3 text-sm text-white focus:outline-none focus:border-accent-cyan transition-colors">
+                                        <p id="dhcp-error" class="text-xs text-red-400 mt-1 hidden">Format IP invalide
+                                        </p>
+                                    </div>
+
+                                    <div class="space-y-3 mt-4">
+                                        <div>
+                                            <div class="flex justify-between items-center mb-1">
+                                                <label class="text-xs font-medium text-gray-400">Valeur Hex
+                                                    (Ascii)</label>
+                                                <button onclick="copyToClipboard(event, 'dhcp-hex-out')"
+                                                    class="text-xs text-accent-cyan hover:underline">Copier</button>
+                                            </div>
+                                            <div id="dhcp-hex-out"
+                                                class="bg-dark-900 border border-white/5 rounded-lg p-2 text-sm font-mono text-gray-300 break-all min-h-[38px]">
+                                            </div>
+                                        </div>
+                                        <div>
+                                            <div class="flex justify-between items-center mb-1">
+                                                <label class="text-xs font-medium text-gray-400">Commande Cisco
+                                                    IOS</label>
+                                                <button onclick="copyToClipboard(event, 'dhcp-cmd-out')"
+                                                    class="text-xs text-accent-cyan hover:underline">Copier</button>
+                                            </div>
+                                            <div id="dhcp-cmd-out"
+                                                class="bg-dark-900 border border-white/5 rounded-lg p-2 text-xs font-mono text-accent-green break-all min-h-[38px]">
+                                            </div>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
                         </div>
-                    </article>
-
-                    <!-- Article 2 : Cisco ISE erreurs -->
-                    <article class="glass-card rounded-2xl p-8 mb-6 fade-in" id="blog-ise">
-                        <div class="flex flex-wrap items-center gap-3 mb-4">
-                            <img src="img/romaric-avatar.jpg" alt="Avatar Romaric Okemba"
-                                class="w-6 h-6 rounded-full object-cover border border-white/10">
-                            <span class="text-xs text-gray-300 font-medium">Romaric Okemba</span>
-                            <span class="text-gray-600">·</span>
-                            <span
-                                class="text-xs font-semibold px-2.5 py-1 rounded-full bg-accent-green/15 text-accent-green">NAC</span>
-                            <span class="text-xs text-gray-500">15 min · Jan. 2025</span>
-                        </div>
-                        <h3 class="text-xl font-bold mb-3">Cisco ISE : les 5 erreurs fatales en production</h3>
-                        <p class="text-gray-400 text-sm leading-relaxed mb-4">Policy sets mal hiérarchisés, profiling
-                            désactivé, certificats expirés silencieusement. Cinq erreurs que nous corrigeons
-                            systématiquement et qui causent 80 % des incidents NAC.</p>
-                        <button
-                            onclick="this.parentElement.querySelector('.blog-full').classList.toggle('open');this.textContent=this.textContent==='Lire la suite ↓'?'Réduire ↑':'Lire la suite ↓'"
-                            class="text-accent-cyan text-sm font-medium hover:underline mb-4">Lire la suite ↓</button>
-                        <div class="blog-full">
-                            <div class="border-t border-white/5 pt-6 mt-2 space-y-5">
-                                <div class="border-l-2 border-red-500 pl-4">
-                                    <p class="text-sm font-medium text-white mb-1">1. Policy Sets en « catch-all » sans
-                                        hiérarchie</p>
-                                    <p class="text-xs text-gray-400">Un seul policy set avec des dizaines de règles →
-                                        ordre d'évaluation imprévisible. <strong class="text-white">Solution</strong> :
-                                        structurer en policy sets distincts par cas d'usage (Corporate, Guest, BYOD,
-                                        IoT) avec conditions d'entrée claires.</p>
-                                </div>
-                                <div class="border-l-2 border-red-500 pl-4">
-                                    <p class="text-sm font-medium text-white mb-1">2. Profiling désactivé ou non calibré
-                                    </p>
-                                    <p class="text-xs text-gray-400">ISE profiling est activé par défaut mais ses sondes
-                                        (DHCP, HTTP, NMAP) sont souvent limitées. Résultat : 40 % des endpoints classés
-                                        « Unknown ». <strong class="text-white">Solution</strong> : activer les sondes
-                                        DHCP span + HTTP, calibrer les profils custom pour vos équipements.</p>
-                                </div>
-                                <div class="border-l-2 border-red-500 pl-4">
-                                    <p class="text-sm font-medium text-white mb-1">3. Certificats expirés sans alerting
-                                    </p>
-                                    <p class="text-xs text-gray-400">Le certificat EAP du PSN expire → tous les clients
-                                        PEAP/EAP-TLS sont rejetés. Pas d'alerte native. <strong
-                                            class="text-white">Solution</strong> : monitoring externe (PRTG, Nagios) sur
-                                        l'expiration des certificats ISE + renouvellement planifié.</p>
-                                </div>
-                                <div class="border-l-2 border-red-500 pl-4">
-                                    <p class="text-sm font-medium text-white mb-1">4. Pas de mode Monitor avant Closed
-                                        Mode</p>
-                                    <p class="text-xs text-gray-400">Passer directement en mode fermé = coupure réseau
-                                        garantie pour les devices non conformes. <strong
-                                            class="text-white">Solution</strong> : déploiement progressif Monitor →
-                                        Low-Impact → Closed avec période d'observation de 2-4 semaines par phase.</p>
-                                </div>
-                                <div class="border-l-2 border-red-500 pl-4">
-                                    <p class="text-sm font-medium text-white mb-1">5. Pas de plan de rollback documenté
-                                    </p>
-                                    <p class="text-xs text-gray-400">En cas de problème, revenir en arrière sans
-                                        documentation = chaos. <strong class="text-white">Solution</strong> : snapshots
-                                        VM, export config, procédure de fallback testée AVANT le go-live.</p>
-                                </div>
-                                <div class="bg-dark-800 rounded-xl p-4">
-                                    <p class="text-xs text-gray-500"><strong class="text-gray-400">Sources
-                                            :</strong><br>
-                                        • Cisco ISE Admin Guide 3.3 — <a
-                                            href="https://www.cisco.com/c/en/us/td/docs/security/ise/3-3/admin_guide/b_ise_admin_3_3.html"
-                                            class="text-accent-cyan hover:underline" target="_blank">cisco.com</a><br>
-                                        • « ISE Deployment Best Practices » — Cisco Live BRKSEC-3697<br>
-                                        • Cisco ISE Profiling Design Guide — <a
-                                            href="https://community.cisco.com/t5/security-knowledge-base/ise-profiling-design-guide/ta-p/3739456"
-                                            class="text-accent-cyan hover:underline"
-                                            target="_blank">community.cisco.com</a></p>
-                                </div>
-                            </div>
-                        </div>
-                    </article>
-
-                    <!-- Article 3 : Coupures RF logistique -->
-                    <article class="glass-card rounded-2xl p-8 mb-6 fade-in" id="blog-rf">
-                        <div class="flex flex-wrap items-center gap-3 mb-4">
-                            <img src="img/romaric-avatar.jpg" alt="Avatar Romaric Okemba"
-                                class="w-6 h-6 rounded-full object-cover border border-white/10">
-                            <span class="text-xs text-gray-300 font-medium">Romaric Okemba</span>
-                            <span class="text-gray-600">·</span>
-                            <span
-                                class="text-xs font-semibold px-2.5 py-1 rounded-full bg-accent-cyan/15 text-accent-cyan">Wi-Fi</span>
-                            <span class="text-xs text-gray-500">10 min · Déc. 2024</span>
-                        </div>
-                        <h3 class="text-xl font-bold mb-3">Coupures RF en logistique : méthodologie de diagnostic</h3>
-                        <p class="text-gray-400 text-sm leading-relaxed mb-4">Scanners Zebra qui décrochent, latence
-                            MQTT au changement d'AP. Retour d'expérience sur un entrepôt 40 000 m² avec diagnostic
-                            roaming et validation drive-test.</p>
-                        <button
-                            onclick="this.parentElement.querySelector('.blog-full').classList.toggle('open');this.textContent=this.textContent==='Lire la suite ↓'?'Réduire ↑':'Lire la suite ↓'"
-                            class="text-accent-cyan text-sm font-medium hover:underline mb-4">Lire la suite ↓</button>
-                        <div class="blog-full">
-                            <div class="border-t border-white/5 pt-6 mt-2 space-y-6">
-                                <div>
-                                    <h4 class="font-semibold text-white mb-2">Le contexte</h4>
-                                    <p class="text-sm text-gray-400 leading-relaxed">Entrepôt logistique de 40 000 m²,
-                                        120 AP Cisco, 350+ terminaux Zebra MC3300. Symptômes : déconnexions aléatoires
-                                        des scanners, latence MQTT > 2 s, perte de sessions applicatives lors des
-                                        déplacements inter-allées.</p>
-                                </div>
-                                <div class="grid md:grid-cols-2 gap-6">
-                                    <div class="bg-dark-800 rounded-xl p-5">
-                                        <h5 class="text-accent-green font-semibold text-sm mb-3">✅ Ce qui a fonctionné
-                                        </h5>
-                                        <ul class="space-y-2 text-xs text-gray-400">
-                                            <li>• Drive-test Ekahau avec Sidekick sur parcours opérateurs</li>
-                                            <li>• Activation 802.11r/k/v sur le WLC Catalyst 9800</li>
-                                            <li>• Réduction des data rates minimum à 12 Mbps</li>
-                                            <li>• Ajustement Tx power pour réduire la taille des cellules</li>
-                                            <li>• Latence roaming passée de 800 ms à 25 ms</li>
-                                        </ul>
-                                    </div>
-                                    <div class="bg-dark-800 rounded-xl p-5">
-                                        <h5 class="text-red-400 font-semibold text-sm mb-3">❌ Ce qui ne fonctionnait pas
-                                        </h5>
-                                        <ul class="space-y-2 text-xs text-gray-400">
-                                            <li>• RRM automatique : canal switching intempestif en heure de pointe</li>
-                                            <li>• Band steering agressif : incompatible avec les Zebra 2.4 GHz only</li>
-                                            <li>• Cellules surdimensionnées : overlap > 50 % → sticky clients</li>
-                                            <li>• Data rates legacy (1/2/5.5 Mbps) : consommaient 60 % de l'airtime</li>
-                                        </ul>
-                                    </div>
-                                </div>
-                                <div class="bg-dark-800 rounded-xl p-4">
-                                    <p class="text-xs text-gray-500"><strong class="text-gray-400">Sources
-                                            :</strong><br>
-                                        • Cisco Catalyst 9800 RF Best Practices — <a
-                                            href="https://www.cisco.com/c/en/us/support/docs/wireless/catalyst-9800-series-wireless-controllers/213911-best-practices.html"
-                                            class="text-accent-cyan hover:underline" target="_blank">cisco.com</a><br>
-                                        • Zebra WLAN Planning Guide — <a
-                                            href="https://www.zebra.com/us/en/support-downloads/knowledge-articles/wlan-planning-guide.html"
-                                            class="text-accent-cyan hover:underline" target="_blank">zebra.com</a><br>
-                                        • Ekahau Best Practices for Warehouses — <a href="https://www.ekahau.com"
-                                            class="text-accent-cyan hover:underline" target="_blank">ekahau.com</a></p>
-                                </div>
-                            </div>
-                        </div>
-                    </article>
-
-                    <!-- Article 4 : Airtime Overhead -->
-                    <article class="glass-card rounded-2xl p-8 mb-6 fade-in" id="blog-airtime">
-                        <div class="flex flex-wrap items-center gap-3 mb-4">
-                            <img src="img/romaric-avatar.jpg" alt="Avatar Romaric Okemba"
-                                class="w-6 h-6 rounded-full object-cover border border-white/10">
-                            <span class="text-xs text-gray-300 font-medium">Romaric Okemba</span>
-                            <span class="text-gray-600">·</span>
-                            <span
-                                class="text-xs font-semibold px-2.5 py-1 rounded-full bg-accent-cyan/15 text-accent-cyan">Wi-Fi</span>
-                            <span class="text-xs text-gray-500">8 min · Nov. 2024</span>
-                        </div>
-                        <h3 class="text-xl font-bold mb-3">Airtime Overhead & VoIP d'entreprise</h3>
-                        <p class="text-gray-400 text-sm leading-relaxed mb-4">Quand le MOS chute sans congestion
-                            apparente, l'airtime overhead est le coupable invisible. Méthode de mesure PCAP over-the-air
-                            et stratégies de réduction.</p>
-                        <button
-                            onclick="this.parentElement.querySelector('.blog-full').classList.toggle('open');this.textContent=this.textContent==='Lire la suite ↓'?'Réduire ↑':'Lire la suite ↓'"
-                            class="text-accent-cyan text-sm font-medium hover:underline mb-4">Lire la suite ↓</button>
-                        <div class="blog-full">
-                            <div class="border-t border-white/5 pt-6 mt-2 space-y-6">
-                                <div>
-                                    <h4 class="font-semibold text-white mb-2">Comprendre l'airtime</h4>
-                                    <p class="text-sm text-gray-400 leading-relaxed">Le Wi-Fi est un medium partagé
-                                        (half-duplex). Chaque frame transmise — management, control ou data — consomme
-                                        de l'«&nbsp;airtime&nbsp;». Quand l'utilisation dépasse 50-60 %, les retries
-                                        augmentent, la latence explose, et les applications temps réel (VoIP, vidéo) se
-                                        dégradent.</p>
-                                </div>
-                                <div class="grid md:grid-cols-2 gap-6">
-                                    <div class="bg-dark-800 rounded-xl p-5">
-                                        <h5 class="text-accent-green font-semibold text-sm mb-3">✅ Stratégies efficaces
-                                        </h5>
-                                        <ul class="space-y-2 text-xs text-gray-400">
-                                            <li>• Désactiver les data rates < 12 Mbps (2.4 GHz) / < 24 Mbps (5 GHz)</li>
-                                            <li>• Réduire le beacon interval si possible (100 ms → 200 ms par SSID non
-                                                critique)</li>
-                                            <li>• Limiter le nombre de SSID à 3-4 max par radio</li>
-                                            <li>• Activer DTPC et multicast-to-unicast conversion</li>
-                                            <li>• QoS WMM : marquer le trafic voix en AC_VO</li>
-                                        </ul>
-                                    </div>
-                                    <div class="bg-dark-800 rounded-xl p-5">
-                                        <h5 class="text-red-400 font-semibold text-sm mb-3">❌ Fausses solutions</h5>
-                                        <ul class="space-y-2 text-xs text-gray-400">
-                                            <li>• Augmenter la puissance Tx (= plus d'interférences, pas moins de
-                                                congestion)</li>
-                                            <li>• Ajouter des AP sans plan RF (= plus de CCI)</li>
-                                            <li>• Activer tous les SSID sur tous les AP</li>
-                                            <li>• Ignorer les clients legacy qui consomment l'airtime</li>
-                                        </ul>
-                                    </div>
-                                </div>
-                                <div class="bg-dark-800 rounded-xl p-4">
-                                    <p class="text-xs text-gray-500"><strong class="text-gray-400">Sources
-                                            :</strong><br>
-                                        • CWNA Study Guide, Chapter 14 : WLAN Troubleshooting — CWNP<br>
-                                        • « Understanding Airtime Fairness » — Revolution Wi-Fi — <a
-                                            href="https://www.revolutionwifi.net"
-                                            class="text-accent-cyan hover:underline"
-                                            target="_blank">revolutionwifi.net</a><br>
-                                        • Cisco Wireless Best Practices — <a
-                                            href="https://www.cisco.com/c/en/us/td/docs/wireless"
-                                            class="text-accent-cyan hover:underline" target="_blank">cisco.com</a></p>
-                                </div>
-                            </div>
-                        </div>
-                    </article>
-
-                    <!-- Article 5 : Shadow IT & IoT -->
-                    <article class="glass-card rounded-2xl p-8 mb-6 fade-in" id="blog-iot">
-                        <div class="flex flex-wrap items-center gap-3 mb-4">
-                            <img src="img/romaric-avatar.jpg" alt="Avatar Romaric Okemba"
-                                class="w-6 h-6 rounded-full object-cover border border-white/10">
-                            <span class="text-xs text-gray-300 font-medium">Romaric Okemba</span>
-                            <span class="text-gray-600">·</span>
-                            <span
-                                class="text-xs font-semibold px-2.5 py-1 rounded-full bg-accent-green/15 text-accent-green">NAC</span>
-                            <span class="text-xs text-gray-500">10 min · Oct. 2024</span>
-                        </div>
-                        <h3 class="text-xl font-bold mb-3">Shadow IT & IoT : sécuriser sans bloquer</h3>
-                        <p class="text-gray-400 text-sm leading-relaxed mb-4">Caméras IP, capteurs Zigbee, écrans
-                            connectés : l'IoT sauvage représente 30 % des endpoints. Comment identifier, profiler et
-                            isoler sans impact opérationnel.</p>
-                        <button
-                            onclick="this.parentElement.querySelector('.blog-full').classList.toggle('open');this.textContent=this.textContent==='Lire la suite ↓'?'Réduire ↑':'Lire la suite ↓'"
-                            class="text-accent-cyan text-sm font-medium hover:underline mb-4">Lire la suite ↓</button>
-                        <div class="blog-full">
-                            <div class="border-t border-white/5 pt-6 mt-2 space-y-6">
-                                <div>
-                                    <h4 class="font-semibold text-white mb-2">L'enjeu</h4>
-                                    <p class="text-sm text-gray-400 leading-relaxed">Selon Forescout, <strong
-                                            class="text-white">30 % des endpoints</strong> connectés à un réseau
-                                        d'entreprise sont non-gérés et inconnus de l'IT. Ces devices (imprimantes,
-                                        caméras, capteurs, smart TVs) ne supportent ni 802.1X ni agent de sécurité. Ils
-                                        représentent un vecteur d'attaque latéral majeur.</p>
-                                </div>
-                                <div class="grid md:grid-cols-2 gap-6">
-                                    <div class="bg-dark-800 rounded-xl p-5">
-                                        <h5 class="text-accent-green font-semibold text-sm mb-3">✅ Approche recommandée
-                                        </h5>
-                                        <ul class="space-y-2 text-xs text-gray-400">
-                                            <li>• <strong class="text-white">Phase 1</strong> : Inventaire et profiling
-                                                exhaustif via ISE (DHCP fingerprint, HTTP User-Agent, OUI MAC)</li>
-                                            <li>• <strong class="text-white">Phase 2</strong> : Classification par
-                                                criticité (critique, standard, shadow)</li>
-                                            <li>• <strong class="text-white">Phase 3</strong> : Segmentation par
-                                                SGT/dACL — VLAN IoT dédié avec ACL restrictives</li>
-                                            <li>• <strong class="text-white">Phase 4</strong> : Monitoring continu via
-                                                pxGrid → Stealthwatch/XDR</li>
-                                        </ul>
-                                    </div>
-                                    <div class="bg-dark-800 rounded-xl p-5">
-                                        <h5 class="text-red-400 font-semibold text-sm mb-3">❌ Erreurs à éviter</h5>
-                                        <ul class="space-y-2 text-xs text-gray-400">
-                                            <li>• Ignorer l'IoT (« ce sont juste des imprimantes »)</li>
-                                            <li>• Bloquer tous les endpoints inconnus d'un coup (= arrêt de production)
-                                            </li>
-                                            <li>• Se fier uniquement à l'adresse MAC (spoofable)</li>
-                                            <li>• Ne pas monitorer après segmentation</li>
-                                        </ul>
-                                    </div>
-                                </div>
-                                <div class="bg-dark-800 rounded-xl p-4">
-                                    <p class="text-xs text-gray-500"><strong class="text-gray-400">Sources
-                                            :</strong><br>
-                                        • Forescout « Enterprise of Things Security Report » 2024 — <a
-                                            href="https://www.forescout.com/resources/"
-                                            class="text-accent-cyan hover:underline"
-                                            target="_blank">forescout.com</a><br>
-                                        • Cisco ISE Profiling Design Guide — <a
-                                            href="https://community.cisco.com/t5/security-knowledge-base/ise-profiling-design-guide/ta-p/3739456"
-                                            class="text-accent-cyan hover:underline"
-                                            target="_blank">community.cisco.com</a><br>
-                                        • NIST SP 800-183 — Networks of Things — <a
-                                            href="https://csrc.nist.gov/publications/detail/sp/800-183/final"
-                                            class="text-accent-cyan hover:underline" target="_blank">nist.gov</a></p>
-                                </div>
-                            </div>
-                        </div>
-                    </article>
-
+                    </div>
                 </div>
-            </div>
         </section>
 
         <!-- ========== VUE : CONTACT ========== -->
@@ -2525,6 +2719,105 @@
 
             // === INITIAL FADE-IN ===
             setTimeout(() => animateFadeIns(document.getElementById('view-accueil')), 200);
+
+            // === TOOLKIT INGENIEUR ===
+            window.switchToolkitTab = function (tab) {
+                document.getElementById('tool-wifi').classList.add('hidden');
+                document.getElementById('tool-dhcp').classList.add('hidden');
+                document.getElementById('tab-wifi').className = "pb-2 text-sm font-medium text-gray-500 hover:text-gray-300 border-b-2 border-transparent transition-colors";
+                document.getElementById('tab-dhcp').className = "pb-2 text-sm font-medium text-gray-500 hover:text-gray-300 border-b-2 border-transparent transition-colors";
+
+                document.getElementById('tool-' + tab).classList.remove('hidden');
+                document.getElementById('tab-' + tab).className = "pb-2 text-sm font-semibold text-accent-cyan border-b-2 border-accent-cyan transition-colors";
+            };
+
+            window.calcRF = function (source) {
+                let dbmInput = document.getElementById('calc-dbm');
+                let mwInput = document.getElementById('calc-mw');
+                let dbiInput = document.getElementById('calc-dbi').value || 0;
+
+                let dbm = parseFloat(dbmInput.value);
+                let mw = parseFloat(mwInput.value);
+                let dbi = parseFloat(dbiInput);
+
+                if (source === 'dbm' && !isNaN(dbm)) {
+                    mw = Math.pow(10, dbm / 10);
+                    mwInput.value = mw.toFixed(2);
+                } else if (source === 'mw' && !isNaN(mw) && mw > 0) {
+                    dbm = 10 * Math.log10(mw);
+                    dbmInput.value = dbm.toFixed(2);
+                } else if (source === 'dbi') {
+                    if (isNaN(dbm) && !isNaN(mw) && mw > 0) dbm = 10 * Math.log10(mw);
+                }
+
+                if (!isNaN(dbm)) {
+                    let eirpDbm = dbm + dbi;
+                    let eirpMw = Math.pow(10, eirpDbm / 10);
+                    document.getElementById('eirp-dbm').innerHTML = eirpDbm.toFixed(1) + ' <span class="text-sm font-normal text-gray-400">dBm</span>';
+                    document.getElementById('eirp-mw').innerHTML = Math.round(eirpMw) + ' <span class="text-sm font-normal text-accent-green/70">mW</span>';
+                } else {
+                    document.getElementById('eirp-dbm').innerHTML = '-- <span class="text-sm font-normal text-gray-400">dBm</span>';
+                    document.getElementById('eirp-mw').innerHTML = '-- <span class="text-sm font-normal text-accent-green/70">mW</span>';
+                }
+            };
+
+            window.generateOption43 = function () {
+                const input = document.getElementById('wlc-ips').value;
+                const errEl = document.getElementById('dhcp-error');
+                const hexOut = document.getElementById('dhcp-hex-out');
+                const cmdOut = document.getElementById('dhcp-cmd-out');
+
+                if (!input.trim()) {
+                    errEl.classList.add('hidden');
+                    hexOut.textContent = '';
+                    cmdOut.textContent = '';
+                    return;
+                }
+
+                const ips = input.split(',').map(ip => ip.trim()).filter(ip => ip !== '');
+                const ipRegex = /^(?:(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.){3}(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)$/;
+
+                let valid = true;
+                let hexString = '';
+
+                if (ips.length > 4) valid = false;
+
+                for (let ip of ips) {
+                    if (!ipRegex.test(ip)) {
+                        valid = false;
+                        break;
+                    }
+                    let parts = ip.split('.');
+                    for (let p of parts) {
+                        let hex = parseInt(p).toString(16).padStart(2, '0');
+                        hexString += hex;
+                    }
+                }
+
+                if (!valid || ips.length === 0) {
+                    errEl.classList.remove('hidden');
+                    hexOut.textContent = '';
+                    cmdOut.textContent = '';
+                } else {
+                    errEl.classList.add('hidden');
+                    const lengthHex = (ips.length * 4).toString(16).padStart(2, '0');
+                    const finalHex = 'f1' + lengthHex + hexString;
+                    hexOut.textContent = finalHex;
+                    cmdOut.textContent = 'option 43 hex ' + finalHex;
+                }
+            };
+
+            window.copyToClipboard = function (event, elementId) {
+                const text = document.getElementById(elementId).textContent;
+                if (text) {
+                    navigator.clipboard.writeText(text).then(() => {
+                        const btn = event.target;
+                        const originalText = btn.textContent;
+                        btn.textContent = 'Copié !';
+                        setTimeout(() => { btn.textContent = originalText; }, 2000);
+                    });
+                }
+            };
         });
     </script>
 </body>
