@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            width: 800px;
+            height: 800px;
+            background: #050505;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+        }
+    </style>
+</head>
+
+<body>
+    <svg width="600" height="600" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <!-- Bouclier NAC (fond) -->
+        <path d="M50 8 L85 28 L85 58 C85 78 68 92 50 98 C32 92 15 78 15 58 L15 28 Z" stroke="#00D4FF" stroke-width="2"
+            fill="none" opacity=".5" />
+        <path d="M50 16 L78 32 L78 56 C78 73 64 85 50 90 C36 85 22 73 22 56 L22 32 Z" stroke="#00D4FF"
+            stroke-width="1.2" fill="rgba(0,212,255,.03)" opacity=".3" />
+        <!-- Noeud central réseau -->
+        <circle cx="50" cy="52" r="6" fill="#00D4FF" />
+        <circle cx="50" cy="52" r="10" stroke="#00D4FF" stroke-width=".8" fill="none" opacity=".3" />
+        <!-- Ondes WiFi (arc en haut) -->
+        <path d="M35 38 A20 20 0 0 1 65 38" stroke="#fff" stroke-width="2" fill="none" opacity=".8"
+            stroke-linecap="round" />
+        <path d="M29 30 A28 28 0 0 1 71 30" stroke="#fff" stroke-width="1.5" fill="none" opacity=".5"
+            stroke-linecap="round" />
+        <path d="M23 22 A36 36 0 0 1 77 22" stroke="#fff" stroke-width="1" fill="none" opacity=".3"
+            stroke-linecap="round" />
+        <!-- Cadenas NAC (en bas du noeud) -->
+        <rect x="43" y="62" width="14" height="10" rx="2" stroke="#00C853" stroke-width="1.5"
+            fill="rgba(0,200,83,.1)" />
+        <path d="M45.5 62 V58 A4.5 4.5 0 0 1 54.5 58 V62" stroke="#00C853" stroke-width="1.5" fill="none" />
+        <circle cx="50" cy="68" r="1.5" fill="#00C853" />
+        <!-- Noeuds satellites -->
+        <circle cx="26" cy="52" r="3" fill="#fff" opacity=".7" />
+        <circle cx="74" cy="52" r="3" fill="#fff" opacity=".7" />
+        <line x1="32" y1="52" x2="44" y2="52" stroke="#00D4FF" stroke-width="1" opacity=".4" />
+        <line x1="56" y1="52" x2="68" y2="52" stroke="#00D4FF" stroke-width="1" opacity=".4" />
+    </svg>
+</body>
+
+</html>

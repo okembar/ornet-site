@@ -1,0 +1,2506 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ORNET — Ingénierie Réseau & Cybersécurité | Wi-Fi, NAC, Cisco ISE | Paris</title>
+    <meta name="description"
+        content="ORNET conçoit, audite et sécurise vos infrastructures Wi-Fi et NAC depuis Paris. Expertise Ekahau, Cisco ISE, Wi-Fi 6E/7 et 802.1X. 150+ sites audités, 12+ ans d'expérience terrain.">
+    <meta name="keywords"
+        content="ingénierie réseau, audit Wi-Fi, Ekahau, Cisco ISE, NAC, 802.1X, cybersécurité, CWNE, Paris, ORNET">
+    <meta name="author" content="ORNET – or-net.com">
+    <link rel="canonical" href="https://or-net.com">
+    <meta property="og:title" content="ORNET — Ingénierie Réseau & Cybersécurité">
+    <meta property="og:description"
+        content="Conception, audit et sécurisation d'infrastructures Wi-Fi et NAC. Expertise Ekahau, Cisco ISE.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://or-net.com">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap"
+        rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = { theme: { extend: { colors: { dark: { 950: '#050505', 900: '#0a0a0a', 800: '#111', 700: '#1a1a1a', 600: '#222' }, accent: { blue: '#007AFF', cyan: '#00D4FF', green: '#00C853' } }, fontFamily: { inter: ['Inter', 'sans-serif'] } } } }
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js" defer></script>
+    <style>
+        * {
+            font-family: 'Inter', sans-serif;
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box
+        }
+
+        body {
+            background: #050505;
+            color: #f5f5f5;
+            overflow-x: hidden
+        }
+
+        .glass {
+            background: rgba(26, 26, 26, .55);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border: 1px solid rgba(255, 255, 255, .06)
+        }
+
+        .glass-card {
+            background: rgba(26, 26, 26, .45);
+            backdrop-filter: blur(14px);
+            -webkit-backdrop-filter: blur(14px);
+            border: 1px solid rgba(255, 255, 255, .07);
+            transition: all .4s cubic-bezier(.4, 0, .2, 1)
+        }
+
+        .glass-card:hover {
+            border-color: rgba(255, 255, 255, .18);
+            transform: translateY(-6px) scale(1.01);
+            box-shadow: 0 20px 60px rgba(0, 0, 0, .5)
+        }
+
+        .gradient-blue {
+            background: linear-gradient(135deg, #007AFF, #00D4FF)
+        }
+
+        .gradient-green {
+            background: linear-gradient(135deg, #00C853, #00E676)
+        }
+
+        .text-gradient-blue {
+            background: linear-gradient(135deg, #007AFF, #00D4FF);
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent
+        }
+
+        .text-gradient-green {
+            background: linear-gradient(135deg, #00C853, #00E676);
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent
+        }
+
+        .navbar-blur {
+            background: rgba(5, 5, 5, .75);
+            backdrop-filter: blur(24px);
+            -webkit-backdrop-filter: blur(24px)
+        }
+
+        .nav-link {
+            position: relative;
+            transition: color .3s
+        }
+
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            bottom: -4px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: linear-gradient(90deg, #007AFF, #00D4FF);
+            transition: width .3s;
+            border-radius: 1px
+        }
+
+        .nav-link.active {
+            color: #fff
+        }
+
+        .nav-link.active::after {
+            width: 100%
+        }
+
+        .view {
+            display: none;
+            opacity: 0
+        }
+
+        .view.active {
+            display: block;
+            opacity: 1
+        }
+
+        .bg-hero {
+            background: url('img/hero-bg.png') center/cover no-repeat
+        }
+
+        .bg-wifi {
+            background: url('img/wifi-bg.png') center/cover no-repeat
+        }
+
+        .bg-nac {
+            background: url('img/nac-bg.png') center/cover no-repeat
+        }
+
+        ::-webkit-scrollbar {
+            width: 5px
+        }
+
+        ::-webkit-scrollbar-track {
+            background: #050505
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: #333;
+            border-radius: 3px
+        }
+
+        @keyframes pulse-dot {
+
+            0%,
+            100% {
+                opacity: 1
+            }
+
+            50% {
+                opacity: .4
+            }
+        }
+
+        .pulse-dot {
+            animation: pulse-dot 2s ease-in-out infinite
+        }
+
+        @keyframes float {
+
+            0%,
+            100% {
+                transform: translateY(0)
+            }
+
+            50% {
+                transform: translateY(-12px)
+            }
+        }
+
+        .float {
+            animation: float 6s ease-in-out infinite
+        }
+
+        @keyframes shimmer {
+            0% {
+                background-position: -200% 0
+            }
+
+            100% {
+                background-position: 200% 0
+            }
+        }
+
+        .shimmer {
+            background: linear-gradient(90deg, transparent 0%, rgba(255, 255, 255, .04) 50%, transparent 100%);
+            background-size: 200% 100%;
+            animation: shimmer 3s ease-in-out infinite
+        }
+
+        @keyframes shield-pulse {
+
+            0%,
+            100% {
+                filter: drop-shadow(0 0 8px rgba(0, 200, 83, .3))
+            }
+
+            50% {
+                filter: drop-shadow(0 0 28px rgba(0, 200, 83, .7))
+            }
+        }
+
+        .shield-pulse {
+            animation: shield-pulse 2.5s ease-in-out infinite
+        }
+
+        @keyframes flow {
+            0% {
+                stroke-dashoffset: 200
+            }
+
+            100% {
+                stroke-dashoffset: 0
+            }
+        }
+
+        .flow-line {
+            stroke-dasharray: 12 8;
+            animation: flow 3s linear infinite
+        }
+
+        #cursor-glow {
+            position: fixed;
+            width: 400px;
+            height: 400px;
+            border-radius: 50%;
+            pointer-events: none;
+            z-index: 1;
+            background: radial-gradient(circle, rgba(0, 122, 255, .07) 0%, transparent 70%);
+            transition: transform .15s ease-out, opacity .3s;
+            opacity: 0
+        }
+
+        body:hover #cursor-glow {
+            opacity: 1
+        }
+
+        .fade-in {
+            opacity: 0;
+            transform: translateY(30px)
+        }
+
+        .counter {
+            font-variant-numeric: tabular-nums
+        }
+
+        @keyframes blink {
+
+            0%,
+            100% {
+                opacity: 1
+            }
+
+            50% {
+                opacity: 0
+            }
+        }
+
+        .typing-cursor::after {
+            content: '|';
+            color: #00D4FF;
+            animation: blink 1s step-end infinite;
+            margin-left: 2px
+        }
+
+        .blog-full {
+            display: none
+        }
+
+        .blog-full.open {
+            display: block
+        }
+
+        .tag-filter {
+            cursor: pointer;
+            transition: all .3s
+        }
+
+        .tag-filter.active {
+            background: rgba(0, 212, 255, .15);
+            color: #00D4FF;
+            border-color: rgba(0, 212, 255, .3)
+        }
+
+        .faq-item {
+            border-bottom: 1px solid rgba(255, 255, 255, .06)
+        }
+
+        .faq-toggle {
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 1.25rem 0;
+            transition: color .3s;
+            gap: 1rem
+        }
+
+        .faq-toggle:hover {
+            color: #00D4FF
+        }
+
+        .faq-toggle svg {
+            transition: transform .3s;
+            flex-shrink: 0
+        }
+
+        .faq-item.open .faq-toggle svg {
+            transform: rotate(180deg)
+        }
+
+        .faq-answer {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height .4s cubic-bezier(.4, 0, .2, 1), padding .4s
+        }
+
+        .faq-item.open .faq-answer {
+            max-height: 600px;
+            padding-bottom: 1.25rem
+        }
+
+        .testimonial-stars {
+            color: #FFB800;
+            letter-spacing: 2px;
+            font-size: 14px
+        }
+
+        .about-photo {
+            position: relative;
+            display: inline-block
+        }
+
+        .about-photo::before {
+            content: '';
+            position: absolute;
+            inset: -4px;
+            border-radius: 1.25rem;
+            background: linear-gradient(135deg, #007AFF, #00D4FF);
+            z-index: -1;
+            opacity: .3
+        }
+
+        .result-card {
+            position: relative;
+            overflow: hidden
+        }
+
+        .result-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 3px;
+            background: linear-gradient(90deg, #007AFF, #00D4FF)
+        }
+
+        .result-card.green::before {
+            background: linear-gradient(90deg, #00C853, #00E676)
+        }
+    </style>
+</head>
+
+<body class="antialiased">
+    <div id="cursor-glow"></div>
+    <canvas id="particles-canvas" class="fixed inset-0 w-full h-full pointer-events-none z-0"
+        style="opacity:.35"></canvas>
+
+    <!-- ===================== NAVBAR ===================== -->
+    <nav id="navbar" class="navbar-blur fixed top-0 left-0 w-full z-50 border-b border-white/5">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-between h-16">
+            <a href="#" data-view="accueil" class="flex items-center gap-2.5 shrink-0 relative z-10">
+                <!-- LOGO : WiFi + NAC (ondes + bouclier) -->
+                <svg width="40" height="40" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <!-- Bouclier NAC (fond) -->
+                    <path d="M50 8 L85 28 L85 58 C85 78 68 92 50 98 C32 92 15 78 15 58 L15 28 Z" stroke="#00D4FF"
+                        stroke-width="2" fill="none" opacity=".5" />
+                    <path d="M50 16 L78 32 L78 56 C78 73 64 85 50 90 C36 85 22 73 22 56 L22 32 Z" stroke="#00D4FF"
+                        stroke-width="1.2" fill="rgba(0,212,255,.03)" opacity=".3" />
+                    <!-- Nœud central réseau -->
+                    <circle cx="50" cy="52" r="6" fill="#00D4FF" />
+                    <circle cx="50" cy="52" r="10" stroke="#00D4FF" stroke-width=".8" fill="none" opacity=".3" />
+                    <!-- Ondes WiFi (arc en haut) -->
+                    <path d="M35 38 A20 20 0 0 1 65 38" stroke="#fff" stroke-width="2" fill="none" opacity=".8"
+                        stroke-linecap="round" />
+                    <path d="M29 30 A28 28 0 0 1 71 30" stroke="#fff" stroke-width="1.5" fill="none" opacity=".5"
+                        stroke-linecap="round" />
+                    <path d="M23 22 A36 36 0 0 1 77 22" stroke="#fff" stroke-width="1" fill="none" opacity=".3"
+                        stroke-linecap="round" />
+                    <!-- Cadenas NAC (en bas du nœud) -->
+                    <rect x="43" y="62" width="14" height="10" rx="2" stroke="#00C853" stroke-width="1.5"
+                        fill="rgba(0,200,83,.1)" />
+                    <path d="M45.5 62 V58 A4.5 4.5 0 0 1 54.5 58 V62" stroke="#00C853" stroke-width="1.5" fill="none" />
+                    <circle cx="50" cy="68" r="1.5" fill="#00C853" />
+                    <!-- Nœuds satellites -->
+                    <circle cx="26" cy="52" r="3" fill="#fff" opacity=".7" />
+                    <circle cx="74" cy="52" r="3" fill="#fff" opacity=".7" />
+                    <line x1="32" y1="52" x2="44" y2="52" stroke="#00D4FF" stroke-width="1" opacity=".4" />
+                    <line x1="56" y1="52" x2="68" y2="52" stroke="#00D4FF" stroke-width="1" opacity=".4" />
+                </svg>
+                <span class="text-xl font-bold tracking-tight text-white">OR<span
+                        class="text-accent-cyan">NET</span></span>
+            </a>
+            <div class="hidden md:flex items-center space-x-7 text-sm font-medium text-gray-400">
+                <a href="#" data-view="accueil" class="nav-link active">Accueil</a>
+                <a href="#" data-view="wifi" class="nav-link">Wi-Fi</a>
+                <a href="#" data-view="nac" class="nav-link">NAC</a>
+                <a href="#" data-view="blog" class="nav-link">Blog</a>
+                <a href="#" data-view="contact" class="nav-link">Contact</a>
+            </div>
+            <div class="hidden md:flex items-center gap-4">
+                <a href="https://www.linkedin.com/in/romaric-okemba-27833230/" target="_blank" rel="noopener"
+                    class="text-gray-400 hover:text-accent-cyan transition-colors" aria-label="LinkedIn ORNET">
+                    <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+                        <path
+                            d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z" />
+                    </svg>
+                </a>
+                <a href="#" data-view="contact"
+                    class="inline-flex items-center px-5 py-2.5 gradient-blue text-white text-sm font-semibold rounded-lg hover:opacity-90 transition-opacity">Prendre
+                    RDV</a>
+            </div>
+            <button id="burger" class="md:hidden flex flex-col space-y-1.5 p-2 relative z-10" aria-label="Menu">
+                <span class="block w-6 h-0.5 bg-white transition-all duration-300" id="b1"></span>
+                <span class="block w-6 h-0.5 bg-white transition-all duration-300" id="b2"></span>
+                <span class="block w-6 h-0.5 bg-white transition-all duration-300" id="b3"></span>
+            </button>
+        </div>
+        <div id="mobile-menu" class="md:hidden hidden border-t border-white/5 navbar-blur">
+            <div class="px-6 py-6 space-y-4 text-base font-medium">
+                <a href="#" data-view="accueil" class="block text-gray-300 hover:text-white">Accueil</a>
+                <a href="#" data-view="wifi" class="block text-gray-300 hover:text-white">Expertise Wi-Fi</a>
+                <a href="#" data-view="nac" class="block text-gray-300 hover:text-white">Expertise NAC</a>
+                <a href="#" data-view="blog" class="block text-gray-300 hover:text-white">Blog</a>
+                <a href="#" data-view="contact" class="block text-gray-300 hover:text-white">Contact / RDV</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- ===================== MAIN ===================== -->
+    <main class="pt-16 min-h-screen relative z-10">
+
+        <!-- ========== VUE : ACCUEIL ========== -->
+        <section id="view-accueil" class="view active">
+            <div class="relative min-h-[calc(100vh-4rem)] flex items-center overflow-hidden">
+                <div class="absolute inset-0 bg-hero opacity-25"></div>
+                <div class="absolute inset-0 bg-gradient-to-b from-dark-950/80 via-dark-950/40 to-dark-950"></div>
+                <div
+                    class="absolute top-1/4 left-1/3 w-[500px] h-[500px] rounded-full bg-accent-cyan/8 blur-[160px] pointer-events-none float">
+                </div>
+                <div class="absolute bottom-1/4 right-1/4 w-[400px] h-[400px] rounded-full bg-accent-green/6 blur-[120px] pointer-events-none float"
+                    style="animation-delay:-3s"></div>
+                <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-24 md:py-32 relative z-10">
+                    <div class="max-w-3xl">
+                        <div
+                            class="inline-flex items-center space-x-2 glass rounded-full px-4 py-1.5 mb-8 text-xs font-medium text-gray-300 fade-in">
+                            <span class="w-2 h-2 rounded-full bg-accent-green pulse-dot"></span>
+                            <span>Ingénierie Réseau · Paris, Île-de-France — France & International</span>
+                        </div>
+                        <h1
+                            class="text-4xl sm:text-5xl lg:text-7xl font-bold leading-[1.1] tracking-tight mb-6 fade-in">
+                            Des réseaux qui<br><span class="text-gradient-blue typing-cursor"
+                                id="hero-typed">performent.</span><br>
+                            <span class="text-gray-400 text-3xl sm:text-4xl lg:text-5xl font-semibold">Une
+                                infrastructure qui <span class="text-gradient-green">résiste.</span></span>
+                        </h1>
+                        <p class="text-lg sm:text-xl text-gray-400 leading-relaxed mb-10 max-w-2xl fade-in">
+                            ORNET conçoit, audite et sécurise vos infrastructures Wi‑Fi et NAC depuis Paris. De l'étude
+                            de couverture Ekahau au déploiement Cisco&nbsp;ISE, nous éliminons les causes racines de vos
+                            incidents réseau — pas&nbsp;les&nbsp;symptômes.
+                        </p>
+                        <div class="flex flex-col sm:flex-row gap-4 fade-in">
+                            <a href="#" data-view="contact"
+                                class="group inline-flex items-center justify-center px-7 py-3.5 gradient-blue text-white font-semibold rounded-lg hover:shadow-lg hover:shadow-accent-blue/25 transition-all text-sm">
+                                Réserver un audit découverte
+                                <svg class="ml-2 w-4 h-4 group-hover:translate-x-1 transition-transform" fill="none"
+                                    stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                        d="M17 8l4 4m0 0l-4 4m4-4H3" />
+                                </svg>
+                            </a>
+                            <a href="#" data-view="wifi"
+                                class="inline-flex items-center justify-center px-5 py-2.5 text-gray-400 hover:text-accent-cyan text-sm font-medium transition-colors">Explorer
+                                l'expertise Wi-Fi →</a>
+                            <a href="#" data-view="nac"
+                                class="inline-flex items-center justify-center px-5 py-2.5 text-gray-400 hover:text-accent-green text-sm font-medium transition-colors">Explorer
+                                l'expertise NAC →</a>
+                        </div>
+                        <div class="grid grid-cols-3 gap-8 mt-16 max-w-lg fade-in">
+                            <div><span class="text-3xl font-bold text-white counter" data-target="150">0</span><span
+                                    class="text-accent-cyan text-2xl font-bold">+</span>
+                                <p class="text-xs text-gray-500 mt-1">Sites audités</p>
+                            </div>
+                            <div><span class="text-3xl font-bold text-white counter" data-target="99.9">0</span><span
+                                    class="text-accent-green text-2xl font-bold">%</span>
+                                <p class="text-xs text-gray-500 mt-1">Uptime réseau</p>
+                            </div>
+                            <div><span class="text-3xl font-bold text-white counter" data-target="12">0</span><span
+                                    class="text-accent-cyan text-2xl font-bold">+</span>
+                                <p class="text-xs text-gray-500 mt-1">Ans d'expertise</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- Secteurs -->
+            <div class="py-8 border-y border-white/5 fade-in shimmer">
+                <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                    <div
+                        class="flex flex-wrap items-center justify-center gap-x-10 gap-y-3 text-sm text-gray-500 font-medium tracking-wide uppercase">
+                        <span class="hover:text-accent-cyan transition-colors cursor-default">Retail</span><span
+                            class="hidden sm:block w-1 h-1 rounded-full bg-gray-700"></span>
+                        <span class="hover:text-accent-cyan transition-colors cursor-default">Industrie</span><span
+                            class="hidden sm:block w-1 h-1 rounded-full bg-gray-700"></span>
+                        <span class="hover:text-accent-cyan transition-colors cursor-default">Santé</span><span
+                            class="hidden sm:block w-1 h-1 rounded-full bg-gray-700"></span>
+                        <span class="hover:text-accent-cyan transition-colors cursor-default">Tertiaire</span><span
+                            class="hidden sm:block w-1 h-1 rounded-full bg-gray-700"></span>
+                        <span class="hover:text-accent-cyan transition-colors cursor-default">Logistique</span><span
+                            class="hidden sm:block w-1 h-1 rounded-full bg-gray-700"></span>
+                        <span class="hover:text-accent-cyan transition-colors cursor-default">Éducation</span><span
+                            class="hidden sm:block w-1 h-1 rounded-full bg-gray-700"></span>
+                        <span class="hover:text-accent-cyan transition-colors cursor-default">Hôtellerie</span>
+                    </div>
+                </div>
+            </div>
+            <!-- Qui est Romaric -->
+            <div class="py-20 fade-in">
+                <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                    <div class="grid lg:grid-cols-5 gap-12 items-center">
+                        <div class="lg:col-span-2 flex justify-center">
+                            <div class="about-photo">
+                                <img src="img/romaric.JPG" alt="Romaric Okemba — Fondateur ORNET"
+                                    class="w-64 h-64 rounded-2xl object-cover border-2 border-white/10" loading="lazy">
+                                <div
+                                    class="absolute -bottom-3 -right-3 gradient-blue rounded-xl px-4 py-2 text-sm font-semibold text-white shadow-lg">
+                                    12+ ans d'expertise</div>
+                            </div>
+                        </div>
+                        <div class="lg:col-span-3">
+                            <div
+                                class="inline-flex items-center space-x-2 text-accent-cyan text-xs font-semibold uppercase tracking-widest mb-4">
+                                <span class="w-8 h-px bg-accent-cyan"></span><span>À propos</span>
+                            </div>
+                            <h2 class="text-3xl font-bold mb-2">Romaric Okemba</h2>
+                            <p class="text-accent-cyan font-medium mb-4">Ingénieur Réseau & Consultant Indépendant</p>
+                            <p class="text-gray-400 leading-relaxed mb-6">
+                                Je suis Romaric Okemba, ingénieur réseau à Paris depuis 12+ ans.
+                                J'aide les DSI et responsables infra à éliminer les causes racines des incidents réseau
+                                — pas les symptômes. 150+ sites audités. Spécialisé Cisco, Ekahau, ISE.
+                            </p>
+                            <div class="grid sm:grid-cols-2 gap-4 mb-6">
+                                <div class="flex items-start gap-3">
+                                    <span class="mt-1 w-2 h-2 rounded-full bg-accent-cyan shrink-0"></span>
+                                    <p class="text-sm text-gray-300">12+ ans d'expérience en environnements critiques
+                                    </p>
+                                </div>
+                                <div class="flex items-start gap-3">
+                                    <span class="mt-1 w-2 h-2 rounded-full bg-accent-cyan shrink-0"></span>
+                                    <p class="text-sm text-gray-300">Consultant indépendant depuis 2018</p>
+                                </div>
+                                <div class="flex items-start gap-3">
+                                    <span class="mt-1 w-2 h-2 rounded-full bg-accent-cyan shrink-0"></span>
+                                    <p class="text-sm text-gray-300">Certifié CWNE, CCIE Wireless, Ekahau ECSE, Aruba
+                                        ACMP</p>
+                                </div>
+                                <div class="flex items-start gap-3">
+                                    <span class="mt-1 w-2 h-2 rounded-full bg-accent-cyan shrink-0"></span>
+                                    <p class="text-sm text-gray-300">150+ sites audités (France & International)</p>
+                                </div>
+                            </div>
+                            <a href="https://www.linkedin.com/in/romaric-okemba-27833230/" target="_blank"
+                                rel="noopener"
+                                class="inline-flex items-center gap-2 px-5 py-2.5 bg-[#0A66C2] text-white text-sm font-medium rounded-lg hover:bg-[#004182] transition-colors">
+                                <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
+                                    <path
+                                        d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z" />
+                                </svg>
+                                Voir mon profil LinkedIn
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Pourquoi ORNET -->
+            <div class="py-20 fade-in">
+                <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                    <div class="text-center max-w-2xl mx-auto mb-12">
+                        <h2 class="text-3xl font-bold mb-4">Pourquoi ORNET ?</h2>
+                        <p class="text-gray-400">Chaque mission est traitée comme une investigation technique. Nous
+                            cherchons la cause racine, pas le palliatif.</p>
+                    </div>
+                    <div class="grid md:grid-cols-4 gap-6">
+                        <div class="glass-card rounded-2xl p-6 text-center fade-in">
+                            <div
+                                class="w-12 h-12 gradient-blue rounded-xl flex items-center justify-center mb-4 mx-auto">
+                                <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"
+                                        d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+                                </svg>
+                            </div>
+                            <h3 class="font-semibold mb-2">Expertise terrain</h3>
+                            <p class="text-sm text-gray-400">12+ ans de missions sur des environnements critiques :
+                                entrepôts, hôpitaux, sièges sociaux, usines.</p>
+                        </div>
+                        <div class="glass-card rounded-2xl p-6 text-center fade-in">
+                            <div
+                                class="w-12 h-12 gradient-blue rounded-xl flex items-center justify-center mb-4 mx-auto">
+                                <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"
+                                        d="M19.428 15.428a2 2 0 00-1.022-.547l-2.387-.477a6 6 0 00-3.86.517l-.318.158a6 6 0 01-3.86.517L6.05 15.21a2 2 0 00-1.806.547M8 4h8l-1 1v5.172a2 2 0 00.586 1.414l5 5c1.26 1.26.367 3.414-1.415 3.414H4.828c-1.782 0-2.674-2.154-1.414-3.414l5-5A2 2 0 009 10.172V5L8 4z" />
+                                </svg>
+                            </div>
+                            <h3 class="font-semibold mb-2">Outillage professionnel</h3>
+                            <p class="text-sm text-gray-400">Ekahau AI Pro, analyseurs spectraux, sondes PCAP, licences
+                                Cisco DNA/ISE. L'outillage qui fait la différence.</p>
+                        </div>
+                        <div class="glass-card rounded-2xl p-6 text-center fade-in">
+                            <div
+                                class="w-12 h-12 gradient-green rounded-xl flex items-center justify-center mb-4 mx-auto">
+                                <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"
+                                        d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
+                                </svg>
+                            </div>
+                            <h3 class="font-semibold mb-2">Indépendance</h3>
+                            <p class="text-sm text-gray-400">Aucun partenariat constructeur exclusif. Nous recommandons
+                                la solution la plus adaptée, pas la plus commissionnée.</p>
+                        </div>
+                        <div class="glass-card rounded-2xl p-6 text-center fade-in">
+                            <div
+                                class="w-12 h-12 gradient-green rounded-xl flex items-center justify-center mb-4 mx-auto">
+                                <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"
+                                        d="M9 17v-2m3 2v-4m3 4v-6m2 10H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
+                                </svg>
+                            </div>
+                            <h3 class="font-semibold mb-2">Livrables actionnables</h3>
+                            <p class="text-sm text-gray-400">Rapports structurés avec recommandations priorisées, pas de
+                                PDF générique. Chaque livrable a un plan d'action.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Nos Résultats -->
+            <div class="py-20 fade-in">
+                <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                    <div class="text-center max-w-2xl mx-auto mb-12">
+                        <div
+                            class="inline-flex items-center space-x-2 text-accent-cyan text-xs font-semibold uppercase tracking-widest mb-4">
+                            <span class="w-8 h-px bg-accent-cyan"></span><span>Résultats terrain</span>
+                        </div>
+                        <h2 class="text-3xl font-bold mb-4">Nos Résultats</h2>
+                        <p class="text-gray-400">Des interventions concrètes. Des résultats mesurables.</p>
+                    </div>
+                    <div class="grid md:grid-cols-3 gap-6">
+                        <!-- Cas 1 : Santé -->
+                        <div class="glass-card result-card rounded-2xl p-6 fade-in">
+                            <div class="flex items-center gap-3 mb-4">
+                                <div
+                                    class="w-10 h-10 gradient-blue rounded-lg flex items-center justify-center shrink-0">
+                                    <svg class="w-5 h-5 text-white" fill="none" stroke="currentColor"
+                                        viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"
+                                            d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z" />
+                                    </svg>
+                                </div>
+                                <div>
+                                    <p class="text-xs text-accent-cyan font-semibold uppercase tracking-wider">Secteur
+                                        Santé</p>
+                                    <p class="text-sm font-semibold text-white">Groupe hospitalier — 6 sites</p>
+                                </div>
+                            </div>
+                            <div class="space-y-3 text-sm">
+                                <div>
+                                    <p class="text-gray-500 text-xs font-medium uppercase mb-1">Problème</p>
+                                    <p class="text-gray-400">Déconnexions VoWi-Fi, scanners RF perdent la connexion
+                                        15×/jour. 400 endpoints impactés.</p>
+                                </div>
+                                <div>
+                                    <p class="text-gray-500 text-xs font-medium uppercase mb-1">Action ORNET</p>
+                                    <p class="text-gray-400">Audit Ekahau + design HLD/LLD + déploiement + validation
+                                        post-déploiement.</p>
+                                </div>
+                                <div class="bg-dark-800 rounded-xl p-3">
+                                    <p class="text-gray-500 text-xs font-medium uppercase mb-2">Résultat</p>
+                                    <div class="flex flex-wrap gap-3">
+                                        <span
+                                            class="text-xs text-accent-green bg-accent-green/10 px-2 py-1 rounded-full">✓
+                                            0 déconnexion</span>
+                                        <span
+                                            class="text-xs text-accent-green bg-accent-green/10 px-2 py-1 rounded-full">✓
+                                            99.95% uptime</span>
+                                        <span
+                                            class="text-xs text-accent-green bg-accent-green/10 px-2 py-1 rounded-full">✓
+                                            Roaming &lt; 50ms</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Cas 2 : Logistique -->
+                        <div class="glass-card result-card rounded-2xl p-6 fade-in">
+                            <div class="flex items-center gap-3 mb-4">
+                                <div
+                                    class="w-10 h-10 gradient-blue rounded-lg flex items-center justify-center shrink-0">
+                                    <svg class="w-5 h-5 text-white" fill="none" stroke="currentColor"
+                                        viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"
+                                            d="M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4" />
+                                    </svg>
+                                </div>
+                                <div>
+                                    <p class="text-xs text-accent-cyan font-semibold uppercase tracking-wider">
+                                        Logistique</p>
+                                    <p class="text-sm font-semibold text-white">Entrepôt majeur — 40 000 m²</p>
+                                </div>
+                            </div>
+                            <div class="space-y-3 text-sm">
+                                <div>
+                                    <p class="text-gray-500 text-xs font-medium uppercase mb-1">Problème</p>
+                                    <p class="text-gray-400">Latence MQTT 300ms (limite 50ms), 200 scanners Zebra en
+                                        timeout, productivité en chute.</p>
+                                </div>
+                                <div>
+                                    <p class="text-gray-500 text-xs font-medium uppercase mb-1">Action ORNET</p>
+                                    <p class="text-gray-400">Troubleshooting spectral, détection interférences,
+                                        optimisation RF complète.</p>
+                                </div>
+                                <div class="bg-dark-800 rounded-xl p-3">
+                                    <p class="text-gray-500 text-xs font-medium uppercase mb-2">Résultat</p>
+                                    <div class="flex flex-wrap gap-3">
+                                        <span
+                                            class="text-xs text-accent-green bg-accent-green/10 px-2 py-1 rounded-full">✓
+                                            Latence 25ms</span>
+                                        <span
+                                            class="text-xs text-accent-green bg-accent-green/10 px-2 py-1 rounded-full">✓
+                                            +35% productivité</span>
+                                        <span
+                                            class="text-xs text-accent-green bg-accent-green/10 px-2 py-1 rounded-full">✓
+                                            0 timeout</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Cas 3 : ISE/NAC -->
+                        <div class="glass-card result-card green rounded-2xl p-6 fade-in">
+                            <div class="flex items-center gap-3 mb-4">
+                                <div
+                                    class="w-10 h-10 gradient-green rounded-lg flex items-center justify-center shrink-0">
+                                    <svg class="w-5 h-5 text-white" fill="none" stroke="currentColor"
+                                        viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"
+                                            d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
+                                    </svg>
+                                </div>
+                                <div>
+                                    <p class="text-xs text-accent-green font-semibold uppercase tracking-wider">
+                                        Cybersécurité</p>
+                                    <p class="text-sm font-semibold text-white">Migration ISE — 500 endpoints</p>
+                                </div>
+                            </div>
+                            <div class="space-y-3 text-sm">
+                                <div>
+                                    <p class="text-gray-500 text-xs font-medium uppercase mb-1">Problème</p>
+                                    <p class="text-gray-400">Migration ACS legacy → Cisco ISE 3.x. Zéro interruption
+                                        exigée, policy sets complexes.</p>
+                                </div>
+                                <div>
+                                    <p class="text-gray-500 text-xs font-medium uppercase mb-1">Action ORNET</p>
+                                    <p class="text-gray-400">Architecture ISE + migration progressive + tests de
+                                        validation complets.</p>
+                                </div>
+                                <div class="bg-dark-800 rounded-xl p-3">
+                                    <p class="text-gray-500 text-xs font-medium uppercase mb-2">Résultat</p>
+                                    <div class="flex flex-wrap gap-3">
+                                        <span
+                                            class="text-xs text-accent-green bg-accent-green/10 px-2 py-1 rounded-full">✓
+                                            0 downtime</span>
+                                        <span
+                                            class="text-xs text-accent-green bg-accent-green/10 px-2 py-1 rounded-full">✓
+                                            100% sécurisés</span>
+                                        <span
+                                            class="text-xs text-accent-green bg-accent-green/10 px-2 py-1 rounded-full">✓
+                                            Audit trail complet</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Témoignages Clients -->
+            <div class="py-20 fade-in">
+                <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                    <div class="text-center max-w-2xl mx-auto mb-12">
+                        <div
+                            class="inline-flex items-center space-x-2 text-accent-cyan text-xs font-semibold uppercase tracking-widest mb-4">
+                            <span class="w-8 h-px bg-accent-cyan"></span><span>Social proof</span>
+                        </div>
+                        <h2 class="text-3xl font-bold mb-4">Ce que nos clients disent</h2>
+                        <p class="text-gray-400">Retours anonymisés de DSI, RSSI et responsables infrastructure.</p>
+                    </div>
+                    <div class="grid md:grid-cols-3 gap-6">
+                        <div class="glass-card rounded-2xl p-6 fade-in">
+                            <div class="testimonial-stars mb-3">★★★★★</div>
+                            <p class="text-gray-300 text-sm leading-relaxed mb-4 italic">
+                                « Romaric a identifié la cause racine de nos déconnexions Wi-Fi en 2 jours.
+                                Aucun intégrateur n'avait vu ça. ROI immédiat. »
+                            </p>
+                            <div class="border-t border-white/5 pt-3">
+                                <p class="text-white text-sm font-medium">Responsable IT</p>
+                                <p class="text-xs text-gray-500">Grand groupe Santé — Île-de-France</p>
+                            </div>
+                        </div>
+                        <div class="glass-card rounded-2xl p-6 fade-in">
+                            <div class="testimonial-stars mb-3">★★★★★</div>
+                            <p class="text-gray-300 text-sm leading-relaxed mb-4 italic">
+                                « Architecture ISE ultra professionnelle. Documentation excellente. Support réactif.
+                                Nous le recommandons vivement. »
+                            </p>
+                            <div class="border-t border-white/5 pt-3">
+                                <p class="text-white text-sm font-medium">RSSI</p>
+                                <p class="text-xs text-gray-500">Grand groupe Logistique — France</p>
+                            </div>
+                        </div>
+                        <div class="glass-card rounded-2xl p-6 fade-in">
+                            <div class="testimonial-stars mb-3">★★★★★</div>
+                            <p class="text-gray-300 text-sm leading-relaxed mb-4 italic">
+                                « Audit spectral révélateur : interférences radar DFS identifiées en quelques heures.
+                                Plan d'action très concret et applicable immédiatement. »
+                            </p>
+                            <div class="border-t border-white/5 pt-3">
+                                <p class="text-white text-sm font-medium">Responsable Infrastructure</p>
+                                <p class="text-xs text-gray-500">PME Retail — 15 sites</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- FAQ -->
+            <div class="py-20 fade-in">
+                <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                    <div class="text-center max-w-2xl mx-auto mb-12">
+                        <div
+                            class="inline-flex items-center space-x-2 text-accent-cyan text-xs font-semibold uppercase tracking-widest mb-4">
+                            <span class="w-8 h-px bg-accent-cyan"></span><span>FAQ</span>
+                        </div>
+                        <h2 class="text-3xl font-bold mb-4">Questions fréquentes</h2>
+                        <p class="text-gray-400">Les réponses aux questions que se posent nos prospects avant de nous
+                            contacter.</p>
+                    </div>
+                    <div class="max-w-3xl mx-auto">
+                        <div class="faq-item">
+                            <div class="faq-toggle text-white font-medium"
+                                onclick="this.parentElement.classList.toggle('open')">
+                                <span>Travaillez-vous avec ma marque réseau préférée ?</span>
+                                <svg class="w-5 h-5 text-gray-500" fill="none" stroke="currentColor"
+                                    viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                        d="M19 9l-7 7-7-7" />
+                                </svg>
+                            </div>
+                            <div class="faq-answer text-sm text-gray-400">
+                                Oui. Nous sommes indépendants et travaillons avec Cisco (Catalyst, Meraki), Aruba,
+                                Juniper Mist, Ruckus, et tous les constructeurs majeurs. Notre recommandation est basée
+                                sur vos besoins, pas sur un partenariat commercial.
+                            </div>
+                        </div>
+                        <div class="faq-item">
+                            <div class="faq-toggle text-white font-medium"
+                                onclick="this.parentElement.classList.toggle('open')">
+                                <span>Combien coûte un audit Wi-Fi ?</span>
+                                <svg class="w-5 h-5 text-gray-500" fill="none" stroke="currentColor"
+                                    viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                        d="M19 9l-7 7-7-7" />
+                                </svg>
+                            </div>
+                            <div class="faq-answer text-sm text-gray-400">
+                                Un audit Ekahau (prédictif + survey passif) dure 3 à 5 jours. Ordre de grandeur :
+                                PME 1 000 m² = 3 000–5 000 € · Grand site 50 000 m² = 8 000–12 000 €.
+                                Chaque devis est personnalisé selon la surface, le nombre d'étages et la complexité.
+                            </div>
+                        </div>
+                        <div class="faq-item">
+                            <div class="faq-toggle text-white font-medium"
+                                onclick="this.parentElement.classList.toggle('open')">
+                                <span>Qu'est-ce que vous livrez concrètement ?</span>
+                                <svg class="w-5 h-5 text-gray-500" fill="none" stroke="currentColor"
+                                    viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                        d="M19 9l-7 7-7-7" />
+                                </svg>
+                            </div>
+                            <div class="faq-answer text-sm text-gray-400">
+                                Heatmaps RSSI/SNR/Débit par bande, tableau inventaire AP, analyse spectrale des
+                                interférences, plan d'action priorisé (Quick Wins + projets structurels), et rapport
+                                complet avec recommandations budgétaires.
+                            </div>
+                        </div>
+                        <div class="faq-item">
+                            <div class="faq-toggle text-white font-medium"
+                                onclick="this.parentElement.classList.toggle('open')">
+                                <span>Combien de temps dure un engagement ?</span>
+                                <svg class="w-5 h-5 text-gray-500" fill="none" stroke="currentColor"
+                                    viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                        d="M19 9l-7 7-7-7" />
+                                </svg>
+                            </div>
+                            <div class="faq-answer text-sm text-gray-400">
+                                Audit seul : 3–5 jours (on-site si nécessaire). Audit + Architecture + Pilotage
+                                déploiement : 4–8 semaines. Nous nous adaptons à votre planning et vos contraintes.
+                            </div>
+                        </div>
+                        <div class="faq-item">
+                            <div class="faq-toggle text-white font-medium"
+                                onclick="this.parentElement.classList.toggle('open')">
+                                <span>Quelle est la différence entre votre audit et celui d'un intégrateur ?</span>
+                                <svg class="w-5 h-5 text-gray-500" fill="none" stroke="currentColor"
+                                    viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                        d="M19 9l-7 7-7-7" />
+                                </svg>
+                            </div>
+                            <div class="faq-answer text-sm text-gray-400">
+                                Un intégrateur vérifie que ses AP fonctionnent. Nous, nous cherchons la cause racine :
+                                analyse spectrale, corrélation PCAP, diagnostic roaming, mesure d'airtime. Notre audit
+                                est indépendant et orienté performance, pas vente de matériel.
+                            </div>
+                        </div>
+                        <div class="faq-item">
+                            <div class="faq-toggle text-white font-medium"
+                                onclick="this.parentElement.classList.toggle('open')">
+                                <span>Quelles sont vos certifications ?</span>
+                                <svg class="w-5 h-5 text-gray-500" fill="none" stroke="currentColor"
+                                    viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                        d="M19 9l-7 7-7-7" />
+                                </svg>
+                            </div>
+                            <div class="faq-answer text-sm text-gray-400">
+                                Oui. <strong class="text-white">CWNE</strong> (Certified Wireless Network Expert) —
+                                certification indépendante délivrée par le CWNP, agnostique constructeur, attestant
+                                d'une maîtrise avancée de l'ensemble des technologies Wi-Fi. Également certifié <strong
+                                    class="text-white">Cisco CCIE Wireless</strong> (niveau expert, architecture et
+                                déploiement réseau sans fil), <strong class="text-white">Ekahau ECSE</strong> (Certified
+                                Survey Engineer — conception et audit RF) et <strong class="text-white">Aruba
+                                    ACMP</strong> (Certified Mobility Professional — expertise multi-constructeur
+                                HPE/Aruba). Nous utilisons Ekahau AI Pro et disposons de licences Cisco ISE/DNA Center.
+                            </div>
+                        </div>
+                        <div class="faq-item">
+                            <div class="faq-toggle text-white font-medium"
+                                onclick="this.parentElement.classList.toggle('open')">
+                                <span>Vous faites du support en continu ou juste du consulting ?</span>
+                                <svg class="w-5 h-5 text-gray-500" fill="none" stroke="currentColor"
+                                    viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                        d="M19 9l-7 7-7-7" />
+                                </svg>
+                            </div>
+                            <div class="faq-answer text-sm text-gray-400">
+                                Les deux. Nous intervenons en mode projet (audit, design, déploiement) et en support
+                                récurrent (troubleshooting, optimisation RF, MCO). Intervention sur site ou à distance
+                                selon le besoin.
+                            </div>
+                        </div>
+                        <div class="faq-item">
+                            <div class="faq-toggle text-white font-medium"
+                                onclick="this.parentElement.classList.toggle('open')">
+                                <span>Je suis une TPE/PME, c'est pour moi ?</span>
+                                <svg class="w-5 h-5 text-gray-500" fill="none" stroke="currentColor"
+                                    viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                        d="M19 9l-7 7-7-7" />
+                                </svg>
+                            </div>
+                            <div class="faq-answer text-sm text-gray-400">
+                                Absolument. Nous travaillons avec des PME de 50 postes comme avec des groupes
+                                internationaux. L'approche reste la même : diagnostic factuel, recommandations
+                                priorisées, budget maîtrisé.
+                            </div>
+                        </div>
+                        <div class="faq-item">
+                            <div class="faq-toggle text-white font-medium"
+                                onclick="this.parentElement.classList.toggle('open')">
+                                <span>Pouvez-vous m'aider en migration Wi-Fi 6E / Wi-Fi 7 ?</span>
+                                <svg class="w-5 h-5 text-gray-500" fill="none" stroke="currentColor"
+                                    viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                        d="M19 9l-7 7-7-7" />
+                                </svg>
+                            </div>
+                            <div class="faq-answer text-sm text-gray-400">
+                                Oui. Nous concevons des architectures Wi-Fi 6E et Wi-Fi 7 (802.11be) intégrant MLO,
+                                6 GHz et les derniers AP Cisco CW9176/9178. Nous vous aidons à évaluer le ROI réel
+                                avant d'investir.
+                            </div>
+                        </div>
+                        <div class="faq-item">
+                            <div class="faq-toggle text-white font-medium"
+                                onclick="this.parentElement.classList.toggle('open')">
+                                <span>Que peut faire Cisco ISE que mes switchs ne font pas ?</span>
+                                <svg class="w-5 h-5 text-gray-500" fill="none" stroke="currentColor"
+                                    viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                        d="M19 9l-7 7-7-7" />
+                                </svg>
+                            </div>
+                            <div class="faq-answer text-sm text-gray-400">
+                                ISE ajoute l'identité au réseau. Au lieu d'assigner un VLAN par port, ISE identifie
+                                qui/quoi se connecte (user, device type, posture) et assigne dynamiquement les droits
+                                d'accès. Segmentation Zero Trust, profiling IoT, portails guest : impossible avec un
+                                switch seul.
+                            </div>
+                        </div>
+                    </div>
+                    <div class="text-center mt-12">
+                        <a href="#" data-view="contact"
+                            class="inline-flex items-center px-7 py-3 gradient-blue text-white font-semibold rounded-lg hover:shadow-lg hover:shadow-accent-blue/25 transition-all text-sm">
+                            Réserver un audit découverte
+                            <svg class="ml-2 w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M17 8l4 4m0 0l-4 4m4-4H3" />
+                            </svg>
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+        </section>
+
+        <!-- ========== VUE : EXPERTISE WI-FI (ÉTENDUE) ========== -->
+        <section id="view-wifi" class="view">
+            <!-- Hero Wi-Fi -->
+            <div class="relative py-24 md:py-28 overflow-hidden">
+                <div class="absolute inset-0 bg-wifi opacity-15"></div>
+                <div class="absolute inset-0 bg-gradient-to-b from-dark-950 via-dark-950/60 to-dark-950"></div>
+                <canvas id="wifi-canvas" class="absolute inset-0 w-full h-full pointer-events-none"
+                    style="opacity:.25"></canvas>
+                <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+                    <div class="max-w-3xl mb-12 fade-in">
+                        <div
+                            class="inline-flex items-center space-x-2 text-accent-cyan text-xs font-semibold uppercase tracking-widest mb-4">
+                            <span class="w-8 h-px bg-accent-cyan"></span><span>Expertise Wi-Fi</span>
+                        </div>
+                        <h2 class="text-3xl sm:text-5xl font-bold tracking-tight mb-6">Conception, audit &
+                            optimisation<br>de vos réseaux sans fil</h2>
+                        <p class="text-lg text-gray-400 leading-relaxed">Du survey prédictif Ekahau au troubleshooting
+                            spectral, nous couvrons l'intégralité du cycle de vie Wi-Fi. Chaque intervention s'appuie
+                            sur des données radio mesurées, pas des suppositions.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Services Wi-Fi détaillés -->
+            <div class="py-16">
+                <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+
+                    <!-- 1. Étude de couverture -->
+                    <div class="grid lg:grid-cols-2 gap-12 mb-20 items-center fade-in">
+                        <div>
+                            <div
+                                class="inline-flex items-center space-x-2 text-accent-cyan text-xs font-semibold uppercase tracking-widest mb-3">
+                                <span class="w-6 h-px bg-accent-cyan"></span><span>01</span>
+                            </div>
+                            <h3 class="text-2xl sm:text-3xl font-bold mb-4">Étude de couverture Ekahau</h3>
+                            <p class="text-gray-400 leading-relaxed mb-6">Nous utilisons Ekahau AI Pro pour modéliser la
+                                propagation radio dans vos locaux avant le déploiement. Le survey prédictif intègre les
+                                matériaux de construction (béton, verre, placo, rack métallique) et simule la couverture
+                                avec le modèle d'AP choisi. Le survey sur site (AP-on-a-stick) valide ensuite le modèle
+                                théorique en conditions réelles.</p>
+                            <div class="space-y-3">
+                                <div class="flex items-start gap-3"><span
+                                        class="mt-1 w-2 h-2 rounded-full bg-accent-cyan shrink-0"></span>
+                                    <div><strong class="text-white text-sm">Survey prédictif</strong>
+                                        <p class="text-xs text-gray-500">Modélisation pré-déploiement avec atténuation
+                                            par matériau, simulation multi-floor, heat maps RSSI/SNR/débit</p>
+                                    </div>
+                                </div>
+                                <div class="flex items-start gap-3"><span
+                                        class="mt-1 w-2 h-2 rounded-full bg-accent-cyan shrink-0"></span>
+                                    <div><strong class="text-white text-sm">Survey actif sur site</strong>
+                                        <p class="text-xs text-gray-500">Mesure AP-on-a-stick avec Sidekick 2,
+                                            validation du roaming inter-AP, test de couverture périmétrique</p>
+                                    </div>
+                                </div>
+                                <div class="flex items-start gap-3"><span
+                                        class="mt-1 w-2 h-2 rounded-full bg-accent-cyan shrink-0"></span>
+                                    <div><strong class="text-white text-sm">Survey passif</strong>
+                                        <p class="text-xs text-gray-500">Capture passive du spectre 2.4/5/6 GHz,
+                                            détection d'interférences co-canal et radar DFS, mesure de bruit plancher
+                                        </p>
+                                    </div>
+                                </div>
+                                <div class="flex items-start gap-3"><span
+                                        class="mt-1 w-2 h-2 rounded-full bg-accent-cyan shrink-0"></span>
+                                    <div><strong class="text-white text-sm">Rapport de conformité</strong>
+                                        <p class="text-xs text-gray-500">Livrable structuré : heatmaps, tableaux AP,
+                                            plan de câblage, recommandations priorisées avec estimation budgétaire</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="glass-card rounded-2xl p-8">
+                            <h4 class="text-lg font-semibold mb-4 text-accent-cyan">Métriques clés mesurées</h4>
+                            <div class="grid grid-cols-2 gap-4">
+                                <div class="bg-dark-800 rounded-xl p-4">
+                                    <p class="text-2xl font-bold text-white">-67</p>
+                                    <p class="text-xs text-gray-500">dBm · Seuil RSSI min.</p>
+                                </div>
+                                <div class="bg-dark-800 rounded-xl p-4">
+                                    <p class="text-2xl font-bold text-white">25+</p>
+                                    <p class="text-xs text-gray-500">dB · SNR cible</p>
+                                </div>
+                                <div class="bg-dark-800 rounded-xl p-4">
+                                    <p class="text-2xl font-bold text-white">≤ 30</p>
+                                    <p class="text-xs text-gray-500">ms · Latence roaming</p>
+                                </div>
+                                <div class="bg-dark-800 rounded-xl p-4">
+                                    <p class="text-2xl font-bold text-white">-85</p>
+                                    <p class="text-xs text-gray-500">dBm · Bruit plancher max</p>
+                                </div>
+                            </div>
+                            <p class="text-xs text-gray-500 mt-4">Seuils adaptés selon l'usage : VoWi-Fi,
+                                vidéosurveillance, terminaux RF logistiques, IoT. Référence : <a
+                                    href="https://www.ekahau.com/blog/what-is-a-good-signal-strength/"
+                                    class="text-accent-cyan hover:underline" target="_blank">Ekahau Best Practices</a>.
+                            </p>
+                        </div>
+                    </div>
+
+                    <!-- 2. Design & Architecture -->
+                    <div class="grid lg:grid-cols-2 gap-12 mb-20 items-center fade-in">
+                        <div class="order-2 lg:order-1 glass-card rounded-2xl p-8">
+                            <h4 class="text-lg font-semibold mb-4 text-accent-cyan">Technologies maîtrisées</h4>
+                            <div class="space-y-3">
+                                <div class="flex items-center justify-between bg-dark-800 rounded-xl px-4 py-3"><span
+                                        class="text-sm font-medium">Cisco Catalyst 9800</span><span
+                                        class="text-xs text-accent-cyan bg-accent-cyan/10 px-2 py-0.5 rounded-full">WLC</span>
+                                </div>
+                                <div class="flex items-center justify-between bg-dark-800 rounded-xl px-4 py-3"><span
+                                        class="text-sm font-medium">Cisco Catalyst 9100 Series</span><span
+                                        class="text-xs text-accent-cyan bg-accent-cyan/10 px-2 py-0.5 rounded-full">AP
+                                        Wi-Fi 6/6E</span></div>
+                                <div class="flex items-center justify-between bg-dark-800 rounded-xl px-4 py-3"><span
+                                        class="text-sm font-medium">Cisco CW 9176/9178</span><span
+                                        class="text-xs text-accent-green bg-accent-green/10 px-2 py-0.5 rounded-full">Wi-Fi
+                                        7</span></div>
+                                <div class="flex items-center justify-between bg-dark-800 rounded-xl px-4 py-3"><span
+                                        class="text-sm font-medium">Cisco DNA Center / Catalyst Center</span><span
+                                        class="text-xs text-gray-500 bg-dark-700 px-2 py-0.5 rounded-full">Management</span>
+                                </div>
+                                <div class="flex items-center justify-between bg-dark-800 rounded-xl px-4 py-3"><span
+                                        class="text-sm font-medium">Meraki MR / Juniper Mist</span><span
+                                        class="text-xs text-gray-500 bg-dark-700 px-2 py-0.5 rounded-full">Cloud-Managed</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="order-1 lg:order-2">
+                            <div
+                                class="inline-flex items-center space-x-2 text-accent-cyan text-xs font-semibold uppercase tracking-widest mb-3">
+                                <span class="w-6 h-px bg-accent-cyan"></span><span>02</span>
+                            </div>
+                            <h3 class="text-2xl sm:text-3xl font-bold mb-4">Design & Architecture Wi-Fi</h3>
+                            <p class="text-gray-400 leading-relaxed mb-6">Le design ne se limite pas à « poser des AP au
+                                plafond ». Nous élaborons une architecture Wi‑Fi complète : choix du modèle de
+                                déploiement (Centralisé, FlexConnect, SDA Wireless), plan de fréquences, profils WLAN,
+                                policies par SSID et gestion du multicast.</p>
+                            <div class="space-y-3">
+                                <div class="flex items-start gap-3"><span
+                                        class="mt-1 w-2 h-2 rounded-full bg-accent-cyan shrink-0"></span>
+                                    <div><strong class="text-white text-sm">HLD (High-Level Design)</strong>
+                                        <p class="text-xs text-gray-500">Architecture logique, topologie réseau, VLANs,
+                                            redondance WLC, intégration DNA Center</p>
+                                    </div>
+                                </div>
+                                <div class="flex items-start gap-3"><span
+                                        class="mt-1 w-2 h-2 rounded-full bg-accent-cyan shrink-0"></span>
+                                    <div><strong class="text-white text-sm">LLD (Low-Level Design)</strong>
+                                        <p class="text-xs text-gray-500">Configuration AP par AP, plan de canaux,
+                                            puissances Tx, profiles RF, data rates minimum</p>
+                                    </div>
+                                </div>
+                                <div class="flex items-start gap-3"><span
+                                        class="mt-1 w-2 h-2 rounded-full bg-accent-cyan shrink-0"></span>
+                                    <div><strong class="text-white text-sm">Plan de câblage & infrastructure</strong>
+                                        <p class="text-xs text-gray-500">Liaisons montantes, PoE budget (802.3bt),
+                                            cheminement câble, étiquetage baies</p>
+                                    </div>
+                                </div>
+                                <div class="flex items-start gap-3"><span
+                                        class="mt-1 w-2 h-2 rounded-full bg-accent-cyan shrink-0"></span>
+                                    <div><strong class="text-white text-sm">Wi-Fi 6E / Wi-Fi 7</strong>
+                                        <p class="text-xs text-gray-500">Design multi-bande 2.4/5/6 GHz, exploitation de
+                                            la bande 6 GHz pour les terminaux compatibles, MLO (Wi-Fi 7)</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- 3. Troubleshooting -->
+                    <div class="grid lg:grid-cols-2 gap-12 mb-20 items-center fade-in">
+                        <div>
+                            <div
+                                class="inline-flex items-center space-x-2 text-accent-cyan text-xs font-semibold uppercase tracking-widest mb-3">
+                                <span class="w-6 h-px bg-accent-cyan"></span><span>03</span>
+                            </div>
+                            <h3 class="text-2xl sm:text-3xl font-bold mb-4">Troubleshooting & Analyse spectrale</h3>
+                            <p class="text-gray-400 leading-relaxed mb-6">Quand le « ça marche pas » ne suffit pas comme
+                                diagnostic. Nous corrélons captures radio (PCAP over-the-air), logs contrôleur,
+                                métriques SNMP et analyse spectrale pour identifier la cause&nbsp;racine exacte.</p>
+                            <div class="space-y-3">
+                                <div class="flex items-start gap-3"><span
+                                        class="mt-1 w-2 h-2 rounded-full bg-accent-cyan shrink-0"></span>
+                                    <div><strong class="text-white text-sm">Captures PCAP over-the-air</strong>
+                                        <p class="text-xs text-gray-500">Analyse frame-by-frame des échanges 802.11
+                                            (auth, assoc, 4-way handshake, DHCP, DNS)</p>
+                                    </div>
+                                </div>
+                                <div class="flex items-start gap-3"><span
+                                        class="mt-1 w-2 h-2 rounded-full bg-accent-cyan shrink-0"></span>
+                                    <div><strong class="text-white text-sm">Analyse spectrale</strong>
+                                        <p class="text-xs text-gray-500">Détection d'interférences non-Wi-Fi :
+                                            micro-ondes, caméras analogiques, Bluetooth, radar DFS, IoT à étalement de
+                                            spectre</p>
+                                    </div>
+                                </div>
+                                <div class="flex items-start gap-3"><span
+                                        class="mt-1 w-2 h-2 rounded-full bg-accent-cyan shrink-0"></span>
+                                    <div><strong class="text-white text-sm">Diagnostic roaming</strong>
+                                        <p class="text-xs text-gray-500">Analyse des transitions 802.11r (FT) / k (Radio
+                                            Resource) / v (BSS Transition), sticky clients, latence handoff</p>
+                                    </div>
+                                </div>
+                                <div class="flex items-start gap-3"><span
+                                        class="mt-1 w-2 h-2 rounded-full bg-accent-cyan shrink-0"></span>
+                                    <div><strong class="text-white text-sm">Corrélation multi-source</strong>
+                                        <p class="text-xs text-gray-500">Croisement logs WLC + Ekahau + Wireshark +
+                                            syslog pour un diagnostic complet et documenté</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="glass-card rounded-2xl p-8">
+                            <h4 class="text-lg font-semibold mb-4 text-accent-cyan">Problèmes courants résolus</h4>
+                            <div class="space-y-4">
+                                <div class="border-l-2 border-accent-cyan pl-4">
+                                    <p class="text-sm font-medium text-white">Sticky clients / roaming lent</p>
+                                    <p class="text-xs text-gray-500">Terminaux qui restent accrochés à un AP lointain au
+                                        lieu de basculer. Cause fréquente : seuils RSSI client mal calibrés, 802.11r/k/v
+                                        non activés.</p>
+                                </div>
+                                <div class="border-l-2 border-accent-cyan pl-4">
+                                    <p class="text-sm font-medium text-white">Déconnexions RF intermittentes</p>
+                                    <p class="text-xs text-gray-500">Micro-coupures invisibles dans les logs mais
+                                        fatales pour le VoWi-Fi ou les scanners logistiques. Diagnostic par airtime et
+                                        retry rate.</p>
+                                </div>
+                                <div class="border-l-2 border-accent-cyan pl-4">
+                                    <p class="text-sm font-medium text-white">Débit insuffisant sous charge</p>
+                                    <p class="text-xs text-gray-500">Airtime congestion, CCI (Co-Channel Interference),
+                                        clients legacy en data rate bas qui parasitent la cellule.</p>
+                                </div>
+                                <div class="border-l-2 border-accent-cyan pl-4">
+                                    <p class="text-sm font-medium text-white">Interférences non-Wi-Fi</p>
+                                    <p class="text-xs text-gray-500">Brouillage par équipements industriels, caméras
+                                        sans fil, capteurs Zigbee/LoRa. Identifié uniquement par analyse spectrale.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- CTA intermédiaire Wi-Fi -->
+                    <div class="text-center my-12 fade-in">
+                        <div class="glass-card rounded-2xl p-8 max-w-2xl mx-auto">
+                            <h4 class="text-xl font-bold mb-3">Besoin d'un audit Wi-Fi ?</h4>
+                            <p class="text-gray-400 text-sm mb-6">Identifiez les causes racines de vos problèmes de
+                                couverture, roaming et performance.</p>
+                            <a href="#" data-view="contact"
+                                class="inline-flex items-center px-7 py-3 gradient-blue text-white font-semibold rounded-lg hover:shadow-lg hover:shadow-accent-blue/25 transition-all text-sm">
+                                Réserver un audit découverte
+                                <svg class="ml-2 w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                        d="M17 8l4 4m0 0l-4 4m4-4H3" />
+                                </svg>
+                            </a>
+                        </div>
+                    </div>
+
+                    <!-- 4. Audit de validation -->
+                    <div class="grid lg:grid-cols-2 gap-12 mb-20 items-center fade-in">
+                        <div class="order-2 lg:order-1 glass-card rounded-2xl p-8">
+                            <h4 class="text-lg font-semibold mb-4 text-accent-cyan">Contenu du rapport d'audit</h4>
+                            <ul class="space-y-3 text-sm text-gray-400">
+                                <li class="flex items-start gap-2"><svg class="w-4 h-4 text-accent-cyan mt-0.5 shrink-0"
+                                        fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                            d="M9 12l2 2 4-4" />
+                                    </svg>Heatmaps de couverture RSSI, SNR, débit par bande</li>
+                                <li class="flex items-start gap-2"><svg class="w-4 h-4 text-accent-cyan mt-0.5 shrink-0"
+                                        fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                            d="M9 12l2 2 4-4" />
+                                    </svg>Tableau inventaire AP (modèle, canal, Tx power, clients, utilisation)</li>
+                                <li class="flex items-start gap-2"><svg class="w-4 h-4 text-accent-cyan mt-0.5 shrink-0"
+                                        fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                            d="M9 12l2 2 4-4" />
+                                    </svg>Analyse spectre interférences canal par canal</li>
+                                <li class="flex items-start gap-2"><svg class="w-4 h-4 text-accent-cyan mt-0.5 shrink-0"
+                                        fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                            d="M9 12l2 2 4-4" />
+                                    </svg>Matrice de conformité vs. exigences métier</li>
+                                <li class="flex items-start gap-2"><svg class="w-4 h-4 text-accent-cyan mt-0.5 shrink-0"
+                                        fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                            d="M9 12l2 2 4-4" />
+                                    </svg>Plan d'action priorisé (Quick Wins → projets structurels)</li>
+                                <li class="flex items-start gap-2"><svg class="w-4 h-4 text-accent-cyan mt-0.5 shrink-0"
+                                        fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                            d="M9 12l2 2 4-4" />
+                                    </svg>Estimation budgétaire par recommandation</li>
+                            </ul>
+                        </div>
+                        <div class="order-1 lg:order-2">
+                            <div
+                                class="inline-flex items-center space-x-2 text-accent-cyan text-xs font-semibold uppercase tracking-widest mb-3">
+                                <span class="w-6 h-px bg-accent-cyan"></span><span>04</span>
+                            </div>
+                            <h3 class="text-2xl sm:text-3xl font-bold mb-4">Audit de validation post-déploiement</h3>
+                            <p class="text-gray-400 leading-relaxed mb-6">Vous venez de déployer ou faire déployer un
+                                réseau Wi-Fi ? L'audit de validation vérifie que la réalité terrain correspond au design
+                                initial. Nous mesurons la couverture réelle, le roaming, le temps de connexion et les
+                                performances applicatives.</p>
+                            <div class="space-y-3">
+                                <div class="flex items-start gap-3"><span
+                                        class="mt-1 w-2 h-2 rounded-full bg-accent-cyan shrink-0"></span>
+                                    <div><strong class="text-white text-sm">Walk-test complet</strong>
+                                        <p class="text-xs text-gray-500">Mesure terrain étage par étage avec Ekahau
+                                            Sidekick, génération automatique des heatmaps</p>
+                                    </div>
+                                </div>
+                                <div class="flex items-start gap-3"><span
+                                        class="mt-1 w-2 h-2 rounded-full bg-accent-cyan shrink-0"></span>
+                                    <div><strong class="text-white text-sm">Test de roaming</strong>
+                                        <p class="text-xs text-gray-500">Validation du handoff entre AP sur les parcours
+                                            critiques (couloirs, escaliers, open-spaces)</p>
+                                    </div>
+                                </div>
+                                <div class="flex items-start gap-3"><span
+                                        class="mt-1 w-2 h-2 rounded-full bg-accent-cyan shrink-0"></span>
+                                    <div><strong class="text-white text-sm">Benchmark applicatif</strong>
+                                        <p class="text-xs text-gray-500">Tests VoWi-Fi (MOS score), téléchargement,
+                                            latence DNS, temps DHCP, streaming vidéo</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- 5. Optimisation RF -->
+                    <div class="grid lg:grid-cols-2 gap-12 mb-20 items-center fade-in">
+                        <div>
+                            <div
+                                class="inline-flex items-center space-x-2 text-accent-cyan text-xs font-semibold uppercase tracking-widest mb-3">
+                                <span class="w-6 h-px bg-accent-cyan"></span><span>05</span>
+                            </div>
+                            <h3 class="text-2xl sm:text-3xl font-bold mb-4">Optimisation RF & Performance</h3>
+                            <p class="text-gray-400 leading-relaxed mb-6">Un réseau Wi-Fi se dégrade dans le temps :
+                                nouveaux murs, nouveaux terminaux, densification des usages. L'optimisation RF remet les
+                                compteurs à zéro en ajustant canaux, puissances, data rates et paramètres RRM.</p>
+                            <div class="space-y-3">
+                                <div class="flex items-start gap-3"><span
+                                        class="mt-1 w-2 h-2 rounded-full bg-accent-cyan shrink-0"></span>
+                                    <div><strong class="text-white text-sm">Plan de canaux optimisé</strong>
+                                        <p class="text-xs text-gray-500">Réattribution manuelle ou assistée pour
+                                            minimiser le CCI (Co-Channel Interference)</p>
+                                    </div>
+                                </div>
+                                <div class="flex items-start gap-3"><span
+                                        class="mt-1 w-2 h-2 rounded-full bg-accent-cyan shrink-0"></span>
+                                    <div><strong class="text-white text-sm">Ajustement des puissances Tx</strong>
+                                        <p class="text-xs text-gray-500">Calibrage fin pour éviter les cellules
+                                            surdimensionnées et les sticky clients</p>
+                                    </div>
+                                </div>
+                                <div class="flex items-start gap-3"><span
+                                        class="mt-1 w-2 h-2 rounded-full bg-accent-cyan shrink-0"></span>
+                                    <div><strong class="text-white text-sm">Désactivation des data rates legacy</strong>
+                                        <p class="text-xs text-gray-500">Suppression des 1/2/5.5/11 Mbps pour libérer de
+                                            l'airtime et forcer les clients vers des taux supérieurs</p>
+                                    </div>
+                                </div>
+                                <div class="flex items-start gap-3"><span
+                                        class="mt-1 w-2 h-2 rounded-full bg-accent-cyan shrink-0"></span>
+                                    <div><strong class="text-white text-sm">Band steering & client balancing</strong>
+                                        <p class="text-xs text-gray-500">Orientation des terminaux dual-band vers la 5
+                                            GHz, équilibrage de charge inter-AP</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="glass-card rounded-2xl p-8">
+                            <h4 class="text-lg font-semibold mb-4 text-accent-cyan">Avant / Après optimisation</h4>
+                            <div class="space-y-4">
+                                <div>
+                                    <p class="text-xs text-gray-500 mb-1">Co-Channel Interference</p>
+                                    <div class="flex items-center gap-3">
+                                        <div class="flex-1 bg-dark-800 rounded-full h-3">
+                                            <div class="bg-red-500 h-3 rounded-full" style="width:78%"></div>
+                                        </div><span class="text-xs text-red-400 w-12 text-right">78%</span>
+                                    </div>
+                                    <div class="flex items-center gap-3 mt-1">
+                                        <div class="flex-1 bg-dark-800 rounded-full h-3">
+                                            <div class="bg-accent-green h-3 rounded-full" style="width:12%"></div>
+                                        </div><span class="text-xs text-accent-green w-12 text-right">12%</span>
+                                    </div>
+                                </div>
+                                <div>
+                                    <p class="text-xs text-gray-500 mb-1">Airtime utilisation</p>
+                                    <div class="flex items-center gap-3">
+                                        <div class="flex-1 bg-dark-800 rounded-full h-3">
+                                            <div class="bg-orange-500 h-3 rounded-full" style="width:65%"></div>
+                                        </div><span class="text-xs text-orange-400 w-12 text-right">65%</span>
+                                    </div>
+                                    <div class="flex items-center gap-3 mt-1">
+                                        <div class="flex-1 bg-dark-800 rounded-full h-3">
+                                            <div class="bg-accent-green h-3 rounded-full" style="width:28%"></div>
+                                        </div><span class="text-xs text-accent-green w-12 text-right">28%</span>
+                                    </div>
+                                </div>
+                                <div>
+                                    <p class="text-xs text-gray-500 mb-1">Roaming latency (ms)</p>
+                                    <div class="flex items-center gap-3">
+                                        <div class="flex-1 bg-dark-800 rounded-full h-3">
+                                            <div class="bg-red-500 h-3 rounded-full" style="width:90%"></div>
+                                        </div><span class="text-xs text-red-400 w-12 text-right">450ms</span>
+                                    </div>
+                                    <div class="flex items-center gap-3 mt-1">
+                                        <div class="flex-1 bg-dark-800 rounded-full h-3">
+                                            <div class="bg-accent-green h-3 rounded-full" style="width:6%"></div>
+                                        </div><span class="text-xs text-accent-green w-12 text-right">30ms</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- 6. Accompagnement projet -->
+                    <div class="grid lg:grid-cols-3 gap-6 fade-in">
+                        <div class="glass-card rounded-2xl p-8 lg:col-span-3">
+                            <div
+                                class="inline-flex items-center space-x-2 text-accent-cyan text-xs font-semibold uppercase tracking-widest mb-3">
+                                <span class="w-6 h-px bg-accent-cyan"></span><span>06</span>
+                            </div>
+                            <h3 class="text-2xl font-bold mb-6">Accompagnement & Conseil projet</h3>
+                            <div class="grid md:grid-cols-3 gap-8">
+                                <div>
+                                    <h4 class="font-semibold mb-2 text-white">Rédaction cahier des charges</h4>
+                                    <p class="text-sm text-gray-400">Nous rédigeons le cahier des charges technique pour
+                                        vos appels d'offres Wi-Fi : exigences de couverture, volumétrie terminaux, SLA,
+                                        critères de conformité.</p>
+                                </div>
+                                <div>
+                                    <h4 class="font-semibold mb-2 text-white">Aide au choix constructeur</h4>
+                                    <p class="text-sm text-gray-400">Analyse comparative Cisco vs. Aruba vs. Meraki vs.
+                                        Juniper Mist vs. Ruckus. Grille d'évaluation multicritère adaptée à votre
+                                        contexte et budget.</p>
+                                </div>
+                                <div>
+                                    <h4 class="font-semibold mb-2 text-white">Pilotage déploiement</h4>
+                                    <p class="text-sm text-gray-400">Suivi technique du déploiement, coordination
+                                        installateurs, recette technique site par site, DAT (Dossier d'Architecture
+                                        Technique).</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- CTA Wi-Fi -->
+                    <div class="text-center mt-16 fade-in">
+                        <a href="#" data-view="contact"
+                            class="inline-flex items-center px-8 py-4 gradient-blue text-white font-semibold rounded-lg hover:shadow-lg hover:shadow-accent-blue/25 transition-all">
+                            Réserver un audit découverte
+                            <svg class="ml-2 w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M17 8l4 4m0 0l-4 4m4-4H3" />
+                            </svg>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ========== VUE : EXPERTISE NAC ========== -->
+        <section id="view-nac" class="view">
+            <div class="relative py-24 md:py-28 overflow-hidden">
+                <div class="absolute inset-0 bg-nac opacity-15"></div>
+                <div class="absolute inset-0 bg-gradient-to-b from-dark-950 via-dark-950/60 to-dark-950"></div>
+                <div class="absolute inset-0 flex items-center justify-center pointer-events-none opacity-10">
+                    <svg width="600" height="600" viewBox="0 0 500 500" fill="none" class="shield-pulse">
+                        <path d="M250 60 L400 140 L400 280 C400 370 330 430 250 460 C170 430 100 370 100 280 L100 140 Z"
+                            stroke="#00C853" stroke-width="1.5" fill="none" opacity=".5" />
+                        <path d="M250 90 L370 155 L370 270 C370 345 315 395 250 420 C185 395 130 345 130 270 L130 155 Z"
+                            stroke="#00E676" stroke-width="1" fill="none" opacity=".3" />
+                        <rect x="225" y="230" width="50" height="40" rx="6" stroke="#00C853" stroke-width="2"
+                            fill="rgba(0,200,83,.1)" />
+                        <path d="M235 230 V215 A15 15 0 0 1 265 215 V230" stroke="#00C853" stroke-width="2"
+                            fill="none" />
+                        <circle cx="250" cy="252" r="4" fill="#00C853" />
+                        <line x1="250" y1="60" x2="250" y2="200" stroke="#00E676" stroke-width="1" class="flow-line"
+                            opacity=".4" />
+                        <line x1="100" y1="210" x2="220" y2="250" stroke="#00C853" stroke-width="1" class="flow-line"
+                            opacity=".3" style="animation-delay:.5s" />
+                        <line x1="400" y1="210" x2="280" y2="250" stroke="#00C853" stroke-width="1" class="flow-line"
+                            opacity=".3" style="animation-delay:1s" />
+                    </svg>
+                </div>
+                <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+                    <div class="max-w-3xl mb-12 fade-in">
+                        <div
+                            class="inline-flex items-center space-x-2 text-accent-green text-xs font-semibold uppercase tracking-widest mb-4">
+                            <span class="w-8 h-px bg-accent-green"></span><span>Expertise NAC & Sécurité</span>
+                        </div>
+                        <h2 class="text-3xl sm:text-5xl font-bold tracking-tight mb-6">Contrôle d'accès
+                            réseau,<br>segmentation & Zero Trust</h2>
+                        <p class="text-lg text-gray-400 leading-relaxed">Cisco ISE, 802.1X, TrustSec, segmentation
+                            dynamique : nous verrouillons chaque port et chaque SSID sans pénaliser l'expérience
+                            utilisateur. Le réseau devient votre première ligne de défense.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="py-16">
+                <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                    <!-- ISE Architecture -->
+                    <div class="grid lg:grid-cols-2 gap-12 mb-20 items-center fade-in">
+                        <div>
+                            <div
+                                class="inline-flex items-center space-x-2 text-accent-green text-xs font-semibold uppercase tracking-widest mb-3">
+                                <span class="w-6 h-px bg-accent-green"></span><span>01</span>
+                            </div>
+                            <h3 class="text-2xl sm:text-3xl font-bold mb-4">Architecture Cisco ISE</h3>
+                            <p class="text-gray-400 leading-relaxed mb-6">Cisco Identity Services Engine est le cœur du
+                                NAC. Nous dimensionnons, déployons et configurons ISE de A à Z : sizing des nœuds
+                                PSN/MnT/PAN, haute disponibilité, intégration Active Directory/LDAP, et politique
+                                d'authentification adaptée à vos contraintes.</p>
+                            <div class="space-y-3">
+                                <div class="flex items-start gap-3"><span
+                                        class="mt-1 w-2 h-2 rounded-full bg-accent-green shrink-0"></span>
+                                    <div><strong class="text-white text-sm">Sizing & déploiement</strong>
+                                        <p class="text-xs text-gray-500">Dimensionnement nœuds selon volumétrie
+                                            endpoints, répartition PSN géographique, clustering HA</p>
+                                    </div>
+                                </div>
+                                <div class="flex items-start gap-3"><span
+                                        class="mt-1 w-2 h-2 rounded-full bg-accent-green shrink-0"></span>
+                                    <div><strong class="text-white text-sm">Policy Sets structurés</strong>
+                                        <p class="text-xs text-gray-500">Hiérarchie AuthN/AuthZ claire, conditions par
+                                            device type, user group, localisation, posture</p>
+                                    </div>
+                                </div>
+                                <div class="flex items-start gap-3"><span
+                                        class="mt-1 w-2 h-2 rounded-full bg-accent-green shrink-0"></span>
+                                    <div><strong class="text-white text-sm">Intégrations tierces</strong>
+                                        <p class="text-xs text-gray-500">AD/LDAP, MDM (Intune, Workspace ONE), SIEM
+                                            (Splunk, QRadar), Firewall (Firepower, Palo Alto)</p>
+                                    </div>
+                                </div>
+                                <div class="flex items-start gap-3"><span
+                                        class="mt-1 w-2 h-2 rounded-full bg-accent-green shrink-0"></span>
+                                    <div><strong class="text-white text-sm">Migration & upgrade</strong>
+                                        <p class="text-xs text-gray-500">Migration depuis ACS/ISE legacy, upgrade de
+                                            version avec plan de rollback, tests de non-régression</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="glass-card rounded-2xl p-8">
+                            <h4 class="text-lg font-semibold mb-4 text-accent-green">Composants ISE</h4>
+                            <div class="space-y-3">
+                                <div class="flex items-center justify-between bg-dark-800 rounded-xl px-4 py-3"><span
+                                        class="text-sm font-medium">PAN (Policy Admin Node)</span><span
+                                        class="text-xs text-accent-green bg-accent-green/10 px-2 py-0.5 rounded-full">Admin</span>
+                                </div>
+                                <div class="flex items-center justify-between bg-dark-800 rounded-xl px-4 py-3"><span
+                                        class="text-sm font-medium">MnT (Monitoring Node)</span><span
+                                        class="text-xs text-accent-green bg-accent-green/10 px-2 py-0.5 rounded-full">Logs</span>
+                                </div>
+                                <div class="flex items-center justify-between bg-dark-800 rounded-xl px-4 py-3"><span
+                                        class="text-sm font-medium">PSN (Policy Service Node)</span><span
+                                        class="text-xs text-accent-green bg-accent-green/10 px-2 py-0.5 rounded-full">RADIUS</span>
+                                </div>
+                                <div class="flex items-center justify-between bg-dark-800 rounded-xl px-4 py-3"><span
+                                        class="text-sm font-medium">pxGrid</span><span
+                                        class="text-xs text-gray-500 bg-dark-700 px-2 py-0.5 rounded-full">Contexte</span>
+                                </div>
+                            </div>
+                            <p class="text-xs text-gray-500 mt-4">Ref: <a
+                                    href="https://www.cisco.com/c/en/us/products/security/identity-services-engine/index.html"
+                                    class="text-accent-green hover:underline" target="_blank">Cisco ISE
+                                    Documentation</a></p>
+                        </div>
+                    </div>
+                    <!-- 802.1X -->
+                    <div class="grid lg:grid-cols-2 gap-12 mb-20 items-center fade-in">
+                        <div class="order-2 lg:order-1 glass-card rounded-2xl p-8">
+                            <h4 class="text-lg font-semibold mb-4 text-accent-green">Méthodes d'authentification</h4>
+                            <div class="space-y-4">
+                                <div class="border-l-2 border-accent-green pl-4">
+                                    <p class="text-sm font-medium text-white">EAP-TLS (certificat machine)</p>
+                                    <p class="text-xs text-gray-500">Le plus sécurisé. Authentification mutuelle par
+                                        certificat x.509. Nécessite une PKI. Recommandé pour les postes corporate.</p>
+                                </div>
+                                <div class="border-l-2 border-accent-green pl-4">
+                                    <p class="text-sm font-medium text-white">PEAP-MSCHAPv2</p>
+                                    <p class="text-xs text-gray-500">Authentification user/password dans un tunnel TLS.
+                                        Plus simple à déployer, compatible Windows natif.</p>
+                                </div>
+                                <div class="border-l-2 border-accent-green pl-4">
+                                    <p class="text-sm font-medium text-white">MAB (MAC Auth Bypass)</p>
+                                    <p class="text-xs text-gray-500">Fallback pour les équipements sans supplicant
+                                        802.1X : imprimantes, caméras, IoT. Couplé au profiling ISE.</p>
+                                </div>
+                                <div class="border-l-2 border-accent-green pl-4">
+                                    <p class="text-sm font-medium text-white">EAP-FAST / TEAP</p>
+                                    <p class="text-xs text-gray-500">Alternative TLS avec chaînage d'authentification.
+                                        Support natif pour le certificate provisioning.</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="order-1 lg:order-2">
+                            <div
+                                class="inline-flex items-center space-x-2 text-accent-green text-xs font-semibold uppercase tracking-widest mb-3">
+                                <span class="w-6 h-px bg-accent-green"></span><span>02</span>
+                            </div>
+                            <h3 class="text-2xl sm:text-3xl font-bold mb-4">Déploiement 802.1X & Segmentation</h3>
+                            <p class="text-gray-400 leading-relaxed mb-6">802.1X est le standard IEEE pour le contrôle
+                                d'accès port par port. Couplé à TrustSec (SGT), chaque terminal authentifié et profilé
+                                est assigné dynamiquement au segment réseau approprié — sans VLAN statique ni ACL
+                                manuelles.</p>
+                            <div class="space-y-3">
+                                <div class="flex items-start gap-3"><span
+                                        class="mt-1 w-2 h-2 rounded-full bg-accent-green shrink-0"></span>
+                                    <div><strong class="text-white text-sm">Déploiement progressif</strong>
+                                        <p class="text-xs text-gray-500">Mode Monitor → Low-Impact → Closed Mode. Zéro
+                                            disruption pendant le rollout.</p>
+                                    </div>
+                                </div>
+                                <div class="flex items-start gap-3"><span
+                                        class="mt-1 w-2 h-2 rounded-full bg-accent-green shrink-0"></span>
+                                    <div><strong class="text-white text-sm">SGT / TrustSec</strong>
+                                        <p class="text-xs text-gray-500">Micro-segmentation par tag de groupe de
+                                            sécurité, politiques SGACL définies dans ISE, propagation inline ou SXP</p>
+                                    </div>
+                                </div>
+                                <div class="flex items-start gap-3"><span
+                                        class="mt-1 w-2 h-2 rounded-full bg-accent-green shrink-0"></span>
+                                    <div><strong class="text-white text-sm">Change of Authorization (CoA)</strong>
+                                        <p class="text-xs text-gray-500">Réauthentification dynamique en cas de
+                                            changement de posture ou d'incident sécurité détecté</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Guest, BYOD, IoT -->
+                    <div class="grid md:grid-cols-3 gap-6 mb-16 fade-in">
+                        <div class="glass-card rounded-2xl p-8">
+                            <div class="w-12 h-12 gradient-green rounded-xl flex items-center justify-center mb-6"><svg
+                                    class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"
+                                        d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0z" />
+                                </svg></div>
+                            <h3 class="text-xl font-semibold mb-3">Portails invités (Guest)</h3>
+                            <p class="text-gray-400 text-sm leading-relaxed mb-4">Portails captifs personnalisés avec
+                                workflow d'approbation sponsor, auto-enregistrement, ou authentification SMS/email.
+                                Intégration Wi‑Fi et filaire.</p>
+                            <ul class="space-y-2 text-xs text-gray-500">
+                                <li class="flex items-center gap-2"><span
+                                        class="w-1.5 h-1.5 rounded-full bg-accent-green"></span>Hotspot, Sponsor,
+                                    Self-Registration</li>
+                                <li class="flex items-center gap-2"><span
+                                        class="w-1.5 h-1.5 rounded-full bg-accent-green"></span>Personnalisation logo &
+                                    charte graphique</li>
+                                <li class="flex items-center gap-2"><span
+                                        class="w-1.5 h-1.5 rounded-full bg-accent-green"></span>Conformité RGPD &
+                                    conditions d'utilisation</li>
+                            </ul>
+                        </div>
+                        <div class="glass-card rounded-2xl p-8">
+                            <div class="w-12 h-12 gradient-green rounded-xl flex items-center justify-center mb-6"><svg
+                                    class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"
+                                        d="M12 18h.01M8 21h8a2 2 0 002-2V5a2 2 0 00-2-2H8a2 2 0 00-2 2v14a2 2 0 002 2z" />
+                                </svg></div>
+                            <h3 class="text-xl font-semibold mb-3">Onboarding BYOD</h3>
+                            <p class="text-gray-400 text-sm leading-relaxed mb-4">Provisioning automatique de
+                                certificats sur les terminaux personnels (iOS, Android, Windows, macOS) via le portail
+                                My Devices ISE ou MDM.</p>
+                            <ul class="space-y-2 text-xs text-gray-500">
+                                <li class="flex items-center gap-2"><span
+                                        class="w-1.5 h-1.5 rounded-full bg-accent-green"></span>SCEP / EST certificate
+                                    provisioning</li>
+                                <li class="flex items-center gap-2"><span
+                                        class="w-1.5 h-1.5 rounded-full bg-accent-green"></span>NSP (Native Supplicant
+                                    Provisioning)</li>
+                                <li class="flex items-center gap-2"><span
+                                        class="w-1.5 h-1.5 rounded-full bg-accent-green"></span>Intégration MDM (Intune,
+                                    Jamf)</li>
+                            </ul>
+                        </div>
+                        <div class="glass-card rounded-2xl p-8">
+                            <div class="w-12 h-12 gradient-green rounded-xl flex items-center justify-center mb-6"><svg
+                                    class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"
+                                        d="M9 3v2m6-2v2M9 19v2m6-2v2M5 9H3m2 6H3m18-6h-2m2 6h-2M7 19h10a2 2 0 002-2V7a2 2 0 00-2-2H7a2 2 0 00-2 2v10a2 2 0 002 2z" />
+                                </svg></div>
+                            <h3 class="text-xl font-semibold mb-3">Sécurisation IoT / Shadow IT</h3>
+                            <p class="text-gray-400 text-sm leading-relaxed mb-4">30 % des endpoints sur un réseau
+                                d'entreprise sont non-gérés. Nous identifions, profilons et isolons l'IoT sauvage sans
+                                bloquer le métier.</p>
+                            <ul class="space-y-2 text-xs text-gray-500">
+                                <li class="flex items-center gap-2"><span
+                                        class="w-1.5 h-1.5 rounded-full bg-accent-green"></span>Profiling ISE (DHCP,
+                                    HTTP, NMAP)</li>
+                                <li class="flex items-center gap-2"><span
+                                        class="w-1.5 h-1.5 rounded-full bg-accent-green"></span>Politique dACL & SGT
+                                    dédiées IoT</li>
+                                <li class="flex items-center gap-2"><span
+                                        class="w-1.5 h-1.5 rounded-full bg-accent-green"></span>Visibilité via pxGrid +
+                                    Stealthwatch</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="text-center fade-in">
+                        <a href="#" data-view="contact"
+                            class="inline-flex items-center px-8 py-4 gradient-blue text-white font-semibold rounded-lg hover:shadow-lg hover:shadow-accent-blue/25 transition-all">
+                            Réserver un audit découverte
+                            <svg class="ml-2 w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M17 8l4 4m0 0l-4 4m4-4H3" />
+                            </svg>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ========== VUE : BLOG ========== -->
+        <section id="view-blog" class="view">
+            <div class="py-24 md:py-28">
+                <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                    <div class="max-w-3xl mb-12 fade-in">
+                        <div
+                            class="inline-flex items-center space-x-2 text-accent-cyan text-xs font-semibold uppercase tracking-widest mb-4">
+                            <span class="w-8 h-px bg-accent-cyan"></span><span>Blog technique</span>
+                        </div>
+                        <h2 class="text-3xl sm:text-5xl font-bold tracking-tight mb-4">Veille & Retours terrain</h2>
+                        <p class="text-lg text-gray-400">Analyses techniques, guides de résolution et retours
+                            d'expérience issus de nos missions. Pas de contenu SEO creux — uniquement du concret.</p>
+                    </div>
+
+                    <!-- Article 1 : Wi-Fi 7 -->
+                    <article class="glass-card rounded-2xl p-8 mb-6 fade-in" id="blog-wifi7">
+                        <div class="flex flex-wrap items-center gap-3 mb-4">
+                            <img src="img/romaric.JPG" alt="Romaric Okemba"
+                                class="w-6 h-6 rounded-full object-cover border border-white/10">
+                            <span class="text-xs text-gray-300 font-medium">Romaric Okemba</span>
+                            <span class="text-gray-600">·</span>
+                            <span
+                                class="text-xs font-semibold px-2.5 py-1 rounded-full bg-accent-cyan/15 text-accent-cyan">Wi-Fi</span>
+                            <span class="text-xs text-gray-500">12 min · Fév. 2025</span>
+                        </div>
+                        <h3 class="text-xl font-bold mb-3">Wi-Fi 7 (802.11be) : faut-il migrer maintenant ?</h3>
+                        <p class="text-gray-400 text-sm leading-relaxed mb-4">Multi-Link Operation, 320 MHz, 4096-QAM :
+                            les promesses sont séduisantes. Mais entre la maturité du silicium client et les gains réels
+                            en entreprise, le ROI reste à démontrer. Analyse complète.</p>
+                        <button
+                            onclick="this.parentElement.querySelector('.blog-full').classList.toggle('open');this.textContent=this.textContent==='Lire la suite ↓'?'Réduire ↑':'Lire la suite ↓'"
+                            class="text-accent-cyan text-sm font-medium hover:underline mb-4">Lire la suite ↓</button>
+                        <div class="blog-full">
+                            <div class="border-t border-white/5 pt-6 mt-2 space-y-6">
+                                <div>
+                                    <h4 class="font-semibold text-white mb-2">Qu'est-ce que Wi-Fi 7 ?</h4>
+                                    <p class="text-sm text-gray-400 leading-relaxed">Wi-Fi 7 (IEEE 802.11be) est la
+                                        prochaine évolution majeure du Wi-Fi. Il introduit le <strong
+                                            class="text-white">Multi-Link Operation (MLO)</strong> — la capacité
+                                        d'agréger simultanément plusieurs bandes (2.4 + 5 + 6 GHz) —, des canaux de
+                                        <strong class="text-white">320 MHz</strong> en 6 GHz, et la modulation <strong
+                                            class="text-white">4096-QAM</strong>. Théoriquement, les débits dépassent
+                                        les 46 Gbit/s (PHY rate).
+                                    </p>
+                                </div>
+                                <div class="grid md:grid-cols-2 gap-6">
+                                    <div class="bg-dark-800 rounded-xl p-5">
+                                        <h5 class="text-accent-green font-semibold text-sm mb-3">✅ Avantages</h5>
+                                        <ul class="space-y-2 text-xs text-gray-400">
+                                            <li>• <strong class="text-white">MLO</strong> : résilience et agrégation
+                                                multi-bande, réduction drastique de la latence</li>
+                                            <li>• <strong class="text-white">320 MHz</strong> : débits 2x supérieurs au
+                                                Wi-Fi 6E en bande 6 GHz</li>
+                                            <li>• <strong class="text-white">4096-QAM</strong> : +20% d'efficacité
+                                                spectrale à portée courte</li>
+                                            <li>• <strong class="text-white">Preamble puncturing</strong> : utilisation
+                                                des canaux partiellement occupés par radar DFS</li>
+                                            <li>• Prépare l'infrastructure pour les 5-7 prochaines années</li>
+                                        </ul>
+                                    </div>
+                                    <div class="bg-dark-800 rounded-xl p-5">
+                                        <h5 class="text-red-400 font-semibold text-sm mb-3">❌ Inconvénients</h5>
+                                        <ul class="space-y-2 text-xs text-gray-400">
+                                            <li>• <strong class="text-white">Maturité client</strong> : très peu de
+                                                terminaux Wi-Fi 7 en entreprise (2025)</li>
+                                            <li>• <strong class="text-white">Coût</strong> : AP Wi-Fi 7 = 2x le prix
+                                                d'un AP Wi-Fi 6E équivalent</li>
+                                            <li>• <strong class="text-white">MLO limité</strong> : la plupart des
+                                                chipsets client ne supportent que 2 liens simultanés</li>
+                                            <li>• <strong class="text-white">6 GHz</strong> : réglementation EIRP encore
+                                                restrictive en Europe (LPI/VLP)</li>
+                                            <li>• ROI difficilement justifiable avant 2027 pour la plupart des
+                                                entreprises</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                                <div>
+                                    <h4 class="font-semibold text-white mb-2">Notre recommandation</h4>
+                                    <p class="text-sm text-gray-400 leading-relaxed">Sauf cas d'usage AR/VR, vidéo 8K ou
+                                        latence critique, <strong class="text-white">nous recommandons Wi-Fi 6E
+                                            aujourd'hui</strong>. Si vous achetez de nouveaux AP en 2025, privilégiez
+                                        des modèles Wi-Fi 7 pour « future-proofing », mais ne justifiez pas un refresh
+                                        uniquement pour le 802.11be.</p>
+                                </div>
+                                <div class="bg-dark-800 rounded-xl p-4">
+                                    <p class="text-xs text-gray-500"><strong class="text-gray-400">Sources
+                                            :</strong><br>
+                                        • IEEE 802.11be Draft 5.0 — <a
+                                            href="https://www.ieee802.org/11/Reports/tgbe_update.htm"
+                                            class="text-accent-cyan hover:underline" target="_blank">ieee802.org</a><br>
+                                        • Wi-Fi Alliance Wi-Fi 7 Overview — <a
+                                            href="https://www.wi-fi.org/discover-wi-fi/wi-fi-7"
+                                            class="text-accent-cyan hover:underline" target="_blank">wi-fi.org</a><br>
+                                        • Cisco Wi-Fi 7 White Paper — <a
+                                            href="https://www.cisco.com/c/en/us/solutions/enterprise-networks/802-11be.html"
+                                            class="text-accent-cyan hover:underline" target="_blank">cisco.com</a></p>
+                                </div>
+                            </div>
+                        </div>
+                    </article>
+
+                    <!-- Article 2 : Cisco ISE erreurs -->
+                    <article class="glass-card rounded-2xl p-8 mb-6 fade-in" id="blog-ise">
+                        <div class="flex flex-wrap items-center gap-3 mb-4">
+                            <img src="img/romaric.JPG" alt="Romaric Okemba"
+                                class="w-6 h-6 rounded-full object-cover border border-white/10">
+                            <span class="text-xs text-gray-300 font-medium">Romaric Okemba</span>
+                            <span class="text-gray-600">·</span>
+                            <span
+                                class="text-xs font-semibold px-2.5 py-1 rounded-full bg-accent-green/15 text-accent-green">NAC</span>
+                            <span class="text-xs text-gray-500">15 min · Jan. 2025</span>
+                        </div>
+                        <h3 class="text-xl font-bold mb-3">Cisco ISE : les 5 erreurs fatales en production</h3>
+                        <p class="text-gray-400 text-sm leading-relaxed mb-4">Policy sets mal hiérarchisés, profiling
+                            désactivé, certificats expirés silencieusement. Cinq erreurs que nous corrigeons
+                            systématiquement et qui causent 80 % des incidents NAC.</p>
+                        <button
+                            onclick="this.parentElement.querySelector('.blog-full').classList.toggle('open');this.textContent=this.textContent==='Lire la suite ↓'?'Réduire ↑':'Lire la suite ↓'"
+                            class="text-accent-cyan text-sm font-medium hover:underline mb-4">Lire la suite ↓</button>
+                        <div class="blog-full">
+                            <div class="border-t border-white/5 pt-6 mt-2 space-y-5">
+                                <div class="border-l-2 border-red-500 pl-4">
+                                    <p class="text-sm font-medium text-white mb-1">1. Policy Sets en « catch-all » sans
+                                        hiérarchie</p>
+                                    <p class="text-xs text-gray-400">Un seul policy set avec des dizaines de règles →
+                                        ordre d'évaluation imprévisible. <strong class="text-white">Solution</strong> :
+                                        structurer en policy sets distincts par cas d'usage (Corporate, Guest, BYOD,
+                                        IoT) avec conditions d'entrée claires.</p>
+                                </div>
+                                <div class="border-l-2 border-red-500 pl-4">
+                                    <p class="text-sm font-medium text-white mb-1">2. Profiling désactivé ou non calibré
+                                    </p>
+                                    <p class="text-xs text-gray-400">ISE profiling est activé par défaut mais ses sondes
+                                        (DHCP, HTTP, NMAP) sont souvent limitées. Résultat : 40 % des endpoints classés
+                                        « Unknown ». <strong class="text-white">Solution</strong> : activer les sondes
+                                        DHCP span + HTTP, calibrer les profils custom pour vos équipements.</p>
+                                </div>
+                                <div class="border-l-2 border-red-500 pl-4">
+                                    <p class="text-sm font-medium text-white mb-1">3. Certificats expirés sans alerting
+                                    </p>
+                                    <p class="text-xs text-gray-400">Le certificat EAP du PSN expire → tous les clients
+                                        PEAP/EAP-TLS sont rejetés. Pas d'alerte native. <strong
+                                            class="text-white">Solution</strong> : monitoring externe (PRTG, Nagios) sur
+                                        l'expiration des certificats ISE + renouvellement planifié.</p>
+                                </div>
+                                <div class="border-l-2 border-red-500 pl-4">
+                                    <p class="text-sm font-medium text-white mb-1">4. Pas de mode Monitor avant Closed
+                                        Mode</p>
+                                    <p class="text-xs text-gray-400">Passer directement en mode fermé = coupure réseau
+                                        garantie pour les devices non conformes. <strong
+                                            class="text-white">Solution</strong> : déploiement progressif Monitor →
+                                        Low-Impact → Closed avec période d'observation de 2-4 semaines par phase.</p>
+                                </div>
+                                <div class="border-l-2 border-red-500 pl-4">
+                                    <p class="text-sm font-medium text-white mb-1">5. Pas de plan de rollback documenté
+                                    </p>
+                                    <p class="text-xs text-gray-400">En cas de problème, revenir en arrière sans
+                                        documentation = chaos. <strong class="text-white">Solution</strong> : snapshots
+                                        VM, export config, procédure de fallback testée AVANT le go-live.</p>
+                                </div>
+                                <div class="bg-dark-800 rounded-xl p-4">
+                                    <p class="text-xs text-gray-500"><strong class="text-gray-400">Sources
+                                            :</strong><br>
+                                        • Cisco ISE Admin Guide 3.3 — <a
+                                            href="https://www.cisco.com/c/en/us/td/docs/security/ise/3-3/admin_guide/b_ise_admin_3_3.html"
+                                            class="text-accent-cyan hover:underline" target="_blank">cisco.com</a><br>
+                                        • « ISE Deployment Best Practices » — Cisco Live BRKSEC-3697<br>
+                                        • Cisco ISE Profiling Design Guide — <a
+                                            href="https://community.cisco.com/t5/security-knowledge-base/ise-profiling-design-guide/ta-p/3739456"
+                                            class="text-accent-cyan hover:underline"
+                                            target="_blank">community.cisco.com</a></p>
+                                </div>
+                            </div>
+                        </div>
+                    </article>
+
+                    <!-- Article 3 : Coupures RF logistique -->
+                    <article class="glass-card rounded-2xl p-8 mb-6 fade-in" id="blog-rf">
+                        <div class="flex flex-wrap items-center gap-3 mb-4">
+                            <img src="img/romaric.JPG" alt="Romaric Okemba"
+                                class="w-6 h-6 rounded-full object-cover border border-white/10">
+                            <span class="text-xs text-gray-300 font-medium">Romaric Okemba</span>
+                            <span class="text-gray-600">·</span>
+                            <span
+                                class="text-xs font-semibold px-2.5 py-1 rounded-full bg-accent-cyan/15 text-accent-cyan">Wi-Fi</span>
+                            <span class="text-xs text-gray-500">10 min · Déc. 2024</span>
+                        </div>
+                        <h3 class="text-xl font-bold mb-3">Coupures RF en logistique : méthodologie de diagnostic</h3>
+                        <p class="text-gray-400 text-sm leading-relaxed mb-4">Scanners Zebra qui décrochent, latence
+                            MQTT au changement d'AP. Retour d'expérience sur un entrepôt 40 000 m² avec diagnostic
+                            roaming et validation drive-test.</p>
+                        <button
+                            onclick="this.parentElement.querySelector('.blog-full').classList.toggle('open');this.textContent=this.textContent==='Lire la suite ↓'?'Réduire ↑':'Lire la suite ↓'"
+                            class="text-accent-cyan text-sm font-medium hover:underline mb-4">Lire la suite ↓</button>
+                        <div class="blog-full">
+                            <div class="border-t border-white/5 pt-6 mt-2 space-y-6">
+                                <div>
+                                    <h4 class="font-semibold text-white mb-2">Le contexte</h4>
+                                    <p class="text-sm text-gray-400 leading-relaxed">Entrepôt logistique de 40 000 m²,
+                                        120 AP Cisco, 350+ terminaux Zebra MC3300. Symptômes : déconnexions aléatoires
+                                        des scanners, latence MQTT > 2 s, perte de sessions applicatives lors des
+                                        déplacements inter-allées.</p>
+                                </div>
+                                <div class="grid md:grid-cols-2 gap-6">
+                                    <div class="bg-dark-800 rounded-xl p-5">
+                                        <h5 class="text-accent-green font-semibold text-sm mb-3">✅ Ce qui a fonctionné
+                                        </h5>
+                                        <ul class="space-y-2 text-xs text-gray-400">
+                                            <li>• Drive-test Ekahau avec Sidekick sur parcours opérateurs</li>
+                                            <li>• Activation 802.11r/k/v sur le WLC Catalyst 9800</li>
+                                            <li>• Réduction des data rates minimum à 12 Mbps</li>
+                                            <li>• Ajustement Tx power pour réduire la taille des cellules</li>
+                                            <li>• Latence roaming passée de 800 ms à 25 ms</li>
+                                        </ul>
+                                    </div>
+                                    <div class="bg-dark-800 rounded-xl p-5">
+                                        <h5 class="text-red-400 font-semibold text-sm mb-3">❌ Ce qui ne fonctionnait pas
+                                        </h5>
+                                        <ul class="space-y-2 text-xs text-gray-400">
+                                            <li>• RRM automatique : canal switching intempestif en heure de pointe</li>
+                                            <li>• Band steering agressif : incompatible avec les Zebra 2.4 GHz only</li>
+                                            <li>• Cellules surdimensionnées : overlap > 50 % → sticky clients</li>
+                                            <li>• Data rates legacy (1/2/5.5 Mbps) : consommaient 60 % de l'airtime</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                                <div class="bg-dark-800 rounded-xl p-4">
+                                    <p class="text-xs text-gray-500"><strong class="text-gray-400">Sources
+                                            :</strong><br>
+                                        • Cisco Catalyst 9800 RF Best Practices — <a
+                                            href="https://www.cisco.com/c/en/us/support/docs/wireless/catalyst-9800-series-wireless-controllers/213911-best-practices.html"
+                                            class="text-accent-cyan hover:underline" target="_blank">cisco.com</a><br>
+                                        • Zebra WLAN Planning Guide — <a
+                                            href="https://www.zebra.com/us/en/support-downloads/knowledge-articles/wlan-planning-guide.html"
+                                            class="text-accent-cyan hover:underline" target="_blank">zebra.com</a><br>
+                                        • Ekahau Best Practices for Warehouses — <a href="https://www.ekahau.com"
+                                            class="text-accent-cyan hover:underline" target="_blank">ekahau.com</a></p>
+                                </div>
+                            </div>
+                        </div>
+                    </article>
+
+                    <!-- Article 4 : Airtime Overhead -->
+                    <article class="glass-card rounded-2xl p-8 mb-6 fade-in" id="blog-airtime">
+                        <div class="flex flex-wrap items-center gap-3 mb-4">
+                            <img src="img/romaric.JPG" alt="Romaric Okemba"
+                                class="w-6 h-6 rounded-full object-cover border border-white/10">
+                            <span class="text-xs text-gray-300 font-medium">Romaric Okemba</span>
+                            <span class="text-gray-600">·</span>
+                            <span
+                                class="text-xs font-semibold px-2.5 py-1 rounded-full bg-accent-cyan/15 text-accent-cyan">Wi-Fi</span>
+                            <span class="text-xs text-gray-500">8 min · Nov. 2024</span>
+                        </div>
+                        <h3 class="text-xl font-bold mb-3">Airtime Overhead & VoIP d'entreprise</h3>
+                        <p class="text-gray-400 text-sm leading-relaxed mb-4">Quand le MOS chute sans congestion
+                            apparente, l'airtime overhead est le coupable invisible. Méthode de mesure PCAP over-the-air
+                            et stratégies de réduction.</p>
+                        <button
+                            onclick="this.parentElement.querySelector('.blog-full').classList.toggle('open');this.textContent=this.textContent==='Lire la suite ↓'?'Réduire ↑':'Lire la suite ↓'"
+                            class="text-accent-cyan text-sm font-medium hover:underline mb-4">Lire la suite ↓</button>
+                        <div class="blog-full">
+                            <div class="border-t border-white/5 pt-6 mt-2 space-y-6">
+                                <div>
+                                    <h4 class="font-semibold text-white mb-2">Comprendre l'airtime</h4>
+                                    <p class="text-sm text-gray-400 leading-relaxed">Le Wi-Fi est un medium partagé
+                                        (half-duplex). Chaque frame transmise — management, control ou data — consomme
+                                        de l'«&nbsp;airtime&nbsp;». Quand l'utilisation dépasse 50-60 %, les retries
+                                        augmentent, la latence explose, et les applications temps réel (VoIP, vidéo) se
+                                        dégradent.</p>
+                                </div>
+                                <div class="grid md:grid-cols-2 gap-6">
+                                    <div class="bg-dark-800 rounded-xl p-5">
+                                        <h5 class="text-accent-green font-semibold text-sm mb-3">✅ Stratégies efficaces
+                                        </h5>
+                                        <ul class="space-y-2 text-xs text-gray-400">
+                                            <li>• Désactiver les data rates < 12 Mbps (2.4 GHz) / < 24 Mbps (5 GHz)</li>
+                                            <li>• Réduire le beacon interval si possible (100 ms → 200 ms par SSID non
+                                                critique)</li>
+                                            <li>• Limiter le nombre de SSID à 3-4 max par radio</li>
+                                            <li>• Activer DTPC et multicast-to-unicast conversion</li>
+                                            <li>• QoS WMM : marquer le trafic voix en AC_VO</li>
+                                        </ul>
+                                    </div>
+                                    <div class="bg-dark-800 rounded-xl p-5">
+                                        <h5 class="text-red-400 font-semibold text-sm mb-3">❌ Fausses solutions</h5>
+                                        <ul class="space-y-2 text-xs text-gray-400">
+                                            <li>• Augmenter la puissance Tx (= plus d'interférences, pas moins de
+                                                congestion)</li>
+                                            <li>• Ajouter des AP sans plan RF (= plus de CCI)</li>
+                                            <li>• Activer tous les SSID sur tous les AP</li>
+                                            <li>• Ignorer les clients legacy qui consomment l'airtime</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                                <div class="bg-dark-800 rounded-xl p-4">
+                                    <p class="text-xs text-gray-500"><strong class="text-gray-400">Sources
+                                            :</strong><br>
+                                        • CWNA Study Guide, Chapter 14 : WLAN Troubleshooting — CWNP<br>
+                                        • « Understanding Airtime Fairness » — Revolution Wi-Fi — <a
+                                            href="https://www.revolutionwifi.net"
+                                            class="text-accent-cyan hover:underline"
+                                            target="_blank">revolutionwifi.net</a><br>
+                                        • Cisco Wireless Best Practices — <a
+                                            href="https://www.cisco.com/c/en/us/td/docs/wireless"
+                                            class="text-accent-cyan hover:underline" target="_blank">cisco.com</a></p>
+                                </div>
+                            </div>
+                        </div>
+                    </article>
+
+                    <!-- Article 5 : Shadow IT & IoT -->
+                    <article class="glass-card rounded-2xl p-8 mb-6 fade-in" id="blog-iot">
+                        <div class="flex flex-wrap items-center gap-3 mb-4">
+                            <img src="img/romaric.JPG" alt="Romaric Okemba"
+                                class="w-6 h-6 rounded-full object-cover border border-white/10">
+                            <span class="text-xs text-gray-300 font-medium">Romaric Okemba</span>
+                            <span class="text-gray-600">·</span>
+                            <span
+                                class="text-xs font-semibold px-2.5 py-1 rounded-full bg-accent-green/15 text-accent-green">NAC</span>
+                            <span class="text-xs text-gray-500">10 min · Oct. 2024</span>
+                        </div>
+                        <h3 class="text-xl font-bold mb-3">Shadow IT & IoT : sécuriser sans bloquer</h3>
+                        <p class="text-gray-400 text-sm leading-relaxed mb-4">Caméras IP, capteurs Zigbee, écrans
+                            connectés : l'IoT sauvage représente 30 % des endpoints. Comment identifier, profiler et
+                            isoler sans impact opérationnel.</p>
+                        <button
+                            onclick="this.parentElement.querySelector('.blog-full').classList.toggle('open');this.textContent=this.textContent==='Lire la suite ↓'?'Réduire ↑':'Lire la suite ↓'"
+                            class="text-accent-cyan text-sm font-medium hover:underline mb-4">Lire la suite ↓</button>
+                        <div class="blog-full">
+                            <div class="border-t border-white/5 pt-6 mt-2 space-y-6">
+                                <div>
+                                    <h4 class="font-semibold text-white mb-2">L'enjeu</h4>
+                                    <p class="text-sm text-gray-400 leading-relaxed">Selon Forescout, <strong
+                                            class="text-white">30 % des endpoints</strong> connectés à un réseau
+                                        d'entreprise sont non-gérés et inconnus de l'IT. Ces devices (imprimantes,
+                                        caméras, capteurs, smart TVs) ne supportent ni 802.1X ni agent de sécurité. Ils
+                                        représentent un vecteur d'attaque latéral majeur.</p>
+                                </div>
+                                <div class="grid md:grid-cols-2 gap-6">
+                                    <div class="bg-dark-800 rounded-xl p-5">
+                                        <h5 class="text-accent-green font-semibold text-sm mb-3">✅ Approche recommandée
+                                        </h5>
+                                        <ul class="space-y-2 text-xs text-gray-400">
+                                            <li>• <strong class="text-white">Phase 1</strong> : Inventaire et profiling
+                                                exhaustif via ISE (DHCP fingerprint, HTTP User-Agent, OUI MAC)</li>
+                                            <li>• <strong class="text-white">Phase 2</strong> : Classification par
+                                                criticité (critique, standard, shadow)</li>
+                                            <li>• <strong class="text-white">Phase 3</strong> : Segmentation par
+                                                SGT/dACL — VLAN IoT dédié avec ACL restrictives</li>
+                                            <li>• <strong class="text-white">Phase 4</strong> : Monitoring continu via
+                                                pxGrid → Stealthwatch/XDR</li>
+                                        </ul>
+                                    </div>
+                                    <div class="bg-dark-800 rounded-xl p-5">
+                                        <h5 class="text-red-400 font-semibold text-sm mb-3">❌ Erreurs à éviter</h5>
+                                        <ul class="space-y-2 text-xs text-gray-400">
+                                            <li>• Ignorer l'IoT (« ce sont juste des imprimantes »)</li>
+                                            <li>• Bloquer tous les endpoints inconnus d'un coup (= arrêt de production)
+                                            </li>
+                                            <li>• Se fier uniquement à l'adresse MAC (spoofable)</li>
+                                            <li>• Ne pas monitorer après segmentation</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                                <div class="bg-dark-800 rounded-xl p-4">
+                                    <p class="text-xs text-gray-500"><strong class="text-gray-400">Sources
+                                            :</strong><br>
+                                        • Forescout « Enterprise of Things Security Report » 2024 — <a
+                                            href="https://www.forescout.com/resources/"
+                                            class="text-accent-cyan hover:underline"
+                                            target="_blank">forescout.com</a><br>
+                                        • Cisco ISE Profiling Design Guide — <a
+                                            href="https://community.cisco.com/t5/security-knowledge-base/ise-profiling-design-guide/ta-p/3739456"
+                                            class="text-accent-cyan hover:underline"
+                                            target="_blank">community.cisco.com</a><br>
+                                        • NIST SP 800-183 — Networks of Things — <a
+                                            href="https://csrc.nist.gov/publications/detail/sp/800-183/final"
+                                            class="text-accent-cyan hover:underline" target="_blank">nist.gov</a></p>
+                                </div>
+                            </div>
+                        </div>
+                    </article>
+
+                </div>
+            </div>
+        </section>
+
+        <!-- ========== VUE : CONTACT ========== -->
+        <section id="view-contact" class="view">
+            <div class="py-24 md:py-28">
+                <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                    <div class="max-w-3xl mb-12 fade-in">
+                        <div
+                            class="inline-flex items-center space-x-2 text-accent-cyan text-xs font-semibold uppercase tracking-widest mb-4">
+                            <span class="w-8 h-px bg-accent-cyan"></span><span>Contact</span>
+                        </div>
+                        <h2 class="text-3xl sm:text-5xl font-bold tracking-tight mb-4">Discutons de votre projet</h2>
+                        <p class="text-lg text-gray-400">Audit Wi-Fi, déploiement NAC, troubleshooting urgence —
+                            décrivez votre besoin et nous vous répondons sous 24h.</p>
+                    </div>
+                    <!-- FAQ condensée Contact -->
+                    <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-4 mb-10 fade-in">
+                        <div class="glass-card rounded-xl p-4">
+                            <p class="text-accent-cyan text-xs font-semibold uppercase mb-2">Durée audit</p>
+                            <p class="text-white text-sm font-medium">3–5 jours</p>
+                            <p class="text-xs text-gray-500 mt-1">On-site ou à distance selon complexité</p>
+                        </div>
+                        <div class="glass-card rounded-xl p-4">
+                            <p class="text-accent-cyan text-xs font-semibold uppercase mb-2">Budget indicatif</p>
+                            <p class="text-white text-sm font-medium">3 000 – 12 000 €</p>
+                            <p class="text-xs text-gray-500 mt-1">Selon surface et nombre de sites</p>
+                        </div>
+                        <div class="glass-card rounded-xl p-4">
+                            <p class="text-accent-cyan text-xs font-semibold uppercase mb-2">Réponse</p>
+                            <p class="text-white text-sm font-medium">Sous 24h</p>
+                            <p class="text-xs text-gray-500 mt-1">Échange découverte gratuit de 30 min</p>
+                        </div>
+                        <div class="glass-card rounded-xl p-4">
+                            <p class="text-accent-cyan text-xs font-semibold uppercase mb-2">Livrables</p>
+                            <p class="text-white text-sm font-medium">Rapport complet</p>
+                            <p class="text-xs text-gray-500 mt-1">Heatmaps, inventaire AP, plan d'action</p>
+                        </div>
+                    </div>
+                    <div class="grid lg:grid-cols-5 gap-8">
+                        <!-- Formulaire -->
+                        <div class="lg:col-span-3 glass-card rounded-2xl p-8 fade-in">
+                            <form action="https://formspree.io/f/VOTRE_ID" method="POST" class="space-y-6">
+                                <div class="grid sm:grid-cols-2 gap-4">
+                                    <div><label class="block text-sm font-medium text-gray-300 mb-1.5">Nom</label><input
+                                            type="text" name="nom" required
+                                            class="w-full px-4 py-3 bg-dark-800 border border-white/10 rounded-lg text-white placeholder-gray-600 focus:border-accent-cyan focus:outline-none transition text-sm"
+                                            placeholder="Votre nom"></div>
+                                    <div><label
+                                            class="block text-sm font-medium text-gray-300 mb-1.5">Société</label><input
+                                            type="text" name="societe"
+                                            class="w-full px-4 py-3 bg-dark-800 border border-white/10 rounded-lg text-white placeholder-gray-600 focus:border-accent-cyan focus:outline-none transition text-sm"
+                                            placeholder="Entreprise"></div>
+                                </div>
+                                <div class="grid sm:grid-cols-2 gap-4">
+                                    <div><label
+                                            class="block text-sm font-medium text-gray-300 mb-1.5">Email</label><input
+                                            type="email" name="email" required
+                                            class="w-full px-4 py-3 bg-dark-800 border border-white/10 rounded-lg text-white placeholder-gray-600 focus:border-accent-cyan focus:outline-none transition text-sm"
+                                            placeholder="vous@entreprise.com"></div>
+                                    <div><label
+                                            class="block text-sm font-medium text-gray-300 mb-1.5">Téléphone</label><input
+                                            type="tel" name="telephone"
+                                            class="w-full px-4 py-3 bg-dark-800 border border-white/10 rounded-lg text-white placeholder-gray-600 focus:border-accent-cyan focus:outline-none transition text-sm"
+                                            placeholder="+33 6 12 34 56 78"></div>
+                                </div>
+                                <div>
+                                    <label class="block text-sm font-medium text-gray-300 mb-1.5">Type de besoin</label>
+                                    <select name="sujet"
+                                        class="w-full px-4 py-3 bg-dark-800 border border-white/10 rounded-lg text-white focus:border-accent-cyan focus:outline-none transition text-sm">
+                                        <option value="">Sélectionnez un sujet</option>
+                                        <option value="audit-wifi">Audit Wi-Fi / Étude Ekahau</option>
+                                        <option value="design-wifi">Design & Architecture Wi-Fi</option>
+                                        <option value="troubleshooting">Troubleshooting Wi-Fi</option>
+                                        <option value="nac-ise">NAC / Cisco ISE</option>
+                                        <option value="802.1x">802.1X / Segmentation</option>
+                                        <option value="autre">Autre</option>
+                                    </select>
+                                </div>
+                                <div><label
+                                        class="block text-sm font-medium text-gray-300 mb-1.5">Message</label><textarea
+                                        name="message" rows="5" required
+                                        class="w-full px-4 py-3 bg-dark-800 border border-white/10 rounded-lg text-white placeholder-gray-600 focus:border-accent-cyan focus:outline-none transition text-sm resize-none"
+                                        placeholder="Décrivez votre besoin : contexte, périmètre, contraintes..."></textarea>
+                                </div>
+                                <button type="submit"
+                                    class="w-full py-3.5 gradient-blue text-white font-semibold rounded-lg hover:shadow-lg hover:shadow-accent-blue/25 transition-all text-sm">Envoyer
+                                    la demande</button>
+                            </form>
+                        </div>
+                        <!-- Sidebar contact -->
+                        <div class="lg:col-span-2 space-y-6 fade-in">
+                            <!-- Profil LinkedIn -->
+                            <div class="glass-card rounded-2xl p-6">
+                                <h4 class="font-semibold text-white mb-4">Romaric Okemba</h4>
+                                <div class="flex items-center gap-4 mb-4">
+                                    <img src="img/romaric.JPG" alt="Romaric Okemba"
+                                        class="w-14 h-14 rounded-full object-cover border border-white/10">
+                                    <div>
+                                        <p class="font-medium text-white">Fondateur ORNET</p>
+                                        <p class="text-xs text-gray-500">Ingénieur Réseau & Consultant</p>
+                                    </div>
+                                </div>
+                                <a href="https://www.linkedin.com/in/romaric-okemba-27833230/" target="_blank"
+                                    rel="noopener"
+                                    class="flex items-center justify-center gap-2 w-full py-2.5 bg-[#0A66C2] text-white text-sm font-medium rounded-lg hover:bg-[#004182] transition-colors">
+                                    <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
+                                        <path
+                                            d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z" />
+                                    </svg>
+                                    Voir le profil LinkedIn
+                                </a>
+                            </div>
+                            <!-- Coordonnées -->
+                            <div class="glass-card rounded-2xl p-6">
+                                <h4 class="font-semibold text-white mb-4">Coordonnées</h4>
+                                <div class="space-y-4 text-sm text-gray-400">
+                                    <div class="flex items-start gap-3">
+                                        <svg class="w-5 h-5 text-accent-cyan mt-0.5 shrink-0" fill="none"
+                                            stroke="currentColor" viewBox="0 0 24 24">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"
+                                                d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"
+                                                d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
+                                        </svg>
+                                        <div>
+                                            <p class="text-white font-medium">ORNET</p>
+                                            <p>120 Boulevard Vincent Auriol<br>75013 Paris, France</p>
+                                        </div>
+                                    </div>
+                                    <div class="flex items-center gap-3">
+                                        <svg class="w-5 h-5 text-accent-cyan shrink-0" fill="none" stroke="currentColor"
+                                            viewBox="0 0 24 24">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"
+                                                d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+                                        </svg>
+                                        <a href="mailto:contact@or-net.com"
+                                            class="hover:text-accent-cyan transition-colors">contact@or-net.com</a>
+                                    </div>
+                                    <div class="flex items-center gap-3">
+                                        <svg class="w-5 h-5 text-accent-cyan shrink-0" fill="none" stroke="currentColor"
+                                            viewBox="0 0 24 24">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"
+                                                d="M21 12a9 9 0 01-9 9m9-9a9 9 0 00-9-9m9 9H3m9 9a9 9 0 01-9-9m9 9c1.657 0 3-4.03 3-9s-1.343-9-3-9m0 18c-1.657 0-3-4.03-3-9s1.343-9 3-9" />
+                                        </svg>
+                                        <a href="https://or-net.com" target="_blank"
+                                            class="hover:text-accent-cyan transition-colors">or-net.com</a>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- SIREN -->
+                            <div class="glass-card rounded-2xl p-6">
+                                <h4 class="font-semibold text-white mb-3">Informations légales</h4>
+                                <div class="text-xs text-gray-500 space-y-1">
+                                    <p><strong class="text-gray-400">SIREN :</strong> 837 708 981</p>
+                                    <p><strong class="text-gray-400">Forme :</strong> SARL</p>
+                                    <p><strong class="text-gray-400">Activité :</strong> Conseil en systèmes et
+                                        logiciels informatiques</p>
+                                    <p><strong class="text-gray-400">Création :</strong> 19/02/2018</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- ========== FOOTER ========== -->
+    <footer class="border-t border-white/5 py-12 relative z-10">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid md:grid-cols-4 gap-8 mb-8">
+                <div>
+                    <div class="flex items-center gap-2.5 mb-4">
+                        <svg width="28" height="28" viewBox="0 0 100 100" fill="none">
+                            <path d="M50 8 L85 28 L85 58 C85 78 68 92 50 98 C32 92 15 78 15 58 L15 28 Z"
+                                stroke="#00D4FF" stroke-width="2" fill="none" opacity=".5" />
+                            <circle cx="50" cy="52" r="5" fill="#00D4FF" />
+                            <path d="M35 38 A20 20 0 0 1 65 38" stroke="#fff" stroke-width="2" fill="none" opacity=".7"
+                                stroke-linecap="round" />
+                            <path d="M29 30 A28 28 0 0 1 71 30" stroke="#fff" stroke-width="1.5" fill="none"
+                                opacity=".4" stroke-linecap="round" />
+                            <rect x="43" y="62" width="14" height="10" rx="2" stroke="#00C853" stroke-width="1.5"
+                                fill="rgba(0,200,83,.1)" />
+                            <path d="M45.5 62 V58 A4.5 4.5 0 0 1 54.5 58 V62" stroke="#00C853" stroke-width="1.5"
+                                fill="none" />
+                        </svg>
+                        <span class="text-lg font-bold text-white">OR<span class="text-accent-cyan">NET</span></span>
+                    </div>
+                    <p class="text-sm text-gray-500 leading-relaxed">Ingénierie réseau & cybersécurité. Conception,
+                        audit et sécurisation d'infrastructures Wi‑Fi et NAC.</p>
+                    <div class="flex flex-wrap gap-x-4 gap-y-1 mt-3 text-xs text-gray-500">
+                        <span><strong class="text-white">150+</strong> sites audités</span>
+                        <span><strong class="text-white">99.9%</strong> uptime réseau</span>
+                        <span><strong class="text-white">12+</strong> ans d'expertise</span>
+                    </div>
+                </div>
+                <div>
+                    <h5 class="text-sm font-semibold text-white mb-3">Expertise</h5>
+                    <ul class="space-y-2 text-sm text-gray-500">
+                        <li><a href="#" data-view="wifi" class="hover:text-accent-cyan transition-colors">Étude Wi-Fi
+                                Ekahau</a></li>
+                        <li><a href="#" data-view="wifi" class="hover:text-accent-cyan transition-colors">Architecture
+                                Wi-Fi 6E/7</a></li>
+                        <li><a href="#" data-view="wifi"
+                                class="hover:text-accent-cyan transition-colors">Troubleshooting RF</a></li>
+                        <li><a href="#" data-view="nac" class="hover:text-accent-cyan transition-colors">Cisco ISE /
+                                NAC</a></li>
+                        <li><a href="#" data-view="nac" class="hover:text-accent-cyan transition-colors">802.1X &
+                                Segmentation</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h5 class="text-sm font-semibold text-white mb-3">Ressources</h5>
+                    <ul class="space-y-2 text-sm text-gray-500">
+                        <li><a href="#" data-view="blog" class="hover:text-accent-cyan transition-colors">Blog
+                                technique</a></li>
+                        <li><a href="https://www.linkedin.com/in/romaric-okemba-27833230/" target="_blank"
+                                class="hover:text-accent-cyan transition-colors">LinkedIn</a></li>
+                        <li><a href="#" data-view="contact" class="hover:text-accent-cyan transition-colors">Prendre
+                                RDV</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h5 class="text-sm font-semibold text-white mb-3">Contact</h5>
+                    <ul class="space-y-2 text-sm text-gray-500">
+                        <li>120 Bd Vincent Auriol</li>
+                        <li>75013 Paris, France</li>
+                        <li><a href="mailto:contact@or-net.com"
+                                class="hover:text-accent-cyan transition-colors">contact@or-net.com</a></li>
+                        <li>SIREN 837 708 981</li>
+                    </ul>
+                </div>
+            </div>
+            <div
+                class="border-t border-white/5 pt-6 flex flex-col sm:flex-row items-center justify-between text-xs text-gray-600">
+                <p>© 2025 ORNET. Tous droits réservés.</p>
+                <div class="flex gap-4 mt-2 sm:mt-0">
+                    <a href="#" class="hover:text-gray-400 transition-colors">Mentions légales</a>
+                    <a href="#" class="hover:text-gray-400 transition-colors">Politique RGPD</a>
+                    <a href="#" class="hover:text-gray-400 transition-colors">CGV</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            // === SPA ROUTER ===
+            const views = document.querySelectorAll('.view');
+            const navLinks = document.querySelectorAll('.nav-link[data-view]');
+            let wifiAnimId = null;
+
+            function animateFadeIns(container) {
+                const els = (container || document).querySelectorAll('.fade-in');
+                els.forEach((el, i) => { el.style.transition = 'opacity .6s ease, transform .6s ease'; el.style.transitionDelay = i * .06 + 's'; el.style.opacity = '1'; el.style.transform = 'translateY(0)' });
+            }
+
+            function switchView(viewId) {
+                views.forEach(v => { v.classList.remove('active'); v.querySelectorAll('.fade-in').forEach(f => { f.style.opacity = '0'; f.style.transform = 'translateY(30px)'; f.style.transitionDelay = '0s' }) });
+                const target = document.getElementById('view-' + viewId);
+                if (target) { target.classList.add('active'); window.scrollTo({ top: 0, behavior: 'instant' }); setTimeout(() => animateFadeIns(target), 50); if (viewId === 'wifi') { startWifiCanvas() } else { stopWifiCanvas() } if (viewId === 'accueil') { animateCounters() } }
+                navLinks.forEach(l => { l.classList.toggle('active', l.dataset.view === viewId) });
+            }
+
+            document.querySelectorAll('[data-view]').forEach(el => {
+                el.addEventListener('click', e => { e.preventDefault(); switchView(el.dataset.view); const mm = document.getElementById('mobile-menu'); if (mm && !mm.classList.contains('hidden')) { mm.classList.add('hidden') } });
+            });
+
+            // === MOBILE MENU ===
+            const burger = document.getElementById('burger');
+            const mobileMenu = document.getElementById('mobile-menu');
+            if (burger && mobileMenu) { burger.addEventListener('click', () => { mobileMenu.classList.toggle('hidden') }) }
+
+            // === PARTICLE NETWORK ===
+            const pc = document.getElementById('particles-canvas');
+            const pctx = pc.getContext('2d');
+            let pw, ph; const particles = []; const mouse = { x: -999, y: -999 };
+            function resizePC() { pw = pc.width = window.innerWidth; ph = pc.height = window.innerHeight }
+            resizePC(); window.addEventListener('resize', resizePC);
+            for (let i = 0; i < 80; i++) { particles.push({ x: Math.random() * window.innerWidth, y: Math.random() * window.innerHeight, vx: (Math.random() - .5) * .4, vy: (Math.random() - .5) * .4, r: Math.random() * 1.5 + .5 }) }
+            document.addEventListener('mousemove', e => { mouse.x = e.clientX; mouse.y = e.clientY; const g = document.getElementById('cursor-glow'); if (g) { g.style.transform = `translate(${e.clientX - 200}px,${e.clientY - 200}px)` } });
+            function drawParticles() {
+                pctx.clearRect(0, 0, pw, ph);
+                particles.forEach(p => {
+                    p.x += p.vx; p.y += p.vy;
+                    if (p.x < 0 || p.x > pw) p.vx *= -1; if (p.y < 0 || p.y > ph) p.vy *= -1;
+                    const dmx = mouse.x - p.x, dmy = mouse.y - p.y, dm = Math.sqrt(dmx * dmx + dmy * dmy);
+                    if (dm < 200) { p.x += dmx * .003; p.y += dmy * .003 }
+                    pctx.beginPath(); pctx.arc(p.x, p.y, p.r, 0, Math.PI * 2); pctx.fillStyle = 'rgba(0,212,255,.5)'; pctx.fill();
+                });
+                for (let i = 0; i < particles.length; i++) { for (let j = i + 1; j < particles.length; j++) { const dx = particles[i].x - particles[j].x, dy = particles[i].y - particles[j].y, d = Math.sqrt(dx * dx + dy * dy); if (d < 120) { pctx.beginPath(); pctx.moveTo(particles[i].x, particles[i].y); pctx.lineTo(particles[j].x, particles[j].y); pctx.strokeStyle = `rgba(0,212,255,${.15 * (1 - d / 120)})`; pctx.lineWidth = .5; pctx.stroke() } } }
+                requestAnimationFrame(drawParticles);
+            }
+            drawParticles();
+
+            // === COUNTERS ===
+            function animateCounters() {
+                document.querySelectorAll('.counter').forEach(el => {
+                    const target = parseFloat(el.dataset.target); const isFloat = String(target).includes('.');
+                    const duration = 2000, start = performance.now();
+                    function step(ts) { const progress = Math.min((ts - start) / duration, 1); const eased = 1 - Math.pow(1 - progress, 3); el.textContent = isFloat ? (eased * target).toFixed(1) : Math.floor(eased * target); if (progress < 1) requestAnimationFrame(step) }
+                    requestAnimationFrame(step);
+                });
+            }
+            animateCounters();
+
+            // === TYPING EFFECT ===
+            const typedEl = document.getElementById('hero-typed');
+            if (typedEl) {
+                const words = ['performent.', 'connectent.', 'délivrent.', 'évoluent.', 'sécurisent.'];
+                let wordIndex = 0, charIndex = 0, isDeleting = false;
+                function typeLoop() {
+                    const current = words[wordIndex];
+                    if (!isDeleting) { typedEl.textContent = current.slice(0, ++charIndex); if (charIndex === current.length) { isDeleting = true; setTimeout(typeLoop, 2500); return } setTimeout(typeLoop, 80 + Math.random() * 40) }
+                    else { typedEl.textContent = current.slice(0, --charIndex); if (charIndex === 0) { isDeleting = false; wordIndex = (wordIndex + 1) % words.length; setTimeout(typeLoop, 400); return } setTimeout(typeLoop, 40) }
+                }
+                setTimeout(typeLoop, 2000);
+            }
+
+            // === 3D TILT CARDS ===
+            document.querySelectorAll('.glass-card').forEach(card => {
+                card.addEventListener('mousemove', e => { const rect = card.getBoundingClientRect(); const x = (e.clientX - rect.left) / rect.width - .5; const y = (e.clientY - rect.top) / rect.height - .5; card.style.transform = `perspective(800px) rotateY(${x * 6}deg) rotateX(${-y * 6}deg) translateY(-6px) scale(1.01)` });
+                card.addEventListener('mouseleave', () => { card.style.transform = 'none' });
+            });
+
+            // === WIFI CANVAS ===
+            function startWifiCanvas() {
+                const c = document.getElementById('wifi-canvas'); if (!c) return; const ctx = c.getContext('2d');
+                const w = c.width = c.offsetWidth, h = c.height = c.offsetHeight;
+                const waves = []; for (let i = 0; i < 4; i++) { waves.push({ x: w * (.15 + Math.random() * .7), y: h * (.2 + Math.random() * .6), rings: [], timer: Math.random() * 120 }) }
+                function draw() {
+                    ctx.clearRect(0, 0, w, h);
+                    waves.forEach(src => {
+                        src.timer++; if (src.timer > 60) { src.timer = 0; src.rings.push({ r: 0, alpha: .6 }) }
+                        src.rings.forEach((ring, ri) => { ring.r += .8; ring.alpha -= .003; if (ring.alpha <= 0) { src.rings.splice(ri, 1); return } ctx.beginPath(); ctx.arc(src.x, src.y, ring.r, 0, Math.PI * 2); ctx.strokeStyle = `rgba(0,212,255,${ring.alpha})`; ctx.lineWidth = 1; ctx.stroke() });
+                        ctx.beginPath(); ctx.arc(src.x, src.y, 3, 0, Math.PI * 2); ctx.fillStyle = 'rgba(0,212,255,.7)'; ctx.fill()
+                    });
+                    wifiAnimId = requestAnimationFrame(draw);
+                }
+                draw();
+            }
+            function stopWifiCanvas() { if (wifiAnimId) { cancelAnimationFrame(wifiAnimId); wifiAnimId = null } }
+
+            // === NAVBAR SCROLL ===
+            const navbar = document.getElementById('navbar');
+            window.addEventListener('scroll', () => { if (window.scrollY > 20) { navbar.classList.add('border-white/10') } else { navbar.classList.remove('border-white/10') } });
+
+            // === INITIAL FADE-IN ===
+            setTimeout(() => animateFadeIns(document.getElementById('view-accueil')), 200);
+        });
+    </script>
+</body>
+
+</html>
