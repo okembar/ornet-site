@@ -1471,6 +1471,70 @@
                         </div>
                     </div>
 
+                    <!-- Comparison Slider (Heatmap) -->
+                    <div class="mb-20 fade-in">
+                        <div class="glass-card rounded-2xl p-6 sm:p-8 mb-6">
+                            <h4 class="text-xl font-bold mb-6 text-center">Impact de l'optimisation RF (Heatmap)</h4>
+                            <div class="relative w-full max-w-4xl mx-auto rounded-xl overflow-hidden aspect-video bg-dark-900 border border-white/10 select-none"
+                                id="heatmap-slider-container">
+                                <!-- Image Dessous (Après / Vert) -->
+                                <div
+                                    class="absolute inset-0 w-full h-full bg-dark-800 flex items-center justify-center">
+                                    <div
+                                        class="absolute top-4 right-4 bg-accent-green/20 text-accent-green text-xs font-bold px-3 py-1.5 rounded-full border border-accent-green/30 z-10 backdrop-blur-md">
+                                        APRÈS (Optimisé)</div>
+                                    <div class="text-accent-green/50 text-center font-mono text-sm sm:text-lg px-4">
+                                        <svg class="w-12 h-12 mx-auto mb-2 opacity-50" fill="none" stroke="currentColor"
+                                            viewBox="0 0 24 24">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"
+                                                d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                                        </svg>
+                                        [Heatmap APRÈS : Signal fort, CCI réduit]
+                                    </div>
+                                </div>
+
+                                <!-- Image Dessus (Avant / Rouge) avec clip-path -->
+                                <div class="absolute inset-0 w-full h-full bg-dark-950 flex items-center justify-center border-r-[3px] border-white/80 shadow-[2px_0_15px_rgba(0,0,0,0.5)] z-20 pointer-events-none"
+                                    id="heatmap-before"
+                                    style="clip-path: polygon(0 0, 50% 0, 50% 100%, 0 100%); width: 100%;">
+                                    <div
+                                        class="absolute top-4 left-4 bg-red-500/20 text-red-500 text-xs font-bold px-3 py-1.5 rounded-full border border-red-500/30 z-10 backdrop-blur-md">
+                                        AVANT (Interférences)</div>
+                                    <div
+                                        class="text-red-500/50 text-center font-mono text-sm sm:text-lg px-4 absolute w-full left-0 right-0">
+                                        <svg class="w-12 h-12 mx-auto mb-2 opacity-50" fill="none" stroke="currentColor"
+                                            viewBox="0 0 24 24">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"
+                                                d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z">
+                                            </path>
+                                        </svg>
+                                        [Heatmap AVANT : CCI critique, brouillage]
+                                    </div>
+                                </div>
+
+                                <!-- Slider Input -->
+                                <input type="range" min="0" max="100" value="50"
+                                    class="absolute inset-0 w-full h-full opacity-0 cursor-ew-resize z-30"
+                                    id="heatmap-slider">
+
+                                <!-- Handle UI -->
+                                <div class="absolute top-0 bottom-0 w-1 bg-white cursor-ew-resize z-25 pointer-events-none transition-transform duration-75"
+                                    id="heatmap-handle" style="left: 50%; transform: translateX(-50%);">
+                                    <div
+                                        class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-8 h-8 sm:w-10 sm:h-10 bg-white text-dark-900 rounded-full flex items-center justify-center shadow-[0_0_15px_rgba(0,0,0,0.5)] border-2 border-dark-900">
+                                        <svg class="w-4 h-4 sm:w-5 sm:h-5" fill="none" stroke="currentColor"
+                                            viewBox="0 0 24 24">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5"
+                                                d="M8 9l4-4 4 4m0 6l-4 4-4-4"></path>
+                                        </svg>
+                                    </div>
+                                </div>
+                            </div>
+                            <p class="text-center text-sm text-gray-500 mt-5">Glissez le curseur de gauche à droite pour
+                                comparer l'impact d'un réglage fin des plans de fréquences.</p>
+                        </div>
+                    </div>
+
                     <!-- 6. Accompagnement projet -->
                     <div class="grid lg:grid-cols-3 gap-6 fade-in">
                         <div class="glass-card rounded-2xl p-8 lg:col-span-3">
@@ -2261,13 +2325,18 @@
                                 </h3>
 
                                 <!-- Tabs -->
-                                <div class="flex gap-2 border-b border-white/10 mb-6">
+                                <div class="flex flex-wrap gap-2 border-b border-white/10 mb-6">
                                     <button onclick="switchToolkitTab('wifi')" id="tab-wifi"
                                         class="pb-2 text-sm font-semibold text-accent-cyan border-b-2 border-accent-cyan transition-colors">Calcul
                                         RF</button>
                                     <button onclick="switchToolkitTab('dhcp')" id="tab-dhcp"
                                         class="pb-2 text-sm font-medium text-gray-500 hover:text-gray-300 border-b-2 border-transparent transition-colors">DHCP
                                         Opt 43</button>
+                                    <button onclick="switchToolkitTab('mac')" id="tab-mac"
+                                        class="pb-2 text-sm font-medium text-gray-500 hover:text-gray-300 border-b-2 border-transparent transition-colors">MAC
+                                        Format</button>
+                                    <button onclick="switchToolkitTab('fspl')" id="tab-fspl"
+                                        class="pb-2 text-sm font-medium text-gray-500 hover:text-gray-300 border-b-2 border-transparent transition-colors">FSPL</button>
                                 </div>
 
                                 <!-- Outil 1 : RF Calculator -->
@@ -2310,43 +2379,96 @@
                                     </div>
                                 </div>
 
-                                <!-- Outil 2 : DHCP Option 43 -->
-                                <div id="tool-dhcp" class="space-y-4 hidden">
-                                    <p class="text-xs text-gray-400 mb-3">Générateur Cisco WLC (Type F1)</p>
+                                <!-- Outil 3 : MAC Formatter -->
+                                <div id="tool-mac" class="space-y-4 hidden">
+                                    <p class="text-xs text-gray-400 mb-3">Convertisseur MAC Universel</p>
                                     <div>
-                                        <label class="block text-xs font-medium text-gray-400 mb-1">Adresse(s) IP WLC
-                                            (Séparées par virgules)</label>
-                                        <input type="text" id="wlc-ips" oninput="generateOption43()"
-                                            placeholder="192.168.1.10, 10.0.0.5"
+                                        <label class="block text-xs font-medium text-gray-400 mb-1">Coller une adresse
+                                            MAC (n'importe quel format)</label>
+                                        <input type="text" id="mac-input" oninput="formatMac()"
+                                            placeholder="Ex: 00:11:22:33:44:55"
                                             class="w-full bg-dark-900 border border-white/10 rounded-lg py-2 px-3 text-sm text-white focus:outline-none focus:border-accent-cyan transition-colors">
-                                        <p id="dhcp-error" class="text-xs text-red-400 mt-1 hidden">Format IP invalide
-                                        </p>
+                                        <p id="mac-error" class="text-xs text-red-400 mt-1 hidden">MAC invalide</p>
                                     </div>
-
                                     <div class="space-y-3 mt-4">
                                         <div>
                                             <div class="flex justify-between items-center mb-1">
-                                                <label class="text-xs font-medium text-gray-400">Valeur Hex
-                                                    (Ascii)</label>
-                                                <button onclick="copyToClipboard(event, 'dhcp-hex-out')"
+                                                <label class="text-xs font-medium text-gray-400">Cisco IOS
+                                                    (xxxx.xxxx.xxxx)</label>
+                                                <button onclick="copyToClipboard(event, 'mac-cisco-out')"
                                                     class="text-xs text-accent-cyan hover:underline">Copier</button>
                                             </div>
-                                            <div id="dhcp-hex-out"
-                                                class="bg-dark-900 border border-white/5 rounded-lg p-2 text-sm font-mono text-gray-300 break-all min-h-[38px]">
+                                            <div id="mac-cisco-out"
+                                                class="bg-dark-900 border border-white/5 rounded-lg p-2 text-sm font-mono text-gray-300 min-h-[38px]">
                                             </div>
                                         </div>
                                         <div>
                                             <div class="flex justify-between items-center mb-1">
-                                                <label class="text-xs font-medium text-gray-400">Commande Cisco
-                                                    IOS</label>
-                                                <button onclick="copyToClipboard(event, 'dhcp-cmd-out')"
+                                                <label class="text-xs font-medium text-gray-400">Standard / Linux
+                                                    (xx:xx:xx:xx:xx:xx)</label>
+                                                <button onclick="copyToClipboard(event, 'mac-std-out')"
                                                     class="text-xs text-accent-cyan hover:underline">Copier</button>
                                             </div>
-                                            <div id="dhcp-cmd-out"
-                                                class="bg-dark-900 border border-white/5 rounded-lg p-2 text-xs font-mono text-accent-green break-all min-h-[38px]">
+                                            <div id="mac-std-out"
+                                                class="bg-dark-900 border border-white/5 rounded-lg p-2 text-sm font-mono text-gray-300 min-h-[38px]">
+                                            </div>
+                                        </div>
+                                        <div>
+                                            <div class="flex justify-between items-center mb-1">
+                                                <label class="text-xs font-medium text-gray-400">Windows
+                                                    (xx-xx-xx-xx-xx-xx)</label>
+                                                <button onclick="copyToClipboard(event, 'mac-win-out')"
+                                                    class="text-xs text-accent-cyan hover:underline">Copier</button>
+                                            </div>
+                                            <div id="mac-win-out"
+                                                class="bg-dark-900 border border-white/5 rounded-lg p-2 text-sm font-mono text-gray-300 min-h-[38px]">
                                             </div>
                                         </div>
                                     </div>
+                                </div>
+
+                                <!-- Outil 4 : FSPL Calculator -->
+                                <div id="tool-fspl" class="space-y-4 hidden">
+                                    <p class="text-xs text-gray-400 mb-3">Free Space Path Loss (Perte d'espace libre)
+                                    </p>
+                                    <div>
+                                        <label class="block text-xs font-medium text-gray-400 mb-1">Bande de
+                                            Fréquence</label>
+                                        <select id="fspl-freq" onchange="calcFSPL()"
+                                            class="w-full bg-dark-900 border border-white/10 rounded-lg py-2 px-3 text-sm text-white focus:outline-none focus:border-accent-cyan transition-colors">
+                                            <option value="2412">2.4 GHz (802.11b/g/n/ax)</option>
+                                            <option value="5500" selected>5 GHz (802.11a/n/ac/ax)</option>
+                                            <option value="6115">6 GHz (802.11ax/be - Wi-Fi 6E/7)</option>
+                                        </select>
+                                    </div>
+                                    <div>
+                                        <label class="block text-xs font-medium text-gray-400 mb-1">Distance
+                                            Totale</label>
+                                        <div class="relative">
+                                            <input type="number" id="fspl-dist" oninput="calcFSPL()"
+                                                placeholder="Ex: 10"
+                                                class="w-full bg-dark-900 border border-white/10 rounded-lg py-2 px-3 text-sm text-white focus:outline-none focus:border-accent-cyan transition-colors">
+                                            <span class="absolute right-3 top-2.5 text-xs text-gray-500">mètres</span>
+                                        </div>
+                                    </div>
+                                    <div class="bg-dark-900 rounded-lg p-3 border border-white/5 mt-4 text-center">
+                                        <div class="text-xs text-gray-500 mb-1">Atténuation dans l'air (FSPL)</div>
+                                        <div class="text-xl font-bold text-red-400" id="fspl-result">-- <span
+                                                class="text-sm font-normal text-red-400/70">dB</span></div>
+                                    </div>
+                                </div>
+
+                                <!-- Bouton d'export Global -->
+                                <div class="mt-8 border-t border-white/10 pt-6">
+                                    <button onclick="exportToolkit()"
+                                        class="w-full py-2.5 bg-dark-800 border border-white/10 text-white font-medium rounded-lg hover:bg-dark-900 hover:border-accent-cyan transition-all text-sm flex items-center justify-center gap-2">
+                                        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                                d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4">
+                                            </path>
+                                        </svg>
+                                        Exporter les résultats (.txt)
+                                    </button>
                                 </div>
                             </div>
                         </div>
@@ -2615,8 +2737,287 @@
         </div>
     </footer>
 
+    <!-- Floating Health Check CTA -->
+    <button onclick="openHealthModal()"
+        class="fixed bottom-6 xl:bottom-10 right-6 xl:right-10 z-[60] gradient-blue text-white px-5 py-3.5 rounded-full font-semibold shadow-[0_4px_20px_rgba(0,212,255,0.3)] hover:-translate-y-1 hover:shadow-[0_4px_25px_rgba(0,212,255,0.5)] transition-all duration-300 flex items-center gap-2">
+        <svg class="w-5 h-5 animate-pulse" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+        </svg>
+        Évaluer mon réseau (1 min)
+    </button>
+
+    <!-- Health Check Multi-step Modal -->
+    <div id="health-modal" class="fixed inset-0 z-[100] hidden items-center justify-center pointer-events-none">
+        <!-- Backdrop -->
+        <div id="health-backdrop"
+            class="absolute inset-0 bg-black/60 backdrop-blur-sm opacity-0 transition-opacity duration-300 pointer-events-auto"
+            onclick="closeHealthModal()"></div>
+
+        <!-- Modal Content -->
+        <div id="health-modal-content"
+            class="glass-card rounded-2xl w-full max-w-lg mx-4 relative z-10 overflow-hidden shadow-2xl transition-all duration-300 transform scale-95 opacity-0 pointer-events-auto">
+            <!-- Close btn -->
+            <button onclick="closeHealthModal()"
+                class="absolute top-4 right-4 text-gray-400 hover:text-white transition-colors z-20">
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12">
+                    </path>
+                </svg>
+            </button>
+
+            <!-- Progress Line -->
+            <div class="flex h-1.5 w-full bg-dark-800 absolute top-0 left-0">
+                <div id="health-progress" class="h-full bg-accent-cyan transition-all duration-500 ease-out"
+                    style="width: 33.33%"></div>
+            </div>
+
+            <div class="p-8 pt-12 relative overflow-hidden min-h-[380px]">
+                <form id="health-form" action="https://formspree.io/f/mqkqgajy" method="POST">
+
+                    <!-- Step 1 -->
+                    <div id="health-step-1"
+                        class="absolute inset-0 p-8 pt-12 transition-all duration-300 transform translate-x-0 opacity-100">
+                        <div
+                            class="inline-flex items-center space-x-2 text-accent-cyan text-xs font-semibold uppercase tracking-widest mb-3">
+                            <span>Étape 1/3</span>
+                        </div>
+                        <h4 class="text-xl font-bold text-white mb-6">Quel est le principal symptôme observé sur le
+                            réseau ?</h4>
+                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                            <label class="relative cursor-pointer group">
+                                <input type="radio" name="symptome" value="lenteurs" class="peer sr-only" required>
+                                <div
+                                    class="p-4 rounded-xl border border-white/10 bg-dark-900 peer-checked:border-accent-cyan peer-checked:bg-accent-cyan/10 peer-checked:shadow-[0_0_15px_rgba(0,212,255,0.15)] group-hover:bg-dark-800 transition-all text-center h-full flex flex-col items-center justify-center gap-2">
+                                    <div class="text-2xl">🐌</div>
+                                    <div class="text-xs font-medium text-gray-300 peer-checked:text-white">Lenteurs
+                                        générales</div>
+                                </div>
+                            </label>
+                            <label class="relative cursor-pointer group">
+                                <input type="radio" name="symptome" value="deconnexions" class="peer sr-only">
+                                <div
+                                    class="p-4 rounded-xl border border-white/10 bg-dark-900 peer-checked:border-accent-cyan peer-checked:bg-accent-cyan/10 peer-checked:shadow-[0_0_15px_rgba(0,212,255,0.15)] group-hover:bg-dark-800 transition-all text-center h-full flex flex-col items-center justify-center gap-2">
+                                    <div class="text-2xl">🔌</div>
+                                    <div class="text-xs font-medium text-gray-300 peer-checked:text-white">Déconnexions
+                                        (Voix/Visio)</div>
+                                </div>
+                            </label>
+                            <label class="relative cursor-pointer group">
+                                <input type="radio" name="symptome" value="zones_mortes" class="peer sr-only">
+                                <div
+                                    class="p-4 rounded-xl border border-white/10 bg-dark-900 peer-checked:border-accent-cyan peer-checked:bg-accent-cyan/10 peer-checked:shadow-[0_0_15px_rgba(0,212,255,0.15)] group-hover:bg-dark-800 transition-all text-center h-full flex flex-col items-center justify-center gap-2">
+                                    <div class="text-2xl">📡</div>
+                                    <div class="text-xs font-medium text-gray-300 peer-checked:text-white">Zones mortes
+                                    </div>
+                                </div>
+                            </label>
+                            <label class="relative cursor-pointer group">
+                                <input type="radio" name="symptome" value="securite" class="peer sr-only">
+                                <div
+                                    class="p-4 rounded-xl border border-white/10 bg-dark-900 peer-checked:border-accent-cyan peer-checked:bg-accent-cyan/10 peer-checked:shadow-[0_0_15px_rgba(0,212,255,0.15)] group-hover:bg-dark-800 transition-all text-center h-full flex flex-col items-center justify-center gap-2">
+                                    <div class="text-2xl">🔐</div>
+                                    <div class="text-xs font-medium text-gray-300 peer-checked:text-white">Doutes
+                                        sécurité / 802.1X</div>
+                                </div>
+                            </label>
+                        </div>
+                        <button type="button" onclick="nextHealthStep(2)"
+                            class="w-full mt-6 py-3.5 bg-white text-dark-900 font-bold rounded-lg hover:bg-gray-200 transition-colors">Continuer
+                            →</button>
+                    </div>
+
+                    <!-- Step 2 -->
+                    <div id="health-step-2"
+                        class="absolute inset-0 p-8 pt-12 transition-all duration-300 transform translate-x-[120%] opacity-0 pointer-events-none">
+                        <button type="button" onclick="prevHealthStep(1)"
+                            class="text-xs text-gray-400 hover:text-white mb-4 inline-flex items-center gap-1 transition-colors">←
+                            Retour</button>
+                        <div
+                            class="inline-flex items-center space-x-2 text-accent-cyan text-xs font-semibold uppercase tracking-widest mb-3 ml-4">
+                            <span>Étape 2/3</span>
+                        </div>
+                        <h4 class="text-xl font-bold text-white mb-6">Quelle est la taille de votre parc Wi-Fi ?</h4>
+                        <div class="space-y-3">
+                            <label class="relative block cursor-pointer group">
+                                <input type="radio" name="taille" value="<10" class="peer sr-only" required>
+                                <div
+                                    class="p-4 rounded-xl border border-white/10 bg-dark-900 peer-checked:border-accent-cyan peer-checked:bg-accent-cyan/10 peer-checked:shadow-[0_0_15px_rgba(0,212,255,0.15)] group-hover:bg-dark-800 transition-all flex items-center justify-between">
+                                    <span class="text-sm font-medium text-gray-300 peer-checked:text-white">Moins de 10
+                                        bornes</span>
+                                    <div
+                                        class="w-5 h-5 rounded-full border-2 border-gray-600 peer-checked:border-accent-cyan peer-checked:bg-accent-cyan relative transition-colors">
+                                        <div
+                                            class="absolute inset-1 rounded-full bg-dark-900 peer-checked:bg-transparent">
+                                        </div>
+                                    </div>
+                                </div>
+                            </label>
+                            <label class="relative block cursor-pointer group">
+                                <input type="radio" name="taille" value="10-50" class="peer sr-only">
+                                <div
+                                    class="p-4 rounded-xl border border-white/10 bg-dark-900 peer-checked:border-accent-cyan peer-checked:bg-accent-cyan/10 peer-checked:shadow-[0_0_15px_rgba(0,212,255,0.15)] group-hover:bg-dark-800 transition-all flex items-center justify-between">
+                                    <span class="text-sm font-medium text-gray-300 peer-checked:text-white">De 10 à 50
+                                        bornes</span>
+                                    <div
+                                        class="w-5 h-5 rounded-full border-2 border-gray-600 peer-checked:border-accent-cyan peer-checked:bg-accent-cyan relative transition-colors">
+                                        <div
+                                            class="absolute inset-1 rounded-full bg-dark-900 peer-checked:bg-transparent">
+                                        </div>
+                                    </div>
+                                </div>
+                            </label>
+                            <label class="relative block cursor-pointer group">
+                                <input type="radio" name="taille" value=">50" class="peer sr-only">
+                                <div
+                                    class="p-4 rounded-xl border border-white/10 bg-dark-900 peer-checked:border-accent-cyan peer-checked:bg-accent-cyan/10 peer-checked:shadow-[0_0_15px_rgba(0,212,255,0.15)] group-hover:bg-dark-800 transition-all flex items-center justify-between">
+                                    <span class="text-sm font-medium text-gray-300 peer-checked:text-white">Plus de 50
+                                        bornes</span>
+                                    <div
+                                        class="w-5 h-5 rounded-full border-2 border-gray-600 peer-checked:border-accent-cyan peer-checked:bg-accent-cyan relative transition-colors">
+                                        <div
+                                            class="absolute inset-1 rounded-full bg-dark-900 peer-checked:bg-transparent">
+                                        </div>
+                                    </div>
+                                </div>
+                            </label>
+                        </div>
+                        <button type="button" onclick="nextHealthStep(3)"
+                            class="w-full mt-6 py-3.5 bg-white text-dark-900 font-bold rounded-lg hover:bg-gray-200 transition-colors">Dernière
+                            étape →</button>
+                    </div>
+
+                    <!-- Step 3 -->
+                    <div id="health-step-3"
+                        class="absolute inset-0 p-8 pt-12 transition-all duration-300 transform translate-x-[120%] opacity-0 pointer-events-none">
+                        <button type="button" onclick="prevHealthStep(2)"
+                            class="text-xs text-gray-400 hover:text-white mb-4 inline-flex items-center gap-1 transition-colors">←
+                            Retour</button>
+                        <h4 class="text-xl font-bold text-white mb-2">Obtenez votre pré-diagnostic</h4>
+                        <p class="text-sm text-gray-400 mb-6 font-medium">Laissez vos coordonnées pour recevoir une
+                            première analyse qualifiée.</p>
+                        <div class="space-y-3">
+                            <div>
+                                <input type="text" name="nom" required placeholder="Votre Nom & Prénom"
+                                    class="w-full bg-dark-900 border border-white/10 rounded-lg py-3 px-4 text-sm text-white focus:outline-none focus:border-accent-cyan transition-colors shadow-inner">
+                            </div>
+                            <div>
+                                <input type="text" name="societe" required placeholder="Société"
+                                    class="w-full bg-dark-900 border border-white/10 rounded-lg py-3 px-4 text-sm text-white focus:outline-none focus:border-accent-cyan transition-colors shadow-inner">
+                            </div>
+                            <div>
+                                <input type="email" name="email" required placeholder="Email professionnel"
+                                    class="w-full bg-dark-900 border border-white/10 rounded-lg py-3 px-4 text-sm text-white focus:outline-none focus:border-accent-cyan transition-colors shadow-inner">
+                            </div>
+                        </div>
+                        <button type="submit"
+                            class="w-full mt-6 py-3.5 gradient-blue text-white font-bold rounded-lg hover:shadow-[0_0_15px_rgba(0,198,255,0.4)] transition-all">Recevoir
+                            mon diagnostic</button>
+                    </div>
+
+                </form>
+            </div>
+        </div>
+    </div>
+
     <script>
         document.addEventListener('DOMContentLoaded', () => {
+            // === HEATMAP COMPARISON SLIDER ===
+            const heatmapSlider = document.getElementById('heatmap-slider');
+            if (heatmapSlider) {
+                heatmapSlider.addEventListener('input', (e) => {
+                    const val = e.target.value;
+                    document.getElementById('heatmap-before').style.clipPath = `polygon(0 0, ${val}% 0, ${val}% 100%, 0 100%)`;
+                    document.getElementById('heatmap-handle').style.left = `${val}%`;
+                });
+            }
+
+            // === HEALTH CHECK MODAL LOGIC ===
+            window.openHealthModal = function () {
+                const modal = document.getElementById('health-modal');
+                const backdrop = document.getElementById('health-backdrop');
+                const content = document.getElementById('health-modal-content');
+                modal.classList.remove('hidden');
+                modal.classList.add('flex');
+
+                // Trigger reflow
+                void modal.offsetWidth;
+
+                backdrop.classList.remove('opacity-0');
+                backdrop.classList.add('opacity-100');
+
+                content.classList.remove('scale-95', 'opacity-0');
+                content.classList.add('scale-100', 'opacity-100');
+            };
+
+            window.closeHealthModal = function () {
+                const modal = document.getElementById('health-modal');
+                const backdrop = document.getElementById('health-backdrop');
+                const content = document.getElementById('health-modal-content');
+
+                backdrop.classList.remove('opacity-100');
+                backdrop.classList.add('opacity-0');
+
+                content.classList.remove('scale-100', 'opacity-100');
+                content.classList.add('scale-95', 'opacity-0');
+
+                setTimeout(() => {
+                    modal.classList.remove('flex');
+                    modal.classList.add('hidden');
+                }, 300);
+            };
+
+            window.nextHealthStep = function (targetStep) {
+                const currentStep = targetStep - 1;
+
+                // Basic validation for radio buttons before proceeding
+                if (currentStep === 1) {
+                    const checked = document.querySelector('input[name="symptome"]:checked');
+                    if (!checked) return alert('Veuillez sélectionner un symptôme.');
+                }
+                if (currentStep === 2) {
+                    const checked = document.querySelector('input[name="taille"]:checked');
+                    if (!checked) return alert('Veuillez sélectionner la taille de votre parc.');
+                }
+
+                const prevEl = document.getElementById('health-step-' + currentStep);
+                const nextEl = document.getElementById('health-step-' + targetStep);
+                const progress = document.getElementById('health-progress');
+
+                // Animate out
+                prevEl.classList.remove('translate-x-0', 'opacity-100', 'pointer-events-auto');
+                prevEl.classList.add('-translate-x-[120%]', 'opacity-0', 'pointer-events-none');
+
+                // Reflow
+                void nextEl.offsetWidth;
+
+                // Animate in
+                nextEl.classList.remove('translate-x-[120%]', 'opacity-0', 'pointer-events-none');
+                nextEl.classList.add('translate-x-0', 'opacity-100', 'pointer-events-auto');
+
+                progress.style.width = (targetStep * 33.33) + '%';
+            };
+
+            window.prevHealthStep = function (targetStep) {
+                const currentStep = targetStep + 1;
+                const prevEl = document.getElementById('health-step-' + currentStep);
+                const nextEl = document.getElementById('health-step-' + targetStep);
+                const progress = document.getElementById('health-progress');
+
+                // Animate out
+                prevEl.classList.remove('translate-x-0', 'opacity-100', 'pointer-events-auto');
+                prevEl.classList.add('translate-x-[120%]', 'opacity-0', 'pointer-events-none');
+
+                // Reflow
+                void nextEl.offsetWidth;
+
+                // Animate in
+                nextEl.classList.remove('-translate-x-[120%]', 'opacity-0', 'pointer-events-none');
+                nextEl.classList.add('translate-x-0', 'opacity-100', 'pointer-events-auto');
+
+                progress.style.width = (targetStep * 33.33) + '%';
+            };
+
             // === SPA ROUTER ===
             const views = document.querySelectorAll('.view');
             const navLinks = document.querySelectorAll('.nav-link[data-view]');
@@ -2724,8 +3125,13 @@
             window.switchToolkitTab = function (tab) {
                 document.getElementById('tool-wifi').classList.add('hidden');
                 document.getElementById('tool-dhcp').classList.add('hidden');
+                document.getElementById('tool-mac').classList.add('hidden');
+                document.getElementById('tool-fspl').classList.add('hidden');
+
                 document.getElementById('tab-wifi').className = "pb-2 text-sm font-medium text-gray-500 hover:text-gray-300 border-b-2 border-transparent transition-colors";
                 document.getElementById('tab-dhcp').className = "pb-2 text-sm font-medium text-gray-500 hover:text-gray-300 border-b-2 border-transparent transition-colors";
+                document.getElementById('tab-mac').className = "pb-2 text-sm font-medium text-gray-500 hover:text-gray-300 border-b-2 border-transparent transition-colors";
+                document.getElementById('tab-fspl').className = "pb-2 text-sm font-medium text-gray-500 hover:text-gray-300 border-b-2 border-transparent transition-colors";
 
                 document.getElementById('tool-' + tab).classList.remove('hidden');
                 document.getElementById('tab-' + tab).className = "pb-2 text-sm font-semibold text-accent-cyan border-b-2 border-accent-cyan transition-colors";
@@ -2805,6 +3211,101 @@
                     hexOut.textContent = finalHex;
                     cmdOut.textContent = 'option 43 hex ' + finalHex;
                 }
+            };
+
+            // Outil 3 : MAC Formatter
+            window.formatMac = function () {
+                const input = document.getElementById('mac-input').value;
+                const errEl = document.getElementById('mac-error');
+                const outCisco = document.getElementById('mac-cisco-out');
+                const outStd = document.getElementById('mac-std-out');
+                const outWin = document.getElementById('mac-win-out');
+
+                if (!input.trim()) {
+                    errEl.classList.add('hidden');
+                    outCisco.textContent = ''; outStd.textContent = ''; outWin.textContent = '';
+                    return;
+                }
+
+                const clean = input.replace(/[^a-fA-F0-9]/g, '').toLowerCase();
+
+                if (clean.length !== 12) {
+                    errEl.classList.remove('hidden');
+                    outCisco.textContent = ''; outStd.textContent = ''; outWin.textContent = '';
+                } else {
+                    errEl.classList.add('hidden');
+
+                    const cisco = clean.match(/.{1,4}/g).join('.');
+                    const std = clean.match(/.{1,2}/g).join(':');
+                    const win = clean.match(/.{1,2}/g).join('-');
+
+                    outCisco.textContent = cisco;
+                    outStd.textContent = std;
+                    outWin.textContent = win;
+                }
+            };
+
+            // Outil 4 : FSPL Calculator
+            window.calcFSPL = function () {
+                const distInput = document.getElementById('fspl-dist').value;
+                const freq = parseFloat(document.getElementById('fspl-freq').value);
+                const resultOut = document.getElementById('fspl-result');
+
+                const distM = parseFloat(distInput);
+
+                if (isNaN(distM) || distM <= 0) {
+                    resultOut.innerHTML = '-- <span class="text-sm font-normal text-red-400/70">dB</span>';
+                    return;
+                }
+
+                const distKm = distM / 1000;
+                const fspl = 20 * Math.log10(distKm) + 20 * Math.log10(freq) + 32.44;
+
+                resultOut.innerHTML = fspl.toFixed(2) + ' <span class="text-sm font-normal text-red-400/70">dB</span>';
+            };
+
+            // Global Toolkit Export
+            window.exportToolkit = function () {
+                let content = "=== ORNET Toolkit - Export des resultats ===\n\n";
+
+                // RF
+                const eirpDbm = document.getElementById('eirp-dbm').textContent.trim();
+                const eirpMw = document.getElementById('eirp-mw').textContent.trim();
+                if (!eirpDbm.startsWith('--')) {
+                    content += "[Calcul RF]\nEIRP: " + eirpDbm + " / " + eirpMw + "\n\n";
+                }
+
+                // DHCP
+                const hexOut = document.getElementById('dhcp-hex-out').textContent;
+                const cmdOut = document.getElementById('dhcp-cmd-out').textContent;
+                if (hexOut) {
+                    content += "[DHCP Option 43]\nHex: " + hexOut + "\nCmd: " + cmdOut + "\n\n";
+                }
+
+                // MAC
+                const ciscoMAC = document.getElementById('mac-cisco-out').textContent;
+                const stdMAC = document.getElementById('mac-std-out').textContent;
+                if (ciscoMAC) {
+                    content += "[MAC Formatter]\nCisco IOS: " + ciscoMAC + "\nStandard: " + stdMAC + "\n\n";
+                }
+
+                // FSPL
+                const fsplRes = document.getElementById('fspl-result').textContent.trim();
+                if (!fsplRes.startsWith('--')) {
+                    content += "[Perte FSPL]\nResultat: " + fsplRes + "\n\n";
+                }
+
+                content += "Generé via or-net.com";
+
+                const blob = new Blob([content], { type: "text/plain;charset=utf-8" });
+                const url = URL.createObjectURL(blob);
+                const a = document.createElement('a');
+                a.href = url;
+                a.download = 'ORNET_Toolkit_Results.txt';
+                document.body.appendChild(a);
+                a.click();
+                document.body.removeChild(a);
+                URL.revokeObjectURL(url);
             };
 
             window.copyToClipboard = function (event, elementId) {
