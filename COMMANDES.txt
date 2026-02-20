@@ -1,0 +1,44 @@
+========================================
+  ORNET — Commandes utiles
+  Site : https://or-net.com
+  Repo : https://github.com/okembar/ornet-site
+========================================
+
+--- MODIFIER ET DEPLOYER ---
+
+# 1. Modifier index.html (localement ou sur GitHub)
+# 2. Pousser les changements → auto-deploy Netlify :
+
+cd ~/ORNET/Site_ornet/Nouveau_site
+git add -A
+git commit -m "description du changement"
+git push
+
+--- DEPLOYER MANUELLEMENT (sans GitHub) ---
+
+cd ~/ORNET/Site_ornet/Nouveau_site
+netlify deploy --prod --dir=. --site=0df3af69-600e-41f6-b5ac-394f21fa9d22
+
+--- BACKUP LOCAL ---
+
+# Créer une copie de sauvegarde datée du site :
+cp -r ~/ORNET/Site_ornet/Nouveau_site ~/ORNET/Site_ornet/backup_$(date +%Y%m%d_%H%M%S)
+
+--- RESTAURER DEPUIS GITHUB ---
+
+# Si vous perdez vos fichiers locaux :
+cd ~/ORNET/Site_ornet
+git clone https://github.com/okembar/ornet-site.git Nouveau_site
+
+--- VERIFIER LE STATUT ---
+
+# Voir les fichiers modifiés :
+cd ~/ORNET/Site_ornet/Nouveau_site && git status
+
+# Voir le statut Netlify :
+cd ~/ORNET/Site_ornet/Nouveau_site && netlify status
+
+# Voir les derniers commits :
+cd ~/ORNET/Site_ornet/Nouveau_site && git log --oneline -5
+
+========================================
