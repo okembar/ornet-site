@@ -2379,6 +2379,45 @@
                                     </div>
                                 </div>
 
+                                <!-- Outil 2 : DHCP Option 43 -->
+                                <div id="tool-dhcp" class="space-y-4 hidden">
+                                    <p class="text-xs text-gray-400 mb-3">Générateur Cisco WLC (Type F1)</p>
+                                    <div>
+                                        <label class="block text-xs font-medium text-gray-400 mb-1">Adresse(s) IP WLC
+                                            (Séparées par virgules)</label>
+                                        <input type="text" id="wlc-ips" oninput="generateOption43()"
+                                            placeholder="192.168.1.10, 10.0.0.5"
+                                            class="w-full bg-dark-900 border border-white/10 rounded-lg py-2 px-3 text-sm text-white focus:outline-none focus:border-accent-cyan transition-colors">
+                                        <p id="dhcp-error" class="text-xs text-red-400 mt-1 hidden">Format IP invalide
+                                        </p>
+                                    </div>
+
+                                    <div class="space-y-3 mt-4">
+                                        <div>
+                                            <div class="flex justify-between items-center mb-1">
+                                                <label class="text-xs font-medium text-gray-400">Valeur Hex
+                                                    (Ascii)</label>
+                                                <button onclick="copyToClipboard(event, 'dhcp-hex-out')"
+                                                    class="text-xs text-accent-cyan hover:underline">Copier</button>
+                                            </div>
+                                            <div id="dhcp-hex-out"
+                                                class="bg-dark-900 border border-white/5 rounded-lg p-2 text-sm font-mono text-gray-300 break-all min-h-[38px]">
+                                            </div>
+                                        </div>
+                                        <div>
+                                            <div class="flex justify-between items-center mb-1">
+                                                <label class="text-xs font-medium text-gray-400">Commande Cisco
+                                                    IOS</label>
+                                                <button onclick="copyToClipboard(event, 'dhcp-cmd-out')"
+                                                    class="text-xs text-accent-cyan hover:underline">Copier</button>
+                                            </div>
+                                            <div id="dhcp-cmd-out"
+                                                class="bg-dark-900 border border-white/5 rounded-lg p-2 text-xs font-mono text-accent-green break-all min-h-[38px]">
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
                                 <!-- Outil 3 : MAC Formatter -->
                                 <div id="tool-mac" class="space-y-4 hidden">
                                     <p class="text-xs text-gray-400 mb-3">Convertisseur MAC Universel</p>
