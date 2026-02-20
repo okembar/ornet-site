@@ -25,6 +25,9 @@
         tailwind.config = { theme: { extend: { colors: { dark: { 950: '#050505', 900: '#0a0a0a', 800: '#111', 700: '#1a1a1a', 600: '#222' }, accent: { blue: '#007AFF', cyan: '#00D4FF', green: '#00C853' } }, fontFamily: { inter: ['Inter', 'sans-serif'] } } } }
     </script>
     <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js" defer></script>
+    <!-- Calendly -->
+    <link href="https://assets.calendly.com/assets/external/widget.css" rel="stylesheet">
+    <script src="https://assets.calendly.com/assets/external/widget.js" type="text/javascript" async></script>
     <style>
         * {
             font-family: 'Inter', sans-serif;
@@ -425,7 +428,8 @@
                             d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z" />
                     </svg>
                 </a>
-                <a href="#" data-view="contact"
+                <a href="#"
+                    onclick="Calendly.initPopupWidget({url:'https://calendly.com/r-okemba-ornetwork/30min'});return false;"
                     class="inline-flex items-center px-5 py-2.5 gradient-blue text-white text-sm font-semibold rounded-lg hover:opacity-90 transition-opacity">Prendre
                     RDV</a>
             </div>
@@ -479,7 +483,8 @@
                             incidents réseau — pas&nbsp;les&nbsp;symptômes.
                         </p>
                         <div class="flex flex-col sm:flex-row gap-4 fade-in">
-                            <a href="#" data-view="contact"
+                            <a href="#"
+                                onclick="Calendly.initPopupWidget({url:'https://calendly.com/r-okemba-ornetwork/30min'});return false;"
                                 class="group inline-flex items-center justify-center px-7 py-3.5 gradient-blue text-white font-semibold rounded-lg hover:shadow-lg hover:shadow-accent-blue/25 transition-all text-sm">
                                 Réserver un audit découverte
                                 <svg class="ml-2 w-4 h-4 group-hover:translate-x-1 transition-transform" fill="none"
@@ -1030,7 +1035,8 @@
                         </div>
                     </div>
                     <div class="text-center mt-12">
-                        <a href="#" data-view="contact"
+                        <a href="#"
+                            onclick="Calendly.initPopupWidget({url:'https://calendly.com/r-okemba-ornetwork/30min'});return false;"
                             class="inline-flex items-center px-7 py-3 gradient-blue text-white font-semibold rounded-lg hover:shadow-lg hover:shadow-accent-blue/25 transition-all text-sm">
                             Réserver un audit découverte
                             <svg class="ml-2 w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -1292,7 +1298,8 @@
                             <h4 class="text-xl font-bold mb-3">Besoin d'un audit Wi-Fi ?</h4>
                             <p class="text-gray-400 text-sm mb-6">Identifiez les causes racines de vos problèmes de
                                 couverture, roaming et performance.</p>
-                            <a href="#" data-view="contact"
+                            <a href="#"
+                                onclick="Calendly.initPopupWidget({url:'https://calendly.com/r-okemba-ornetwork/30min'});return false;"
                                 class="inline-flex items-center px-7 py-3 gradient-blue text-white font-semibold rounded-lg hover:shadow-lg hover:shadow-accent-blue/25 transition-all text-sm">
                                 Réserver un audit découverte
                                 <svg class="ml-2 w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -1497,7 +1504,8 @@
 
                     <!-- CTA Wi-Fi -->
                     <div class="text-center mt-16 fade-in">
-                        <a href="#" data-view="contact"
+                        <a href="#"
+                            onclick="Calendly.initPopupWidget({url:'https://calendly.com/r-okemba-ornetwork/30min'});return false;"
                             class="inline-flex items-center px-8 py-4 gradient-blue text-white font-semibold rounded-lg hover:shadow-lg hover:shadow-accent-blue/25 transition-all">
                             Réserver un audit découverte
                             <svg class="ml-2 w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -1751,7 +1759,8 @@
                         </div>
                     </div>
                     <div class="text-center fade-in">
-                        <a href="#" data-view="contact"
+                        <a href="#"
+                            onclick="Calendly.initPopupWidget({url:'https://calendly.com/r-okemba-ornetwork/30min'});return false;"
                             class="inline-flex items-center px-8 py-4 gradient-blue text-white font-semibold rounded-lg hover:shadow-lg hover:shadow-accent-blue/25 transition-all">
                             Réserver un audit découverte
                             <svg class="ml-2 w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -2368,7 +2377,9 @@
                                 technique</a></li>
                         <li><a href="https://www.linkedin.com/in/romaric-okemba-27833230/" target="_blank"
                                 class="hover:text-accent-cyan transition-colors">LinkedIn</a></li>
-                        <li><a href="#" data-view="contact" class="hover:text-accent-cyan transition-colors">Prendre
+                        <li><a href="#"
+                                onclick="Calendly.initPopupWidget({url:'https://calendly.com/r-okemba-ornetwork/30min'});return false;"
+                                class="hover:text-accent-cyan transition-colors">Prendre
                                 RDV</a></li>
                     </ul>
                 </div>
