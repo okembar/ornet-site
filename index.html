@@ -130,6 +130,143 @@
             background: url('img/hero-bg.png') center/cover no-repeat
         }
 
+        /* Animated Wi-Fi waves overlay */
+        @keyframes wifiPulse1 {
+
+            0%,
+            100% {
+                opacity: .08;
+                transform: scale(1)
+            }
+
+            50% {
+                opacity: .18;
+                transform: scale(1.15)
+            }
+        }
+
+        @keyframes wifiPulse2 {
+
+            0%,
+            100% {
+                opacity: .06;
+                transform: scale(1.1)
+            }
+
+            50% {
+                opacity: .14;
+                transform: scale(0.9)
+            }
+        }
+
+        @keyframes wifiPulse3 {
+
+            0%,
+            100% {
+                opacity: .05;
+                transform: scale(0.95)
+            }
+
+            50% {
+                opacity: .12;
+                transform: scale(1.08)
+            }
+        }
+
+        .wifi-waves {
+            position: absolute;
+            inset: 0;
+            pointer-events: none;
+            overflow: hidden;
+        }
+
+        .wifi-waves .wave {
+            position: absolute;
+            border-radius: 50%;
+            border: 1px solid rgba(0, 198, 255, 0.15);
+        }
+
+        .wifi-waves .wave:nth-child(1) {
+            width: 500px;
+            height: 500px;
+            top: 20%;
+            left: 60%;
+            animation: wifiPulse1 6s ease-in-out infinite;
+        }
+
+        .wifi-waves .wave:nth-child(2) {
+            width: 350px;
+            height: 350px;
+            top: 40%;
+            left: 65%;
+            animation: wifiPulse1 6s ease-in-out infinite 0.8s;
+        }
+
+        .wifi-waves .wave:nth-child(3) {
+            width: 200px;
+            height: 200px;
+            top: 55%;
+            left: 70%;
+            animation: wifiPulse1 6s ease-in-out infinite 1.6s;
+        }
+
+        .wifi-waves .wave:nth-child(4) {
+            width: 600px;
+            height: 600px;
+            top: 10%;
+            left: 10%;
+            animation: wifiPulse2 8s ease-in-out infinite;
+        }
+
+        .wifi-waves .wave:nth-child(5) {
+            width: 400px;
+            height: 400px;
+            top: 25%;
+            left: 18%;
+            animation: wifiPulse2 8s ease-in-out infinite 1.2s;
+        }
+
+        .wifi-waves .wave:nth-child(6) {
+            width: 250px;
+            height: 250px;
+            top: 35%;
+            left: 22%;
+            animation: wifiPulse2 8s ease-in-out infinite 2.4s;
+        }
+
+        .wifi-waves .wave:nth-child(7) {
+            width: 450px;
+            height: 450px;
+            bottom: 10%;
+            right: 20%;
+            animation: wifiPulse3 7s ease-in-out infinite;
+        }
+
+        .wifi-waves .wave:nth-child(8) {
+            width: 300px;
+            height: 300px;
+            bottom: 15%;
+            right: 25%;
+            animation: wifiPulse3 7s ease-in-out infinite 1s;
+        }
+
+        /* Heatmap animation */
+        @keyframes heatmapShift {
+
+            0%,
+            100% {
+                filter: brightness(1) saturate(1)
+            }
+
+            50% {
+                filter: brightness(1.08) saturate(1.15)
+            }
+        }
+
+        .heatmap-animated {
+            animation: heatmapShift 4s ease-in-out infinite;
+        }
+
         .bg-wifi {
             background: url('img/wifi-bg.png') center/cover no-repeat
         }
@@ -458,6 +595,17 @@
             <div class="relative min-h-[calc(100vh-4rem)] flex items-center overflow-hidden">
                 <div class="absolute inset-0 bg-hero opacity-25"></div>
                 <div class="absolute inset-0 bg-gradient-to-b from-dark-950/80 via-dark-950/40 to-dark-950"></div>
+                <!-- Animated Wi-Fi waves -->
+                <div class="wifi-waves z-[1]">
+                    <div class="wave"></div>
+                    <div class="wave"></div>
+                    <div class="wave"></div>
+                    <div class="wave"></div>
+                    <div class="wave"></div>
+                    <div class="wave"></div>
+                    <div class="wave"></div>
+                    <div class="wave"></div>
+                </div>
                 <div
                     class="absolute top-1/4 left-1/3 w-[500px] h-[500px] rounded-full bg-accent-cyan/8 blur-[160px] pointer-events-none float">
                 </div>
@@ -1528,7 +1676,8 @@
                                 </style>
 
                                 <!-- Image Dessous (Après / Optimisé - green dominant) -->
-                                <div class="absolute inset-0 w-full h-full heatmap-grid heatmap-rooms" style="
+                                <div class="absolute inset-0 w-full h-full heatmap-grid heatmap-rooms heatmap-animated"
+                                    style="
                                     background-color: #0a0f14;
                                     background-image:
                                         radial-gradient(ellipse 280px 250px at 20% 30%, rgba(34,197,94,0.8) 0%,rgba(34,197,94,0.4) 35%,rgba(132,204,22,0.15) 60%,transparent 80%),
@@ -1553,7 +1702,7 @@
                                 </div>
 
                                 <!-- Image Dessus (Avant / Interférences) avec clip-path -->
-                                <div class="absolute inset-0 w-full h-full heatmap-grid heatmap-rooms z-20 pointer-events-none border-r-[3px] border-white/80 shadow-[2px_0_15px_rgba(0,0,0,0.5)]"
+                                <div class="absolute inset-0 w-full h-full heatmap-grid heatmap-rooms heatmap-animated z-20 pointer-events-none border-r-[3px] border-white/80 shadow-[2px_0_15px_rgba(0,0,0,0.5)]"
                                     id="heatmap-before" style="clip-path: polygon(0 0, 50% 0, 50% 100%, 0 100%); width: 100%;
                                     background-color: #0a0f14;
                                     background-image:
@@ -3013,7 +3162,15 @@
                                 class="inline-flex items-center space-x-2 text-accent-cyan text-xs font-semibold uppercase tracking-widest mb-3">
                                 <span>Étape 1/5</span>
                             </div>
-                            <h4 class="text-xl font-bold text-white mb-6">Quel est le principal symptôme observé ?</h4>
+                            <h4 class="text-xl font-bold text-white mb-6 flex items-center gap-3">
+                                <svg class="w-7 h-7 text-accent-cyan shrink-0" fill="none" stroke="currentColor"
+                                    viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                        d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z">
+                                    </path>
+                                </svg>
+                                Quel est le principal symptôme observé ?
+                            </h4>
                             <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
                                 <label class="relative cursor-pointer group">
                                     <input type="checkbox" name="symptome" value="lenteurs" class="peer sr-only">
@@ -3067,7 +3224,15 @@
                                 class="inline-flex items-center space-x-2 text-accent-cyan text-xs font-semibold uppercase tracking-widest mb-3 ml-4">
                                 <span>Étape 2/5</span>
                             </div>
-                            <h4 class="text-xl font-bold text-white mb-6">Obtenez-vous une IP ?</h4>
+                            <h4 class="text-xl font-bold text-white mb-6 flex items-center gap-3">
+                                <svg class="w-7 h-7 text-accent-cyan shrink-0" fill="none" stroke="currentColor"
+                                    viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                        d="M5 12h14M5 12a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v4a2 2 0 01-2 2M5 12a2 2 0 00-2 2v4a2 2 0 002 2h14a2 2 0 002-2v-4a2 2 0 00-2-2m-2-4h.01M17 16h.01">
+                                    </path>
+                                </svg>
+                                Obtenez-vous une IP ?
+                            </h4>
                             <div class="space-y-3">
                                 <label class="relative block cursor-pointer group">
                                     <input type="radio" name="ip_status" value="dhcp_ok" class="peer sr-only">
@@ -3141,7 +3306,15 @@
                                 class="inline-flex items-center space-x-2 text-accent-cyan text-xs font-semibold uppercase tracking-widest mb-3 ml-4">
                                 <span>Étape 3/5</span>
                             </div>
-                            <h4 class="text-xl font-bold text-white mb-6">Ping vers la passerelle (Gateway) ?</h4>
+                            <h4 class="text-xl font-bold text-white mb-6 flex items-center gap-3">
+                                <svg class="w-7 h-7 text-accent-cyan shrink-0" fill="none" stroke="currentColor"
+                                    viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                        d="M8.111 16.404a5.5 5.5 0 017.778 0M12 20h.01m-7.08-7.071c3.904-3.905 10.236-3.905 14.141 0M1.394 9.393c5.857-5.858 15.355-5.858 21.213 0">
+                                    </path>
+                                </svg>
+                                Ping vers la passerelle (Gateway) ?
+                            </h4>
                             <div class="space-y-3">
                                 <label class="relative block cursor-pointer group">
                                     <input type="radio" name="ping_gw" value="succes" class="peer sr-only">
@@ -3201,7 +3374,15 @@
                                 class="inline-flex items-center space-x-2 text-accent-cyan text-xs font-semibold uppercase tracking-widest mb-3 ml-4">
                                 <span>Étape 4/5</span>
                             </div>
-                            <h4 class="text-xl font-bold text-white mb-6">Résolution de nom (Ping google.com) ?</h4>
+                            <h4 class="text-xl font-bold text-white mb-6 flex items-center gap-3">
+                                <svg class="w-7 h-7 text-accent-cyan shrink-0" fill="none" stroke="currentColor"
+                                    viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                        d="M21 12a9 9 0 01-9 9m9-9a9 9 0 00-9-9m9 9H3m9 9a9 9 0 01-9-9m9 9c1.657 0 3-4.03 3-9s-1.343-9-3-9m0 18c-1.657 0-3-4.03-3-9s1.343-9 3-9m-9 9a9 9 0 019-9">
+                                    </path>
+                                </svg>
+                                Résolution de nom (Ping google.com) ?
+                            </h4>
                             <div class="space-y-3">
                                 <label class="relative block cursor-pointer group">
                                     <input type="radio" name="dns_res" value="ok" class="peer sr-only">
@@ -3243,7 +3424,15 @@
                             <button type="button" onclick="prevHealthStep(4)"
                                 class="text-xs text-gray-400 hover:text-white mb-4 inline-flex items-center gap-1 transition-colors">&larr;
                                 Retour</button>
-                            <h4 class="text-xl font-bold text-white mb-2">Obtenez votre rapport détaillé</h4>
+                            <h4 class="text-xl font-bold text-white mb-2 flex items-center gap-3">
+                                <svg class="w-7 h-7 text-accent-cyan shrink-0" fill="none" stroke="currentColor"
+                                    viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                        d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z">
+                                    </path>
+                                </svg>
+                                Obtenez votre rapport détaillé
+                            </h4>
                             <p class="text-sm text-gray-400 mb-6 font-medium">Laissez vos coordonnées pour recevoir
                                 l'analyse qualifiée d'un expert.</p>
                             <div class="space-y-3">
