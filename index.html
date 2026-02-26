@@ -1471,38 +1471,107 @@
                         </div>
                     </div>
 
-                    <!-- Comparison Slider (Heatmap) -->
+                    <!-- Comparison Slider (Heatmap Ekahau-style) -->
                     <div class="mb-20 fade-in">
                         <div class="glass-card rounded-2xl p-6 sm:p-8 mb-6">
                             <h4 class="text-xl font-bold mb-6 text-center">Impact de l'optimisation RF (Heatmap)</h4>
                             <div class="relative w-full max-w-4xl mx-auto rounded-xl overflow-hidden aspect-video bg-dark-900 border border-white/10 select-none"
                                 id="heatmap-slider-container">
-                                <!-- Image Dessous (Après / Vert Émeraude) -->
-                                <div
-                                    class="absolute inset-0 w-full h-full bg-gradient-to-tr from-emerald-900 via-emerald-700 to-emerald-900 flex items-center justify-center overflow-hidden">
-                                    <div
-                                        class="absolute inset-0 bg-[url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI4IiBoZWlnaHQ9IjgiPjxyZWN0IHdpZHRoPSI4IiBoZWlnaHQ9IjgiIGZpbGw9IiNmZmYiIGZpbGwtb3BhY2l0eT0iMC4wNSIvPjwvc3ZnPg==')] opacity-20 mix-blend-overlay">
-                                    </div>
+
+                                <!-- Floor plan grid overlay (shared) -->
+                                <style>
+                                    .heatmap-grid {
+                                        background-image:
+                                            linear-gradient(rgba(255, 255, 255, 0.04) 1px, transparent 1px),
+                                            linear-gradient(90deg, rgba(255, 255, 255, 0.04) 1px, transparent 1px);
+                                        background-size: 40px 40px;
+                                    }
+
+                                    .heatmap-grid::before {
+                                        content: '';
+                                        position: absolute;
+                                        inset: 0;
+                                        background-image:
+                                            linear-gradient(rgba(255, 255, 255, 0.07) 1px, transparent 1px),
+                                            linear-gradient(90deg, rgba(255, 255, 255, 0.07) 1px, transparent 1px);
+                                        background-size: 120px 120px;
+                                    }
+
+                                    /* Room outlines */
+                                    .heatmap-rooms::after {
+                                        content: '';
+                                        position: absolute;
+                                        inset: 0;
+                                        background:
+                                            linear-gradient(to right, transparent 30%, rgba(255, 255, 255, 0.1) 30%, rgba(255, 255, 255, 0.1) 30.5%, transparent 30.5%),
+                                            linear-gradient(to right, transparent 65%, rgba(255, 255, 255, 0.1) 65%, rgba(255, 255, 255, 0.1) 65.5%, transparent 65.5%),
+                                            linear-gradient(to bottom, transparent 45%, rgba(255, 255, 255, 0.1) 45%, rgba(255, 255, 255, 0.1) 45.5%, transparent 45.5%),
+                                            linear-gradient(to bottom, transparent 70%, rgba(255, 255, 255, 0.1) 70%, rgba(255, 255, 255, 0.1) 70.5%, transparent 70.5%);
+                                    }
+
+                                    .ap-marker {
+                                        position: absolute;
+                                        width: 8px;
+                                        height: 8px;
+                                        border-radius: 50%;
+                                        border: 1.5px solid rgba(255, 255, 255, 0.6);
+                                        z-index: 5;
+                                    }
+
+                                    .ap-marker::after {
+                                        content: '';
+                                        position: absolute;
+                                        inset: -3px;
+                                        border-radius: 50%;
+                                        border: 1px solid rgba(255, 255, 255, 0.25);
+                                    }
+                                </style>
+
+                                <!-- Image Dessous (Après / Optimisé - green dominant) -->
+                                <div class="absolute inset-0 w-full h-full heatmap-grid heatmap-rooms" style="
+                                    background-color: #0a0f14;
+                                    background-image:
+                                        radial-gradient(ellipse 280px 250px at 20% 30%, rgba(34,197,94,0.8) 0%,rgba(34,197,94,0.4) 35%,rgba(132,204,22,0.15) 60%,transparent 80%),
+                                        radial-gradient(ellipse 300px 270px at 50% 55%, rgba(34,197,94,0.75) 0%,rgba(34,197,94,0.35) 35%,rgba(132,204,22,0.12) 65%,transparent 85%),
+                                        radial-gradient(ellipse 250px 230px at 80% 25%, rgba(34,197,94,0.7) 0%,rgba(34,197,94,0.3) 40%,rgba(234,179,8,0.08) 70%,transparent 85%),
+                                        radial-gradient(ellipse 260px 240px at 35% 75%, rgba(34,197,94,0.75) 0%,rgba(74,222,128,0.35) 30%,rgba(132,204,22,0.1) 60%,transparent 80%),
+                                        radial-gradient(ellipse 240px 220px at 75% 80%, rgba(34,197,94,0.7) 0%,rgba(34,197,94,0.3) 35%,rgba(234,179,8,0.1) 65%,transparent 80%),
+                                        radial-gradient(ellipse 200px 180px at 50% 15%, rgba(74,222,128,0.5) 0%,rgba(34,197,94,0.2) 50%,transparent 80%),
+                                        linear-gradient(rgba(255,255,255,0.04) 1px, transparent 1px),
+                                        linear-gradient(90deg, rgba(255,255,255,0.04) 1px, transparent 1px);
+                                    background-size: 100% 100%, 100% 100%, 100% 100%, 100% 100%, 100% 100%, 100% 100%, 40px 40px, 40px 40px;
+                                ">
+                                    <!-- AP markers (optimized) -->
+                                    <div class="ap-marker bg-green-400" style="top:28%;left:19%"></div>
+                                    <div class="ap-marker bg-green-400" style="top:53%;left:49%"></div>
+                                    <div class="ap-marker bg-green-400" style="top:23%;left:79%"></div>
+                                    <div class="ap-marker bg-green-400" style="top:73%;left:34%"></div>
+                                    <div class="ap-marker bg-green-400" style="top:78%;left:74%"></div>
                                     <div
                                         class="absolute top-4 right-4 bg-accent-green/20 text-accent-green text-xs font-bold px-3 py-1.5 rounded-full border border-accent-green/30 z-10 backdrop-blur-md">
                                         APRÈS (Optimisé)</div>
                                 </div>
 
-                                <!-- Image Dessus (Avant / Rouge) avec clip-path -->
-                                <div class="absolute inset-0 w-full h-full bg-gradient-to-br from-red-600 to-red-950 flex items-center justify-center border-r-[3px] border-white/80 shadow-[2px_0_15px_rgba(0,0,0,0.5)] z-20 pointer-events-none overflow-hidden"
-                                    id="heatmap-before"
-                                    style="clip-path: polygon(0 0, 50% 0, 50% 100%, 0 100%); width: 100%;">
-                                    <!-- Tâches sombres (interférences) -->
-                                    <div
-                                        class="absolute top-1/4 left-1/4 w-48 sm:w-64 h-48 sm:h-64 bg-orange-500/50 mix-blend-multiply blur-3xl rounded-full">
-                                    </div>
-                                    <div
-                                        class="absolute bottom-1/4 right-1/4 w-64 sm:w-80 h-64 sm:h-80 bg-red-950/80 mix-blend-multiply blur-3xl rounded-full">
-                                    </div>
-                                    <div
-                                        class="absolute top-1/2 left-2/3 w-32 sm:w-48 h-32 sm:h-48 bg-orange-600/60 mix-blend-multiply blur-2xl rounded-full">
-                                    </div>
-
+                                <!-- Image Dessus (Avant / Interférences) avec clip-path -->
+                                <div class="absolute inset-0 w-full h-full heatmap-grid heatmap-rooms z-20 pointer-events-none border-r-[3px] border-white/80 shadow-[2px_0_15px_rgba(0,0,0,0.5)]"
+                                    id="heatmap-before" style="clip-path: polygon(0 0, 50% 0, 50% 100%, 0 100%); width: 100%;
+                                    background-color: #0a0f14;
+                                    background-image:
+                                        radial-gradient(ellipse 200px 180px at 15% 20%, rgba(239,68,68,0.7) 0%,rgba(249,115,22,0.4) 30%,rgba(234,179,8,0.15) 55%,transparent 75%),
+                                        radial-gradient(ellipse 160px 150px at 55% 40%, rgba(249,115,22,0.6) 0%,rgba(234,179,8,0.3) 35%,rgba(132,204,22,0.08) 60%,transparent 80%),
+                                        radial-gradient(ellipse 140px 130px at 85% 65%, rgba(239,68,68,0.5) 0%,rgba(249,115,22,0.25) 40%,transparent 70%),
+                                        radial-gradient(ellipse 180px 170px at 40% 80%, rgba(234,179,8,0.5) 0%,rgba(239,68,68,0.3) 30%,rgba(0,0,0,0.3) 60%,transparent 80%),
+                                        radial-gradient(ellipse 120px 110px at 70% 15%, rgba(239,68,68,0.4) 0%,rgba(0,0,0,0.3) 50%,transparent 75%),
+                                        radial-gradient(ellipse 350px 300px at 30% 50%, rgba(0,0,0,0.5) 0%,transparent 60%),
+                                        radial-gradient(ellipse 300px 250px at 75% 45%, rgba(0,0,0,0.4) 0%,transparent 55%),
+                                        linear-gradient(rgba(255,255,255,0.04) 1px, transparent 1px),
+                                        linear-gradient(90deg, rgba(255,255,255,0.04) 1px, transparent 1px);
+                                    background-size: 100% 100%, 100% 100%, 100% 100%, 100% 100%, 100% 100%, 100% 100%, 100% 100%, 40px 40px, 40px 40px;
+                                ">
+                                    <!-- AP markers (before - fewer, bad placement) -->
+                                    <div class="ap-marker bg-red-400" style="top:20%;left:14%"></div>
+                                    <div class="ap-marker bg-orange-400" style="top:38%;left:54%"></div>
+                                    <div class="ap-marker bg-red-400" style="top:62%;left:84%"></div>
                                     <div
                                         class="absolute top-4 left-4 bg-red-500/20 text-red-500 text-xs font-bold px-3 py-1.5 rounded-full border border-red-500/30 z-10 backdrop-blur-md">
                                         AVANT (Interférences)</div>
@@ -2480,47 +2549,78 @@
                                     </div>
                                 </div>
 
-                                <!-- Outil 4 : Subnet Calculator -->
+                                <!-- Outil 4 : Subnet Calculator (Enhanced) -->
                                 <div id="tool-ipv4" class="space-y-4 hidden">
-                                    <p class="text-xs text-gray-400 mb-3">Calculateur IPv4 / CIDR</p>
+                                    <p class="text-xs text-gray-400 mb-3">Calculateur IPv4 / CIDR — Visual Subnet</p>
                                     <div>
                                         <label class="block text-xs font-medium text-gray-400 mb-1">Réseau CIDR
-                                            (ex: 192.168.1.10/24)</label>
+                                            (ex: 192.168.1.0/24)</label>
                                         <input type="text" id="cidr-input" oninput="calcSubnet()"
                                             placeholder="192.168.1.0/24"
                                             class="w-full bg-dark-900 border border-white/10 rounded-lg py-2 px-3 text-sm text-white focus:outline-none focus:border-accent-cyan transition-colors">
                                         <p id="cidr-error" class="text-xs text-red-400 mt-1 hidden">Format CIDR
                                             invalide</p>
                                     </div>
-                                    <div class="space-y-2 mt-4">
-                                        <div
-                                            class="flex justify-between items-center bg-dark-900 rounded-lg p-2 border border-white/5">
-                                            <span class="text-xs font-medium text-gray-400">Réseau (Network)</span>
-                                            <span id="ipv4-network" class="text-sm font-mono text-gray-300">--</span>
+
+                                    <!-- Résumé réseau -->
+                                    <div class="grid grid-cols-2 gap-2 mt-4">
+                                        <div class="bg-dark-900 rounded-lg p-2 border border-white/5">
+                                            <div class="text-[10px] text-gray-500">Réseau</div>
+                                            <div id="ipv4-network" class="text-xs font-mono text-white">--</div>
                                         </div>
-                                        <div
-                                            class="flex justify-between items-center bg-dark-900 rounded-lg p-2 border border-white/5">
-                                            <span class="text-xs font-medium text-gray-400">Diffusion (Broadcast)</span>
-                                            <span id="ipv4-broadcast" class="text-sm font-mono text-gray-300">--</span>
+                                        <div class="bg-dark-900 rounded-lg p-2 border border-white/5">
+                                            <div class="text-[10px] text-gray-500">Broadcast</div>
+                                            <div id="ipv4-broadcast" class="text-xs font-mono text-white">--</div>
                                         </div>
-                                        <div
-                                            class="flex justify-between items-center bg-dark-900 rounded-lg p-2 border border-white/5">
-                                            <span class="text-xs font-medium text-gray-400">Plage d'IP</span>
-                                            <div class="text-sm font-mono text-accent-cyan flex gap-1 items-center">
-                                                <span id="ipv4-first">--</span>
-                                                <span class="text-gray-500">-</span>
-                                                <span id="ipv4-last">--</span>
-                                            </div>
+                                        <div class="bg-dark-900 rounded-lg p-2 border border-white/5">
+                                            <div class="text-[10px] text-gray-500">Première IP</div>
+                                            <div id="ipv4-first" class="text-xs font-mono text-accent-cyan">--</div>
                                         </div>
-                                        <div
-                                            class="flex justify-between items-center bg-dark-900 rounded-lg p-2 border border-white/5">
-                                            <span class="text-xs font-medium text-gray-400">Masque (Décimal)</span>
-                                            <span id="ipv4-mask" class="text-sm font-mono text-gray-300">--</span>
+                                        <div class="bg-dark-900 rounded-lg p-2 border border-white/5">
+                                            <div class="text-[10px] text-gray-500">Dernière IP</div>
+                                            <div id="ipv4-last" class="text-xs font-mono text-accent-cyan">--</div>
                                         </div>
-                                        <div
-                                            class="flex justify-between items-center bg-dark-900 rounded-lg p-2 border border-white/5">
-                                            <span class="text-xs font-medium text-gray-400">Hôtes utilisables</span>
-                                            <span id="ipv4-hosts" class="text-sm font-mono text-gray-300">--</span>
+                                        <div class="bg-dark-900 rounded-lg p-2 border border-white/5">
+                                            <div class="text-[10px] text-gray-500">Masque</div>
+                                            <div id="ipv4-mask" class="text-xs font-mono text-gray-300">--</div>
+                                        </div>
+                                        <div class="bg-dark-900 rounded-lg p-2 border border-white/5">
+                                            <div class="text-[10px] text-gray-500">Wildcard</div>
+                                            <div id="ipv4-wildcard" class="text-xs font-mono text-gray-300">--</div>
+                                        </div>
+                                        <div class="bg-dark-900 rounded-lg p-2 border border-white/5">
+                                            <div class="text-[10px] text-gray-500">Hôtes utilisables</div>
+                                            <div id="ipv4-hosts" class="text-xs font-mono text-accent-green">--</div>
+                                        </div>
+                                        <div class="bg-dark-900 rounded-lg p-2 border border-white/5">
+                                            <div class="text-[10px] text-gray-500">Classe / Type</div>
+                                            <div id="ipv4-class" class="text-xs font-mono text-gray-300">--</div>
+                                        </div>
+                                    </div>
+
+                                    <!-- Découpage en sous-réseaux -->
+                                    <div id="subnet-split-section" class="mt-4 hidden">
+                                        <div class="flex items-center justify-between mb-2">
+                                            <h5 class="text-xs font-semibold text-white uppercase tracking-wider">
+                                                Découpage en sous-réseaux</h5>
+                                            <button onclick="resetSubnets()"
+                                                class="text-[10px] text-gray-500 hover:text-accent-cyan transition-colors">Réinitialiser</button>
+                                        </div>
+                                        <div class="overflow-x-auto rounded-lg border border-white/10">
+                                            <table class="w-full text-[11px]">
+                                                <thead>
+                                                    <tr class="bg-dark-800 text-gray-400">
+                                                        <th class="text-left py-1.5 px-2 font-medium">Sous-réseau</th>
+                                                        <th class="text-left py-1.5 px-2 font-medium">Plage</th>
+                                                        <th class="text-left py-1.5 px-2 font-medium">IPs Utilisables
+                                                        </th>
+                                                        <th class="text-center py-1.5 px-2 font-medium">Hôtes</th>
+                                                        <th class="text-center py-1.5 px-2 font-medium">Actions</th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody id="subnet-table-body">
+                                                </tbody>
+                                            </table>
                                         </div>
                                     </div>
                                 </div>
@@ -3536,6 +3636,100 @@
             };
 
             // Outil 5 : Subnet Calculator
+            // === Subnet Calculator State ===
+            let subnetList = [];
+            let parentNetworkInt = 0;
+            let parentCidr = 0;
+
+            const intToIp = (num) => [
+                (num >>> 24) & 255, (num >>> 16) & 255, (num >>> 8) & 255, num & 255
+            ].join('.');
+
+            const cidrColors = [
+                '', '', '', '', '', '', '', '', // 0-7
+                '#ef4444', '#f97316', '#f59e0b', '#eab308', '#84cc16', '#22c55e', '#14b8a6', '#06b6d4', // 8-15
+                '#0ea5e9', '#3b82f6', '#6366f1', '#8b5cf6', '#a855f7', '#d946ef', '#ec4899', '#f43f5e', // 16-23
+                '#ef4444', '#f97316', '#f59e0b', '#eab308', '#84cc16', '#22c55e', '#14b8a6', '#06b6d4', '#0ea5e9' // 24-32
+            ];
+
+            function getIpClass(firstOctet) {
+                if (firstOctet < 128) return 'A';
+                if (firstOctet < 192) return 'B';
+                if (firstOctet < 224) return 'C';
+                if (firstOctet < 240) return 'D (Multicast)';
+                return 'E (Réservée)';
+            }
+
+            function getIpType(octets) {
+                if (octets[0] === 10) return 'Privé';
+                if (octets[0] === 172 && octets[1] >= 16 && octets[1] <= 31) return 'Privé';
+                if (octets[0] === 192 && octets[1] === 168) return 'Privé';
+                if (octets[0] === 127) return 'Loopback';
+                if (octets[0] === 169 && octets[1] === 254) return 'APIPA';
+                return 'Public';
+            }
+
+            function renderSubnetTable() {
+                const tbody = document.getElementById('subnet-table-body');
+                const section = document.getElementById('subnet-split-section');
+                if (!subnetList.length) { section.classList.add('hidden'); return; }
+                section.classList.remove('hidden');
+
+                tbody.innerHTML = subnetList.map((sub, i) => {
+                    const maskI = sub.cidr === 0 ? 0 : (~0 << (32 - sub.cidr)) >>> 0;
+                    const broadI = (sub.networkInt | ~maskI) >>> 0;
+                    const hosts = sub.cidr >= 31 ? (sub.cidr === 32 ? 1 : 2) : (broadI - sub.networkInt - 1);
+                    const firstIp = sub.cidr >= 31 ? intToIp(sub.networkInt) : intToIp((sub.networkInt + 1) >>> 0);
+                    const lastIp = sub.cidr >= 31 ? intToIp(broadI) : intToIp((broadI - 1) >>> 0);
+                    const color = cidrColors[sub.cidr] || '#6b7280';
+                    const canSplit = sub.cidr < 32;
+                    const canJoin = (i % 2 === 0) && (i + 1 < subnetList.length) && subnetList[i + 1].cidr === sub.cidr && sub.cidr > parentCidr;
+
+                    return `<tr class="border-t border-white/5 hover:bg-white/[0.02]">
+                        <td class="py-1.5 px-2 font-mono text-white">
+                            <span class="inline-block w-1.5 h-3 rounded-sm mr-1" style="background:${color}"></span>
+                            ${intToIp(sub.networkInt)}/${sub.cidr}
+                        </td>
+                        <td class="py-1.5 px-2 font-mono text-gray-400">${intToIp(sub.networkInt)} – ${intToIp(broadI)}</td>
+                        <td class="py-1.5 px-2 font-mono text-accent-cyan">${firstIp} – ${lastIp}</td>
+                        <td class="py-1.5 px-2 text-center text-gray-300">${hosts.toLocaleString('fr-FR')}</td>
+                        <td class="py-1.5 px-2 text-center">
+                            ${canSplit ? `<button onclick="splitSubnet(${i})" class="text-orange-400 hover:text-orange-300 font-bold text-[10px] mr-1" title="Diviser">Split</button>` : ''}
+                            ${canJoin ? `<button onclick="joinSubnet(${i})" class="text-sky-400 hover:text-sky-300 font-bold text-[10px]" title="Joindre">Join</button>` : ''}
+                        </td>
+                    </tr>`;
+                }).join('');
+            }
+
+            window.splitSubnet = function (index) {
+                const sub = subnetList[index];
+                if (sub.cidr >= 32) return;
+                const newCidr = sub.cidr + 1;
+                const newMask = newCidr === 0 ? 0 : (~0 << (32 - newCidr)) >>> 0;
+                const halfSize = 1 << (32 - newCidr);
+                const sub1 = { networkInt: sub.networkInt, cidr: newCidr };
+                const sub2 = { networkInt: (sub.networkInt + halfSize) >>> 0, cidr: newCidr };
+                subnetList.splice(index, 1, sub1, sub2);
+                renderSubnetTable();
+            };
+
+            window.joinSubnet = function (index) {
+                if (index + 1 >= subnetList.length) return;
+                const sub1 = subnetList[index];
+                const sub2 = subnetList[index + 1];
+                if (sub1.cidr !== sub2.cidr || sub1.cidr <= parentCidr) return;
+                const parentCidrNew = sub1.cidr - 1;
+                const parentMask = parentCidrNew === 0 ? 0 : (~0 << (32 - parentCidrNew)) >>> 0;
+                const parentNet = (sub1.networkInt & parentMask) >>> 0;
+                subnetList.splice(index, 2, { networkInt: parentNet, cidr: parentCidrNew });
+                renderSubnetTable();
+            };
+
+            window.resetSubnets = function () {
+                subnetList = [{ networkInt: parentNetworkInt, cidr: parentCidr }];
+                renderSubnetTable();
+            };
+
             window.calcSubnet = function () {
                 const input = document.getElementById('cidr-input').value.trim();
                 const errEl = document.getElementById('cidr-error');
@@ -3545,22 +3739,22 @@
                 const lastEl = document.getElementById('ipv4-last');
                 const maskEl = document.getElementById('ipv4-mask');
                 const hostsEl = document.getElementById('ipv4-hosts');
+                const wildcardEl = document.getElementById('ipv4-wildcard');
+                const classEl = document.getElementById('ipv4-class');
 
                 const resetUI = () => {
-                    [netEl, broadEl, firstEl, lastEl, maskEl].forEach(el => el.textContent = '--');
+                    [netEl, broadEl, firstEl, lastEl, maskEl, wildcardEl, classEl].forEach(el => el.textContent = '--');
                     hostsEl.textContent = '--';
+                    document.getElementById('subnet-split-section').classList.add('hidden');
                 };
 
                 const ipCidrRegex = /^(\d{1,3}\.){3}\d{1,3}\/\d{1,2}$/;
                 if (!input) { errEl.classList.add('hidden'); resetUI(); return; }
-                if (!ipCidrRegex.test(input)) {
-                    errEl.classList.remove('hidden'); resetUI(); return;
-                }
+                if (!ipCidrRegex.test(input)) { errEl.classList.remove('hidden'); resetUI(); return; }
 
                 const parts = input.split('/');
                 const ipStr = parts[0];
                 const cidr = parseInt(parts[1], 10);
-
                 if (cidr < 0 || cidr > 32) { errEl.classList.remove('hidden'); resetUI(); return; }
                 const octets = ipStr.split('.').map(Number);
                 if (octets.some(o => o > 255)) { errEl.classList.remove('hidden'); resetUI(); return; }
@@ -3569,19 +3763,15 @@
 
                 const ipInt = ((octets[0] << 24) | (octets[1] << 16) | (octets[2] << 8) | octets[3]) >>> 0;
                 const maskInt = cidr === 0 ? 0 : (~0 << (32 - cidr)) >>> 0;
+                const wildcardInt = (~maskInt) >>> 0;
                 const networkInt = (ipInt & maskInt) >>> 0;
-                const broadcastInt = (networkInt | ~maskInt) >>> 0;
-
-                const intToIp = (num) => [
-                    (num >>> 24) & 255,
-                    (num >>> 16) & 255,
-                    (num >>> 8) & 255,
-                    num & 255
-                ].join('.');
+                const broadcastInt = (networkInt | wildcardInt) >>> 0;
 
                 netEl.textContent = intToIp(networkInt) + '/' + cidr;
                 broadEl.textContent = intToIp(broadcastInt);
                 maskEl.textContent = intToIp(maskInt);
+                wildcardEl.textContent = intToIp(wildcardInt);
+                classEl.textContent = getIpClass(octets[0]) + ' · ' + getIpType(octets);
 
                 if (cidr === 32) {
                     firstEl.textContent = intToIp(networkInt);
@@ -3596,6 +3786,12 @@
                     lastEl.textContent = intToIp((broadcastInt - 1) >>> 0);
                     hostsEl.textContent = (broadcastInt - networkInt - 1).toLocaleString('fr-FR');
                 }
+
+                // Initialize Split/Join table
+                parentNetworkInt = networkInt;
+                parentCidr = cidr;
+                subnetList = [{ networkInt: networkInt, cidr: cidr }];
+                renderSubnetTable();
             };
 
             // Global Toolkit Export
