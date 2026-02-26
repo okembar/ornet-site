@@ -1,4 +1,6 @@
 plugins = []
+functionsDirectory = "/Users/okembsro/ORNET/Site_ornet/Nouveau_site/netlify/functions"
+functionsDirectoryOrigin = "config-v1"
 headers = []
 redirects = []
 
@@ -9,6 +11,9 @@ redirects = []
 [build]
 publish = "/Users/okembsro/ORNET/Site_ornet/Nouveau_site"
 publishOrigin = "default"
+commandOrigin = "config"
+command = "# no build command"
+functions = "/Users/okembsro/ORNET/Site_ornet/Nouveau_site/netlify/functions"
 
 [build.environment]
 
