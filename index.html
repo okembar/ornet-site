@@ -4516,255 +4516,424 @@
 
         <!-- ========== VUE : ENGINEERING LAB (OUTILS) ========== -->
         <section id="view-outils" class="view px-6">
-            <div class="py-16 md:py-20">
-                <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
-                    <div class="max-w-3xl mb-10 fade-in">
-                        <div
-                            class="inline-flex items-center space-x-2 text-accent-cyan text-xs font-semibold uppercase tracking-widest mb-4">
+            <div class="pt-24 pb-16 md:pt-28 md:pb-20">
+                <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                    <!-- Header -->
+                    <div class="max-w-3xl mb-12 fade-in">
+                        <div class="inline-flex items-center space-x-2 text-accent-cyan text-xs font-semibold uppercase tracking-widest mb-4">
                             <span class="w-8 h-px bg-accent-cyan"></span><span>Engineering Lab</span>
                         </div>
                         <h2 class="text-3xl sm:text-5xl font-bold tracking-tight mb-4">Outils terrain</h2>
-                        <p class="text-lg text-gray-400 leading-relaxed">Calculateurs RF, Subnet, FSPL, DHCP Option 43, MAC Converter — les outils de l'ingénieur réseau, directement dans le navigateur.</p>
+                        <p class="text-lg text-gray-400 leading-relaxed">8 calculateurs et générateurs réseau — RF, FSPL, Subnet, dACL, PoE, DHCP Opt.43, MAC, Reason Codes — directement dans le navigateur.</p>
                     </div>
 
-                    <!-- Tabs Navigation -->
-                    <div class="flex flex-wrap gap-4 border-b border-white/10 mb-8 fade-in">
-                        <button id="tab-wifi" onclick="switchToolkitTab('wifi')"
-                            class="pb-2 text-sm font-semibold text-accent-cyan border-b-2 border-accent-cyan transition-colors">RF / EIRP</button>
-                        <button id="tab-dhcp" onclick="switchToolkitTab('dhcp')"
-                            class="pb-2 text-sm font-medium text-gray-500 hover:text-gray-300 border-b-2 border-transparent transition-colors px-1">DHCP Opt.43</button>
-                        <button id="tab-mac" onclick="switchToolkitTab('mac')"
-                            class="pb-2 text-sm font-medium text-gray-500 hover:text-gray-300 border-b-2 border-transparent transition-colors px-1">MAC Formatter</button>
-                        <button id="tab-fspl" onclick="switchToolkitTab('fspl')"
-                            class="pb-2 text-sm font-medium text-gray-500 hover:text-gray-300 border-b-2 border-transparent transition-colors px-1">FSPL</button>
-                        <button id="tab-ipv4" onclick="switchToolkitTab('ipv4')"
-                            class="pb-2 text-sm font-medium text-gray-500 hover:text-gray-300 border-b-2 border-transparent transition-colors px-1">IPv4 / CIDR</button>
-                    </div>
+                    <!-- ===== 2-Column Grid Layout ===== -->
+                    <div class="grid lg:grid-cols-2 gap-8">
 
-                    <!-- Tool 1 : RF / EIRP Calculator -->
-                    <div id="tool-wifi" class="fade-in">
-                        <div class="glass-card rounded-2xl p-8">
-                            <h3 class="text-xl font-bold text-white mb-6 flex items-center gap-3">
-                                <svg class="w-6 h-6 text-accent-cyan" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path></svg>
-                                Calculateur RF — dBm / mW / EIRP
-                            </h3>
-                            <div class="grid sm:grid-cols-3 gap-4 mb-6">
-                                <div>
-                                    <label class="block text-xs text-gray-400 mb-1">Puissance (dBm)</label>
-                                    <input id="calc-dbm" type="number" step="0.1" placeholder="20"
-                                        oninput="calcRF('dbm')"
-                                        class="w-full px-4 py-3 bg-dark-800 border border-white/10 rounded-lg text-white placeholder-gray-600 focus:border-accent-cyan focus:outline-none transition text-sm">
-                                </div>
-                                <div>
-                                    <label class="block text-xs text-gray-400 mb-1">Puissance (mW)</label>
-                                    <input id="calc-mw" type="number" step="0.01" placeholder="100"
-                                        oninput="calcRF('mw')"
-                                        class="w-full px-4 py-3 bg-dark-800 border border-white/10 rounded-lg text-white placeholder-gray-600 focus:border-accent-cyan focus:outline-none transition text-sm">
-                                </div>
-                                <div>
-                                    <label class="block text-xs text-gray-400 mb-1">Gain antenne (dBi)</label>
-                                    <input id="calc-dbi" type="number" step="0.1" placeholder="0" value="0"
-                                        oninput="calcRF('dbi')"
-                                        class="w-full px-4 py-3 bg-dark-800 border border-white/10 rounded-lg text-white placeholder-gray-600 focus:border-accent-cyan focus:outline-none transition text-sm">
+                        <!-- ────── COLONNE GAUCHE : Pôle Wi-Fi / RF (Cyan) ────── -->
+                        <div class="space-y-8">
+                            <div class="flex items-center gap-3 mb-2 fade-in">
+                                <span class="w-3 h-3 rounded-full bg-accent-cyan"></span>
+                                <h3 class="text-lg font-bold text-accent-cyan uppercase tracking-wider">Pôle Wi-Fi / RF</h3>
+                            </div>
+
+                            <!-- Tool 1 : RF / EIRP Calculator (UPGRADED with cable loss + ETSI alert) -->
+                            <div id="tool-wifi" class="fade-in">
+                                <div class="glass-card rounded-2xl p-6 border-l-2 border-accent-cyan/40">
+                                    <h4 class="text-lg font-bold text-white mb-5 flex items-center gap-3">
+                                        <svg class="w-5 h-5 text-accent-cyan" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path></svg>
+                                        Calculateur RF — dBm / mW / EIRP
+                                    </h4>
+                                    <div class="grid sm:grid-cols-2 gap-3 mb-4">
+                                        <div>
+                                            <label class="block text-xs text-gray-400 mb-1">Puissance (dBm)</label>
+                                            <input id="calc-dbm" type="number" step="0.1" placeholder="20" oninput="calcRF('dbm')"
+                                                class="w-full px-3 py-2.5 bg-dark-800 border border-white/10 rounded-lg text-white placeholder-gray-600 focus:border-accent-cyan focus:outline-none transition text-sm">
+                                        </div>
+                                        <div>
+                                            <label class="block text-xs text-gray-400 mb-1">Puissance (mW)</label>
+                                            <input id="calc-mw" type="number" step="0.01" placeholder="100" oninput="calcRF('mw')"
+                                                class="w-full px-3 py-2.5 bg-dark-800 border border-white/10 rounded-lg text-white placeholder-gray-600 focus:border-accent-cyan focus:outline-none transition text-sm">
+                                        </div>
+                                    </div>
+                                    <div class="grid sm:grid-cols-2 gap-3 mb-4">
+                                        <div>
+                                            <label class="block text-xs text-gray-400 mb-1">Gain antenne (dBi)</label>
+                                            <input id="calc-dbi" type="number" step="0.1" placeholder="0" value="0" oninput="calcRF('dbi')"
+                                                class="w-full px-3 py-2.5 bg-dark-800 border border-white/10 rounded-lg text-white placeholder-gray-600 focus:border-accent-cyan focus:outline-none transition text-sm">
+                                        </div>
+                                        <div>
+                                            <label class="block text-xs text-gray-400 mb-1">Perte câble (dB)</label>
+                                            <input id="calc-cable-loss" type="number" step="0.1" placeholder="0" value="0" oninput="calcRF('cable')"
+                                                class="w-full px-3 py-2.5 bg-dark-800 border border-white/10 rounded-lg text-white placeholder-gray-600 focus:border-accent-cyan focus:outline-none transition text-sm">
+                                        </div>
+                                    </div>
+                                    <div class="grid sm:grid-cols-2 gap-3 mb-3">
+                                        <div class="bg-dark-800 rounded-xl p-3 text-center">
+                                            <p class="text-[10px] text-gray-500 uppercase tracking-wider mb-0.5">EIRP</p>
+                                            <p id="eirp-dbm" class="text-xl font-bold text-accent-cyan">-- <span class="text-sm font-normal text-gray-400">dBm</span></p>
+                                        </div>
+                                        <div class="bg-dark-800 rounded-xl p-3 text-center">
+                                            <p class="text-[10px] text-gray-500 uppercase tracking-wider mb-0.5">EIRP</p>
+                                            <p id="eirp-mw" class="text-xl font-bold text-accent-green">-- <span class="text-sm font-normal text-accent-green/70">mW</span></p>
+                                        </div>
+                                    </div>
+                                    <!-- ETSI Alert -->
+                                    <div id="etsi-alert" class="hidden rounded-lg p-3 bg-red-500/10 border border-red-500/30 text-xs text-red-300 flex items-start gap-2">
+                                        <svg class="w-4 h-4 mt-0.5 flex-shrink-0 text-red-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-2.5L13.732 4c-.77-.833-1.964-.833-2.732 0L3.732 16.5c-.77.833.192 2.5 1.732 2.5z"></path></svg>
+                                        <span><strong>Alerte ETSI :</strong> L'EIRP dépasse <strong>20 dBm (100 mW)</strong> — limite réglementaire indoor 5 GHz en Europe. Vérifiez la conformité DFS/TPC.</span>
+                                    </div>
                                 </div>
                             </div>
-                            <div class="grid sm:grid-cols-2 gap-4">
-                                <div class="bg-dark-800 rounded-xl p-4 text-center">
-                                    <p class="text-xs text-gray-500 uppercase tracking-wider mb-1">EIRP</p>
-                                    <p id="eirp-dbm" class="text-2xl font-bold text-accent-cyan">-- <span class="text-sm font-normal text-gray-400">dBm</span></p>
+
+                            <!-- Tool 2 : FSPL Calculator -->
+                            <div id="tool-fspl" class="fade-in">
+                                <div class="glass-card rounded-2xl p-6 border-l-2 border-accent-cyan/40">
+                                    <h4 class="text-lg font-bold text-white mb-5 flex items-center gap-3">
+                                        <svg class="w-5 h-5 text-accent-cyan" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"></path></svg>
+                                        FSPL — Perte en espace libre
+                                    </h4>
+                                    <div class="grid sm:grid-cols-2 gap-3 mb-4">
+                                        <div>
+                                            <label class="block text-xs text-gray-400 mb-1">Distance (mètres)</label>
+                                            <input id="fspl-dist" type="number" step="0.1" placeholder="10" oninput="calcFSPL()"
+                                                class="w-full px-3 py-2.5 bg-dark-800 border border-white/10 rounded-lg text-white placeholder-gray-600 focus:border-accent-cyan focus:outline-none transition text-sm">
+                                        </div>
+                                        <div>
+                                            <label class="block text-xs text-gray-400 mb-1">Fréquence (MHz)</label>
+                                            <select id="fspl-freq" onchange="calcFSPL()"
+                                                class="w-full px-3 py-2.5 bg-dark-800 border border-white/10 rounded-lg text-white focus:border-accent-cyan focus:outline-none transition text-sm">
+                                                <option value="2412">2.4 GHz (2412 MHz)</option>
+                                                <option value="5180" selected>5 GHz (5180 MHz)</option>
+                                                <option value="5945">6 GHz (5945 MHz)</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="bg-dark-800 rounded-xl p-3 text-center">
+                                        <p class="text-[10px] text-gray-500 uppercase tracking-wider mb-0.5">Perte FSPL</p>
+                                        <p id="fspl-result" class="text-xl font-bold text-red-400">-- <span class="text-sm font-normal text-red-400/70">dB</span></p>
+                                    </div>
                                 </div>
-                                <div class="bg-dark-800 rounded-xl p-4 text-center">
-                                    <p class="text-xs text-gray-500 uppercase tracking-wider mb-1">EIRP</p>
-                                    <p id="eirp-mw" class="text-2xl font-bold text-accent-green">-- <span class="text-sm font-normal text-accent-green/70">mW</span></p>
+                            </div>
+
+                            <!-- Tool 3 : Reason Codes 802.11 (NEW) -->
+                            <div id="tool-reason" class="fade-in">
+                                <div class="glass-card rounded-2xl p-6 border-l-2 border-accent-cyan/40">
+                                    <h4 class="text-lg font-bold text-white mb-5 flex items-center gap-3">
+                                        <svg class="w-5 h-5 text-accent-cyan" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path></svg>
+                                        Reason &amp; Status Codes 802.11
+                                    </h4>
+                                    <div class="mb-4">
+                                        <label class="block text-xs text-gray-400 mb-1">Code numérique (Reason ou Status)</label>
+                                        <div class="flex gap-3">
+                                            <input id="reason-code-input" type="number" min="0" max="99" placeholder="Ex : 4, 8, 15..."
+                                                class="flex-1 px-3 py-2.5 bg-dark-800 border border-white/10 rounded-lg text-white placeholder-gray-600 focus:border-accent-cyan focus:outline-none transition text-sm font-mono"
+                                                onkeydown="if(event.key==='Enter')lookupReasonCode()">
+                                            <button onclick="lookupReasonCode()"
+                                                class="px-5 py-2.5 gradient-blue text-white font-semibold rounded-lg hover:shadow-lg hover:shadow-accent-blue/25 transition-all text-sm">Chercher</button>
+                                        </div>
+                                    </div>
+                                    <div id="reason-result" class="hidden">
+                                        <div class="bg-dark-800 rounded-xl p-4 space-y-2">
+                                            <div class="flex items-center justify-between">
+                                                <p class="text-[10px] text-gray-500 uppercase tracking-wider">Code <span id="reason-code-num" class="text-accent-cyan font-bold"></span></p>
+                                                <span id="reason-type-badge" class="text-[10px] uppercase tracking-wider font-semibold px-2 py-0.5 rounded-full"></span>
+                                            </div>
+                                            <p id="reason-code-name" class="text-sm font-semibold text-white"></p>
+                                            <p id="reason-code-desc" class="text-xs text-gray-400 leading-relaxed"></p>
+                                            <p class="text-[10px] text-gray-500 mt-1"><strong>Action terrain :</strong> <span id="reason-code-action" class="text-gray-300"></span></p>
+                                        </div>
+                                    </div>
+                                    <div id="reason-error" class="hidden text-xs text-red-400 mt-2">Code introuvable. Essayez un code entre 0 et 99.</div>
+                                    <!-- Quick-access codes -->
+                                    <div class="mt-4 flex flex-wrap gap-1.5">
+                                        <span class="text-[10px] text-gray-500 mr-1 self-center">Fréquents :</span>
+                                        <button onclick="document.getElementById('reason-code-input').value='1';lookupReasonCode()" class="px-2 py-0.5 text-[10px] bg-dark-800 rounded text-gray-400 hover:text-accent-cyan transition">1</button>
+                                        <button onclick="document.getElementById('reason-code-input').value='2';lookupReasonCode()" class="px-2 py-0.5 text-[10px] bg-dark-800 rounded text-gray-400 hover:text-accent-cyan transition">2</button>
+                                        <button onclick="document.getElementById('reason-code-input').value='4';lookupReasonCode()" class="px-2 py-0.5 text-[10px] bg-dark-800 rounded text-gray-400 hover:text-accent-cyan transition">4</button>
+                                        <button onclick="document.getElementById('reason-code-input').value='5';lookupReasonCode()" class="px-2 py-0.5 text-[10px] bg-dark-800 rounded text-gray-400 hover:text-accent-cyan transition">5</button>
+                                        <button onclick="document.getElementById('reason-code-input').value='6';lookupReasonCode()" class="px-2 py-0.5 text-[10px] bg-dark-800 rounded text-gray-400 hover:text-accent-cyan transition">6</button>
+                                        <button onclick="document.getElementById('reason-code-input').value='7';lookupReasonCode()" class="px-2 py-0.5 text-[10px] bg-dark-800 rounded text-gray-400 hover:text-accent-cyan transition">7</button>
+                                        <button onclick="document.getElementById('reason-code-input').value='8';lookupReasonCode()" class="px-2 py-0.5 text-[10px] bg-dark-800 rounded text-gray-400 hover:text-accent-cyan transition">8</button>
+                                        <button onclick="document.getElementById('reason-code-input').value='15';lookupReasonCode()" class="px-2 py-0.5 text-[10px] bg-dark-800 rounded text-gray-400 hover:text-accent-cyan transition">15</button>
+                                    </div>
                                 </div>
                             </div>
                         </div>
-                    </div>
 
-                    <!-- Tool 2 : DHCP Option 43 -->
-                    <div id="tool-dhcp" class="hidden fade-in">
-                        <div class="glass-card rounded-2xl p-8">
-                            <h3 class="text-xl font-bold text-white mb-6 flex items-center gap-3">
-                                <svg class="w-6 h-6 text-accent-cyan" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 12h14M5 12a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v4a2 2 0 01-2 2M5 12a2 2 0 00-2 2v4a2 2 0 002 2h14a2 2 0 002-2v-4a2 2 0 00-2-2m-2-4h.01M17 16h.01"></path></svg>
-                                DHCP Option 43 — Cisco WLC
-                            </h3>
-                            <div class="mb-6">
-                                <label class="block text-xs text-gray-400 mb-1">Adresses IP du WLC (virgules)</label>
-                                <input id="wlc-ips" type="text" placeholder="10.0.0.1, 10.0.0.2"
-                                    oninput="generateOption43()"
-                                    class="w-full px-4 py-3 bg-dark-800 border border-white/10 rounded-lg text-white placeholder-gray-600 focus:border-accent-cyan focus:outline-none transition text-sm">
-                                <p id="dhcp-error" class="text-xs text-red-400 mt-1 hidden">Format invalide. Max 4 adresses IPv4 séparées par des virgules.</p>
+                        <!-- ────── COLONNE DROITE : Pôle Réseau / NAC (Green) ────── -->
+                        <div class="space-y-8">
+                            <div class="flex items-center gap-3 mb-2 fade-in">
+                                <span class="w-3 h-3 rounded-full bg-accent-green"></span>
+                                <h3 class="text-lg font-bold text-accent-green uppercase tracking-wider">Pôle Réseau / NAC</h3>
                             </div>
-                            <div class="grid sm:grid-cols-2 gap-4">
-                                <div class="bg-dark-800 rounded-xl p-4">
-                                    <div class="flex items-center justify-between mb-1">
-                                        <p class="text-xs text-gray-500 uppercase tracking-wider">Hex Value</p>
-                                        <button onclick="copyToClipboard(event, 'dhcp-hex-out')" class="text-xs text-accent-cyan hover:underline">Copier</button>
+
+                            <!-- Tool 4 : dACL Cisco ISE Generator (NEW) -->
+                            <div id="tool-dacl" class="fade-in">
+                                <div class="glass-card rounded-2xl p-6 border-l-2 border-accent-green/40">
+                                    <h4 class="text-lg font-bold text-white mb-5 flex items-center gap-3">
+                                        <svg class="w-5 h-5 text-accent-green" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"></path></svg>
+                                        Générateur dACL — Cisco ISE
+                                    </h4>
+                                    <div class="space-y-3 mb-4">
+                                        <div>
+                                            <label class="block text-xs text-gray-400 mb-1">Nom de la dACL</label>
+                                            <input id="dacl-name" type="text" placeholder="DACL-CORP-FULL-ACCESS"
+                                                class="w-full px-3 py-2.5 bg-dark-800 border border-white/10 rounded-lg text-white placeholder-gray-600 focus:border-accent-green focus:outline-none transition text-sm">
+                                        </div>
+                                        <div>
+                                            <label class="block text-xs text-gray-400 mb-1">Règles ACL (une par ligne)</label>
+                                            <textarea id="dacl-rules" rows="4" placeholder="permit ip any any&#10;deny ip any host 10.0.0.1&#10;permit tcp any any eq 443"
+                                                class="w-full px-3 py-2.5 bg-dark-800 border border-white/10 rounded-lg text-white placeholder-gray-600 focus:border-accent-green focus:outline-none transition text-sm font-mono resize-y"></textarea>
+                                        </div>
+                                        <div class="flex gap-3">
+                                            <select id="dacl-preset" onchange="applyDaclPreset()"
+                                                class="flex-1 px-3 py-2.5 bg-dark-800 border border-white/10 rounded-lg text-white focus:border-accent-green focus:outline-none transition text-sm">
+                                                <option value="">-- Presets --</option>
+                                                <option value="full">Full Access (permit ip any any)</option>
+                                                <option value="restricted">Restricted (DNS + DHCP + HTTPS only)</option>
+                                                <option value="guest">Guest Portal Redirect</option>
+                                                <option value="quarantine">Quarantine (deny all)</option>
+                                            </select>
+                                            <button onclick="generateDACL()"
+                                                class="px-5 py-2.5 bg-accent-green/20 text-accent-green font-semibold rounded-lg hover:bg-accent-green/30 transition-all text-sm">Générer</button>
+                                        </div>
                                     </div>
-                                    <p id="dhcp-hex-out" class="text-lg font-mono text-accent-cyan break-all"></p>
+                                    <div id="dacl-output" class="hidden">
+                                        <div class="bg-dark-800 rounded-xl p-4">
+                                            <div class="flex items-center justify-between mb-2">
+                                                <p class="text-[10px] text-gray-500 uppercase tracking-wider">Configuration dACL</p>
+                                                <button onclick="copyToClipboard(event, 'dacl-config-out')" class="text-xs text-accent-green hover:underline">Copier</button>
+                                            </div>
+                                            <pre id="dacl-config-out" class="text-xs font-mono text-accent-green whitespace-pre-wrap break-all"></pre>
+                                        </div>
+                                    </div>
                                 </div>
-                                <div class="bg-dark-800 rounded-xl p-4">
-                                    <div class="flex items-center justify-between mb-1">
-                                        <p class="text-xs text-gray-500 uppercase tracking-wider">Commande IOS</p>
-                                        <button onclick="copyToClipboard(event, 'dhcp-cmd-out')" class="text-xs text-accent-cyan hover:underline">Copier</button>
+                            </div>
+
+                            <!-- Tool 5 : PoE Budget Calculator (NEW) -->
+                            <div id="tool-poe" class="fade-in">
+                                <div class="glass-card rounded-2xl p-6 border-l-2 border-accent-green/40">
+                                    <h4 class="text-lg font-bold text-white mb-5 flex items-center gap-3">
+                                        <svg class="w-5 h-5 text-accent-green" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path></svg>
+                                        PoE Budget Calculator
+                                    </h4>
+                                    <div class="grid sm:grid-cols-2 gap-3 mb-4">
+                                        <div>
+                                            <label class="block text-xs text-gray-400 mb-1">Budget switch total (W)</label>
+                                            <input id="poe-budget" type="number" step="1" placeholder="740" oninput="calcPoE()"
+                                                class="w-full px-3 py-2.5 bg-dark-800 border border-white/10 rounded-lg text-white placeholder-gray-600 focus:border-accent-green focus:outline-none transition text-sm">
+                                        </div>
+                                        <div>
+                                            <label class="block text-xs text-gray-400 mb-1">Standard PoE</label>
+                                            <select id="poe-standard" onchange="calcPoE()"
+                                                class="w-full px-3 py-2.5 bg-dark-800 border border-white/10 rounded-lg text-white focus:border-accent-green focus:outline-none transition text-sm">
+                                                <option value="15.4">802.3af (15.4W max)</option>
+                                                <option value="30" selected>802.3at PoE+ (30W max)</option>
+                                                <option value="60">802.3bt Type 3 (60W max)</option>
+                                                <option value="90">802.3bt Type 4 (90W max)</option>
+                                            </select>
+                                        </div>
                                     </div>
-                                    <p id="dhcp-cmd-out" class="text-sm font-mono text-accent-green break-all"></p>
+                                    <div class="grid sm:grid-cols-2 gap-3 mb-4">
+                                        <div>
+                                            <label class="block text-xs text-gray-400 mb-1">Nb d'APs (consomm. moy. W)</label>
+                                            <div class="flex gap-2">
+                                                <input id="poe-ap-count" type="number" min="0" placeholder="24" oninput="calcPoE()"
+                                                    class="w-1/2 px-3 py-2.5 bg-dark-800 border border-white/10 rounded-lg text-white placeholder-gray-600 focus:border-accent-green focus:outline-none transition text-sm">
+                                                <input id="poe-ap-watts" type="number" step="0.1" placeholder="25.5" oninput="calcPoE()"
+                                                    class="w-1/2 px-3 py-2.5 bg-dark-800 border border-white/10 rounded-lg text-white placeholder-gray-600 focus:border-accent-green focus:outline-none transition text-sm">
+                                            </div>
+                                        </div>
+                                        <div>
+                                            <label class="block text-xs text-gray-400 mb-1">Nb de caméras (consomm. moy. W)</label>
+                                            <div class="flex gap-2">
+                                                <input id="poe-cam-count" type="number" min="0" placeholder="8" oninput="calcPoE()"
+                                                    class="w-1/2 px-3 py-2.5 bg-dark-800 border border-white/10 rounded-lg text-white placeholder-gray-600 focus:border-accent-green focus:outline-none transition text-sm">
+                                                <input id="poe-cam-watts" type="number" step="0.1" placeholder="15" oninput="calcPoE()"
+                                                    class="w-1/2 px-3 py-2.5 bg-dark-800 border border-white/10 rounded-lg text-white placeholder-gray-600 focus:border-accent-green focus:outline-none transition text-sm">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="grid sm:grid-cols-3 gap-3 mb-3">
+                                        <div class="bg-dark-800 rounded-xl p-3 text-center">
+                                            <p class="text-[10px] text-gray-500 uppercase tracking-wider mb-0.5">Consommation</p>
+                                            <p id="poe-consumed" class="text-lg font-bold text-white">-- <span class="text-xs font-normal text-gray-400">W</span></p>
+                                        </div>
+                                        <div class="bg-dark-800 rounded-xl p-3 text-center">
+                                            <p class="text-[10px] text-gray-500 uppercase tracking-wider mb-0.5">Restant</p>
+                                            <p id="poe-remaining" class="text-lg font-bold text-accent-green">-- <span class="text-xs font-normal text-accent-green/70">W</span></p>
+                                        </div>
+                                        <div class="bg-dark-800 rounded-xl p-3 text-center">
+                                            <p class="text-[10px] text-gray-500 uppercase tracking-wider mb-0.5">Utilisation</p>
+                                            <p id="poe-percent" class="text-lg font-bold text-white">-- <span class="text-xs font-normal text-gray-400">%</span></p>
+                                        </div>
+                                    </div>
+                                    <!-- PoE Progress Bar -->
+                                    <div class="w-full bg-dark-800 rounded-full h-2.5 mb-2">
+                                        <div id="poe-bar" class="h-2.5 rounded-full bg-accent-green transition-all duration-300" style="width:0%"></div>
+                                    </div>
+                                    <div id="poe-alert" class="hidden rounded-lg p-3 bg-orange-500/10 border border-orange-500/30 text-xs text-orange-300 flex items-start gap-2">
+                                        <svg class="w-4 h-4 mt-0.5 flex-shrink-0 text-orange-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-2.5L13.732 4c-.77-.833-1.964-.833-2.732 0L3.732 16.5c-.77.833.192 2.5 1.732 2.5z"></path></svg>
+                                        <span id="poe-alert-text"></span>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Tool 6 : IPv4 / CIDR Subnet Calculator -->
+                            <div id="tool-ipv4" class="fade-in">
+                                <div class="glass-card rounded-2xl p-6 border-l-2 border-accent-green/40">
+                                    <h4 class="text-lg font-bold text-white mb-5 flex items-center gap-3">
+                                        <svg class="w-5 h-5 text-accent-green" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 12a9 9 0 01-9 9m9-9a9 9 0 00-9-9m9 9H3m9 9a9 9 0 01-9-9m9 9c1.657 0 3-4.03 3-9s-1.343-9-3-9m0 18c-1.657 0-3-4.03-3-9s1.343-9 3-9m-9 9a9 9 0 019-9"></path></svg>
+                                        Calculateur IPv4 / CIDR
+                                    </h4>
+                                    <div class="mb-4">
+                                        <label class="block text-xs text-gray-400 mb-1">Adresse CIDR</label>
+                                        <div class="flex gap-3">
+                                            <input id="cidr-input" type="text" placeholder="192.168.1.0/24"
+                                                class="flex-1 px-3 py-2.5 bg-dark-800 border border-white/10 rounded-lg text-white placeholder-gray-600 focus:border-accent-green focus:outline-none transition text-sm font-mono"
+                                                onkeydown="if(event.key==='Enter')calcSubnet()">
+                                            <button onclick="calcSubnet()"
+                                                class="px-5 py-2.5 bg-accent-green/20 text-accent-green font-semibold rounded-lg hover:bg-accent-green/30 transition-all text-sm">Calculer</button>
+                                        </div>
+                                        <p id="cidr-error" class="text-xs text-red-400 mt-1 hidden">Format invalide. Exemple : 192.168.1.0/24</p>
+                                    </div>
+                                    <div class="grid grid-cols-2 lg:grid-cols-4 gap-2 mb-4">
+                                        <div class="bg-dark-800 rounded-xl p-2.5">
+                                            <p class="text-[10px] text-gray-500 uppercase tracking-wider mb-0.5">Réseau</p>
+                                            <p id="ipv4-network" class="text-xs font-mono text-accent-cyan">--</p>
+                                        </div>
+                                        <div class="bg-dark-800 rounded-xl p-2.5">
+                                            <p class="text-[10px] text-gray-500 uppercase tracking-wider mb-0.5">Broadcast</p>
+                                            <p id="ipv4-broadcast" class="text-xs font-mono text-white">--</p>
+                                        </div>
+                                        <div class="bg-dark-800 rounded-xl p-2.5">
+                                            <p class="text-[10px] text-gray-500 uppercase tracking-wider mb-0.5">1ère IP</p>
+                                            <p id="ipv4-first" class="text-xs font-mono text-accent-green">--</p>
+                                        </div>
+                                        <div class="bg-dark-800 rounded-xl p-2.5">
+                                            <p class="text-[10px] text-gray-500 uppercase tracking-wider mb-0.5">Dernière IP</p>
+                                            <p id="ipv4-last" class="text-xs font-mono text-accent-green">--</p>
+                                        </div>
+                                    </div>
+                                    <div class="grid grid-cols-2 lg:grid-cols-4 gap-2 mb-4">
+                                        <div class="bg-dark-800 rounded-xl p-2.5">
+                                            <p class="text-[10px] text-gray-500 uppercase tracking-wider mb-0.5">Masque</p>
+                                            <p id="ipv4-mask" class="text-xs font-mono text-white">--</p>
+                                        </div>
+                                        <div class="bg-dark-800 rounded-xl p-2.5">
+                                            <p class="text-[10px] text-gray-500 uppercase tracking-wider mb-0.5">Wildcard</p>
+                                            <p id="ipv4-wildcard" class="text-xs font-mono text-white">--</p>
+                                        </div>
+                                        <div class="bg-dark-800 rounded-xl p-2.5">
+                                            <p class="text-[10px] text-gray-500 uppercase tracking-wider mb-0.5">Hôtes</p>
+                                            <p id="ipv4-hosts" class="text-xs font-bold text-accent-cyan">--</p>
+                                        </div>
+                                        <div class="bg-dark-800 rounded-xl p-2.5">
+                                            <p class="text-[10px] text-gray-500 uppercase tracking-wider mb-0.5">Classe</p>
+                                            <p id="ipv4-class" class="text-xs font-mono text-white">--</p>
+                                        </div>
+                                    </div>
+                                    <!-- Split / Join Section -->
+                                    <div id="subnet-split-section" class="hidden">
+                                        <div class="flex items-center justify-between mb-2">
+                                            <h4 class="text-xs font-semibold text-white">Découpage de sous-réseaux</h4>
+                                            <button onclick="resetSubnets()" class="text-[10px] text-accent-green hover:underline">Reset</button>
+                                        </div>
+                                        <div class="overflow-x-auto">
+                                            <table class="w-full text-[10px] font-mono">
+                                                <thead>
+                                                    <tr class="text-gray-500 text-left">
+                                                        <th class="py-1 px-1.5">Réseau</th>
+                                                        <th class="py-1 px-1.5">Plage</th>
+                                                        <th class="py-1 px-1.5">Utilisables</th>
+                                                        <th class="py-1 px-1.5 text-center">Hôtes</th>
+                                                        <th class="py-1 px-1.5 text-center">Actions</th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody id="subnet-table-body"></tbody>
+                                            </table>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Tool 7 : DHCP Option 43 -->
+                            <div id="tool-dhcp" class="fade-in">
+                                <div class="glass-card rounded-2xl p-6 border-l-2 border-accent-green/40">
+                                    <h4 class="text-lg font-bold text-white mb-5 flex items-center gap-3">
+                                        <svg class="w-5 h-5 text-accent-green" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 12h14M5 12a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v4a2 2 0 01-2 2M5 12a2 2 0 00-2 2v4a2 2 0 002 2h14a2 2 0 002-2v-4a2 2 0 00-2-2m-2-4h.01M17 16h.01"></path></svg>
+                                        DHCP Option 43 — Cisco WLC
+                                    </h4>
+                                    <div class="mb-4">
+                                        <label class="block text-xs text-gray-400 mb-1">Adresses IP du WLC (virgules)</label>
+                                        <input id="wlc-ips" type="text" placeholder="10.0.0.1, 10.0.0.2" oninput="generateOption43()"
+                                            class="w-full px-3 py-2.5 bg-dark-800 border border-white/10 rounded-lg text-white placeholder-gray-600 focus:border-accent-green focus:outline-none transition text-sm">
+                                        <p id="dhcp-error" class="text-xs text-red-400 mt-1 hidden">Format invalide. Max 4 adresses IPv4 séparées par des virgules.</p>
+                                    </div>
+                                    <div class="grid sm:grid-cols-2 gap-3">
+                                        <div class="bg-dark-800 rounded-xl p-3">
+                                            <div class="flex items-center justify-between mb-1">
+                                                <p class="text-[10px] text-gray-500 uppercase tracking-wider">Hex Value</p>
+                                                <button onclick="copyToClipboard(event, 'dhcp-hex-out')" class="text-[10px] text-accent-green hover:underline">Copier</button>
+                                            </div>
+                                            <p id="dhcp-hex-out" class="text-sm font-mono text-accent-cyan break-all"></p>
+                                        </div>
+                                        <div class="bg-dark-800 rounded-xl p-3">
+                                            <div class="flex items-center justify-between mb-1">
+                                                <p class="text-[10px] text-gray-500 uppercase tracking-wider">Commande IOS</p>
+                                                <button onclick="copyToClipboard(event, 'dhcp-cmd-out')" class="text-[10px] text-accent-green hover:underline">Copier</button>
+                                            </div>
+                                            <p id="dhcp-cmd-out" class="text-xs font-mono text-accent-green break-all"></p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Tool 8 : MAC Formatter -->
+                            <div id="tool-mac" class="fade-in">
+                                <div class="glass-card rounded-2xl p-6 border-l-2 border-accent-green/40">
+                                    <h4 class="text-lg font-bold text-white mb-5 flex items-center gap-3">
+                                        <svg class="w-5 h-5 text-accent-green" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4"></path></svg>
+                                        MAC Address Formatter
+                                    </h4>
+                                    <div class="mb-4">
+                                        <label class="block text-xs text-gray-400 mb-1">Adresse MAC (tout format)</label>
+                                        <input id="mac-input" type="text" placeholder="AA:BB:CC:DD:EE:FF ou AABB.CCDD.EEFF" oninput="formatMac()"
+                                            class="w-full px-3 py-2.5 bg-dark-800 border border-white/10 rounded-lg text-white placeholder-gray-600 focus:border-accent-green focus:outline-none transition text-sm">
+                                        <p id="mac-error" class="text-xs text-red-400 mt-1 hidden">Format invalide. 12 caractères hexadécimaux attendus.</p>
+                                    </div>
+                                    <div class="grid sm:grid-cols-3 gap-3">
+                                        <div class="bg-dark-800 rounded-xl p-3">
+                                            <div class="flex items-center justify-between mb-1">
+                                                <p class="text-[10px] text-gray-500 uppercase tracking-wider">Cisco IOS</p>
+                                                <button onclick="copyToClipboard(event, 'mac-cisco-out')" class="text-[10px] text-accent-green hover:underline">Copier</button>
+                                            </div>
+                                            <p id="mac-cisco-out" class="text-sm font-mono text-accent-cyan"></p>
+                                        </div>
+                                        <div class="bg-dark-800 rounded-xl p-3">
+                                            <div class="flex items-center justify-between mb-1">
+                                                <p class="text-[10px] text-gray-500 uppercase tracking-wider">Linux</p>
+                                                <button onclick="copyToClipboard(event, 'mac-std-out')" class="text-[10px] text-accent-green hover:underline">Copier</button>
+                                            </div>
+                                            <p id="mac-std-out" class="text-sm font-mono text-white"></p>
+                                        </div>
+                                        <div class="bg-dark-800 rounded-xl p-3">
+                                            <div class="flex items-center justify-between mb-1">
+                                                <p class="text-[10px] text-gray-500 uppercase tracking-wider">Windows</p>
+                                                <button onclick="copyToClipboard(event, 'mac-win-out')" class="text-[10px] text-accent-green hover:underline">Copier</button>
+                                            </div>
+                                            <p id="mac-win-out" class="text-sm font-mono text-white"></p>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
                         </div>
-                    </div>
 
-                    <!-- Tool 3 : MAC Formatter -->
-                    <div id="tool-mac" class="hidden fade-in">
-                        <div class="glass-card rounded-2xl p-8">
-                            <h3 class="text-xl font-bold text-white mb-6 flex items-center gap-3">
-                                <svg class="w-6 h-6 text-accent-cyan" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4"></path></svg>
-                                MAC Address Formatter
-                            </h3>
-                            <div class="mb-6">
-                                <label class="block text-xs text-gray-400 mb-1">Adresse MAC (tout format)</label>
-                                <input id="mac-input" type="text" placeholder="AA:BB:CC:DD:EE:FF ou AABB.CCDD.EEFF"
-                                    oninput="formatMac()"
-                                    class="w-full px-4 py-3 bg-dark-800 border border-white/10 rounded-lg text-white placeholder-gray-600 focus:border-accent-cyan focus:outline-none transition text-sm">
-                                <p id="mac-error" class="text-xs text-red-400 mt-1 hidden">Format invalide. 12 caractères hexadécimaux attendus.</p>
-                            </div>
-                            <div class="grid sm:grid-cols-3 gap-4">
-                                <div class="bg-dark-800 rounded-xl p-4">
-                                    <div class="flex items-center justify-between mb-1">
-                                        <p class="text-xs text-gray-500 uppercase tracking-wider">Cisco IOS</p>
-                                        <button onclick="copyToClipboard(event, 'mac-cisco-out')" class="text-xs text-accent-cyan hover:underline">Copier</button>
-                                    </div>
-                                    <p id="mac-cisco-out" class="text-lg font-mono text-accent-cyan"></p>
-                                </div>
-                                <div class="bg-dark-800 rounded-xl p-4">
-                                    <div class="flex items-center justify-between mb-1">
-                                        <p class="text-xs text-gray-500 uppercase tracking-wider">Standard (Linux)</p>
-                                        <button onclick="copyToClipboard(event, 'mac-std-out')" class="text-xs text-accent-cyan hover:underline">Copier</button>
-                                    </div>
-                                    <p id="mac-std-out" class="text-lg font-mono text-white"></p>
-                                </div>
-                                <div class="bg-dark-800 rounded-xl p-4">
-                                    <div class="flex items-center justify-between mb-1">
-                                        <p class="text-xs text-gray-500 uppercase tracking-wider">Windows</p>
-                                        <button onclick="copyToClipboard(event, 'mac-win-out')" class="text-xs text-accent-cyan hover:underline">Copier</button>
-                                    </div>
-                                    <p id="mac-win-out" class="text-lg font-mono text-white"></p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+                    </div><!-- /grid -->
 
-                    <!-- Tool 4 : FSPL Calculator -->
-                    <div id="tool-fspl" class="hidden fade-in">
-                        <div class="glass-card rounded-2xl p-8">
-                            <h3 class="text-xl font-bold text-white mb-6 flex items-center gap-3">
-                                <svg class="w-6 h-6 text-accent-cyan" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"></path></svg>
-                                FSPL — Perte en espace libre
-                            </h3>
-                            <div class="grid sm:grid-cols-2 gap-4 mb-6">
-                                <div>
-                                    <label class="block text-xs text-gray-400 mb-1">Distance (mètres)</label>
-                                    <input id="fspl-dist" type="number" step="0.1" placeholder="10"
-                                        oninput="calcFSPL()"
-                                        class="w-full px-4 py-3 bg-dark-800 border border-white/10 rounded-lg text-white placeholder-gray-600 focus:border-accent-cyan focus:outline-none transition text-sm">
-                                </div>
-                                <div>
-                                    <label class="block text-xs text-gray-400 mb-1">Fréquence (MHz)</label>
-                                    <select id="fspl-freq" onchange="calcFSPL()"
-                                        class="w-full px-4 py-3 bg-dark-800 border border-white/10 rounded-lg text-white focus:border-accent-cyan focus:outline-none transition text-sm">
-                                        <option value="2412">2.4 GHz (2412 MHz)</option>
-                                        <option value="5180" selected>5 GHz (5180 MHz)</option>
-                                        <option value="5945">6 GHz (5945 MHz)</option>
-                                    </select>
-                                </div>
-                            </div>
-                            <div class="bg-dark-800 rounded-xl p-4 text-center">
-                                <p class="text-xs text-gray-500 uppercase tracking-wider mb-1">Perte FSPL</p>
-                                <p id="fspl-result" class="text-2xl font-bold text-red-400">-- <span class="text-sm font-normal text-red-400/70">dB</span></p>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Tool 5 : IPv4 / CIDR Subnet Calculator -->
-                    <div id="tool-ipv4" class="hidden fade-in">
-                        <div class="glass-card rounded-2xl p-8">
-                            <h3 class="text-xl font-bold text-white mb-6 flex items-center gap-3">
-                                <svg class="w-6 h-6 text-accent-cyan" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 12a9 9 0 01-9 9m9-9a9 9 0 00-9-9m9 9H3m9 9a9 9 0 01-9-9m9 9c1.657 0 3-4.03 3-9s-1.343-9-3-9m0 18c-1.657 0-3-4.03-3-9s1.343-9 3-9m-9 9a9 9 0 019-9"></path></svg>
-                                Calculateur IPv4 / CIDR
-                            </h3>
-                            <div class="mb-6">
-                                <label class="block text-xs text-gray-400 mb-1">Adresse CIDR</label>
-                                <div class="flex gap-3">
-                                    <input id="cidr-input" type="text" placeholder="192.168.1.0/24"
-                                        class="flex-1 px-4 py-3 bg-dark-800 border border-white/10 rounded-lg text-white placeholder-gray-600 focus:border-accent-cyan focus:outline-none transition text-sm font-mono"
-                                        onkeydown="if(event.key==='Enter')calcSubnet()">
-                                    <button onclick="calcSubnet()"
-                                        class="px-6 py-3 gradient-blue text-white font-semibold rounded-lg hover:shadow-lg hover:shadow-accent-blue/25 transition-all text-sm">Calculer</button>
-                                </div>
-                                <p id="cidr-error" class="text-xs text-red-400 mt-1 hidden">Format invalide. Exemple : 192.168.1.0/24</p>
-                            </div>
-                            <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-3 mb-6">
-                                <div class="bg-dark-800 rounded-xl p-3">
-                                    <p class="text-[10px] text-gray-500 uppercase tracking-wider mb-0.5">Réseau</p>
-                                    <p id="ipv4-network" class="text-sm font-mono text-accent-cyan">--</p>
-                                </div>
-                                <div class="bg-dark-800 rounded-xl p-3">
-                                    <p class="text-[10px] text-gray-500 uppercase tracking-wider mb-0.5">Broadcast</p>
-                                    <p id="ipv4-broadcast" class="text-sm font-mono text-white">--</p>
-                                </div>
-                                <div class="bg-dark-800 rounded-xl p-3">
-                                    <p class="text-[10px] text-gray-500 uppercase tracking-wider mb-0.5">1ère IP</p>
-                                    <p id="ipv4-first" class="text-sm font-mono text-accent-green">--</p>
-                                </div>
-                                <div class="bg-dark-800 rounded-xl p-3">
-                                    <p class="text-[10px] text-gray-500 uppercase tracking-wider mb-0.5">Dernière IP</p>
-                                    <p id="ipv4-last" class="text-sm font-mono text-accent-green">--</p>
-                                </div>
-                            </div>
-                            <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-3 mb-6">
-                                <div class="bg-dark-800 rounded-xl p-3">
-                                    <p class="text-[10px] text-gray-500 uppercase tracking-wider mb-0.5">Masque</p>
-                                    <p id="ipv4-mask" class="text-sm font-mono text-white">--</p>
-                                </div>
-                                <div class="bg-dark-800 rounded-xl p-3">
-                                    <p class="text-[10px] text-gray-500 uppercase tracking-wider mb-0.5">Wildcard</p>
-                                    <p id="ipv4-wildcard" class="text-sm font-mono text-white">--</p>
-                                </div>
-                                <div class="bg-dark-800 rounded-xl p-3">
-                                    <p class="text-[10px] text-gray-500 uppercase tracking-wider mb-0.5">Hôtes utilisables</p>
-                                    <p id="ipv4-hosts" class="text-sm font-bold text-accent-cyan">--</p>
-                                </div>
-                                <div class="bg-dark-800 rounded-xl p-3">
-                                    <p class="text-[10px] text-gray-500 uppercase tracking-wider mb-0.5">Classe / Type</p>
-                                    <p id="ipv4-class" class="text-sm font-mono text-white">--</p>
-                                </div>
-                            </div>
-                            <!-- Split / Join Section -->
-                            <div id="subnet-split-section" class="hidden">
-                                <div class="flex items-center justify-between mb-3">
-                                    <h4 class="text-sm font-semibold text-white">Découpage de sous-réseaux</h4>
-                                    <button onclick="resetSubnets()" class="text-xs text-accent-cyan hover:underline">Reset</button>
-                                </div>
-                                <div class="overflow-x-auto">
-                                    <table class="w-full text-xs font-mono">
-                                        <thead>
-                                            <tr class="text-gray-500 text-left">
-                                                <th class="py-1.5 px-2">Réseau</th>
-                                                <th class="py-1.5 px-2">Plage complète</th>
-                                                <th class="py-1.5 px-2">IPs utilisables</th>
-                                                <th class="py-1.5 px-2 text-center">Hôtes</th>
-                                                <th class="py-1.5 px-2 text-center">Actions</th>
-                                            </tr>
-                                        </thead>
-                                        <tbody id="subnet-table-body"></tbody>
-                                    </table>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Export Button -->
-                    <div class="flex flex-wrap items-center justify-center gap-3 mt-8 fade-in">
+                    <!-- Export Buttons -->
+                    <div class="flex flex-wrap items-center justify-center gap-3 mt-10 fade-in">
                         <button onclick="exportToolkit('txt')"
                             class="inline-flex items-center gap-2 px-5 py-2.5 glass-card rounded-lg text-sm text-gray-300 hover:text-white hover:border-white/20 transition-all">
                             <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path></svg>
@@ -5418,32 +5587,18 @@
             setTimeout(() => animateFadeIns(document.getElementById('view-accueil')), 200);
 
             // === TOOLKIT INGENIEUR ===
-            window.switchToolkitTab = function (tab) {
-                document.getElementById('tool-wifi').classList.add('hidden');
-                document.getElementById('tool-dhcp').classList.add('hidden');
-                document.getElementById('tool-mac').classList.add('hidden');
-                document.getElementById('tool-ipv4').classList.add('hidden');
-                document.getElementById('tool-fspl').classList.add('hidden');
-
-                const inactiveClass = "pb-2 text-sm font-medium text-gray-500 hover:text-gray-300 border-b-2 border-transparent transition-colors px-1";
-                document.getElementById('tab-wifi').className = inactiveClass;
-                document.getElementById('tab-dhcp').className = inactiveClass;
-                document.getElementById('tab-mac').className = inactiveClass;
-                document.getElementById('tab-ipv4').className = inactiveClass;
-                document.getElementById('tab-fspl').className = inactiveClass;
-
-                document.getElementById('tool-' + tab).classList.remove('hidden');
-                document.getElementById('tab-' + tab).className = "pb-2 text-sm font-semibold text-accent-cyan border-b-2 border-accent-cyan transition-colors";
-            };
+            // (Tab system removed — all tools visible in 2-column grid)
 
             window.calcRF = function (source) {
                 let dbmInput = document.getElementById('calc-dbm');
                 let mwInput = document.getElementById('calc-mw');
                 let dbiInput = document.getElementById('calc-dbi').value || 0;
+                let cableLossInput = document.getElementById('calc-cable-loss').value || 0;
 
                 let dbm = parseFloat(dbmInput.value);
                 let mw = parseFloat(mwInput.value);
                 let dbi = parseFloat(dbiInput);
+                let cableLoss = parseFloat(cableLossInput);
 
                 if (source === 'dbm' && !isNaN(dbm)) {
                     mw = Math.pow(10, dbm / 10);
@@ -5451,18 +5606,28 @@
                 } else if (source === 'mw' && !isNaN(mw) && mw > 0) {
                     dbm = 10 * Math.log10(mw);
                     dbmInput.value = dbm.toFixed(2);
-                } else if (source === 'dbi') {
+                } else if (source === 'dbi' || source === 'cable') {
                     if (isNaN(dbm) && !isNaN(mw) && mw > 0) dbm = 10 * Math.log10(mw);
                 }
 
+                const etsiAlert = document.getElementById('etsi-alert');
+
                 if (!isNaN(dbm)) {
-                    let eirpDbm = dbm + dbi;
+                    let eirpDbm = dbm + dbi - cableLoss;
                     let eirpMw = Math.pow(10, eirpDbm / 10);
                     document.getElementById('eirp-dbm').innerHTML = eirpDbm.toFixed(1) + ' <span class="text-sm font-normal text-gray-400">dBm</span>';
                     document.getElementById('eirp-mw').innerHTML = Math.round(eirpMw) + ' <span class="text-sm font-normal text-accent-green/70">mW</span>';
+
+                    // ETSI 20 dBm indoor 5 GHz alert
+                    if (eirpDbm > 20) {
+                        etsiAlert.classList.remove('hidden');
+                    } else {
+                        etsiAlert.classList.add('hidden');
+                    }
                 } else {
                     document.getElementById('eirp-dbm').innerHTML = '-- <span class="text-sm font-normal text-gray-400">dBm</span>';
                     document.getElementById('eirp-mw').innerHTML = '-- <span class="text-sm font-normal text-accent-green/70">mW</span>';
+                    etsiAlert.classList.add('hidden');
                 }
             };
 
@@ -5722,6 +5887,191 @@
                 renderSubnetTable();
             };
 
+            // === REASON CODES 802.11 ===
+            const reasonCodes = {
+                0: { name: 'Unspecified reason', type: 'reason', desc: 'Raison non spécifiée par la station.', action: 'Vérifiez les logs du client et du contrôleur pour plus de détails.' },
+                1: { name: 'Unspecified reason', type: 'reason', desc: 'Raison non spécifiée — le client a quitté le BSS sans explication.', action: 'Analysez les captures OTA (Over The Air) pour comprendre la séquence de déconnexion.' },
+                2: { name: 'Previous auth no longer valid', type: 'reason', desc: 'L\'authentification précédente n\'est plus valide (expiration de session, changement de politique).', action: 'Vérifiez le timer de session sur le WLC/ISE et la ré-authentification 802.1X.' },
+                3: { name: 'Deauth — STA leaving', type: 'reason', desc: 'La station quitte le BSS ou ESS (roaming normal ou déconnexion volontaire).', action: 'Normal si le client effectue un roaming. Sinon, vérifiez la couverture RF.' },
+                4: { name: 'Disassoc — Inactivity', type: 'reason', desc: 'Inactivité détectée par l\'AP — le client n\'a pas envoyé de trame dans le délai configuré.', action: 'Ajustez le timer d\'inactivité du SSID. Vérifiez le client (mode veille, économie d\'énergie).' },
+                5: { name: 'Disassoc — AP busy', type: 'reason', desc: 'L\'AP ne peut plus gérer les associations actuelles (surcharge).', action: 'Réduisez le nombre de clients par AP. Activez le load balancing ou le band steering.' },
+                6: { name: 'Class 2 frame from non-auth STA', type: 'reason', desc: 'Trame de classe 2 reçue d\'une station non authentifiée.', action: 'Problème de séquence d\'authentification. Vérifiez la compatibilité 802.11w (PMF).' },
+                7: { name: 'Class 3 frame from non-assoc STA', type: 'reason', desc: 'Trame de classe 3 reçue d\'une station non associée.', action: 'Le client tente d\'envoyer des données sans association. Vérifiez le driver du client.' },
+                8: { name: 'Disassoc — STA leaving BSS', type: 'reason', desc: 'La station quitte le BSS (pré-roaming 802.11r/k/v ou déconnexion).', action: 'Si récurrent sans roaming, vérifiez la stabilité RF et les seuils RSSI du client.' },
+                9: { name: 'Assoc request — STA not authenticated', type: 'reason', desc: 'Demande d\'association alors que l\'authentification n\'est pas terminée.', action: 'Problème de séquence. Vérifiez les timers et la compatibilité WPA3/OWE.' },
+                10: { name: 'Disassoc — power capability unacceptable', type: 'reason', desc: 'Les capacités de puissance annoncées par la station sont inacceptables.', action: 'Vérifiez les paramètres TPC (Transmit Power Control) du client et de l\'AP.' },
+                11: { name: 'Disassoc — supported channels unacceptable', type: 'reason', desc: 'Les canaux supportés par la station ne sont pas acceptables pour l\'AP.', action: 'Vérifiez la compatibilité des canaux DFS et la configuration réglementaire.' },
+                12: { name: 'Disassoc — BSS Transition Management', type: 'reason', desc: 'Désassociation suite à une demande de transition BSS (802.11v).', action: 'Normal dans un contexte de roaming assisté. Vérifiez les policies BSS Transition.' },
+                13: { name: 'Invalid information element', type: 'reason', desc: 'Élément d\'information invalide détecté dans la trame.', action: 'Incompatibilité de version. Mettez à jour le firmware de l\'AP et le driver du client.' },
+                14: { name: 'MIC failure (TKIP)', type: 'reason', desc: 'Échec de vérification MIC — possible attaque Michael ou corruption de trame.', action: 'Suspicion d\'attaque. Migrez de TKIP vers AES/CCMP. Analysez les captures OTA.' },
+                15: { name: '4-Way Handshake timeout', type: 'reason', desc: 'Timeout du 4-Way Handshake — le client n\'a pas complété l\'échange de clés WPA/WPA2.', action: 'Cause fréquente. Vérifiez : mot de passe PSK, certificat 802.1X, supplicant client, MTU.' },
+                16: { name: 'Group Key Handshake timeout', type: 'reason', desc: 'Timeout du Group Key Handshake — échec de renouvellement de clé groupe.', action: 'Réduisez le GTK rotation interval. Vérifiez la compatibilité PMF.' },
+                17: { name: 'IE in 4-Way Handshake different', type: 'reason', desc: 'Les IE (RSN/WPA) du 4-Way Handshake diffèrent de celles de l\'association initiale.', action: 'Le client ou l\'AP a changé de paramètres de sécurité en cours de session.' },
+                18: { name: 'Invalid group cipher', type: 'reason', desc: 'Le cipher de groupe négocié est invalide.', action: 'Vérifiez la configuration WPA2/WPA3 et les ciphers supportés (AES vs TKIP).' },
+                19: { name: 'Invalid pairwise cipher', type: 'reason', desc: 'Le cipher pairwise négocié est invalide.', action: 'Assurez-vous que le client supporte CCMP/GCMP. Désactivez TKIP si possible.' },
+                20: { name: 'Invalid AKMP', type: 'reason', desc: 'Le protocole de gestion des clés (AKMP) est invalide.', action: 'Vérifiez la compatibilité entre PSK, 802.1X, SAE (WPA3) et FT (802.11r).' },
+                23: { name: 'IEEE 802.1X Authentication Failed', type: 'reason', desc: 'Échec d\'authentification 802.1X — rejet par le serveur RADIUS/ISE.', action: 'Consultez les logs ISE/RADIUS. Vérifiez certificats, identité EAP, et politique d\'accès.' },
+                24: { name: 'Cipher suite rejected', type: 'reason', desc: 'La suite de chiffrement proposée a été rejetée par la politique de sécurité.', action: 'Alignez les ciphers autorisés entre le SSID et le supplicant client.' },
+                34: { name: 'Disassoc — TDLS teardown unreachable', type: 'reason', desc: 'Lien direct TDLS rompu car le peer est injoignable.', action: 'Problème de connectivité directe entre les stations. Vérifiez la couverture.' },
+                // Status Codes courants
+                25: { name: 'Association denied — no short slot time', type: 'status', desc: 'Association refusée car la station ne supporte pas le short slot time.', action: 'Vérifiez la compatibilité 802.11g/n du client. Mettez à jour le driver.' },
+                27: { name: 'Association denied — no short preamble', type: 'status', desc: 'Association refusée car la station ne supporte pas le short preamble.', action: 'Client legacy. Activez la compatibilité avec les anciens standards sur l\'AP.' },
+                33: { name: 'Association denied — robust management required', type: 'status', desc: 'Association refusée car le PMF (802.11w) est requis mais non supporté.', action: 'Activez PMF sur le client ou passez PMF en "optional" sur le SSID.' },
+                40: { name: 'Association denied — no HT support', type: 'status', desc: 'Association refusée car le client ne supporte pas HT (802.11n).', action: 'Client trop ancien. Autorisez les débits legacy ou mettez à jour le matériel.' },
+                53: { name: 'Invalid RSNE (RSN capabilities)', type: 'status', desc: 'Les capacités RSN annoncées par la station sont invalides.', action: 'Incompatibilité WPA2/WPA3. Vérifiez la configuration de sécurité des deux côtés.' },
+                77: { name: 'Authentication rejected — SAE hash-to-element', type: 'status', desc: 'Rejet d\'authentification SAE (WPA3-Personal) — méthode hash-to-element incompatible.', action: 'Mettez à jour le firmware de l\'AP et le supplicant pour le support H2E.' }
+            };
+
+            window.lookupReasonCode = function () {
+                const input = document.getElementById('reason-code-input').value;
+                const resultDiv = document.getElementById('reason-result');
+                const errorDiv = document.getElementById('reason-error');
+                const code = parseInt(input, 10);
+
+                if (isNaN(code) || !reasonCodes[code]) {
+                    resultDiv.classList.add('hidden');
+                    errorDiv.classList.remove('hidden');
+                    return;
+                }
+
+                errorDiv.classList.add('hidden');
+                resultDiv.classList.remove('hidden');
+
+                const data = reasonCodes[code];
+                document.getElementById('reason-code-num').textContent = code;
+                document.getElementById('reason-code-name').textContent = data.name;
+                document.getElementById('reason-code-desc').textContent = data.desc;
+                document.getElementById('reason-code-action').textContent = data.action;
+
+                const badge = document.getElementById('reason-type-badge');
+                if (data.type === 'reason') {
+                    badge.textContent = 'Reason Code';
+                    badge.className = 'text-[10px] uppercase tracking-wider font-semibold px-2 py-0.5 rounded-full bg-accent-cyan/20 text-accent-cyan';
+                } else {
+                    badge.textContent = 'Status Code';
+                    badge.className = 'text-[10px] uppercase tracking-wider font-semibold px-2 py-0.5 rounded-full bg-orange-500/20 text-orange-400';
+                }
+            };
+
+            // === dACL CISCO ISE GENERATOR ===
+            const daclPresets = {
+                full: { name: 'DACL-FULL-ACCESS', rules: 'permit ip any any' },
+                restricted: { name: 'DACL-RESTRICTED', rules: 'permit udp any any eq 53\npermit udp any any eq 67\npermit udp any any eq 68\npermit tcp any any eq 443\npermit tcp any any eq 80\ndeny ip any any' },
+                guest: { name: 'DACL-GUEST-REDIRECT', rules: 'permit udp any any eq 53\npermit udp any any eq 67\npermit tcp any host 10.0.0.1 eq 8443\ndeny ip any any' },
+                quarantine: { name: 'DACL-QUARANTINE', rules: 'permit udp any any eq 53\npermit udp any any eq 67\ndeny ip any any' }
+            };
+
+            window.applyDaclPreset = function () {
+                const preset = document.getElementById('dacl-preset').value;
+                if (!preset || !daclPresets[preset]) return;
+                document.getElementById('dacl-name').value = daclPresets[preset].name;
+                document.getElementById('dacl-rules').value = daclPresets[preset].rules;
+            };
+
+            window.generateDACL = function () {
+                const name = document.getElementById('dacl-name').value.trim() || 'DACL-UNNAMED';
+                const rules = document.getElementById('dacl-rules').value.trim();
+                const outputDiv = document.getElementById('dacl-output');
+                const configOut = document.getElementById('dacl-config-out');
+
+                if (!rules) {
+                    outputDiv.classList.add('hidden');
+                    return;
+                }
+
+                const lines = rules.split('\n').filter(l => l.trim() !== '');
+                let config = '! ============================================\n';
+                config += '! dACL: ' + name + '\n';
+                config += '! Generated by ORNET Engineering Lab\n';
+                config += '! ============================================\n\n';
+                config += '! --- Cisco ISE > Policy > Policy Elements > Results ---\n';
+                config += '! --- Authorization > Downloadable ACLs ---\n\n';
+                config += 'ip:inacl#1=permit udp any eq 68 any eq 67\n';
+
+                lines.forEach((line, i) => {
+                    config += 'ip:inacl#' + (i + 2) + '=' + line.trim() + '\n';
+                });
+
+                config += '\n! Total ACEs: ' + (lines.length + 1) + '\n';
+                config += '! DACL Name for ISE Authorization Profile: ' + name;
+
+                configOut.textContent = config;
+                outputDiv.classList.remove('hidden');
+            };
+
+            // === POE BUDGET CALCULATOR ===
+            window.calcPoE = function () {
+                const budget = parseFloat(document.getElementById('poe-budget').value);
+                const apCount = parseInt(document.getElementById('poe-ap-count').value) || 0;
+                const apWatts = parseFloat(document.getElementById('poe-ap-watts').value) || 0;
+                const camCount = parseInt(document.getElementById('poe-cam-count').value) || 0;
+                const camWatts = parseFloat(document.getElementById('poe-cam-watts').value) || 0;
+                const standard = parseFloat(document.getElementById('poe-standard').value);
+
+                const consumedEl = document.getElementById('poe-consumed');
+                const remainingEl = document.getElementById('poe-remaining');
+                const percentEl = document.getElementById('poe-percent');
+                const barEl = document.getElementById('poe-bar');
+                const alertEl = document.getElementById('poe-alert');
+                const alertText = document.getElementById('poe-alert-text');
+
+                if (isNaN(budget) || budget <= 0) {
+                    consumedEl.innerHTML = '-- <span class="text-xs font-normal text-gray-400">W</span>';
+                    remainingEl.innerHTML = '-- <span class="text-xs font-normal text-accent-green/70">W</span>';
+                    percentEl.innerHTML = '-- <span class="text-xs font-normal text-gray-400">%</span>';
+                    barEl.style.width = '0%';
+                    alertEl.classList.add('hidden');
+                    return;
+                }
+
+                // Validate per-device vs standard max
+                const apExceedsStandard = apWatts > standard;
+                const camExceedsStandard = camWatts > standard;
+
+                const totalConsumed = (apCount * apWatts) + (camCount * camWatts);
+                const remaining = budget - totalConsumed;
+                const percent = (totalConsumed / budget) * 100;
+
+                consumedEl.innerHTML = totalConsumed.toFixed(1) + ' <span class="text-xs font-normal text-gray-400">W</span>';
+                remainingEl.innerHTML = remaining.toFixed(1) + ' <span class="text-xs font-normal text-accent-green/70">W</span>';
+                percentEl.innerHTML = percent.toFixed(1) + ' <span class="text-xs font-normal text-gray-400">%</span>';
+
+                barEl.style.width = Math.min(percent, 100) + '%';
+
+                // Color coding
+                if (percent > 100) {
+                    barEl.className = 'h-2.5 rounded-full bg-red-500 transition-all duration-300';
+                    remainingEl.className = 'text-lg font-bold text-red-400';
+                } else if (percent > 80) {
+                    barEl.className = 'h-2.5 rounded-full bg-orange-400 transition-all duration-300';
+                    remainingEl.className = 'text-lg font-bold text-orange-400';
+                } else {
+                    barEl.className = 'h-2.5 rounded-full bg-accent-green transition-all duration-300';
+                    remainingEl.className = 'text-lg font-bold text-accent-green';
+                }
+
+                // Alert logic
+                let alerts = [];
+                if (percent > 100) {
+                    alerts.push('<strong>Dépassement !</strong> Le budget PoE est insuffisant. Consommation : ' + totalConsumed.toFixed(1) + 'W / ' + budget + 'W disponibles.');
+                } else if (percent > 80) {
+                    alerts.push('<strong>Attention :</strong> Utilisation à ' + percent.toFixed(0) + '% du budget. Prévoyez une marge de 20% pour la croissance.');
+                }
+                if (apExceedsStandard) {
+                    alerts.push('La consommation par AP (' + apWatts + 'W) dépasse le max du standard sélectionné (' + standard + 'W). Choisissez un standard PoE supérieur.');
+                }
+                if (camExceedsStandard) {
+                    alerts.push('La consommation par caméra (' + camWatts + 'W) dépasse le max du standard sélectionné (' + standard + 'W).');
+                }
+
+                if (alerts.length > 0) {
+                    alertText.innerHTML = alerts.join('<br>');
+                    alertEl.classList.remove('hidden');
+                } else {
+                    alertEl.classList.add('hidden');
+                }
+            };
+
             // Global Toolkit Export
             window.exportToolkit = function (format = 'txt') {
                 const data = {};
@@ -5767,6 +6117,32 @@
                     };
                 }
 
+                // dACL
+                const daclOut = document.getElementById('dacl-config-out').textContent;
+                if (daclOut) {
+                    data.dacl_generator = { dacl_name: document.getElementById('dacl-name').value, config: daclOut };
+                }
+
+                // PoE
+                const poeConsumed = document.getElementById('poe-consumed').textContent.trim();
+                if (!poeConsumed.startsWith('--')) {
+                    data.poe_calculator = {
+                        consumed: poeConsumed,
+                        remaining: document.getElementById('poe-remaining').textContent.trim(),
+                        utilization: document.getElementById('poe-percent').textContent.trim()
+                    };
+                }
+
+                // Reason Code
+                const reasonResult = document.getElementById('reason-result');
+                if (!reasonResult.classList.contains('hidden')) {
+                    data.reason_code = {
+                        code: document.getElementById('reason-code-num').textContent,
+                        name: document.getElementById('reason-code-name').textContent,
+                        description: document.getElementById('reason-code-desc').textContent
+                    };
+                }
+
                 let content = "";
                 let mimeType = "";
 
@@ -5777,19 +6153,21 @@
                     content = "Module,Key,Value\n";
                     for (const [module, moduleData] of Object.entries(data)) {
                         for (const [key, value] of Object.entries(moduleData)) {
-                            // Escape quotes in value
-                            const safeValue = value.replace(/"/g, '""');
+                            const safeValue = String(value).replace(/"/g, '""');
                             content += `"${module}","${key}","${safeValue}"\n`;
                         }
                     }
                     mimeType = "text/csv;charset=utf-8";
                 } else {
                     // TXT format
-                    content = "=== ORNET Toolkit - Export des resultats ===\n\n";
+                    content = "=== ORNET Engineering Lab - Export des resultats ===\n\n";
+                    content += "--- Pôle Wi-Fi / RF ---\n\n";
                     if (data.rf_calculator) content += `[Calcul RF]\nEIRP: ${data.rf_calculator.eirp_dbm} / ${data.rf_calculator.eirp_mw}\n\n`;
-                    if (data.dhcp_option_43) content += `[DHCP Option 43]\nHex: ${data.dhcp_option_43.hex_value}\nCmd: ${data.dhcp_option_43.command}\n\n`;
-                    if (data.mac_formatter) content += `[MAC Formatter]\nCisco IOS: ${data.mac_formatter.cisco_ios}\nStandard: ${data.mac_formatter.standard}\n\n`;
                     if (data.fspl) content += `[Perte FSPL]\nResultat: ${data.fspl.loss}\n\n`;
+                    if (data.reason_code) content += `[Reason Code 802.11]\nCode: ${data.reason_code.code}\nNom: ${data.reason_code.name}\nDescription: ${data.reason_code.description}\n\n`;
+                    content += "--- Pôle Réseau / NAC ---\n\n";
+                    if (data.dacl_generator) content += `[dACL Cisco ISE]\nNom: ${data.dacl_generator.dacl_name}\nConfig:\n${data.dacl_generator.config}\n\n`;
+                    if (data.poe_calculator) content += `[PoE Budget]\nConsommation: ${data.poe_calculator.consumed}\nRestant: ${data.poe_calculator.remaining}\nUtilisation: ${data.poe_calculator.utilization}\n\n`;
                     if (data.ipv4_calculator) {
                         content += `[Calculateur IPv4 / CIDR]\nCIDR saisi : ${data.ipv4_calculator.cidr_input}\n`;
                         content += `Réseau (Network) : ${data.ipv4_calculator.network}\n`;
@@ -5799,6 +6177,8 @@
                         content += `Masque (Décimal) : ${data.ipv4_calculator.mask}\n`;
                         content += `Hôtes utilisables : ${data.ipv4_calculator.hosts}\n\n`;
                     }
+                    if (data.dhcp_option_43) content += `[DHCP Option 43]\nHex: ${data.dhcp_option_43.hex_value}\nCmd: ${data.dhcp_option_43.command}\n\n`;
+                    if (data.mac_formatter) content += `[MAC Formatter]\nCisco IOS: ${data.mac_formatter.cisco_ios}\nStandard: ${data.mac_formatter.standard}\n\n`;
                     content += "Generé via or-net.com";
                     mimeType = "text/plain;charset=utf-8";
                 }
