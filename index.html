@@ -4659,6 +4659,363 @@
                                     </div>
                                 </div>
                             </div>
+
+                            <!-- Tool 4 : Channel Planner / DFS Checker (NEW) -->
+                            <div id="tool-channel" class="fade-in">
+                                <div class="glass-card rounded-2xl p-6 border-l-2 border-accent-cyan/40">
+                                    <h4 class="text-lg font-bold text-white mb-5 flex items-center gap-3">
+                                        <svg class="w-5 h-5 text-accent-cyan" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8.111 16.404a5.5 5.5 0 017.778 0M12 20h.01m-7.08-7.071c3.904-3.905 10.236-3.905 14.14 0M1.394 9.393c5.857-5.858 15.355-5.858 21.213 0"></path></svg>
+                                        Channel Planner / DFS Checker
+                                    </h4>
+                                    <div class="grid sm:grid-cols-2 gap-3 mb-4">
+                                        <div>
+                                            <label class="block text-xs text-gray-400 mb-1">Bande</label>
+                                            <select id="ch-band" onchange="renderChannelMap()"
+                                                class="w-full px-3 py-2.5 bg-dark-800 border border-white/10 rounded-lg text-white focus:border-accent-cyan focus:outline-none transition text-sm">
+                                                <option value="2.4">2.4 GHz</option>
+                                                <option value="5" selected>5 GHz</option>
+                                                <option value="6">6 GHz (Wi-Fi 6E)</option>
+                                            </select>
+                                        </div>
+                                        <div>
+                                            <label class="block text-xs text-gray-400 mb-1">Réglementation</label>
+                                            <select id="ch-region" onchange="renderChannelMap()"
+                                                class="w-full px-3 py-2.5 bg-dark-800 border border-white/10 rounded-lg text-white focus:border-accent-cyan focus:outline-none transition text-sm">
+                                                <option value="ETSI" selected>ETSI (Europe)</option>
+                                                <option value="FCC">FCC (USA)</option>
+                                                <option value="MKK">MKK (Japon)</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="mb-3">
+                                        <label class="block text-xs text-gray-400 mb-1">Largeur canal</label>
+                                        <div class="flex gap-2">
+                                            <button onclick="setChannelWidth(20)" id="chw-20" class="flex-1 px-3 py-1.5 text-xs font-semibold rounded-lg bg-accent-cyan/20 text-accent-cyan transition">20 MHz</button>
+                                            <button onclick="setChannelWidth(40)" id="chw-40" class="flex-1 px-3 py-1.5 text-xs font-semibold rounded-lg bg-dark-800 text-gray-400 hover:text-white transition">40 MHz</button>
+                                            <button onclick="setChannelWidth(80)" id="chw-80" class="flex-1 px-3 py-1.5 text-xs font-semibold rounded-lg bg-dark-800 text-gray-400 hover:text-white transition">80 MHz</button>
+                                            <button onclick="setChannelWidth(160)" id="chw-160" class="flex-1 px-3 py-1.5 text-xs font-semibold rounded-lg bg-dark-800 text-gray-400 hover:text-white transition">160 MHz</button>
+                                        </div>
+                                    </div>
+                                    <!-- Channel Map -->
+                                    <div id="channel-map" class="space-y-2 mb-3"></div>
+                                    <!-- Legend -->
+                                    <div class="flex flex-wrap gap-3 text-[10px] text-gray-500 pt-2 border-t border-white/5">
+                                        <span class="flex items-center gap-1"><span class="w-2 h-2 rounded-sm bg-accent-cyan/60"></span>Standard</span>
+                                        <span class="flex items-center gap-1"><span class="w-2 h-2 rounded-sm bg-orange-400/60"></span>DFS</span>
+                                        <span class="flex items-center gap-1"><span class="w-2 h-2 rounded-sm bg-purple-400/60"></span>LPI/VLP (6 GHz)</span>
+                                        <span class="flex items-center gap-1"><span class="w-2 h-2 rounded-sm bg-red-500/40"></span>Interdit</span>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Tool 5 : Link Budget Calculator (NEW) -->
+                            <div id="tool-linkbudget" class="fade-in">
+                                <div class="glass-card rounded-2xl p-6 border-l-2 border-accent-cyan/40">
+                                    <h4 class="text-lg font-bold text-white mb-5 flex items-center gap-3">
+                                        <svg class="w-5 h-5 text-accent-cyan" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6"></path></svg>
+                                        Link Budget Calculator
+                                    </h4>
+                                    <div class="grid sm:grid-cols-2 gap-3 mb-3">
+                                        <div>
+                                            <label class="block text-xs text-gray-400 mb-1">TX Power (dBm)</label>
+                                            <input id="lb-tx" type="number" step="1" value="20" oninput="calcLinkBudget()"
+                                                class="w-full px-3 py-2.5 bg-dark-800 border border-white/10 rounded-lg text-white placeholder-gray-600 focus:border-accent-cyan focus:outline-none transition text-sm">
+                                        </div>
+                                        <div>
+                                            <label class="block text-xs text-gray-400 mb-1">Gain antenne (dBi)</label>
+                                            <input id="lb-gain" type="number" step="0.5" value="3" oninput="calcLinkBudget()"
+                                                class="w-full px-3 py-2.5 bg-dark-800 border border-white/10 rounded-lg text-white placeholder-gray-600 focus:border-accent-cyan focus:outline-none transition text-sm">
+                                        </div>
+                                    </div>
+                                    <div class="grid sm:grid-cols-2 gap-3 mb-3">
+                                        <div>
+                                            <label class="block text-xs text-gray-400 mb-1">Perte câble (dB)</label>
+                                            <input id="lb-cable" type="number" step="0.5" value="1" oninput="calcLinkBudget()"
+                                                class="w-full px-3 py-2.5 bg-dark-800 border border-white/10 rounded-lg text-white placeholder-gray-600 focus:border-accent-cyan focus:outline-none transition text-sm">
+                                        </div>
+                                        <div>
+                                            <label class="block text-xs text-gray-400 mb-1">Distance (m)</label>
+                                            <input id="lb-dist" type="number" step="1" value="15" oninput="calcLinkBudget()"
+                                                class="w-full px-3 py-2.5 bg-dark-800 border border-white/10 rounded-lg text-white placeholder-gray-600 focus:border-accent-cyan focus:outline-none transition text-sm">
+                                        </div>
+                                    </div>
+                                    <div class="grid sm:grid-cols-2 gap-3 mb-3">
+                                        <div>
+                                            <label class="block text-xs text-gray-400 mb-1">Fréquence</label>
+                                            <select id="lb-freq" onchange="calcLinkBudget()"
+                                                class="w-full px-3 py-2.5 bg-dark-800 border border-white/10 rounded-lg text-white focus:border-accent-cyan focus:outline-none transition text-sm">
+                                                <option value="2412">2.4 GHz</option>
+                                                <option value="5180" selected>5 GHz</option>
+                                                <option value="5945">6 GHz</option>
+                                            </select>
+                                        </div>
+                                        <div>
+                                            <label class="block text-xs text-gray-400 mb-1">Seuil requis</label>
+                                            <select id="lb-threshold" onchange="calcLinkBudget()"
+                                                class="w-full px-3 py-2.5 bg-dark-800 border border-white/10 rounded-lg text-white focus:border-accent-cyan focus:outline-none transition text-sm">
+                                                <option value="-65">Voix/VoWLAN (−65 dBm)</option>
+                                                <option value="-67" selected>Data HD (−67 dBm)</option>
+                                                <option value="-70">Data standard (−70 dBm)</option>
+                                                <option value="-75">Couverture basique (−75 dBm)</option>
+                                                <option value="-80">Détection (−80 dBm)</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <!-- Obstacles -->
+                                    <div class="mb-4">
+                                        <label class="block text-xs text-gray-400 mb-2">Obstacles traversés</label>
+                                        <div class="grid grid-cols-2 gap-2" id="lb-obstacles">
+                                            <div class="flex items-center gap-2">
+                                                <input id="lb-obs-placo" type="number" min="0" value="0" oninput="calcLinkBudget()" class="w-12 px-2 py-1.5 bg-dark-800 border border-white/10 rounded text-white text-xs text-center focus:border-accent-cyan focus:outline-none">
+                                                <span class="text-xs text-gray-400">Cloison placo <span class="text-gray-600">(3 dB)</span></span>
+                                            </div>
+                                            <div class="flex items-center gap-2">
+                                                <input id="lb-obs-vitre" type="number" min="0" value="0" oninput="calcLinkBudget()" class="w-12 px-2 py-1.5 bg-dark-800 border border-white/10 rounded text-white text-xs text-center focus:border-accent-cyan focus:outline-none">
+                                                <span class="text-xs text-gray-400">Vitre <span class="text-gray-600">(2 dB)</span></span>
+                                            </div>
+                                            <div class="flex items-center gap-2">
+                                                <input id="lb-obs-brique" type="number" min="0" value="0" oninput="calcLinkBudget()" class="w-12 px-2 py-1.5 bg-dark-800 border border-white/10 rounded text-white text-xs text-center focus:border-accent-cyan focus:outline-none">
+                                                <span class="text-xs text-gray-400">Mur brique <span class="text-gray-600">(6 dB)</span></span>
+                                            </div>
+                                            <div class="flex items-center gap-2">
+                                                <input id="lb-obs-beton" type="number" min="0" value="0" oninput="calcLinkBudget()" class="w-12 px-2 py-1.5 bg-dark-800 border border-white/10 rounded text-white text-xs text-center focus:border-accent-cyan focus:outline-none">
+                                                <span class="text-xs text-gray-400">Mur béton <span class="text-gray-600">(15 dB)</span></span>
+                                            </div>
+                                            <div class="flex items-center gap-2">
+                                                <input id="lb-obs-metal" type="number" min="0" value="0" oninput="calcLinkBudget()" class="w-12 px-2 py-1.5 bg-dark-800 border border-white/10 rounded text-white text-xs text-center focus:border-accent-cyan focus:outline-none">
+                                                <span class="text-xs text-gray-400">Porte métal <span class="text-gray-600">(13 dB)</span></span>
+                                            </div>
+                                            <div class="flex items-center gap-2">
+                                                <input id="lb-obs-plancher" type="number" min="0" value="0" oninput="calcLinkBudget()" class="w-12 px-2 py-1.5 bg-dark-800 border border-white/10 rounded text-white text-xs text-center focus:border-accent-cyan focus:outline-none">
+                                                <span class="text-xs text-gray-400">Plancher/dalle <span class="text-gray-600">(18 dB)</span></span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!-- Results -->
+                                    <div class="grid sm:grid-cols-3 gap-3 mb-3">
+                                        <div class="bg-dark-800 rounded-xl p-3 text-center">
+                                            <p class="text-[10px] text-gray-500 uppercase tracking-wider mb-0.5">Signal reçu</p>
+                                            <p id="lb-rx" class="text-xl font-bold text-accent-cyan">-- <span class="text-xs font-normal text-gray-400">dBm</span></p>
+                                        </div>
+                                        <div class="bg-dark-800 rounded-xl p-3 text-center">
+                                            <p class="text-[10px] text-gray-500 uppercase tracking-wider mb-0.5">Marge</p>
+                                            <p id="lb-margin" class="text-xl font-bold text-accent-green">-- <span class="text-xs font-normal text-gray-400">dB</span></p>
+                                        </div>
+                                        <div class="bg-dark-800 rounded-xl p-3 text-center">
+                                            <p class="text-[10px] text-gray-500 uppercase tracking-wider mb-0.5">Verdict</p>
+                                            <p id="lb-verdict" class="text-sm font-bold text-gray-500">--</p>
+                                        </div>
+                                    </div>
+                                    <!-- Signal bar -->
+                                    <div class="relative w-full bg-dark-800 rounded-full h-3">
+                                        <div class="absolute inset-0 rounded-full overflow-hidden flex">
+                                            <div class="h-full bg-red-500/40" style="width:11%"></div>
+                                            <div class="h-full bg-orange-400/40" style="width:6%"></div>
+                                            <div class="h-full bg-yellow-400/40" style="width:5%"></div>
+                                            <div class="h-full bg-accent-green/40" style="width:6%"></div>
+                                            <div class="h-full bg-accent-cyan/40" style="width:72%"></div>
+                                        </div>
+                                        <div id="lb-needle" class="absolute top-0 w-0.5 h-3 bg-white rounded-full transition-all duration-300" style="left:50%"></div>
+                                    </div>
+                                    <div class="flex justify-between text-[9px] text-gray-600 mt-0.5 px-0.5">
+                                        <span>−90</span><span>−80</span><span>−75</span><span>−70</span><span>−67</span><span>−65</span><span>−30</span>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Tool 6 : Airtime / Capacity Estimator (NEW) -->
+                            <div id="tool-airtime" class="fade-in">
+                                <div class="glass-card rounded-2xl p-6 border-l-2 border-accent-cyan/40">
+                                    <h4 class="text-lg font-bold text-white mb-5 flex items-center gap-3">
+                                        <svg class="w-5 h-5 text-accent-cyan" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+                                        Airtime / Capacity Estimator
+                                    </h4>
+                                    <div class="grid sm:grid-cols-2 gap-3 mb-3">
+                                        <div>
+                                            <label class="block text-xs text-gray-400 mb-1">Nb de clients par AP</label>
+                                            <input id="at-clients" type="number" min="1" value="30" oninput="calcAirtime()"
+                                                class="w-full px-3 py-2.5 bg-dark-800 border border-white/10 rounded-lg text-white placeholder-gray-600 focus:border-accent-cyan focus:outline-none transition text-sm">
+                                        </div>
+                                        <div>
+                                            <label class="block text-xs text-gray-400 mb-1">Débit moyen / client (Mbps)</label>
+                                            <input id="at-throughput" type="number" min="0.5" step="0.5" value="5" oninput="calcAirtime()"
+                                                class="w-full px-3 py-2.5 bg-dark-800 border border-white/10 rounded-lg text-white placeholder-gray-600 focus:border-accent-cyan focus:outline-none transition text-sm">
+                                        </div>
+                                    </div>
+                                    <div class="grid sm:grid-cols-2 gap-3 mb-4">
+                                        <div>
+                                            <label class="block text-xs text-gray-400 mb-1">Standard Wi-Fi</label>
+                                            <select id="at-standard" onchange="calcAirtime()"
+                                                class="w-full px-3 py-2.5 bg-dark-800 border border-white/10 rounded-lg text-white focus:border-accent-cyan focus:outline-none transition text-sm">
+                                                <option value="ac">Wi-Fi 5 (802.11ac)</option>
+                                                <option value="ax" selected>Wi-Fi 6 (802.11ax)</option>
+                                                <option value="ax6e">Wi-Fi 6E (802.11ax 6 GHz)</option>
+                                                <option value="be">Wi-Fi 7 (802.11be)</option>
+                                            </select>
+                                        </div>
+                                        <div>
+                                            <label class="block text-xs text-gray-400 mb-1">Largeur canal</label>
+                                            <select id="at-width" onchange="calcAirtime()"
+                                                class="w-full px-3 py-2.5 bg-dark-800 border border-white/10 rounded-lg text-white focus:border-accent-cyan focus:outline-none transition text-sm">
+                                                <option value="20">20 MHz</option>
+                                                <option value="40">40 MHz</option>
+                                                <option value="80" selected>80 MHz</option>
+                                                <option value="160">160 MHz</option>
+                                                <option value="320">320 MHz</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <!-- Results -->
+                                    <div class="grid sm:grid-cols-3 gap-3 mb-3">
+                                        <div class="bg-dark-800 rounded-xl p-3 text-center">
+                                            <p class="text-[10px] text-gray-500 uppercase tracking-wider mb-0.5">Airtime utilisé</p>
+                                            <p id="at-airtime" class="text-xl font-bold text-white">-- <span class="text-xs font-normal text-gray-400">%</span></p>
+                                        </div>
+                                        <div class="bg-dark-800 rounded-xl p-3 text-center">
+                                            <p class="text-[10px] text-gray-500 uppercase tracking-wider mb-0.5">Débit AP max</p>
+                                            <p id="at-maxrate" class="text-xl font-bold text-accent-cyan">-- <span class="text-xs font-normal text-gray-400">Mbps</span></p>
+                                        </div>
+                                        <div class="bg-dark-800 rounded-xl p-3 text-center">
+                                            <p class="text-[10px] text-gray-500 uppercase tracking-wider mb-0.5">APs nécessaires</p>
+                                            <p id="at-aps" class="text-xl font-bold text-accent-green">--</p>
+                                        </div>
+                                    </div>
+                                    <!-- Airtime bar -->
+                                    <div class="w-full bg-dark-800 rounded-full h-2.5 mb-2">
+                                        <div id="at-bar" class="h-2.5 rounded-full bg-accent-cyan transition-all duration-300" style="width:0%"></div>
+                                    </div>
+                                    <div id="at-alert" class="hidden rounded-lg p-3 bg-orange-500/10 border border-orange-500/30 text-xs text-orange-300 flex items-start gap-2">
+                                        <svg class="w-4 h-4 mt-0.5 flex-shrink-0 text-orange-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-2.5L13.732 4c-.77-.833-1.964-.833-2.732 0L3.732 16.5c-.77.833.192 2.5 1.732 2.5z"></path></svg>
+                                        <span id="at-alert-text"></span>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Tool 7 : SNR Calculator (NEW) -->
+                            <div id="tool-snr" class="fade-in">
+                                <div class="glass-card rounded-2xl p-6 border-l-2 border-accent-cyan/40">
+                                    <h4 class="text-lg font-bold text-white mb-5 flex items-center gap-3">
+                                        <svg class="w-5 h-5 text-accent-cyan" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"></path></svg>
+                                        SNR Calculator
+                                    </h4>
+                                    <div class="grid sm:grid-cols-2 gap-3 mb-4">
+                                        <div>
+                                            <label class="block text-xs text-gray-400 mb-1">Signal reçu (dBm)</label>
+                                            <input id="snr-signal" type="number" step="1" placeholder="-55" oninput="calcSNR()"
+                                                class="w-full px-3 py-2.5 bg-dark-800 border border-white/10 rounded-lg text-white placeholder-gray-600 focus:border-accent-cyan focus:outline-none transition text-sm">
+                                        </div>
+                                        <div>
+                                            <label class="block text-xs text-gray-400 mb-1">Bruit ambiant (dBm)</label>
+                                            <input id="snr-noise" type="number" step="1" value="-92" oninput="calcSNR()"
+                                                class="w-full px-3 py-2.5 bg-dark-800 border border-white/10 rounded-lg text-white placeholder-gray-600 focus:border-accent-cyan focus:outline-none transition text-sm">
+                                        </div>
+                                    </div>
+                                    <div class="grid sm:grid-cols-2 gap-3 mb-3">
+                                        <div class="bg-dark-800 rounded-xl p-3 text-center">
+                                            <p class="text-[10px] text-gray-500 uppercase tracking-wider mb-0.5">SNR</p>
+                                            <p id="snr-result" class="text-xl font-bold text-accent-cyan">-- <span class="text-xs font-normal text-gray-400">dB</span></p>
+                                        </div>
+                                        <div class="bg-dark-800 rounded-xl p-3 text-center">
+                                            <p class="text-[10px] text-gray-500 uppercase tracking-wider mb-0.5">Qualité</p>
+                                            <p id="snr-quality" class="text-sm font-bold text-gray-500">--</p>
+                                        </div>
+                                    </div>
+                                    <!-- SNR Scale -->
+                                    <div class="relative w-full bg-dark-800 rounded-full h-3 mb-1">
+                                        <div class="absolute inset-0 rounded-full overflow-hidden flex">
+                                            <div class="h-full bg-red-500/50" style="width:20%"></div>
+                                            <div class="h-full bg-orange-400/50" style="width:15%"></div>
+                                            <div class="h-full bg-yellow-400/50" style="width:15%"></div>
+                                            <div class="h-full bg-accent-green/50" style="width:25%"></div>
+                                            <div class="h-full bg-accent-cyan/50" style="width:25%"></div>
+                                        </div>
+                                        <div id="snr-needle" class="absolute top-0 w-0.5 h-3 bg-white rounded-full transition-all duration-300" style="left:0%"></div>
+                                    </div>
+                                    <div class="flex justify-between text-[9px] text-gray-600 px-0.5">
+                                        <span>0</span><span>10</span><span>20</span><span>25</span><span>40+</span>
+                                    </div>
+                                    <!-- Reference table -->
+                                    <div class="mt-3 grid grid-cols-2 gap-1 text-[10px]">
+                                        <div class="flex items-center gap-1.5"><span class="w-1.5 h-1.5 rounded-full bg-red-500"></span><span class="text-gray-400">&lt; 10 dB — Inutilisable</span></div>
+                                        <div class="flex items-center gap-1.5"><span class="w-1.5 h-1.5 rounded-full bg-orange-400"></span><span class="text-gray-400">10-15 dB — Très faible</span></div>
+                                        <div class="flex items-center gap-1.5"><span class="w-1.5 h-1.5 rounded-full bg-yellow-400"></span><span class="text-gray-400">15-25 dB — Acceptable</span></div>
+                                        <div class="flex items-center gap-1.5"><span class="w-1.5 h-1.5 rounded-full bg-accent-green"></span><span class="text-gray-400">25-40 dB — Bon</span></div>
+                                        <div class="flex items-center gap-1.5 col-span-2"><span class="w-1.5 h-1.5 rounded-full bg-accent-cyan"></span><span class="text-gray-400">&gt; 40 dB — Excellent (voix, vidéo HD)</span></div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Tool 8 : Throughput Estimator / MCS Index (NEW) -->
+                            <div id="tool-mcs" class="fade-in">
+                                <div class="glass-card rounded-2xl p-6 border-l-2 border-accent-cyan/40">
+                                    <h4 class="text-lg font-bold text-white mb-5 flex items-center gap-3">
+                                        <svg class="w-5 h-5 text-accent-cyan" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 15a4 4 0 004 4h9a5 5 0 10-.1-9.999 5.002 5.002 0 10-9.78 2.096A4.001 4.001 0 003 15z"></path></svg>
+                                        Throughput Estimator (MCS)
+                                    </h4>
+                                    <div class="grid sm:grid-cols-2 gap-3 mb-3">
+                                        <div>
+                                            <label class="block text-xs text-gray-400 mb-1">Standard Wi-Fi</label>
+                                            <select id="mcs-standard" onchange="calcMCS()"
+                                                class="w-full px-3 py-2.5 bg-dark-800 border border-white/10 rounded-lg text-white focus:border-accent-cyan focus:outline-none transition text-sm">
+                                                <option value="ac">Wi-Fi 5 (802.11ac)</option>
+                                                <option value="ax" selected>Wi-Fi 6 (802.11ax)</option>
+                                                <option value="be">Wi-Fi 7 (802.11be)</option>
+                                            </select>
+                                        </div>
+                                        <div>
+                                            <label class="block text-xs text-gray-400 mb-1">Spatial Streams</label>
+                                            <select id="mcs-ss" onchange="calcMCS()"
+                                                class="w-full px-3 py-2.5 bg-dark-800 border border-white/10 rounded-lg text-white focus:border-accent-cyan focus:outline-none transition text-sm">
+                                                <option value="1">1×1 (1 SS)</option>
+                                                <option value="2" selected>2×2 (2 SS)</option>
+                                                <option value="3">3×3 (3 SS)</option>
+                                                <option value="4">4×4 (4 SS)</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="grid sm:grid-cols-2 gap-3 mb-4">
+                                        <div>
+                                            <label class="block text-xs text-gray-400 mb-1">Largeur canal</label>
+                                            <select id="mcs-width" onchange="calcMCS()"
+                                                class="w-full px-3 py-2.5 bg-dark-800 border border-white/10 rounded-lg text-white focus:border-accent-cyan focus:outline-none transition text-sm">
+                                                <option value="20">20 MHz</option>
+                                                <option value="40">40 MHz</option>
+                                                <option value="80" selected>80 MHz</option>
+                                                <option value="160">160 MHz</option>
+                                                <option value="320">320 MHz</option>
+                                            </select>
+                                        </div>
+                                        <div>
+                                            <label class="block text-xs text-gray-400 mb-1">Guard Interval</label>
+                                            <select id="mcs-gi" onchange="calcMCS()"
+                                                class="w-full px-3 py-2.5 bg-dark-800 border border-white/10 rounded-lg text-white focus:border-accent-cyan focus:outline-none transition text-sm">
+                                                <option value="short">Court (400/800 ns)</option>
+                                                <option value="long" selected>Long (800/1600 ns)</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <!-- MCS Table -->
+                                    <div class="overflow-x-auto">
+                                        <table class="w-full text-[10px] font-mono">
+                                            <thead>
+                                                <tr class="text-gray-500 text-left border-b border-white/5">
+                                                    <th class="py-1.5 px-1">MCS</th>
+                                                    <th class="py-1.5 px-1">Modulation</th>
+                                                    <th class="py-1.5 px-1">Coding</th>
+                                                    <th class="py-1.5 px-1 text-right">Débit (Mbps)</th>
+                                                    <th class="py-1.5 px-1 text-right">SNR min</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody id="mcs-table-body"></tbody>
+                                        </table>
+                                    </div>
+                                    <div class="mt-3 bg-dark-800 rounded-xl p-3 text-center">
+                                        <p class="text-[10px] text-gray-500 uppercase tracking-wider mb-0.5">Débit PHY max théorique</p>
+                                        <p id="mcs-max-rate" class="text-xl font-bold text-accent-cyan">-- <span class="text-xs font-normal text-gray-400">Mbps</span></p>
+                                    </div>
+                                </div>
+                            </div>
+
                         </div>
 
                         <!-- ────── COLONNE DROITE : Pôle Réseau / NAC (Green) ────── -->
@@ -6075,6 +6432,380 @@
                 }
             };
 
+            // === CHANNEL PLANNER / DFS CHECKER ===
+            let currentChannelWidth = 20;
+
+            const channelDB = {
+                '2.4': {
+                    channels: [1,2,3,4,5,6,7,8,9,10,11,12,13],
+                    freqs: {1:2412,2:2417,3:2422,4:2427,5:2432,6:2437,7:2442,8:2447,9:2452,10:2457,11:2462,12:2467,13:2472},
+                    dfs: [],
+                    maxWidth: 40,
+                    restrictions: {
+                        ETSI: { blocked: [], notes: 'Canaux 1-13 autorisés.' },
+                        FCC: { blocked: [12,13], notes: 'Canaux 1-11 uniquement.' },
+                        MKK: { blocked: [], notes: 'Canaux 1-13 autorisés (14 legacy 802.11b uniquement, non inclus).' }
+                    }
+                },
+                '5': {
+                    channels: [36,40,44,48,52,56,60,64,100,104,108,112,116,120,124,128,132,136,140,144,149,153,157,161,165],
+                    freqs: {36:5180,40:5200,44:5220,48:5240,52:5260,56:5280,60:5300,64:5320,100:5500,104:5520,108:5540,112:5560,116:5580,120:5600,124:5620,128:5640,132:5660,136:5680,140:5700,144:5720,149:5745,153:5765,157:5785,161:5805,165:5825},
+                    dfs: [52,56,60,64,100,104,108,112,116,120,124,128,132,136,140,144],
+                    maxWidth: 160,
+                    restrictions: {
+                        ETSI: { blocked: [], notes: 'UNII-1 (36-48) indoor. UNII-2/2C (52-144) DFS+TPC requis. UNII-3 (149-165) autorisé.' },
+                        FCC: { blocked: [], notes: 'Tous les canaux autorisés. DFS requis sur 52-144.' },
+                        MKK: { blocked: [120,124,128], notes: 'Canaux 120-128 interdits (radar météo). DFS requis sur 52-144.' }
+                    }
+                },
+                '6': {
+                    channels: [1,5,9,13,17,21,25,29,33,37,41,45,49,53,57,61,65,69,73,77,81,85,89,93],
+                    freqs: {},
+                    dfs: [],
+                    maxWidth: 320,
+                    restrictions: {
+                        ETSI: { blocked: [], notes: 'LPI (Low Power Indoor) : 23 dBm EIRP. VLP (Very Low Power) : 14 dBm EIRP portable.' },
+                        FCC: { blocked: [], notes: 'Standard Power avec AFC. LPI indoor 30 dBm EIRP.' },
+                        MKK: { blocked: [], notes: 'En cours de déploiement. Vérifiez la réglementation locale.' }
+                    }
+                }
+            };
+            // Generate 6 GHz freqs
+            channelDB['6'].channels.forEach((ch, i) => { channelDB['6'].freqs[ch] = 5955 + (ch - 1) * 5; });
+
+            window.setChannelWidth = function(w) {
+                currentChannelWidth = w;
+                [20,40,80,160].forEach(bw => {
+                    const btn = document.getElementById('chw-' + bw);
+                    if (btn) btn.className = bw === w
+                        ? 'flex-1 px-3 py-1.5 text-xs font-semibold rounded-lg bg-accent-cyan/20 text-accent-cyan transition'
+                        : 'flex-1 px-3 py-1.5 text-xs font-semibold rounded-lg bg-dark-800 text-gray-400 hover:text-white transition';
+                });
+                renderChannelMap();
+            };
+
+            window.renderChannelMap = function() {
+                const band = document.getElementById('ch-band').value;
+                const region = document.getElementById('ch-region').value;
+                const container = document.getElementById('channel-map');
+                const db = channelDB[band];
+                if (!db) return;
+
+                const width = Math.min(currentChannelWidth, db.maxWidth);
+                const blocked = db.restrictions[region] ? db.restrictions[region].blocked : [];
+                const channelsPerGroup = width / 20;
+
+                let html = '';
+
+                // Group channels by width
+                const groups = [];
+                let i = 0;
+                while (i < db.channels.length) {
+                    const group = [];
+                    for (let j = 0; j < channelsPerGroup && (i + j) < db.channels.length; j++) {
+                        group.push(db.channels[i + j]);
+                    }
+                    groups.push(group);
+                    i += channelsPerGroup;
+                }
+
+                html += '<div class="flex flex-wrap gap-1">';
+                groups.forEach(group => {
+                    const isBlocked = group.some(ch => blocked.includes(ch));
+                    const isDfs = group.some(ch => db.dfs.includes(ch));
+                    const is6ghz = band === '6';
+
+                    let bgClass, textClass, borderClass;
+                    if (isBlocked) {
+                        bgClass = 'bg-red-500/10'; textClass = 'text-red-400'; borderClass = 'border-red-500/30';
+                    } else if (isDfs) {
+                        bgClass = 'bg-orange-400/10'; textClass = 'text-orange-400'; borderClass = 'border-orange-400/30';
+                    } else if (is6ghz) {
+                        bgClass = 'bg-purple-400/10'; textClass = 'text-purple-300'; borderClass = 'border-purple-400/30';
+                    } else {
+                        bgClass = 'bg-accent-cyan/10'; textClass = 'text-accent-cyan'; borderClass = 'border-accent-cyan/30';
+                    }
+
+                    const label = group.length === 1 ? group[0] : group[0] + '-' + group[group.length - 1];
+                    const freq = db.freqs[group[0]] || '';
+                    const tag = isBlocked ? '✕' : isDfs ? 'DFS' : is6ghz ? 'LPI' : '';
+
+                    html += '<div class="' + bgClass + ' border ' + borderClass + ' rounded-lg px-2 py-1.5 text-center min-w-[3rem]">';
+                    html += '<p class="text-xs font-bold ' + textClass + '">' + label + '</p>';
+                    html += '<p class="text-[9px] text-gray-500">' + freq + '</p>';
+                    if (tag) html += '<span class="text-[8px] font-semibold ' + textClass + ' uppercase">' + tag + '</span>';
+                    html += '</div>';
+                });
+                html += '</div>';
+
+                // Region notes
+                const notes = db.restrictions[region] ? db.restrictions[region].notes : '';
+                html += '<div class="text-[10px] text-gray-500 mt-2 p-2 bg-dark-800/50 rounded-lg">';
+                html += '<strong class="text-gray-400">' + region + ' :</strong> ' + notes;
+                html += '</div>';
+
+                container.innerHTML = html;
+            };
+
+            // Init channel map on page load
+            setTimeout(renderChannelMap, 100);
+
+            // === LINK BUDGET CALCULATOR ===
+            window.calcLinkBudget = function() {
+                const tx = parseFloat(document.getElementById('lb-tx').value) || 0;
+                const gain = parseFloat(document.getElementById('lb-gain').value) || 0;
+                const cable = parseFloat(document.getElementById('lb-cable').value) || 0;
+                const dist = parseFloat(document.getElementById('lb-dist').value) || 1;
+                const freq = parseFloat(document.getElementById('lb-freq').value);
+                const threshold = parseFloat(document.getElementById('lb-threshold').value);
+
+                // Obstacle losses
+                const obsPlaco = (parseInt(document.getElementById('lb-obs-placo').value) || 0) * 3;
+                const obsVitre = (parseInt(document.getElementById('lb-obs-vitre').value) || 0) * 2;
+                const obsBrique = (parseInt(document.getElementById('lb-obs-brique').value) || 0) * 6;
+                const obsBeton = (parseInt(document.getElementById('lb-obs-beton').value) || 0) * 15;
+                const obsMetal = (parseInt(document.getElementById('lb-obs-metal').value) || 0) * 13;
+                const obsPlancher = (parseInt(document.getElementById('lb-obs-plancher').value) || 0) * 18;
+                const totalObsLoss = obsPlaco + obsVitre + obsBrique + obsBeton + obsMetal + obsPlancher;
+
+                // FSPL
+                const distKm = dist / 1000;
+                const fspl = 20 * Math.log10(distKm) + 20 * Math.log10(freq) + 32.44;
+
+                // Link budget
+                const rxPower = tx + gain - cable - fspl - totalObsLoss;
+                const margin = rxPower - threshold;
+
+                document.getElementById('lb-rx').innerHTML = rxPower.toFixed(1) + ' <span class="text-xs font-normal text-gray-400">dBm</span>';
+
+                const marginEl = document.getElementById('lb-margin');
+                const verdictEl = document.getElementById('lb-verdict');
+
+                marginEl.innerHTML = (margin >= 0 ? '+' : '') + margin.toFixed(1) + ' <span class="text-xs font-normal text-gray-400">dB</span>';
+
+                if (margin >= 10) {
+                    marginEl.className = 'text-xl font-bold text-accent-cyan';
+                    verdictEl.textContent = '✓ Excellent';
+                    verdictEl.className = 'text-sm font-bold text-accent-cyan';
+                } else if (margin >= 3) {
+                    marginEl.className = 'text-xl font-bold text-accent-green';
+                    verdictEl.textContent = '✓ Suffisant';
+                    verdictEl.className = 'text-sm font-bold text-accent-green';
+                } else if (margin >= 0) {
+                    marginEl.className = 'text-xl font-bold text-yellow-400';
+                    verdictEl.textContent = '⚠ Limite';
+                    verdictEl.className = 'text-sm font-bold text-yellow-400';
+                } else {
+                    marginEl.className = 'text-xl font-bold text-red-400';
+                    verdictEl.textContent = '✕ Insuffisant';
+                    verdictEl.className = 'text-sm font-bold text-red-400';
+                }
+
+                // Needle position: map rxPower from -90 to -30 => 0% to 100%
+                const needlePos = Math.max(0, Math.min(100, ((rxPower + 90) / 60) * 100));
+                document.getElementById('lb-needle').style.left = needlePos + '%';
+
+                // RX color
+                const rxEl = document.getElementById('lb-rx');
+                if (rxPower >= -65) rxEl.className = 'text-xl font-bold text-accent-cyan';
+                else if (rxPower >= -70) rxEl.className = 'text-xl font-bold text-accent-green';
+                else if (rxPower >= -75) rxEl.className = 'text-xl font-bold text-yellow-400';
+                else if (rxPower >= -80) rxEl.className = 'text-xl font-bold text-orange-400';
+                else rxEl.className = 'text-xl font-bold text-red-400';
+            };
+
+            // Init link budget
+            setTimeout(calcLinkBudget, 100);
+
+            // === AIRTIME / CAPACITY ESTIMATOR ===
+            const wifiCapacity = {
+                ac:   { 20: 86, 40: 200, 80: 433, 160: 866, 320: 866 },
+                ax:   { 20: 143, 40: 286, 80: 600, 160: 1201, 320: 1201 },
+                ax6e: { 20: 143, 40: 286, 80: 600, 160: 1201, 320: 1201 },
+                be:   { 20: 172, 40: 344, 80: 720, 160: 1441, 320: 2882 }
+            };
+
+            window.calcAirtime = function() {
+                const clients = parseInt(document.getElementById('at-clients').value) || 0;
+                const throughput = parseFloat(document.getElementById('at-throughput').value) || 0;
+                const standard = document.getElementById('at-standard').value;
+                const width = document.getElementById('at-width').value;
+
+                const maxRate = wifiCapacity[standard] ? (wifiCapacity[standard][width] || wifiCapacity[standard][80]) : 600;
+                // Real-world efficiency ~50% of PHY rate
+                const effectiveRate = maxRate * 0.5;
+                const totalDemand = clients * throughput;
+                const airtime = (totalDemand / effectiveRate) * 100;
+                const apsNeeded = Math.ceil(totalDemand / (effectiveRate * 0.8)); // 80% max utilization
+
+                document.getElementById('at-maxrate').innerHTML = maxRate + ' <span class="text-xs font-normal text-gray-400">Mbps</span>';
+                document.getElementById('at-airtime').innerHTML = airtime.toFixed(1) + ' <span class="text-xs font-normal text-gray-400">%</span>';
+                document.getElementById('at-aps').textContent = apsNeeded < 1 ? '1' : apsNeeded;
+
+                const bar = document.getElementById('at-bar');
+                bar.style.width = Math.min(airtime, 100) + '%';
+
+                if (airtime > 100) {
+                    bar.className = 'h-2.5 rounded-full bg-red-500 transition-all duration-300';
+                    document.getElementById('at-airtime').className = 'text-xl font-bold text-red-400';
+                } else if (airtime > 80) {
+                    bar.className = 'h-2.5 rounded-full bg-orange-400 transition-all duration-300';
+                    document.getElementById('at-airtime').className = 'text-xl font-bold text-orange-400';
+                } else if (airtime > 50) {
+                    bar.className = 'h-2.5 rounded-full bg-yellow-400 transition-all duration-300';
+                    document.getElementById('at-airtime').className = 'text-xl font-bold text-yellow-400';
+                } else {
+                    bar.className = 'h-2.5 rounded-full bg-accent-cyan transition-all duration-300';
+                    document.getElementById('at-airtime').className = 'text-xl font-bold text-accent-cyan';
+                }
+
+                const alertEl = document.getElementById('at-alert');
+                const alertText = document.getElementById('at-alert-text');
+
+                if (airtime > 80) {
+                    let msg = '';
+                    if (airtime > 100) {
+                        msg = '<strong>Surcharge !</strong> Airtime à ' + airtime.toFixed(0) + '%. Déployez au minimum <strong>' + apsNeeded + ' APs</strong> pour absorber la charge.';
+                    } else {
+                        msg = '<strong>Attention :</strong> Airtime à ' + airtime.toFixed(0) + '% — seuil critique. Envisagez un AP supplémentaire pour garantir la QoS.';
+                    }
+                    alertText.innerHTML = msg;
+                    alertEl.classList.remove('hidden');
+                } else {
+                    alertEl.classList.add('hidden');
+                }
+            };
+
+            // === SNR CALCULATOR ===
+            window.calcSNR = function() {
+                const signal = parseFloat(document.getElementById('snr-signal').value);
+                const noise = parseFloat(document.getElementById('snr-noise').value);
+                const resultEl = document.getElementById('snr-result');
+                const qualityEl = document.getElementById('snr-quality');
+                const needleEl = document.getElementById('snr-needle');
+
+                if (isNaN(signal)) {
+                    resultEl.innerHTML = '-- <span class="text-xs font-normal text-gray-400">dB</span>';
+                    qualityEl.textContent = '--';
+                    qualityEl.className = 'text-sm font-bold text-gray-500';
+                    needleEl.style.left = '0%';
+                    return;
+                }
+
+                const snr = signal - noise;
+                resultEl.innerHTML = snr.toFixed(1) + ' <span class="text-xs font-normal text-gray-400">dB</span>';
+
+                // Quality verdict
+                if (snr >= 40) {
+                    resultEl.className = 'text-xl font-bold text-accent-cyan';
+                    qualityEl.textContent = 'Excellent — VoIP, Vidéo HD';
+                    qualityEl.className = 'text-sm font-bold text-accent-cyan';
+                } else if (snr >= 25) {
+                    resultEl.className = 'text-xl font-bold text-accent-green';
+                    qualityEl.textContent = 'Bon — Data, VoIP';
+                    qualityEl.className = 'text-sm font-bold text-accent-green';
+                } else if (snr >= 15) {
+                    resultEl.className = 'text-xl font-bold text-yellow-400';
+                    qualityEl.textContent = 'Acceptable — Browsing';
+                    qualityEl.className = 'text-sm font-bold text-yellow-400';
+                } else if (snr >= 10) {
+                    resultEl.className = 'text-xl font-bold text-orange-400';
+                    qualityEl.textContent = 'Très faible — Déconnexions';
+                    qualityEl.className = 'text-sm font-bold text-orange-400';
+                } else {
+                    resultEl.className = 'text-xl font-bold text-red-400';
+                    qualityEl.textContent = 'Inutilisable';
+                    qualityEl.className = 'text-sm font-bold text-red-400';
+                }
+
+                // Needle: SNR 0-50 maps to 0%-100%
+                const pos = Math.max(0, Math.min(100, (snr / 50) * 100));
+                needleEl.style.left = pos + '%';
+            };
+
+            // === THROUGHPUT ESTIMATOR (MCS INDEX) ===
+            const mcsTable = {
+                ac: [
+                    { mcs: 0, mod: 'BPSK', coding: '1/2', rate: {20:6.5,40:13.5,80:29.3,160:58.5} },
+                    { mcs: 1, mod: 'QPSK', coding: '1/2', rate: {20:13,40:27,80:58.5,160:117} },
+                    { mcs: 2, mod: 'QPSK', coding: '3/4', rate: {20:19.5,40:40.5,80:87.8,160:175.5} },
+                    { mcs: 3, mod: '16-QAM', coding: '1/2', rate: {20:26,40:54,80:117,160:234} },
+                    { mcs: 4, mod: '16-QAM', coding: '3/4', rate: {20:39,40:81,80:175.5,160:351} },
+                    { mcs: 5, mod: '64-QAM', coding: '2/3', rate: {20:52,40:108,80:234,160:468} },
+                    { mcs: 6, mod: '64-QAM', coding: '3/4', rate: {20:58.5,40:121.5,80:263.3,160:526.5} },
+                    { mcs: 7, mod: '64-QAM', coding: '5/6', rate: {20:65,40:135,80:292.5,160:585} },
+                    { mcs: 8, mod: '256-QAM', coding: '3/4', rate: {20:78,40:162,80:351,160:702} },
+                    { mcs: 9, mod: '256-QAM', coding: '5/6', rate: {20:86.7,40:180,80:390,160:780} }
+                ],
+                ax: [
+                    { mcs: 0, mod: 'BPSK', coding: '1/2', rate: {20:8.6,40:17.2,80:36,160:72.1} },
+                    { mcs: 1, mod: 'QPSK', coding: '1/2', rate: {20:17.2,40:34.4,80:72.1,160:144.1} },
+                    { mcs: 2, mod: 'QPSK', coding: '3/4', rate: {20:25.8,40:51.6,80:108.1,160:216.2} },
+                    { mcs: 3, mod: '16-QAM', coding: '1/2', rate: {20:34.4,40:68.8,80:144.1,160:288.2} },
+                    { mcs: 4, mod: '16-QAM', coding: '3/4', rate: {20:51.6,40:103.2,80:216.2,160:432.4} },
+                    { mcs: 5, mod: '64-QAM', coding: '2/3', rate: {20:68.8,40:137.6,80:288.2,160:576.5} },
+                    { mcs: 6, mod: '64-QAM', coding: '3/4', rate: {20:77.4,40:154.9,80:324.3,160:648.5} },
+                    { mcs: 7, mod: '64-QAM', coding: '5/6', rate: {20:86,40:172.1,80:360.3,160:720.6} },
+                    { mcs: 8, mod: '256-QAM', coding: '3/4', rate: {20:103.2,40:206.5,80:432.4,160:864.7} },
+                    { mcs: 9, mod: '256-QAM', coding: '5/6', rate: {20:114.7,40:229.4,80:480.4,160:960.8} },
+                    { mcs: 10, mod: '1024-QAM', coding: '3/4', rate: {20:129,40:258.1,80:540.4,160:1080.9} },
+                    { mcs: 11, mod: '1024-QAM', coding: '5/6', rate: {20:143.4,40:286.8,80:600.5,160:1201} }
+                ],
+                be: [
+                    { mcs: 0, mod: 'BPSK', coding: '1/2', rate: {20:8.6,40:17.2,80:36,160:72.1,320:144.1} },
+                    { mcs: 1, mod: 'QPSK', coding: '1/2', rate: {20:17.2,40:34.4,80:72.1,160:144.1,320:288.2} },
+                    { mcs: 2, mod: 'QPSK', coding: '3/4', rate: {20:25.8,40:51.6,80:108.1,160:216.2,320:432.4} },
+                    { mcs: 3, mod: '16-QAM', coding: '1/2', rate: {20:34.4,40:68.8,80:144.1,160:288.2,320:576.5} },
+                    { mcs: 4, mod: '16-QAM', coding: '3/4', rate: {20:51.6,40:103.2,80:216.2,160:432.4,320:864.7} },
+                    { mcs: 5, mod: '64-QAM', coding: '2/3', rate: {20:68.8,40:137.6,80:288.2,160:576.5,320:1153} },
+                    { mcs: 6, mod: '64-QAM', coding: '3/4', rate: {20:77.4,40:154.9,80:324.3,160:648.5,320:1297.1} },
+                    { mcs: 7, mod: '64-QAM', coding: '5/6', rate: {20:86,40:172.1,80:360.3,160:720.6,320:1441.2} },
+                    { mcs: 8, mod: '256-QAM', coding: '3/4', rate: {20:103.2,40:206.5,80:432.4,160:864.7,320:1729.4} },
+                    { mcs: 9, mod: '256-QAM', coding: '5/6', rate: {20:114.7,40:229.4,80:480.4,160:960.8,320:1921.6} },
+                    { mcs: 10, mod: '1024-QAM', coding: '3/4', rate: {20:129,40:258.1,80:540.4,160:1080.9,320:2161.8} },
+                    { mcs: 11, mod: '1024-QAM', coding: '5/6', rate: {20:143.4,40:286.8,80:600.5,160:1201,320:2402} },
+                    { mcs: 12, mod: '4096-QAM', coding: '3/4', rate: {20:154.9,40:309.7,80:648.5,160:1297.1,320:2594.1} },
+                    { mcs: 13, mod: '4096-QAM', coding: '5/6', rate: {20:172.1,40:344.1,80:720.6,160:1441.2,320:2882.4} }
+                ]
+            };
+
+            const mcsSnrMin = [2,5,9,11,15,18,20,25,29,31,34,36,39,42];
+
+            window.calcMCS = function() {
+                const standard = document.getElementById('mcs-standard').value;
+                const ss = parseInt(document.getElementById('mcs-ss').value);
+                const width = parseInt(document.getElementById('mcs-width').value);
+                const gi = document.getElementById('mcs-gi').value;
+
+                const table = mcsTable[standard] || mcsTable.ax;
+                const tbody = document.getElementById('mcs-table-body');
+                const giMultiplier = gi === 'short' ? 1.11 : 1;
+
+                let maxRate = 0;
+                let rows = '';
+
+                table.forEach(row => {
+                    const baseRate = row.rate[width] || row.rate[80] || 0;
+                    const rate = (baseRate * ss * giMultiplier).toFixed(1);
+                    if (parseFloat(rate) > maxRate) maxRate = parseFloat(rate);
+                    const snr = mcsSnrMin[row.mcs] || '--';
+
+                    rows += '<tr class="border-t border-white/5 hover:bg-white/[0.02]">';
+                    rows += '<td class="py-1 px-1 text-accent-cyan font-bold">' + row.mcs + '</td>';
+                    rows += '<td class="py-1 px-1 text-gray-300">' + row.mod + '</td>';
+                    rows += '<td class="py-1 px-1 text-gray-400">' + row.coding + '</td>';
+                    rows += '<td class="py-1 px-1 text-right text-white font-semibold">' + rate + '</td>';
+                    rows += '<td class="py-1 px-1 text-right text-gray-500">' + snr + ' dB</td>';
+                    rows += '</tr>';
+                });
+
+                tbody.innerHTML = rows;
+                document.getElementById('mcs-max-rate').innerHTML = maxRate.toFixed(1) + ' <span class="text-xs font-normal text-gray-400">Mbps</span>';
+            };
+
+            // Init MCS table
+            setTimeout(calcMCS, 100);
+
             // Global Toolkit Export
             window.exportToolkit = function (format = 'txt') {
                 const data = {};
@@ -6146,6 +6877,41 @@
                     };
                 }
 
+                // Link Budget
+                const lbRx = document.getElementById('lb-rx').textContent.trim();
+                if (!lbRx.startsWith('--')) {
+                    data.link_budget = {
+                        signal_received: lbRx,
+                        margin: document.getElementById('lb-margin').textContent.trim(),
+                        verdict: document.getElementById('lb-verdict').textContent.trim()
+                    };
+                }
+
+                // SNR
+                const snrVal = document.getElementById('snr-result').textContent.trim();
+                if (!snrVal.startsWith('--')) {
+                    data.snr_calculator = {
+                        snr: snrVal,
+                        quality: document.getElementById('snr-quality').textContent.trim()
+                    };
+                }
+
+                // Airtime
+                const atAirtime = document.getElementById('at-airtime').textContent.trim();
+                if (!atAirtime.startsWith('--')) {
+                    data.airtime_estimator = {
+                        airtime: atAirtime,
+                        max_rate: document.getElementById('at-maxrate').textContent.trim(),
+                        aps_needed: document.getElementById('at-aps').textContent.trim()
+                    };
+                }
+
+                // MCS Throughput
+                const mcsMax = document.getElementById('mcs-max-rate').textContent.trim();
+                if (!mcsMax.startsWith('--')) {
+                    data.throughput_estimator = { max_phy_rate: mcsMax };
+                }
+
                 let content = "";
                 let mimeType = "";
 
@@ -6167,6 +6933,10 @@
                     content += "--- Pôle Wi-Fi / RF ---\n\n";
                     if (data.rf_calculator) content += `[Calcul RF]\nEIRP: ${data.rf_calculator.eirp_dbm} / ${data.rf_calculator.eirp_mw}\n\n`;
                     if (data.fspl) content += `[Perte FSPL]\nResultat: ${data.fspl.loss}\n\n`;
+                    if (data.link_budget) content += `[Link Budget]\nSignal reçu: ${data.link_budget.signal_received}\nMarge: ${data.link_budget.margin}\nVerdict: ${data.link_budget.verdict}\n\n`;
+                    if (data.snr_calculator) content += `[SNR Calculator]\nSNR: ${data.snr_calculator.snr}\nQualité: ${data.snr_calculator.quality}\n\n`;
+                    if (data.airtime_estimator) content += `[Airtime Estimator]\nAirtime: ${data.airtime_estimator.airtime}\nDébit AP max: ${data.airtime_estimator.max_rate}\nAPs nécessaires: ${data.airtime_estimator.aps_needed}\n\n`;
+                    if (data.throughput_estimator) content += `[Throughput MCS]\nDébit PHY max: ${data.throughput_estimator.max_phy_rate}\n\n`;
                     if (data.reason_code) content += `[Reason Code 802.11]\nCode: ${data.reason_code.code}\nNom: ${data.reason_code.name}\nDescription: ${data.reason_code.description}\n\n`;
                     content += "--- Pôle Réseau / NAC ---\n\n";
                     if (data.dacl_generator) content += `[dACL Cisco ISE]\nNom: ${data.dacl_generator.dacl_name}\nConfig:\n${data.dacl_generator.config}\n\n`;
