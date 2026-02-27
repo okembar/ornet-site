@@ -691,7 +691,7 @@
                             </div>
                             <div><span class="text-3xl font-bold text-white counter" data-target="99.9">0</span><span
                                     class="text-accent-green text-2xl font-bold">%</span>
-                                <p class="text-xs text-gray-400 mt-1">Uptime réseau</p>
+                                <p class="text-xs text-gray-400 mt-1">Uptime post-optimisation</p>
                             </div>
                             <div><span class="text-3xl font-bold text-white counter" data-target="12">0</span><span
                                     class="text-accent-cyan text-2xl font-bold">+</span>
@@ -969,51 +969,7 @@
                         <p class="text-gray-400">Des interventions concrètes. Des résultats mesurables.</p>
                     </div>
                     <div class="grid md:grid-cols-3 gap-6">
-                        <!-- Cas 1 : Santé -->
-                        <div class="glass-card result-card rounded-2xl p-6 fade-in">
-                            <div class="flex items-center gap-3 mb-4">
-                                <div
-                                    class="w-10 h-10 gradient-blue rounded-lg flex items-center justify-center shrink-0">
-                                    <svg class="w-5 h-5 text-white" fill="none" stroke="currentColor"
-                                        viewBox="0 0 24 24">
-                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"
-                                            d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z" />
-                                    </svg>
-                                </div>
-                                <div>
-                                    <p class="text-xs text-accent-cyan font-semibold uppercase tracking-wider">Secteur
-                                        Santé</p>
-                                    <p class="text-sm font-semibold text-white">Groupe hospitalier — 6 sites</p>
-                                </div>
-                            </div>
-                            <div class="space-y-3 text-sm">
-                                <div>
-                                    <p class="text-gray-500 text-xs font-medium uppercase mb-1">Problème</p>
-                                    <p class="text-gray-400">Déconnexions VoWi-Fi, scanners RF perdent la connexion
-                                        15×/jour. 400 endpoints impactés.</p>
-                                </div>
-                                <div>
-                                    <p class="text-gray-500 text-xs font-medium uppercase mb-1">Action ORNET</p>
-                                    <p class="text-gray-400">Audit Ekahau + design HLD/LLD + déploiement + validation
-                                        post-déploiement.</p>
-                                </div>
-                                <div class="bg-dark-800 rounded-xl p-3">
-                                    <p class="text-gray-500 text-xs font-medium uppercase mb-2">Résultat</p>
-                                    <div class="flex flex-wrap gap-3">
-                                        <span
-                                            class="text-xs text-accent-green bg-accent-green/10 px-2 py-1 rounded-full">✓
-                                            0 déconnexion</span>
-                                        <span
-                                            class="text-xs text-accent-green bg-accent-green/10 px-2 py-1 rounded-full">✓
-                                            99.95% uptime</span>
-                                        <span
-                                            class="text-xs text-accent-green bg-accent-green/10 px-2 py-1 rounded-full">✓
-                                            Roaming &lt; 50ms</span>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <!-- Cas 2 : Logistique -->
+                        <!-- Cas 1 : Logistique — Migration Hybride Wi-Fi 5/6 -->
                         <div class="glass-card result-card rounded-2xl p-6 fade-in">
                             <div class="flex items-center gap-3 mb-4">
                                 <div
@@ -1032,32 +988,77 @@
                             </div>
                             <div class="space-y-3 text-sm">
                                 <div>
-                                    <p class="text-gray-500 text-xs font-medium uppercase mb-1">Problème</p>
-                                    <p class="text-gray-400">Latence MQTT 300ms (limite 50ms), 200 scanners Zebra en
-                                        timeout, productivité en chute.</p>
+                                    <p class="text-gray-500 text-xs font-medium uppercase mb-1">Challenge</p>
+                                    <p class="text-gray-400">800 scanners Wi-Fi 5 en déconnexion sur une infrastructure
+                                        Wi-Fi 6. Conflit de backward compatibility et gestion des trames d'efficience.
+                                    </p>
                                 </div>
                                 <div>
-                                    <p class="text-gray-500 text-xs font-medium uppercase mb-1">Action ORNET</p>
-                                    <p class="text-gray-400">Troubleshooting spectral, détection interférences,
-                                        optimisation RF complète.</p>
+                                    <p class="text-gray-500 text-xs font-medium uppercase mb-1">Solution ORNET</p>
+                                    <p class="text-gray-400">Optimisation des profils RF pour le mix Wi-Fi 5/6,
+                                        ajustement data rates et roaming inter-AP.</p>
                                 </div>
                                 <div class="bg-dark-800 rounded-xl p-3">
-                                    <p class="text-gray-500 text-xs font-medium uppercase mb-2">Résultat</p>
+                                    <p class="text-gray-500 text-xs font-medium uppercase mb-2">Impact</p>
                                     <div class="flex flex-wrap gap-3">
                                         <span
                                             class="text-xs text-accent-green bg-accent-green/10 px-2 py-1 rounded-full">✓
-                                            Latence 25ms</span>
+                                            99.9% uptime</span>
                                         <span
                                             class="text-xs text-accent-green bg-accent-green/10 px-2 py-1 rounded-full">✓
-                                            +35% productivité</span>
+                                            0 timeout scanner</span>
                                         <span
                                             class="text-xs text-accent-green bg-accent-green/10 px-2 py-1 rounded-full">✓
-                                            0 timeout</span>
+                                            Parc hétérogène stabilisé</span>
                                     </div>
                                 </div>
                             </div>
                         </div>
-                        <!-- Cas 3 : ISE/NAC -->
+                        <!-- Cas 2 : Luxe — Wi-Fi 6E Avant-garde -->
+                        <div class="glass-card result-card rounded-2xl p-6 fade-in">
+                            <div class="flex items-center gap-3 mb-4">
+                                <div
+                                    class="w-10 h-10 gradient-blue rounded-lg flex items-center justify-center shrink-0">
+                                    <svg class="w-5 h-5 text-white" fill="none" stroke="currentColor"
+                                        viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"
+                                            d="M5 3v4M3 5h4M6 17v4m-2-2h4m5-16l2.286 6.857L21 12l-5.714 2.143L13 21l-2.286-6.857L5 12l5.714-2.143L13 3z" />
+                                    </svg>
+                                </div>
+                                <div>
+                                    <p class="text-xs text-accent-cyan font-semibold uppercase tracking-wider">
+                                        Luxe</p>
+                                    <p class="text-sm font-semibold text-white">Siège & Showroom — Wi-Fi 6E</p>
+                                </div>
+                            </div>
+                            <div class="space-y-3 text-sm">
+                                <div>
+                                    <p class="text-gray-500 text-xs font-medium uppercase mb-1">Challenge</p>
+                                    <p class="text-gray-400">Isolation totale des flux VIP lors des événements et des
+                                        sessions de conception haute fidélité. Zéro tolérance aux interférences.</p>
+                                </div>
+                                <div>
+                                    <p class="text-gray-500 text-xs font-medium uppercase mb-1">Solution ORNET</p>
+                                    <p class="text-gray-400">Déploiement Wi-Fi 6E avec bande 6 GHz dédiée aux terminaux
+                                        de direction. Coexistence transparente avec le parc Wi-Fi 5/6 existant.</p>
+                                </div>
+                                <div class="bg-dark-800 rounded-xl p-3">
+                                    <p class="text-gray-500 text-xs font-medium uppercase mb-2">Impact</p>
+                                    <div class="flex flex-wrap gap-3">
+                                        <span
+                                            class="text-xs text-accent-green bg-accent-green/10 px-2 py-1 rounded-full">✓
+                                            Latence ultra-faible</span>
+                                        <span
+                                            class="text-xs text-accent-green bg-accent-green/10 px-2 py-1 rounded-full">✓
+                                            0 interférence VIP</span>
+                                        <span
+                                            class="text-xs text-accent-green bg-accent-green/10 px-2 py-1 rounded-full">✓
+                                            6 GHz isolé</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Cas 3 : Industrie NAC — Sécurisation Multi-Génération -->
                         <div class="glass-card result-card green rounded-2xl p-6 fade-in">
                             <div class="flex items-center gap-3 mb-4">
                                 <div
@@ -1070,33 +1071,35 @@
                                 </div>
                                 <div>
                                     <p class="text-xs text-accent-green font-semibold uppercase tracking-wider">
-                                        Cybersécurité</p>
-                                    <p class="text-sm font-semibold text-white">Migration ISE — 500 endpoints</p>
+                                        Industrie & Sécurité</p>
+                                    <p class="text-sm font-semibold text-white">NAC Zero Trust — 4 500+ endpoints</p>
                                 </div>
                             </div>
                             <div class="space-y-3 text-sm">
                                 <div>
-                                    <p class="text-gray-500 text-xs font-medium uppercase mb-1">Problème</p>
-                                    <p class="text-gray-400">Migration ACS legacy → Cisco ISE 3.x. Zéro interruption
-                                        exigée, policy sets complexes.</p>
+                                    <p class="text-gray-500 text-xs font-medium uppercase mb-1">Challenge</p>
+                                    <p class="text-gray-400">Sécuriser un parc hétérogène : capteurs IoT legacy (Wi-Fi
+                                        5) et automates récents (Wi-Fi 6). Aucune visibilité sur les endpoints
+                                        connectés.</p>
                                 </div>
                                 <div>
-                                    <p class="text-gray-500 text-xs font-medium uppercase mb-1">Action ORNET</p>
-                                    <p class="text-gray-400">Architecture ISE + migration progressive + tests de
-                                        validation complets.</p>
+                                    <p class="text-gray-500 text-xs font-medium uppercase mb-1">Solution ORNET</p>
+                                    <p class="text-gray-400">Cisco ISE avec segmentation dynamique TrustSec adaptée aux
+                                        capacités réelles de chaque terminal. Profiling IoT et policies par device type.
+                                    </p>
                                 </div>
                                 <div class="bg-dark-800 rounded-xl p-3">
-                                    <p class="text-gray-500 text-xs font-medium uppercase mb-2">Résultat</p>
+                                    <p class="text-gray-500 text-xs font-medium uppercase mb-2">Impact</p>
                                     <div class="flex flex-wrap gap-3">
                                         <span
                                             class="text-xs text-accent-green bg-accent-green/10 px-2 py-1 rounded-full">✓
+                                            100% endpoints identifiés</span>
+                                        <span
+                                            class="text-xs text-accent-green bg-accent-green/10 px-2 py-1 rounded-full">✓
+                                            -87% incidents sécurité</span>
+                                        <span
+                                            class="text-xs text-accent-green bg-accent-green/10 px-2 py-1 rounded-full">✓
                                             0 downtime</span>
-                                        <span
-                                            class="text-xs text-accent-green bg-accent-green/10 px-2 py-1 rounded-full">✓
-                                            100% sécurisés</span>
-                                        <span
-                                            class="text-xs text-accent-green bg-accent-green/10 px-2 py-1 rounded-full">✓
-                                            Audit trail complet</span>
                                     </div>
                                 </div>
                             </div>
@@ -1326,10 +1329,12 @@
                                 </svg>
                             </div>
                             <div class="faq-answer text-sm text-gray-400">
-                                ISE ajoute l'identité au réseau. Au lieu d'assigner un VLAN par port, ISE identifie
-                                qui/quoi se connecte (user, device type, posture) et assigne dynamiquement les droits
-                                d'accès. Segmentation Zero Trust, profiling IoT, portails guest : impossible avec un
-                                switch seul.
+                                La valeur d'ISE réside dans la segmentation dynamique (TrustSec) et le profiling avancé.
+                                Plutôt qu'un VLAN statique par port, ISE identifie en temps réel qui/quoi se connecte
+                                (identité, type de device, posture) et assigne un Security Group Tag (SGT) avec des
+                                droits d'accès adaptés. C'est cette intelligence centralisée — profiling IoT, portails
+                                guest, politiques différenciées — qui transforme votre réseau en architecture Zero
+                                Trust.
                             </div>
                         </div>
                     </div>
@@ -3233,8 +3238,9 @@
                                                         d'efficacité
                                                         spectrale à portée courte</li>
                                                     <li>• <strong class="text-white">Preamble puncturing</strong> :
-                                                        utilisation
-                                                        des canaux partiellement occupés par radar DFS</li>
+                                                        exploitation
+                                                        des canaux fragmentés sans attendre la libération du spectre
+                                                        complet</li>
                                                     <li>• Prépare l'infrastructure pour les 5-7 prochaines années</li>
                                                 </ul>
                                             </div>
@@ -3291,7 +3297,9 @@
                                     <div class="mt-8 pt-6 border-t border-white/5">
                                         <h4 class="font-bold text-white mb-3">Points clés à retenir :</h4>
                                         <ul class="text-sm text-gray-400 space-y-2 mb-6 ml-4 list-[circle]">
-                                            <li>Le 320 MHz est quasi-inutilisable en entreprise à cause du DFS.</li>
+                                            <li>Le 320 MHz en entreprise est limité par les contraintes LPI/VLP en
+                                                Europe et la densité spectrale en 6 GHz, pas par le DFS (propre au 5
+                                                GHz).</li>
                                             <li>MLO est la véritable révolution pour la latence et la fiabilité.</li>
                                             <li>Wi-Fi 6E reste la recommandation standard en 2025 pour la majorité des
                                                 cas d'usage.</li>
@@ -4034,11 +4042,13 @@
 
                         </div>
 
-                        <!-- Colonne Widget / Toolkit -->
+                        <!-- Colonne Widget / Sidebar compacte -->
                         <div class="hidden lg:block col-span-1 sticky top-24 space-y-6 fade-in">
-                            <div class="glass-card rounded-2xl p-6 border-l-2 border-accent-cyan/30">
-                                <h3 class="text-xl font-bold mb-4 flex items-center gap-2">
-                                    <svg class="w-5 h-5 text-accent-cyan" fill="none" stroke="currentColor"
+                            <!-- Engineering Lab — Bandeau compact -->
+                            <div class="glass-card rounded-2xl p-6 border-l-2 border-accent-cyan/30 text-center">
+                                <div
+                                    class="w-12 h-12 rounded-xl bg-accent-cyan/10 flex items-center justify-center mx-auto mb-4">
+                                    <svg class="w-6 h-6 text-accent-cyan" fill="none" stroke="currentColor"
                                         viewBox="0 0 24 24">
                                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                                             d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z">
@@ -4046,366 +4056,76 @@
                                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                                             d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path>
                                     </svg>
-                                    Engineering Lab
-                                </h3>
-                                <p class="text-xs text-gray-500 mb-4">Outils utilisés dans nos missions terrain.</p>
-
-                                <!-- Tabs -->
-                                <div class="mb-6 space-y-4">
-                                    <!-- Pôle Wi-Fi -->
-                                    <div class="flex flex-wrap items-center gap-3 border-b border-white/10">
-                                        <span
-                                            class="pb-2 text-xs font-bold text-gray-500 uppercase tracking-wider mr-2">Pôle
-                                            Wi-Fi</span>
-                                        <button onclick="switchToolkitTab('wifi')" id="tab-wifi"
-                                            class="pb-2 text-sm font-semibold text-accent-cyan border-b-2 border-accent-cyan transition-colors px-1">Calcul
-                                            RF</button>
-                                        <button onclick="switchToolkitTab('fspl')" id="tab-fspl"
-                                            class="pb-2 text-sm font-medium text-gray-500 hover:text-gray-300 border-b-2 border-transparent transition-colors px-1">FSPL</button>
-                                    </div>
-                                    <!-- Pôle IP/Infra -->
-                                    <div class="flex flex-wrap items-center gap-3 border-b border-white/10">
-                                        <span
-                                            class="pb-2 text-xs font-bold text-gray-500 uppercase tracking-wider mr-2">Pôle
-                                            IP/Infra</span>
-                                        <button onclick="switchToolkitTab('ipv4')" id="tab-ipv4"
-                                            class="pb-2 text-sm font-medium text-gray-500 hover:text-gray-300 border-b-2 border-transparent transition-colors px-1">Subnet
-                                            Calculator</button>
-                                        <button onclick="switchToolkitTab('dhcp')" id="tab-dhcp"
-                                            class="pb-2 text-sm font-medium text-gray-500 hover:text-gray-300 border-b-2 border-transparent transition-colors px-1">DHCP
-                                            Opt 43</button>
-                                        <button onclick="switchToolkitTab('mac')" id="tab-mac"
-                                            class="pb-2 text-sm font-medium text-gray-500 hover:text-gray-300 border-b-2 border-transparent transition-colors px-1">MAC
-                                            Format</button>
-                                    </div>
                                 </div>
+                                <h3 class="text-lg font-bold text-white mb-2">🛠 Engineering Lab</h3>
+                                <p class="text-sm text-gray-400 mb-4">Calculateurs RF, Subnet, FSPL, MAC Converter — les
+                                    outils terrain de l'ingénieur réseau.</p>
+                                <a href="#"
+                                    class="inline-flex items-center gap-2 text-accent-cyan text-sm font-semibold hover:underline transition-colors">
+                                    Accéder aux outils
+                                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                            d="M17 8l4 4m0 0l-4 4m4-4H3" />
+                                    </svg>
+                                </a>
+                            </div>
 
-                                <!-- Outil 1 : RF Calculator -->
-                                <div id="tool-wifi" class="space-y-4">
-                                    <div>
-                                        <label class="block text-xs font-medium text-gray-400 mb-1">Puissance Tx</label>
-                                        <div class="flex gap-2">
-                                            <div class="relative flex-1">
-                                                <input type="number" id="calc-dbm" oninput="calcRF('dbm')"
-                                                    placeholder="Ex: 15"
-                                                    class="w-full bg-dark-900 border border-white/10 rounded-lg py-2 px-3 text-sm text-white focus:outline-none focus:border-accent-cyan transition-colors">
-                                                <span class="absolute right-3 top-2.5 text-xs text-gray-500">dBm</span>
-                                            </div>
-                                            <div class="relative flex-1">
-                                                <input type="number" id="calc-mw" oninput="calcRF('mw')"
-                                                    placeholder="Ex: 31.6"
-                                                    class="w-full bg-dark-900 border border-white/10 rounded-lg py-2 px-3 text-sm text-white focus:outline-none focus:border-accent-cyan transition-colors">
-                                                <span class="absolute right-3 top-2.5 text-xs text-gray-500">mW</span>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div>
-                                        <label class="block text-xs font-medium text-gray-400 mb-1">Gain Antenne
-                                            (dBi)</label>
-                                        <div class="relative">
-                                            <input type="number" id="calc-dbi" oninput="calcRF('dbi')"
-                                                placeholder="Ex: 3"
-                                                class="w-full bg-dark-900 border border-white/10 rounded-lg py-2 px-3 text-sm text-white focus:outline-none focus:border-accent-cyan transition-colors">
-                                            <span class="absolute right-3 top-2.5 text-xs text-gray-500">dBi</span>
-                                        </div>
-                                    </div>
-                                    <div class="bg-dark-900 rounded-lg p-3 border border-white/5 mt-4">
-                                        <div class="text-xs text-gray-500 mb-1">EIRP / PIRE Résultante</div>
-                                        <div class="flex justify-between items-end">
-                                            <div class="text-xl font-bold text-white" id="eirp-dbm">-- <span
-                                                    class="text-sm font-normal text-gray-400">dBm</span></div>
-                                            <div class="text-lg font-medium text-accent-green" id="eirp-mw">-- <span
-                                                    class="text-sm font-normal text-accent-green/70">mW</span></div>
-                                        </div>
-                                    </div>
+                            <!-- CTA Audit Découverte -->
+                            <div class="glass-card rounded-2xl p-6 text-center">
+                                <div
+                                    class="w-12 h-12 rounded-xl gradient-blue flex items-center justify-center mx-auto mb-4">
+                                    <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor"
+                                        viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                            d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
+                                    </svg>
                                 </div>
-
-                                <!-- Outil 2 : DHCP Option 43 -->
-                                <div id="tool-dhcp" class="space-y-4 hidden">
-                                    <p class="text-xs text-gray-400 mb-3">Générateur Cisco WLC (Type F1)</p>
-                                    <div>
-                                        <label class="block text-xs font-medium text-gray-400 mb-1">Adresse(s) IP WLC
-                                            (Séparées par virgules)</label>
-                                        <input type="text" id="wlc-ips" oninput="generateOption43()"
-                                            placeholder="192.168.1.10, 10.0.0.5"
-                                            class="w-full bg-dark-900 border border-white/10 rounded-lg py-2 px-3 text-sm text-white focus:outline-none focus:border-accent-cyan transition-colors">
-                                        <p id="dhcp-error" class="text-xs text-red-400 mt-1 hidden">Format IP invalide
-                                        </p>
-                                    </div>
-
-                                    <div class="space-y-3 mt-4">
-                                        <div>
-                                            <div class="flex justify-between items-center mb-1">
-                                                <label class="text-xs font-medium text-gray-400">Valeur Hex
-                                                    (Ascii)</label>
-                                                <button onclick="copyToClipboard(event, 'dhcp-hex-out')"
-                                                    class="text-xs text-accent-cyan hover:underline">Copier</button>
-                                            </div>
-                                            <div id="dhcp-hex-out"
-                                                class="bg-dark-900 border border-white/5 rounded-lg p-2 text-sm font-mono text-gray-300 break-all min-h-[38px]">
-                                            </div>
-                                        </div>
-                                        <div>
-                                            <div class="flex justify-between items-center mb-1">
-                                                <label class="text-xs font-medium text-gray-400">Commande Cisco
-                                                    IOS</label>
-                                                <button onclick="copyToClipboard(event, 'dhcp-cmd-out')"
-                                                    class="text-xs text-accent-cyan hover:underline">Copier</button>
-                                            </div>
-                                            <div id="dhcp-cmd-out"
-                                                class="bg-dark-900 border border-white/5 rounded-lg p-2 text-xs font-mono text-accent-green break-all min-h-[38px]">
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <!-- Outil 3 : MAC Formatter -->
-                                <div id="tool-mac" class="space-y-4 hidden">
-                                    <p class="text-xs text-gray-400 mb-3">Convertisseur MAC Universel</p>
-                                    <div>
-                                        <label class="block text-xs font-medium text-gray-400 mb-1">Coller une adresse
-                                            MAC (n'importe quel format)</label>
-                                        <input type="text" id="mac-input" oninput="formatMac()"
-                                            placeholder="Ex: 00:11:22:33:44:55"
-                                            class="w-full bg-dark-900 border border-white/10 rounded-lg py-2 px-3 text-sm text-white focus:outline-none focus:border-accent-cyan transition-colors">
-                                        <p id="mac-error" class="text-xs text-red-400 mt-1 hidden">MAC invalide</p>
-                                    </div>
-                                    <div class="space-y-3 mt-4">
-                                        <div>
-                                            <div class="flex justify-between items-center mb-1">
-                                                <label class="text-xs font-medium text-gray-400">Cisco IOS
-                                                    (xxxx.xxxx.xxxx)</label>
-                                                <button onclick="copyToClipboard(event, 'mac-cisco-out')"
-                                                    class="text-xs text-accent-cyan hover:underline">Copier</button>
-                                            </div>
-                                            <div id="mac-cisco-out"
-                                                class="bg-dark-900 border border-white/5 rounded-lg p-2 text-sm font-mono text-gray-300 min-h-[38px]">
-                                            </div>
-                                        </div>
-                                        <div>
-                                            <div class="flex justify-between items-center mb-1">
-                                                <label class="text-xs font-medium text-gray-400">Standard / Linux
-                                                    (xx:xx:xx:xx:xx:xx)</label>
-                                                <button onclick="copyToClipboard(event, 'mac-std-out')"
-                                                    class="text-xs text-accent-cyan hover:underline">Copier</button>
-                                            </div>
-                                            <div id="mac-std-out"
-                                                class="bg-dark-900 border border-white/5 rounded-lg p-2 text-sm font-mono text-gray-300 min-h-[38px]">
-                                            </div>
-                                        </div>
-                                        <div>
-                                            <div class="flex justify-between items-center mb-1">
-                                                <label class="text-xs font-medium text-gray-400">Windows
-                                                    (xx-xx-xx-xx-xx-xx)</label>
-                                                <button onclick="copyToClipboard(event, 'mac-win-out')"
-                                                    class="text-xs text-accent-cyan hover:underline">Copier</button>
-                                            </div>
-                                            <div id="mac-win-out"
-                                                class="bg-dark-900 border border-white/5 rounded-lg p-2 text-sm font-mono text-gray-300 min-h-[38px]">
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <!-- Outil 4 : Subnet Calculator (Enhanced) -->
-                                <div id="tool-ipv4" class="space-y-4 hidden">
-                                    <p class="text-xs text-gray-400 mb-3">Calculateur IPv4 / CIDR — Visual Subnet</p>
-                                    <div>
-                                        <label class="block text-xs font-medium text-gray-400 mb-1">Réseau CIDR
-                                            (ex: 192.168.1.0/24)</label>
-                                        <input type="text" id="cidr-input" oninput="calcSubnet()"
-                                            placeholder="192.168.1.0/24"
-                                            class="w-full bg-dark-900 border border-white/10 rounded-lg py-2 px-3 text-sm text-white focus:outline-none focus:border-accent-cyan transition-colors">
-                                        <p id="cidr-error" class="text-xs text-red-400 mt-1 hidden">Format CIDR
-                                            invalide</p>
-                                    </div>
-
-                                    <!-- Résumé réseau -->
-                                    <div class="grid grid-cols-2 gap-2 mt-4">
-                                        <div class="bg-dark-900 rounded-lg p-2 border border-white/5">
-                                            <div class="text-[10px] text-gray-500">Réseau</div>
-                                            <div id="ipv4-network" class="text-xs font-mono text-white">--</div>
-                                        </div>
-                                        <div class="bg-dark-900 rounded-lg p-2 border border-white/5">
-                                            <div class="text-[10px] text-gray-500">Broadcast</div>
-                                            <div id="ipv4-broadcast" class="text-xs font-mono text-white">--</div>
-                                        </div>
-                                        <div class="bg-dark-900 rounded-lg p-2 border border-white/5">
-                                            <div class="text-[10px] text-gray-500">Première IP</div>
-                                            <div id="ipv4-first" class="text-xs font-mono text-accent-cyan">--</div>
-                                        </div>
-                                        <div class="bg-dark-900 rounded-lg p-2 border border-white/5">
-                                            <div class="text-[10px] text-gray-500">Dernière IP</div>
-                                            <div id="ipv4-last" class="text-xs font-mono text-accent-cyan">--</div>
-                                        </div>
-                                        <div class="bg-dark-900 rounded-lg p-2 border border-white/5">
-                                            <div class="text-[10px] text-gray-500">Masque</div>
-                                            <div id="ipv4-mask" class="text-xs font-mono text-gray-300">--</div>
-                                        </div>
-                                        <div class="bg-dark-900 rounded-lg p-2 border border-white/5">
-                                            <div class="text-[10px] text-gray-500">Wildcard</div>
-                                            <div id="ipv4-wildcard" class="text-xs font-mono text-gray-300">--</div>
-                                        </div>
-                                        <div class="bg-dark-900 rounded-lg p-2 border border-white/5">
-                                            <div class="text-[10px] text-gray-500">Hôtes utilisables</div>
-                                            <div id="ipv4-hosts" class="text-xs font-mono text-accent-green">--</div>
-                                        </div>
-                                        <div class="bg-dark-900 rounded-lg p-2 border border-white/5">
-                                            <div class="text-[10px] text-gray-500">Classe / Type</div>
-                                            <div id="ipv4-class" class="text-xs font-mono text-gray-300">--</div>
-                                        </div>
-                                    </div>
-
-                                    <!-- Découpage en sous-réseaux -->
-                                    <div id="subnet-split-section" class="mt-4 hidden">
-                                        <div class="flex items-center justify-between mb-2">
-                                            <h5 class="text-xs font-semibold text-white uppercase tracking-wider">
-                                                Découpage en sous-réseaux</h5>
-                                            <button onclick="resetSubnets()"
-                                                class="text-[10px] text-gray-500 hover:text-accent-cyan transition-colors">Réinitialiser</button>
-                                        </div>
-                                        <div class="overflow-x-auto rounded-lg border border-white/10">
-                                            <table class="w-full text-[11px]">
-                                                <thead>
-                                                    <tr class="bg-dark-800 text-gray-400">
-                                                        <th class="text-left py-1.5 px-2 font-medium">Sous-réseau</th>
-                                                        <th class="text-left py-1.5 px-2 font-medium">Plage</th>
-                                                        <th class="text-left py-1.5 px-2 font-medium">IPs Utilisables
-                                                        </th>
-                                                        <th class="text-center py-1.5 px-2 font-medium">Hôtes</th>
-                                                        <th class="text-center py-1.5 px-2 font-medium">Actions</th>
-                                                    </tr>
-                                                </thead>
-                                                <tbody id="subnet-table-body">
-                                                </tbody>
-                                            </table>
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <!-- Outil 5 : FSPL Calculator -->
-                                <div id="tool-fspl" class="space-y-4 hidden">
-                                    <p class="text-xs text-gray-400 mb-3">Free Space Path Loss (Perte d'espace libre)
-                                    </p>
-                                    <div>
-                                        <label class="block text-xs font-medium text-gray-400 mb-1">Bande de
-                                            Fréquence</label>
-                                        <select id="fspl-freq" onchange="calcFSPL()"
-                                            class="w-full bg-dark-900 border border-white/10 rounded-lg py-2 px-3 text-sm text-white focus:outline-none focus:border-accent-cyan transition-colors">
-                                            <option value="2412">2.4 GHz (802.11b/g/n/ax)</option>
-                                            <option value="5500" selected>5 GHz (802.11a/n/ac/ax)</option>
-                                            <option value="6115">6 GHz (802.11ax/be - Wi-Fi 6E/7)</option>
-                                        </select>
-                                    </div>
-                                    <div>
-                                        <label class="block text-xs font-medium text-gray-400 mb-1">Distance
-                                            Totale</label>
-                                        <div class="relative">
-                                            <input type="number" id="fspl-dist" oninput="calcFSPL()"
-                                                placeholder="Ex: 10"
-                                                class="w-full bg-dark-900 border border-white/10 rounded-lg py-2 px-3 text-sm text-white focus:outline-none focus:border-accent-cyan transition-colors">
-                                            <span class="absolute right-3 top-2.5 text-xs text-gray-500">mètres</span>
-                                        </div>
-                                    </div>
-                                    <div class="bg-dark-900 rounded-lg p-3 border border-white/5 mt-4 text-center">
-                                        <div class="text-xs text-gray-500 mb-1">Atténuation dans l'air (FSPL)</div>
-                                        <div class="text-xl font-bold text-red-400" id="fspl-result">-- <span
-                                                class="text-sm font-normal text-red-400/70">dB</span></div>
-                                    </div>
-                                </div>
-
-                                <!-- Boutons d'export Global -->
-                                <div class="mt-8 border-t border-white/10 pt-6">
-                                    <div class="flex flex-wrap gap-3 justify-center">
-                                        <button onclick="exportToolkit('txt')"
-                                            class="flex-1 py-2.5 bg-dark-800 border border-white/10 text-white font-medium rounded-lg hover:bg-dark-900 hover:border-accent-cyan transition-all text-sm flex items-center justify-center gap-2">
-                                            <svg class="w-4 h-4 shrink-0" fill="none" stroke="currentColor"
-                                                viewBox="0 0 24 24">
-                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                                    d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4">
-                                                </path>
-                                            </svg>
-                                            TXT
-                                        </button>
-                                        <button onclick="exportToolkit('json')"
-                                            class="flex-1 py-2.5 bg-dark-800 border border-white/10 text-white font-medium rounded-lg hover:bg-dark-900 hover:border-accent-cyan transition-all text-sm flex items-center justify-center gap-2">
-                                            <svg class="w-4 h-4 shrink-0" fill="none" stroke="currentColor"
-                                                viewBox="0 0 24 24">
-                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                                    d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4">
-                                                </path>
-                                            </svg>
-                                            JSON
-                                        </button>
-                                        <button onclick="exportToolkit('csv')"
-                                            class="flex-1 py-2.5 bg-dark-800 border border-white/10 text-white font-medium rounded-lg hover:bg-dark-900 hover:border-accent-cyan transition-all text-sm flex items-center justify-center gap-2">
-                                            <svg class="w-4 h-4 shrink-0" fill="none" stroke="currentColor"
-                                                viewBox="0 0 24 24">
-                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                                    d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4">
-                                                </path>
-                                            </svg>
-                                            CSV
-                                        </button>
-                                    </div>
-                                    <p class="text-center text-xs text-gray-500 mt-3">Exportez vos résultats pour les
-                                        intégrer dans
-                                        vos rapports ou scripts.</p>
-                                </div>
+                                <h4 class="text-base font-bold text-white mb-2">Besoin d'un audit ?</h4>
+                                <p class="text-sm text-gray-400 mb-4">30 min d'échange gratuit pour évaluer votre
+                                    infrastructure.</p>
+                                <a href="#"
+                                    onclick="Calendly.initPopupWidget({url:'https://calendly.com/r-okemba-ornetwork/30min'});return false;"
+                                    class="inline-flex items-center justify-center w-full px-4 py-3 gradient-blue text-white font-semibold rounded-lg hover:shadow-lg hover:shadow-accent-blue/25 transition-all text-sm">
+                                    Réserver un Audit Découverte
+                                </a>
                             </div>
                         </div>
-                    </div>
+                        <!-- Newsletter Brevo -->
+                        <div class="glass-card rounded-2xl p-8 max-w-3xl mx-auto text-center fade-in">
+                            <div
+                                class="inline-flex items-center space-x-2 text-accent-cyan text-xs font-semibold uppercase tracking-widest mb-4">
+                                <span class="w-8 h-px bg-accent-cyan"></span>
+                                <span>Newsletter</span>
+                                <span class="w-8 h-px bg-accent-cyan"></span>
+                            </div>
+                            <h3 class="text-2xl font-bold text-white mb-2">Restez à la pointe de l'infrastructure</h3>
+                            <p class="text-gray-400 text-sm mb-6">Recevez nos dernières analyses techniques, retours
+                                terrain
+                                et astuces Wi-Fi / NAC directement dans votre boîte mail.</p>
 
-                    <!-- Engineering Lab CTA -->
-                    <div class="glass-card rounded-xl p-5 mt-6 text-center">
-                        <p class="text-sm text-gray-400 mb-3">Besoin d'une expertise complète ?</p>
-                        <a href="#"
-                            onclick="Calendly.initPopupWidget({url:'https://calendly.com/r-okemba-ornetwork/30min'});return false;"
-                            class="inline-flex items-center text-sm font-medium text-accent-cyan hover:text-white transition-colors">
-                            Audit découverte — 30 min
-                            <svg class="ml-1.5 w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                    d="M17 8l4 4m0 0l-4 4m4-4H3" />
-                            </svg>
-                        </a>
-                    </div>
+                            <!-- Brevo Form Start -->
+                            <form
+                                action="https://15cf4814.sibforms.com/serve/MUIFACo1nOMy8jFjY909yOabQ5yGFTK_l4wAhI_tIN1b6HkftLqIFa1a_s0oA_i1JgC3B6R-_97dE5W174d5S2f3N3P4G0Q3p5N5P9a_A0v_K6v9j8s7_G9_H_1u_R_6A_7T_o2B7r1o3_R6d2B8q5s6L7V_L_v4I9_h2Q9b_C_9k3G4C_J4a6F0j7X_S1u0C9Y_A"
+                                method="POST" target="_blank" class="flex flex-col sm:flex-row gap-3 max-w-xl mx-auto">
+                                <input type="email" name="EMAIL" required
+                                    placeholder="Votre adresse email professionnelle"
+                                    class="flex-1 bg-dark-900 border border-white/10 rounded-lg py-3 px-4 text-sm text-white focus:outline-none focus:border-accent-cyan transition-colors"
+                                    autocomplete="off">
+                                <button type="submit"
+                                    class="gradient-blue text-white font-semibold rounded-lg hover:shadow-lg hover:shadow-accent-blue/25 transition-all text-sm px-6 py-3 whitespace-nowrap">
+                                    S'abonner
+                                </button>
+                                <input type="hidden" name="email_address_check" value="" class="hidden">
+                                <input type="hidden" name="locale" value="fr">
+                            </form>
+                            <!-- Brevo Form End -->
 
-                    <!-- Séparation Franche Lab / Newsletter (P0) -->
-                    <div class="max-w-5xl mx-auto mt-28 mb-20 border-t border-white/5"></div>
-
-                    <!-- Newsletter Brevo -->
-                    <div class="glass-card rounded-2xl p-8 max-w-3xl mx-auto text-center fade-in">
-                        <div
-                            class="inline-flex items-center space-x-2 text-accent-cyan text-xs font-semibold uppercase tracking-widest mb-4">
-                            <span class="w-8 h-px bg-accent-cyan"></span>
-                            <span>Newsletter</span>
-                            <span class="w-8 h-px bg-accent-cyan"></span>
+                            <p class="text-xs text-gray-600 mt-4">Nous ne spammons jamais. Désinscription possible à
+                                tout
+                                moment.</p>
                         </div>
-                        <h3 class="text-2xl font-bold text-white mb-2">Restez à la pointe de l'infrastructure</h3>
-                        <p class="text-gray-400 text-sm mb-6">Recevez nos dernières analyses techniques, retours terrain
-                            et astuces Wi-Fi / NAC directement dans votre boîte mail.</p>
-
-                        <!-- Brevo Form Start -->
-                        <form
-                            action="https://15cf4814.sibforms.com/serve/MUIFACo1nOMy8jFjY909yOabQ5yGFTK_l4wAhI_tIN1b6HkftLqIFa1a_s0oA_i1JgC3B6R-_97dE5W174d5S2f3N3P4G0Q3p5N5P9a_A0v_K6v9j8s7_G9_H_1u_R_6A_7T_o2B7r1o3_R6d2B8q5s6L7V_L_v4I9_h2Q9b_C_9k3G4C_J4a6F0j7X_S1u0C9Y_A"
-                            method="POST" target="_blank" class="flex flex-col sm:flex-row gap-3 max-w-xl mx-auto">
-                            <input type="email" name="EMAIL" required placeholder="Votre adresse email professionnelle"
-                                class="flex-1 bg-dark-900 border border-white/10 rounded-lg py-3 px-4 text-sm text-white focus:outline-none focus:border-accent-cyan transition-colors"
-                                autocomplete="off">
-                            <button type="submit"
-                                class="gradient-blue text-white font-semibold rounded-lg hover:shadow-lg hover:shadow-accent-blue/25 transition-all text-sm px-6 py-3 whitespace-nowrap">
-                                S'abonner
-                            </button>
-                            <input type="hidden" name="email_address_check" value="" class="hidden">
-                            <input type="hidden" name="locale" value="fr">
-                        </form>
-                        <!-- Brevo Form End -->
-
-                        <p class="text-xs text-gray-600 mt-4">Nous ne spammons jamais. Désinscription possible à tout
-                            moment.</p>
                     </div>
                 </div>
-            </div>
         </section>
 
         <!-- ========== CAS CLIENTS ========== -->
@@ -4421,7 +4141,7 @@
                         environnements critiques. Noms et détails anonymisés par obligation de confidentialité.</p>
                 </div>
                 <div class="grid md:grid-cols-3 gap-6">
-                    <!-- Case 1 -->
+                    <!-- Case 1 : Logistique — Migration Hybride Wi-Fi 5/6 -->
                     <div
                         class="glass-card rounded-2xl p-7 relative overflow-hidden group hover:border-accent-cyan/20 transition-all duration-300">
                         <div class="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-accent-cyan to-accent-blue">
@@ -4431,18 +4151,18 @@
                                 <svg class="w-5 h-5 text-accent-cyan" fill="none" stroke="currentColor"
                                     viewBox="0 0 24 24">
                                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                        d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4" />
+                                        d="M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4" />
                                 </svg>
                             </div>
                             <div>
                                 <span
-                                    class="text-xs text-accent-cyan font-semibold uppercase tracking-wider">Industrie</span>
-                                <h3 class="text-base font-bold text-white">Refonte Wi-Fi — Site industriel 25 000 m²
-                                </h3>
+                                    class="text-xs text-accent-cyan font-semibold uppercase tracking-wider">Logistique</span>
+                                <h3 class="text-base font-bold text-white">Migration Wi-Fi — Entrepôt 40 000 m²</h3>
                             </div>
                         </div>
-                        <p class="text-sm text-gray-400 mb-3">Audit de couverture Ekahau + redesign complet du plan de
-                            canaux sur un entrepôt logistique avec chariots AGV et scanners RF critiques.</p>
+                        <p class="text-sm text-gray-400 mb-3">Parc de 800 scanners Wi-Fi 5 en déconnexion sur une
+                            infrastructure Wi-Fi 6 récente. Conflit de backward compatibility et gestion des trames
+                            d'efficience HE.</p>
                         <div class="flex flex-wrap gap-3 mb-5 text-xs text-gray-500">
                             <span class="flex items-center gap-1"><svg class="w-3 h-3" fill="none" stroke="currentColor"
                                     viewBox="0 0 24 24">
@@ -4450,24 +4170,24 @@
                                         d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
                                 </svg> 6 semaines</span>
                             <span class="w-px h-3 bg-white/10"></span>
-                            <span>Contexte : déconnexions AGV, productivité -30%</span>
+                            <span>Contexte : scanners Wi-Fi 5 vs infra Wi-Fi 6</span>
                         </div>
                         <div class="space-y-3">
                             <div class="flex items-center justify-between">
-                                <span class="text-xs text-gray-500">Couverture ≥ -67 dBm</span>
-                                <span class="text-sm font-bold text-accent-green">72% → 99.2%</span>
+                                <span class="text-xs text-gray-500">Uptime parc hétérogène</span>
+                                <span class="text-sm font-bold text-accent-green">82% → 99.9%</span>
                             </div>
                             <div class="w-full bg-dark-800 rounded-full h-1.5">
                                 <div class="bg-gradient-to-r from-accent-green to-emerald-400 h-full rounded-full"
-                                    style="width:99.2%"></div>
+                                    style="width:99.9%"></div>
                             </div>
                             <div class="flex items-center justify-between">
-                                <span class="text-xs text-gray-500">Roaming time</span>
-                                <span class="text-sm font-bold text-accent-cyan">850ms → 45ms</span>
+                                <span class="text-xs text-gray-500">Roaming (802.11r FT)</span>
+                                <span class="text-sm font-bold text-accent-cyan">850ms → ≤ 30ms</span>
                             </div>
                             <div class="flex items-center justify-between">
-                                <span class="text-xs text-gray-500">CCI éliminé</span>
-                                <span class="text-sm font-bold text-accent-cyan">100%</span>
+                                <span class="text-xs text-gray-500">Timeout scanners</span>
+                                <span class="text-sm font-bold text-accent-cyan">0</span>
                             </div>
                         </div>
                         <div class="mt-5 pt-4 border-t border-white/5 flex items-center gap-2">
@@ -4477,7 +4197,7 @@
                             <span class="text-xs bg-dark-700 px-2 py-0.5 rounded text-gray-400">9800 WLC</span>
                         </div>
                     </div>
-                    <!-- Case 2 -->
+                    <!-- Case 2 : Luxe — Déploiement Wi-Fi 6E -->
                     <div
                         class="glass-card rounded-2xl p-7 relative overflow-hidden group hover:border-accent-green/20 transition-all duration-300">
                         <div class="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-accent-green to-emerald-400">
@@ -4487,17 +4207,72 @@
                                 <svg class="w-5 h-5 text-accent-green" fill="none" stroke="currentColor"
                                     viewBox="0 0 24 24">
                                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                        d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
+                                        d="M5 3v4M3 5h4M6 17v4m-2-2h4m5-16l2.286 6.857L21 12l-5.714 2.143L13 21l-2.286-6.857L5 12l5.714-2.143L13 3z" />
                                 </svg>
                             </div>
                             <div>
                                 <span
-                                    class="text-xs text-accent-green font-semibold uppercase tracking-wider">Sécurité</span>
-                                <h3 class="text-base font-bold text-white">NAC Zero Trust — 4 500 endpoints</h3>
+                                    class="text-xs text-accent-green font-semibold uppercase tracking-wider">Luxe</span>
+                                <h3 class="text-base font-bold text-white">Wi-Fi 6E — Siège & Showroom VIP</h3>
                             </div>
                         </div>
-                        <p class="text-sm text-gray-400 mb-3">Déploiement ISE 3.x multi-sites avec segmentation
-                            TrustSec, profiling IoT et portail invités personnalisé. Migration depuis ACS legacy.</p>
+                        <p class="text-sm text-gray-400 mb-3">Déploiement pionnier Wi-Fi 6E pour un fleuron du luxe.
+                            Bande 6 GHz réservée comme "voie express" pour les terminaux de direction et les flux de
+                            conception haute fidélité, isolant le trafic VIP du parc en Wi-Fi 5/6.</p>
+                        <div class="flex flex-wrap gap-3 mb-5 text-xs text-gray-500">
+                            <span class="flex items-center gap-1"><svg class="w-3 h-3" fill="none" stroke="currentColor"
+                                    viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                        d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
+                                </svg> 2 mois</span>
+                            <span class="w-px h-3 bg-white/10"></span>
+                            <span>Contexte : isolation VIP, zéro interférence exigée</span>
+                        </div>
+                        <div class="space-y-3">
+                            <div class="flex items-center justify-between">
+                                <span class="text-xs text-gray-500">Latence flux VIP (6 GHz)</span>
+                                <span class="text-sm font-bold text-accent-green">
+                                    < 5 ms</span>
+                            </div>
+                            <div class="flex items-center justify-between">
+                                <span class="text-xs text-gray-500">Interférences zone showroom</span>
+                                <span class="text-sm font-bold text-accent-cyan">0</span>
+                            </div>
+                            <div class="flex items-center justify-between">
+                                <span class="text-xs text-gray-500">Coexistence Wi-Fi 5/6/6E</span>
+                                <span class="text-sm font-bold text-accent-cyan">100% transparent</span>
+                            </div>
+                        </div>
+                        <div class="mt-5 pt-4 border-t border-white/5 flex items-center gap-2">
+                            <span class="text-xs text-gray-600">Technologies :</span>
+                            <span class="text-xs bg-dark-700 px-2 py-0.5 rounded text-gray-400">Wi-Fi 6E</span>
+                            <span class="text-xs bg-dark-700 px-2 py-0.5 rounded text-gray-400">Ekahau</span>
+                            <span class="text-xs bg-dark-700 px-2 py-0.5 rounded text-gray-400">C9136</span>
+                        </div>
+                    </div>
+                    <!-- Case 3 : Industrie NAC — Sécurisation Multi-Génération -->
+                    <div
+                        class="glass-card rounded-2xl p-7 relative overflow-hidden group hover:border-accent-blue/20 transition-all duration-300">
+                        <div class="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-accent-blue to-purple-500">
+                        </div>
+                        <div class="flex items-center gap-3 mb-5">
+                            <div class="w-10 h-10 rounded-lg bg-accent-blue/10 flex items-center justify-center">
+                                <svg class="w-5 h-5 text-accent-blue" fill="none" stroke="currentColor"
+                                    viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                        d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
+                                </svg>
+                            </div>
+                            <div>
+                                <span class="text-xs text-accent-blue font-semibold uppercase tracking-wider">Industrie
+                                    &
+                                    Sécurité</span>
+                                <h3 class="text-base font-bold text-white">NAC Zero Trust — 4 500+ endpoints</h3>
+                            </div>
+                        </div>
+                        <p class="text-sm text-gray-400 mb-3">Sécurisation d'un parc hétérogène : capteurs IoT legacy
+                            (Wi-Fi 5) et automates récents (Wi-Fi 6). Architecture Cisco ISE avec segmentation dynamique
+                            TrustSec adaptée aux capacités réelles de chaque terminal.</p>
                         <div class="flex flex-wrap gap-3 mb-5 text-xs text-gray-500">
                             <span class="flex items-center gap-1"><svg class="w-3 h-3" fill="none" stroke="currentColor"
                                     viewBox="0 0 24 24">
@@ -4505,7 +4280,7 @@
                                         d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
                                 </svg> 4 mois</span>
                             <span class="w-px h-3 bg-white/10"></span>
-                            <span>Contexte : audit NIS2, 0% visibilité endpoints</span>
+                            <span>Contexte : conformité NIS2, 0% visibilité endpoints</span>
                         </div>
                         <div class="space-y-3">
                             <div class="flex items-center justify-between">
@@ -4532,64 +4307,38 @@
                             <span class="text-xs bg-dark-700 px-2 py-0.5 rounded text-gray-400">802.1X</span>
                         </div>
                     </div>
-                    <!-- Case 3 -->
-                    <div
-                        class="glass-card rounded-2xl p-7 relative overflow-hidden group hover:border-accent-blue/20 transition-all duration-300">
-                        <div class="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-accent-blue to-purple-500">
+                </div>
+
+                <!-- Note Expert : Transition Technologique -->
+                <div class="glass-card rounded-xl p-6 mt-10 border-l-2 border-accent-cyan/30 max-w-4xl mx-auto">
+                    <div class="flex items-start gap-3">
+                        <div
+                            class="w-8 h-8 rounded-lg bg-accent-cyan/10 flex items-center justify-center shrink-0 mt-0.5">
+                            <svg class="w-4 h-4 text-accent-cyan" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                            </svg>
                         </div>
-                        <div class="flex items-center gap-3 mb-5">
-                            <div class="w-10 h-10 rounded-lg bg-accent-blue/10 flex items-center justify-center">
-                                <svg class="w-5 h-5 text-accent-blue" fill="none" stroke="currentColor"
-                                    viewBox="0 0 24 24">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                        d="M8.111 16.404a5.5 5.5 0 017.778 0M12 20h.01m-7.08-7.071c3.904-3.905 10.236-3.905 14.141 0M1.394 9.393c5.857-5.858 15.355-5.858 21.213 0" />
-                                </svg>
-                            </div>
-                            <div>
-                                <span
-                                    class="text-xs text-accent-blue font-semibold uppercase tracking-wider">Santé</span>
-                                <h3 class="text-base font-bold text-white">Wi-Fi 6E — Centre hospitalier</h3>
-                            </div>
-                        </div>
-                        <p class="text-sm text-gray-400 mb-3">Design prédictif Wi-Fi 6E pour 3 bâtiments, intégration
-                            équipements biomédicaux, roaming critique pour monitoring patient mobile.</p>
-                        <div class="flex flex-wrap gap-3 mb-5 text-xs text-gray-500">
-                            <span class="flex items-center gap-1"><svg class="w-3 h-3" fill="none" stroke="currentColor"
-                                    viewBox="0 0 24 24">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                        d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
-                                </svg> 3 mois</span>
-                            <span class="w-px h-3 bg-white/10"></span>
-                            <span>Contexte : construction neuve, équipements biomed critiques</span>
-                        </div>
-                        <div class="space-y-3">
-                            <div class="flex items-center justify-between">
-                                <span class="text-xs text-gray-500">AP déployés</span>
-                                <span class="text-sm font-bold text-accent-green">320</span>
-                            </div>
-                            <div class="flex items-center justify-between">
-                                <span class="text-xs text-gray-500">Bande 6 GHz utilisée</span>
-                                <span class="text-sm font-bold text-accent-cyan">100% devices compatibles</span>
-                            </div>
-                            <div class="flex items-center justify-between">
-                                <span class="text-xs text-gray-500">Downtime réseau</span>
-                                <span class="text-sm font-bold text-accent-cyan">0 min (6 mois)</span>
-                            </div>
-                        </div>
-                        <div class="mt-5 pt-4 border-t border-white/5 flex items-center gap-2">
-                            <span class="text-xs text-gray-600">Technologies :</span>
-                            <span class="text-xs bg-dark-700 px-2 py-0.5 rounded text-gray-400">Wi-Fi 6E</span>
-                            <span class="text-xs bg-dark-700 px-2 py-0.5 rounded text-gray-400">Ekahau</span>
-                            <span class="text-xs bg-dark-700 px-2 py-0.5 rounded text-gray-400">C9136</span>
+                        <div>
+                            <p class="text-xs text-accent-cyan font-semibold uppercase tracking-wider mb-2">Note de
+                                l'Expert</p>
+                            <p class="text-sm text-gray-400 leading-relaxed">L'ingénierie moderne consiste à piloter
+                                l'avenir tout en gérant l'existant.
+                                Si nous déployons aujourd'hui des infrastructures Wi-Fi 6E et Wi-Fi 7 Ready, la réalité
+                                du terrain montre un parc client encore
+                                dominé par le Wi-Fi 5, avec une adoption croissante du Wi-Fi 6. Notre rôle est de
+                                garantir une interopérabilité sans faille
+                                et une performance optimale, peu importe la génération de vos terminaux.</p>
                         </div>
                     </div>
                 </div>
+
                 <div class="text-center mt-12">
                     <a href="#"
                         onclick="Calendly.initPopupWidget({url:'https://calendly.com/r-okemba-ornetwork/30min'});return false;"
                         class="inline-flex items-center px-8 py-4 gradient-blue text-white font-semibold rounded-lg hover:shadow-lg hover:shadow-accent-blue/25 transition-all"
-                        aria-label="Discuter d'un projet similaire">
-                        Discuter d'un projet similaire
+                        aria-label="Réserver un Audit Découverte">
+                        Réserver un Audit Découverte
                         <svg class="ml-2 w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"
                             aria-hidden="true">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
