@@ -4255,17 +4255,39 @@
                         </div>
                     </div>
 
-                    <!-- Bouton d'export Global -->
+                    <!-- Boutons d'export Global -->
                     <div class="mt-8 border-t border-white/10 pt-6">
-                        <button onclick="exportToolkit()"
-                            class="w-full py-2.5 bg-dark-800 border border-white/10 text-white font-medium rounded-lg hover:bg-dark-900 hover:border-accent-cyan transition-all text-sm flex items-center justify-center gap-2">
-                            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                    d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4">
-                                </path>
-                            </svg>
-                            Exporter les résultats (.txt)
-                        </button>
+                        <div class="flex flex-wrap gap-3 justify-center">
+                            <button onclick="exportToolkit('txt')"
+                                class="flex-1 py-2.5 bg-dark-800 border border-white/10 text-white font-medium rounded-lg hover:bg-dark-900 hover:border-accent-cyan transition-all text-sm flex items-center justify-center gap-2">
+                                <svg class="w-4 h-4 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                        d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4">
+                                    </path>
+                                </svg>
+                                TXT
+                            </button>
+                            <button onclick="exportToolkit('json')"
+                                class="flex-1 py-2.5 bg-dark-800 border border-white/10 text-white font-medium rounded-lg hover:bg-dark-900 hover:border-accent-cyan transition-all text-sm flex items-center justify-center gap-2">
+                                <svg class="w-4 h-4 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                        d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4">
+                                    </path>
+                                </svg>
+                                JSON
+                            </button>
+                            <button onclick="exportToolkit('csv')"
+                                class="flex-1 py-2.5 bg-dark-800 border border-white/10 text-white font-medium rounded-lg hover:bg-dark-900 hover:border-accent-cyan transition-all text-sm flex items-center justify-center gap-2">
+                                <svg class="w-4 h-4 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                        d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4">
+                                    </path>
+                                </svg>
+                                CSV
+                            </button>
+                        </div>
+                        <p class="text-center text-xs text-gray-500 mt-3">Exportez vos résultats pour les intégrer dans
+                            vos rapports ou scripts.</p>
                     </div>
                 </div>
             </div>
@@ -5640,56 +5662,91 @@
             };
 
             // Global Toolkit Export
-            window.exportToolkit = function () {
-                let content = "=== ORNET Toolkit - Export des resultats ===\n\n";
+            window.exportToolkit = function (format = 'txt') {
+                const data = {};
 
                 // RF
                 const eirpDbm = document.getElementById('eirp-dbm').textContent.trim();
                 const eirpMw = document.getElementById('eirp-mw').textContent.trim();
                 if (!eirpDbm.startsWith('--')) {
-                    content += "[Calcul RF]\nEIRP: " + eirpDbm + " / " + eirpMw + "\n\n";
+                    data.rf_calculator = { eirp_dbm: eirpDbm, eirp_mw: eirpMw };
                 }
 
                 // DHCP
                 const hexOut = document.getElementById('dhcp-hex-out').textContent;
                 const cmdOut = document.getElementById('dhcp-cmd-out').textContent;
                 if (hexOut) {
-                    content += "[DHCP Option 43]\nHex: " + hexOut + "\nCmd: " + cmdOut + "\n\n";
+                    data.dhcp_option_43 = { hex_value: hexOut, command: cmdOut };
                 }
 
                 // MAC
                 const ciscoMAC = document.getElementById('mac-cisco-out').textContent;
                 const stdMAC = document.getElementById('mac-std-out').textContent;
                 if (ciscoMAC) {
-                    content += "[MAC Formatter]\nCisco IOS: " + ciscoMAC + "\nStandard: " + stdMAC + "\n\n";
+                    data.mac_formatter = { cisco_ios: ciscoMAC, standard: stdMAC };
                 }
 
                 // FSPL
                 const fsplRes = document.getElementById('fspl-result').textContent.trim();
                 if (!fsplRes.startsWith('--')) {
-                    content += "[Perte FSPL]\nResultat: " + fsplRes + "\n\n";
+                    data.fspl = { loss: fsplRes };
                 }
 
                 // IPv4 Subnet
                 const ipv4Net = document.getElementById('ipv4-network').textContent.trim();
                 if (ipv4Net && ipv4Net !== '--') {
-                    content += "[Calculateur IPv4 / CIDR]\n";
-                    content += "CIDR saisi : " + document.getElementById('cidr-input').value + "\n";
-                    content += "Réseau (Network) : " + ipv4Net + "\n";
-                    content += "1ère IP utilisable : " + document.getElementById('ipv4-first').textContent + "\n";
-                    content += "Dernière IP utilisable : " + document.getElementById('ipv4-last').textContent + "\n";
-                    content += "Diffusion (Broadcast) : " + document.getElementById('ipv4-broadcast').textContent + "\n";
-                    content += "Masque (Décimal) : " + document.getElementById('ipv4-mask').textContent + "\n";
-                    content += "Hôtes utilisables : " + document.getElementById('ipv4-hosts').textContent + "\n\n";
+                    data.ipv4_calculator = {
+                        cidr_input: document.getElementById('cidr-input').value,
+                        network: ipv4Net,
+                        first_ip: document.getElementById('ipv4-first').textContent,
+                        last_ip: document.getElementById('ipv4-last').textContent,
+                        broadcast: document.getElementById('ipv4-broadcast').textContent,
+                        mask: document.getElementById('ipv4-mask').textContent,
+                        hosts: document.getElementById('ipv4-hosts').textContent
+                    };
                 }
 
-                content += "Generé via or-net.com";
+                let content = "";
+                let mimeType = "";
 
-                const blob = new Blob([content], { type: "text/plain;charset=utf-8" });
+                if (format === 'json') {
+                    content = JSON.stringify(data, null, 2);
+                    mimeType = "application/json;charset=utf-8";
+                } else if (format === 'csv') {
+                    content = "Module,Key,Value\n";
+                    for (const [module, moduleData] of Object.entries(data)) {
+                        for (const [key, value] of Object.entries(moduleData)) {
+                            // Escape quotes in value
+                            const safeValue = value.replace(/"/g, '""');
+                            content += `"${module}","${key}","${safeValue}"\n`;
+                        }
+                    }
+                    mimeType = "text/csv;charset=utf-8";
+                } else {
+                    // TXT format
+                    content = "=== ORNET Toolkit - Export des resultats ===\n\n";
+                    if (data.rf_calculator) content += `[Calcul RF]\nEIRP: ${data.rf_calculator.eirp_dbm} / ${data.rf_calculator.eirp_mw}\n\n`;
+                    if (data.dhcp_option_43) content += `[DHCP Option 43]\nHex: ${data.dhcp_option_43.hex_value}\nCmd: ${data.dhcp_option_43.command}\n\n`;
+                    if (data.mac_formatter) content += `[MAC Formatter]\nCisco IOS: ${data.mac_formatter.cisco_ios}\nStandard: ${data.mac_formatter.standard}\n\n`;
+                    if (data.fspl) content += `[Perte FSPL]\nResultat: ${data.fspl.loss}\n\n`;
+                    if (data.ipv4_calculator) {
+                        content += `[Calculateur IPv4 / CIDR]\nCIDR saisi : ${data.ipv4_calculator.cidr_input}\n`;
+                        content += `Réseau (Network) : ${data.ipv4_calculator.network}\n`;
+                        content += `1ère IP utilisable : ${data.ipv4_calculator.first_ip}\n`;
+                        content += `Dernière IP utilisable : ${data.ipv4_calculator.last_ip}\n`;
+                        content += `Diffusion (Broadcast) : ${data.ipv4_calculator.broadcast}\n`;
+                        content += `Masque (Décimal) : ${data.ipv4_calculator.mask}\n`;
+                        content += `Hôtes utilisables : ${data.ipv4_calculator.hosts}\n\n`;
+                    }
+                    content += "Generé via or-net.com";
+                    mimeType = "text/plain;charset=utf-8";
+                }
+
+                const blob = new Blob([content], { type: mimeType });
                 const url = URL.createObjectURL(blob);
                 const a = document.createElement('a');
                 a.href = url;
-                a.download = 'ORNET_Toolkit_Results.txt';
+                a.download = `ORNET_Toolkit_Results.${format}`;
                 document.body.appendChild(a);
                 a.click();
                 document.body.removeChild(a);
