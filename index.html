@@ -7,8 +7,7 @@
     <title>ORNET — Ingénierie Réseau & Cybersécurité | Wi-Fi, NAC, Cisco ISE | Paris</title>
     <meta name="description"
         content="ORNET conçoit, audite et sécurise vos infrastructures Wi-Fi et NAC depuis Paris. Expertise Ekahau, Cisco ISE, Wi-Fi 6E/7 et 802.1X. 150+ sites audités, 12+ ans d'expérience terrain.">
-    <meta name="keywords"
-        content="ingénierie réseau, audit Wi-Fi, Ekahau, Cisco ISE, NAC, 802.1X, cybersécurité, CWNE, Paris, ORNET">
+    <meta name="keywords" content="ingénierie réseau, audit Wi-Fi, Ekahau, Cisco ISE, NAC, 802.1X, cybersécurité, CWNE, Paris, ORNET">
     <meta name="author" content="ORNET – or-net.com">
     <link rel="canonical" href="https://or-net.com">
     <meta property="og:title" content="ORNET — Ingénierie Réseau & Cybersécurité">
@@ -37,7 +36,7 @@
         "name": "Romaric Okemba",
         "jobTitle": "Ingénieur Réseau & Consultant Indépendant"
       },
-      "areaServed": "France",
+      "areaServed": ["France", "Europe"],
       "sameAs": ["https://www.linkedin.com/in/romaric-okemba-27833230/"]
     }
     </script>
@@ -49,7 +48,8 @@
     <script>
         tailwind.config = { theme: { extend: { colors: { dark: { 950: '#050505', 900: '#0a0a0a', 800: '#111', 700: '#1a1a1a', 600: '#222' }, accent: { blue: '#007AFF', cyan: '#00D4FF', green: '#00C853' } }, fontFamily: { inter: ['Inter', 'sans-serif'] } } } }
     </script>
-    <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js" defer></script>
+    <link rel="icon" href="img/favicon.ico" type="image/x-icon">
+    <link rel="icon" href="img/favicon.svg" type="image/svg+xml">
     <!-- Calendly -->
     <link href="https://assets.calendly.com/assets/external/widget.css" rel="stylesheet">
     <script src="https://assets.calendly.com/assets/external/widget.js" type="text/javascript" async></script>
@@ -597,8 +597,7 @@
                 </a>
                 <a href="#"
                     onclick="Calendly.initPopupWidget({url:'https://calendly.com/r-okemba-ornetwork/30min'});return false;"
-                    class="inline-flex items-center px-5 py-2.5 gradient-blue text-white text-sm font-semibold rounded-lg hover:opacity-90 transition-opacity">Prendre
-                    RDV</a>
+                    class="inline-flex items-center px-5 py-2.5 gradient-blue text-white text-sm font-semibold rounded-lg hover:opacity-90 transition-opacity">Prendre rendez-vous</a>
             </div>
             <button id="burger" class="md:hidden flex flex-col space-y-1.5 p-2 relative z-10" aria-label="Menu">
                 <span class="block w-6 h-0.5 bg-white transition-all duration-300" id="b1"></span>
@@ -609,8 +608,8 @@
         <div id="mobile-menu" class="md:hidden hidden border-t border-white/5 navbar-blur">
             <div class="px-6 py-6 space-y-4 text-base font-medium">
                 <a href="#" data-view="accueil" class="block text-gray-300 hover:text-white">Accueil</a>
-                <a href="#" data-view="wifi" class="block text-gray-300 hover:text-white">Expertise Wi-Fi</a>
-                <a href="#" data-view="nac" class="block text-gray-300 hover:text-white">Expertise NAC</a>
+                <a href="#" data-view="wifi" class="block text-gray-300 hover:text-white">Wi-Fi</a>
+                <a href="#" data-view="nac" class="block text-gray-300 hover:text-white">NAC</a>
                 <a href="#" data-view="blog" class="block text-gray-300 hover:text-white">Blog</a>
                 <a href="#" data-view="outils" class="block text-gray-300 hover:text-white">Outils Lab</a>
                 <a href="#" data-view="contact" class="block text-gray-300 hover:text-white">Contact / RDV</a>
@@ -638,9 +637,9 @@
                     <div class="wave"></div>
                 </div>
                 <div
-                    class="absolute top-1/4 left-1/3 w-[500px] h-[500px] rounded-full bg-accent-cyan/8 blur-[160px] pointer-events-none float">
+                    class="absolute top-1/4 left-1/3 w-[500px] h-[500px] rounded-full bg-accent-cyan/10 blur-[160px] pointer-events-none float">
                 </div>
-                <div class="absolute bottom-1/4 right-1/4 w-[400px] h-[400px] rounded-full bg-accent-green/6 blur-[120px] pointer-events-none float"
+                <div class="absolute bottom-1/4 right-1/4 w-[400px] h-[400px] rounded-full bg-accent-green/5 blur-[120px] pointer-events-none float"
                     style="animation-delay:-3s"></div>
                 <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-24 md:py-32 relative z-10">
                     <div class="max-w-3xl">
@@ -683,7 +682,7 @@
                                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                                         d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
                                 </svg>
-                                Recevoir un exemple de rapport
+                                Nos études de cas
                             </a>
                         </div>
                         <div class="grid grid-cols-3 gap-8 mt-16 max-w-lg fade-in">
@@ -697,7 +696,7 @@
                             </div>
                             <div><span class="text-3xl font-bold text-white counter" data-target="12">0</span><span
                                     class="text-accent-cyan text-2xl font-bold">+</span>
-                                <p class="text-xs text-gray-500 mt-1">Ans d'expertise</p>
+                                <p class="text-xs text-gray-400 mt-1">Ans d'expertise</p>
                             </div>
                         </div>
                     </div>
@@ -1098,7 +1097,7 @@
                     <div class="text-center max-w-2xl mx-auto mb-12">
                         <div
                             class="inline-flex items-center space-x-2 text-accent-cyan text-xs font-semibold uppercase tracking-widest mb-4">
-                            <span class="w-8 h-px bg-accent-cyan"></span><span>Social proof</span>
+                            <span class="w-8 h-px bg-accent-cyan"></span><span>Retours clients</span>
                         </div>
                         <h2 class="text-3xl font-bold mb-4">Ce que nos clients disent</h2>
                         <p class="text-gray-400">Retours anonymisés de DSI, RSSI et responsables infrastructure.</p>
@@ -1430,7 +1429,7 @@
                                     href="https://www.ekahau.com/blog/wi-fi-design-best-practices/"
                                     class="text-accent-cyan hover:underline" target="_blank"
                                     rel="noopener noreferrer">Ekahau Best Practices</a> <span
-                                    class="opacity-50">(consulté en fév. 2026)</span>.
+                                    class="opacity-50">(documentation officielle)</span>.
                             </p>
                         </div>
                     </div>
@@ -3330,7 +3329,7 @@
                                                 répondons sous 24-48h et publions anonymement les échanges les plus
                                                 pertinents.</p>
                                             <form class="space-y-3"
-                                                onsubmit="event.preventDefault(); alert('Message envoyé. Notre équipe vous répondra rapidement.');">
+                                                onsubmit="event.preventDefault(); this.innerHTML='<p class=\'text-accent-green text-sm text-center py-4\'>Merci, votre question a bien été prise en compte.</p>';">
                                                 <div class="grid grid-cols-1 md:grid-cols-2 gap-3">
                                                     <input type="email" placeholder="Votre email pro" required
                                                         class="w-full bg-dark-800 border border-white/10 text-white text-sm rounded-lg px-4 py-2 focus:outline-none focus:border-accent-cyan focus:ring-1 focus:ring-accent-cyan transition-colors placeholder:text-gray-500">
@@ -3342,8 +3341,8 @@
                                                         class="mt-1 bg-dark-800 border-white/20 text-accent-cyan rounded focus:ring-accent-cyan">
                                                     <label for="rgpd-blog1"
                                                         class="text-[10px] text-gray-500 leading-tight">J'accepte d'être
-                                                        recontacté(e) par e-mail et que ma question (anonymisée) puisse
-                                                        enrichir la FAQ publique. (Aucun spam, c'est promis).</label>
+                                                        recontacté par e-mail et que ma question (anonymisée) puisse
+                                                        enrichir la FAQ publique. (Vos données ne seront jamais partagées).</label>
                                                 </div>
                                                 <button type="submit"
                                                     class="text-accent-cyan text-sm font-semibold hover:text-white transition-colors bg-white/5 hover:bg-white/10 px-4 py-2 rounded-lg inline-flex items-center gap-2">
@@ -3501,7 +3500,7 @@
                                                     répondons sous 24-48h et publions anonymement les échanges les plus
                                                     pertinents.</p>
                                                 <form class="space-y-3"
-                                                    onsubmit="event.preventDefault(); alert('Message envoyé. Notre équipe vous répondra rapidement.');">
+                                                    onsubmit="event.preventDefault(); this.innerHTML='<p class=\'text-accent-green text-sm text-center py-4\'>Merci, votre question a bien été prise en compte.</p>';">
                                                     <div class="grid grid-cols-1 md:grid-cols-2 gap-3">
                                                         <input type="email" placeholder="Votre email pro" required
                                                             class="w-full bg-dark-800 border border-white/10 text-white text-sm rounded-lg px-4 py-2 focus:outline-none focus:border-accent-cyan focus:ring-1 focus:ring-accent-cyan transition-colors placeholder:text-gray-500">
@@ -3516,7 +3515,7 @@
                                                         <label for="rgpd-blog2"
                                                             class="text-[10px] text-gray-500 leading-tight">J'accepte
                                                             d'être
-                                                            recontacté(e) par e-mail et que ma question (anonymisée)
+                                                            recontacté par e-mail et que ma question (anonymisée)
                                                             puisse
                                                             enrichir la FAQ publique. (Aucun spam, c'est
                                                             promis).</label>
@@ -3669,7 +3668,7 @@
                                                     anonymement
                                                     les conseils clés.</p>
                                                 <form class="space-y-3"
-                                                    onsubmit="event.preventDefault(); alert('Message envoyé. Notre équipe vous répondra rapidement.');">
+                                                    onsubmit="event.preventDefault(); this.innerHTML='<p class=\'text-accent-green text-sm text-center py-4\'>Merci, votre question a bien été prise en compte.</p>';">
                                                     <div class="grid grid-cols-1 md:grid-cols-2 gap-3">
                                                         <input type="email" placeholder="Votre email pro" required
                                                             class="w-full bg-dark-800 border border-white/10 text-white text-sm rounded-lg px-4 py-2 focus:outline-none focus:border-accent-cyan focus:ring-1 focus:ring-accent-cyan transition-colors placeholder:text-gray-500">
@@ -3684,9 +3683,9 @@
                                                         <label for="rgpd-blog3"
                                                             class="text-[10px] text-gray-500 leading-tight">J'accepte
                                                             d'être
-                                                            recontacté(e) par e-mail et que ma question (anonymisée)
+                                                            recontacté par e-mail et que ma question (anonymisée)
                                                             puisse enrichir
-                                                            la FAQ publique. (Aucun spam, c'est promis).</label>
+                                                            la FAQ publique. (Vos données ne seront jamais partagées).</label>
                                                     </div>
                                                     <button type="submit"
                                                         class="text-accent-cyan text-sm font-semibold hover:text-white transition-colors bg-white/5 hover:bg-white/10 px-4 py-2 rounded-lg inline-flex items-center gap-2">
@@ -3831,7 +3830,7 @@
                                                     l'overhead de vos
                                                     SSIDs ? Nous vous répondons sous 24-48h.</p>
                                                 <form class="space-y-3"
-                                                    onsubmit="event.preventDefault(); alert('Message envoyé. Notre équipe vous répondra rapidement.');">
+                                                    onsubmit="event.preventDefault(); this.innerHTML='<p class=\'text-accent-green text-sm text-center py-4\'>Merci, votre question a bien été prise en compte.</p>';">
                                                     <div class="grid grid-cols-1 md:grid-cols-2 gap-3">
                                                         <input type="email" placeholder="Votre email pro" required
                                                             class="w-full bg-dark-800 border border-white/10 text-white text-sm rounded-lg px-4 py-2 focus:outline-none focus:border-accent-cyan focus:ring-1 focus:ring-accent-cyan transition-colors placeholder:text-gray-500">
@@ -3846,9 +3845,9 @@
                                                         <label for="rgpd-blog4"
                                                             class="text-[10px] text-gray-500 leading-tight">J'accepte
                                                             d'être
-                                                            recontacté(e) par e-mail et que ma question (anonymisée)
+                                                            recontacté par e-mail et que ma question (anonymisée)
                                                             puisse enrichir la
-                                                            FAQ publique. (Aucun spam, c'est promis).</label>
+                                                            FAQ publique. (Vos données ne seront jamais partagées).</label>
                                                     </div>
                                                     <button type="submit"
                                                         class="text-accent-cyan text-sm font-semibold hover:text-white transition-colors bg-white/5 hover:bg-white/10 px-4 py-2 rounded-lg inline-flex items-center gap-2">
@@ -4002,7 +4001,7 @@
                                                     une alerte MAB/Profiler ou un comportement curieux de MAB/Radius
                                                     sous 24h.</p>
                                                 <form class="space-y-3"
-                                                    onsubmit="event.preventDefault(); alert('Message envoyé. Notre équipe vous répondra rapidement.');">
+                                                    onsubmit="event.preventDefault(); this.innerHTML='<p class=\'text-accent-green text-sm text-center py-4\'>Merci, votre question a bien été prise en compte.</p>';">
                                                     <div class="grid grid-cols-1 md:grid-cols-2 gap-3">
                                                         <input type="email" placeholder="Votre email pro" required
                                                             class="w-full bg-dark-800 border border-white/10 text-white text-sm rounded-lg px-4 py-2 focus:outline-none focus:border-accent-cyan focus:ring-1 focus:ring-accent-cyan transition-colors placeholder:text-gray-500">
@@ -4017,9 +4016,9 @@
                                                         <label for="rgpd-blog5"
                                                             class="text-[10px] text-gray-500 leading-tight">J'accepte
                                                             d'être
-                                                            recontacté(e) par e-mail et que ma question (anonymisée)
+                                                            recontacté par e-mail et que ma question (anonymisée)
                                                             puisse enrichir la
-                                                            FAQ publique. (Aucun spam, c'est promis).</label>
+                                                            FAQ publique. (Vos données ne seront jamais partagées).</label>
                                                     </div>
                                                     <button type="submit"
                                                         class="text-accent-cyan text-sm font-semibold hover:text-white transition-colors bg-white/5 hover:bg-white/10 px-4 py-2 rounded-lg inline-flex items-center gap-2">
@@ -4055,8 +4054,7 @@
                                     </svg>
                                 </div>
                                 <h3 class="text-lg font-bold text-white mb-2">🛠 Engineering Lab</h3>
-                                <p class="text-sm text-gray-400 mb-4">Calculateurs RF, Subnet, FSPL, MAC Converter — les
-                                    outils terrain de l'ingénieur réseau.</p>
+                                <p class="text-sm text-gray-400 mb-4">18 outils Wi-Fi et réseau — RF, QoS, dACL, VLAN, ACL, Syslog — conçus pour le terrain.</p>
                                 <a href="#" data-view="outils"
                                     class="inline-flex items-center gap-2 text-accent-cyan text-sm font-semibold hover:underline transition-colors">
                                     Accéder aux outils
@@ -4515,7 +4513,7 @@
         </section>
 
         <!-- ========== VUE : ENGINEERING LAB (OUTILS) ========== -->
-        <section id="view-outils" class="view px-6">
+        <section id="view-outils" class="view">
             <div class="pt-8 pb-16 md:pt-10 md:pb-20">
                 <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                     <!-- Header -->
@@ -4524,7 +4522,7 @@
                             <span class="w-8 h-px bg-accent-cyan"></span><span>Engineering Lab</span>
                         </div>
                         <h2 class="text-3xl sm:text-5xl font-bold tracking-tight mb-4">Outils terrain</h2>
-                        <p class="text-lg text-gray-400 leading-relaxed">18 outils d'ingénierie réseau — RF, Channel Planner, Link Budget, SNR, MCS, FSPL, Airtime, QoS, dACL, PoE, Subnet, DHCP, MAC, VLAN, 802.1X, Syslog, ACL Builder, Reason Codes — directement dans le navigateur.</p>
+                        <p class="text-lg text-gray-400 leading-relaxed">18 outils d'ingénierie Wi-Fi et réseau, conçus pour le terrain. Calculs RF, troubleshooting NAC, génération de configs — directement dans le navigateur.</p>
                     </div>
 
                     <!-- ===== 2-Column Grid Layout ===== -->
@@ -4540,11 +4538,11 @@
                             <!-- Tool 1 : RF / EIRP Calculator (UPGRADED with cable loss + ETSI alert) -->
                             <div id="tool-wifi" class="fade-in">
                                 <div class="glass-card rounded-2xl p-6 border-l-2 border-accent-cyan/40">
-                                    <h4 class="text-lg font-bold text-white mb-5 flex items-center gap-3">
+                                    <h4 class="text-lg font-bold text-white mb-1 flex items-center gap-3">
                                         <svg class="w-5 h-5 text-accent-cyan" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path></svg>
                                         Calculateur RF — dBm / mW / EIRP
                                     </h4>
-                                    <p class="text-[11px] text-gray-500 mb-4 ml-8">Conversion instantanée dBm ⇄ mW, calcul EIRP avec gain antenne et perte câble. Alerte ETSI 20 dBm intégrée.</p>
+                                    <p class="text-[11px] text-gray-500 mb-4 ml-8">Conversion instantanée dBm ⇄ mW, calcul EIRP avec gain antenne et perte câble. Alerte réglementaire ETSI intégrée.</p>
                                     <div class="grid sm:grid-cols-2 gap-3 mb-4">
                                         <div>
                                             <label class="block text-xs text-gray-400 mb-1">Puissance (dBm)</label>
@@ -4582,7 +4580,7 @@
                                     <!-- ETSI Alert -->
                                     <div id="etsi-alert" class="hidden rounded-lg p-3 bg-red-500/10 border border-red-500/30 text-xs text-red-300 flex items-start gap-2">
                                         <svg class="w-4 h-4 mt-0.5 flex-shrink-0 text-red-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-2.5L13.732 4c-.77-.833-1.964-.833-2.732 0L3.732 16.5c-.77.833.192 2.5 1.732 2.5z"></path></svg>
-                                        <span><strong>Alerte ETSI :</strong> L'EIRP dépasse <strong>20 dBm (100 mW)</strong> — limite réglementaire indoor 5 GHz en Europe. Vérifiez la conformité DFS/TPC.</span>
+                                        <span><strong>Alerte ETSI :</strong> L'EIRP dépasse <strong>20 dBm</strong> — vérifiez la conformité réglementaire selon la sous-bande (UNII-1 : 23 dBm, UNII-2/2e : 200 mW avec TPC, 6 GHz LPI : 23 dBm).</span>
                                     </div>
                                 </div>
                             </div>
@@ -4590,7 +4588,7 @@
                             <!-- Tool 2 : FSPL Calculator -->
                             <div id="tool-fspl" class="fade-in">
                                 <div class="glass-card rounded-2xl p-6 border-l-2 border-accent-cyan/40">
-                                    <h4 class="text-lg font-bold text-white mb-5 flex items-center gap-3">
+                                    <h4 class="text-lg font-bold text-white mb-1 flex items-center gap-3">
                                         <svg class="w-5 h-5 text-accent-cyan" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"></path></svg>
                                         FSPL — Perte en espace libre
                                     </h4>
@@ -4621,7 +4619,7 @@
                             <!-- Tool 3 : Reason Codes 802.11 (NEW) -->
                             <div id="tool-reason" class="fade-in">
                                 <div class="glass-card rounded-2xl p-6 border-l-2 border-accent-cyan/40">
-                                    <h4 class="text-lg font-bold text-white mb-5 flex items-center gap-3">
+                                    <h4 class="text-lg font-bold text-white mb-1 flex items-center gap-3">
                                         <svg class="w-5 h-5 text-accent-cyan" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path></svg>
                                         Reason &amp; Status Codes 802.11
                                     </h4>
@@ -4717,7 +4715,7 @@
                             <!-- Tool 5 : Link Budget Calculator (NEW) -->
                             <div id="tool-linkbudget" class="fade-in">
                                 <div class="glass-card rounded-2xl p-6 border-l-2 border-accent-cyan/40">
-                                    <h4 class="text-lg font-bold text-white mb-5 flex items-center gap-3">
+                                    <h4 class="text-lg font-bold text-white mb-1 flex items-center gap-3">
                                         <svg class="w-5 h-5 text-accent-cyan" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6"></path></svg>
                                         Link Budget Calculator
                                     </h4>
@@ -4833,7 +4831,7 @@
                             <!-- Tool 6 : Airtime / Capacity Estimator (NEW) -->
                             <div id="tool-airtime" class="fade-in">
                                 <div class="glass-card rounded-2xl p-6 border-l-2 border-accent-cyan/40">
-                                    <h4 class="text-lg font-bold text-white mb-5 flex items-center gap-3">
+                                    <h4 class="text-lg font-bold text-white mb-1 flex items-center gap-3">
                                         <svg class="w-5 h-5 text-accent-cyan" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
                                         Airtime / Capacity Estimator
                                     </h4>
@@ -4902,7 +4900,7 @@
                             <!-- Tool 7 : SNR Calculator (NEW) -->
                             <div id="tool-snr" class="fade-in">
                                 <div class="glass-card rounded-2xl p-6 border-l-2 border-accent-cyan/40">
-                                    <h4 class="text-lg font-bold text-white mb-5 flex items-center gap-3">
+                                    <h4 class="text-lg font-bold text-white mb-1 flex items-center gap-3">
                                         <svg class="w-5 h-5 text-accent-cyan" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"></path></svg>
                                         SNR Calculator
                                     </h4>
@@ -4957,7 +4955,7 @@
                             <!-- Tool 8 : Throughput Estimator / MCS Index (NEW) -->
                             <div id="tool-mcs" class="fade-in">
                                 <div class="glass-card rounded-2xl p-6 border-l-2 border-accent-cyan/40">
-                                    <h4 class="text-lg font-bold text-white mb-5 flex items-center gap-3">
+                                    <h4 class="text-lg font-bold text-white mb-1 flex items-center gap-3">
                                         <svg class="w-5 h-5 text-accent-cyan" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 15a4 4 0 004 4h9a5 5 0 10-.1-9.999 5.002 5.002 0 10-9.78 2.096A4.001 4.001 0 003 15z"></path></svg>
                                         Throughput Estimator (MCS)
                                     </h4>
@@ -5026,95 +5024,6 @@
                                 </div>
                             </div>
 
-                            <!-- Tool 9 : QoS Policy Builder / DSCP-WMM Mapper -->
-                            <div id="tool-qos" class="fade-in">
-                                <div class="glass-card rounded-2xl p-6 border-l-2 border-accent-cyan/40">
-                                    <h4 class="text-lg font-bold text-white mb-1 flex items-center gap-3">
-                                        <svg class="w-5 h-5 text-accent-cyan" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path></svg>
-                                        QoS Policy Builder
-                                    </h4>
-                                    <p class="text-[11px] text-gray-500 mb-4 ml-8">Mapping DSCP ↔ CoS ↔ WMM ↔ UP et génération de policy-map Cisco IOS-XE. Indispensable voix/vidéo/IoT.</p>
-
-                                    <!-- Traffic type selector -->
-                                    <div class="space-y-3 mb-4">
-                                        <div>
-                                            <label class="block text-xs text-gray-400 mb-2">Type de trafic</label>
-                                            <div id="qos-traffic-btns" class="grid grid-cols-3 gap-2">
-                                                <button onclick="selectQosTraffic('voice')" class="qos-traffic-btn px-2 py-2 rounded-lg text-[11px] font-semibold border border-white/10 bg-dark-800 text-gray-400 hover:border-accent-cyan/40 hover:text-white transition-all" data-type="voice">🎙 Voix</button>
-                                                <button onclick="selectQosTraffic('video')" class="qos-traffic-btn px-2 py-2 rounded-lg text-[11px] font-semibold border border-white/10 bg-dark-800 text-gray-400 hover:border-accent-cyan/40 hover:text-white transition-all" data-type="video">📹 Vidéo</button>
-                                                <button onclick="selectQosTraffic('signaling')" class="qos-traffic-btn px-2 py-2 rounded-lg text-[11px] font-semibold border border-white/10 bg-dark-800 text-gray-400 hover:border-accent-cyan/40 hover:text-white transition-all" data-type="signaling">📞 Signaling</button>
-                                                <button onclick="selectQosTraffic('critical')" class="qos-traffic-btn px-2 py-2 rounded-lg text-[11px] font-semibold border border-white/10 bg-dark-800 text-gray-400 hover:border-accent-cyan/40 hover:text-white transition-all" data-type="critical">⚡ Critique</button>
-                                                <button onclick="selectQosTraffic('best-effort')" class="qos-traffic-btn px-2 py-2 rounded-lg text-[11px] font-semibold border border-white/10 bg-dark-800 text-gray-400 hover:border-accent-cyan/40 hover:text-white transition-all" data-type="best-effort">🌐 Best Effort</button>
-                                                <button onclick="selectQosTraffic('scavenger')" class="qos-traffic-btn px-2 py-2 rounded-lg text-[11px] font-semibold border border-white/10 bg-dark-800 text-gray-400 hover:border-accent-cyan/40 hover:text-white transition-all" data-type="scavenger">🗑 Scavenger</button>
-                                            </div>
-                                        </div>
-                                        <div>
-                                            <label class="block text-xs text-gray-400 mb-1">Interface d'application</label>
-                                            <input id="qos-interface" type="text" value="GigabitEthernet0/0/1" placeholder="GigabitEthernet0/0/1"
-                                                class="w-full px-3 py-2.5 bg-dark-800 border border-white/10 rounded-lg text-white placeholder-gray-600 focus:border-accent-cyan focus:outline-none transition text-sm font-mono">
-                                        </div>
-                                    </div>
-
-                                    <!-- QoS Results -->
-                                    <div id="qos-result" class="hidden space-y-3">
-                                        <!-- Mapping cards -->
-                                        <div class="grid grid-cols-4 gap-2">
-                                            <div class="bg-dark-800 rounded-xl p-2.5 text-center">
-                                                <p class="text-[10px] text-gray-500 uppercase tracking-wider mb-0.5">DSCP</p>
-                                                <p id="qos-dscp" class="text-lg font-bold text-accent-cyan">--</p>
-                                                <p id="qos-dscp-name" class="text-[10px] text-gray-500"></p>
-                                            </div>
-                                            <div class="bg-dark-800 rounded-xl p-2.5 text-center">
-                                                <p class="text-[10px] text-gray-500 uppercase tracking-wider mb-0.5">CoS / 802.1p</p>
-                                                <p id="qos-cos" class="text-lg font-bold text-white">--</p>
-                                            </div>
-                                            <div class="bg-dark-800 rounded-xl p-2.5 text-center">
-                                                <p class="text-[10px] text-gray-500 uppercase tracking-wider mb-0.5">WMM / AC</p>
-                                                <p id="qos-wmm" class="text-lg font-bold text-yellow-400">--</p>
-                                            </div>
-                                            <div class="bg-dark-800 rounded-xl p-2.5 text-center">
-                                                <p class="text-[10px] text-gray-500 uppercase tracking-wider mb-0.5">UP (User Pr.)</p>
-                                                <p id="qos-up" class="text-lg font-bold text-purple-400">--</p>
-                                            </div>
-                                        </div>
-
-                                        <!-- PHB + Queue info -->
-                                        <div id="qos-phb-info" class="rounded-lg p-3 bg-cyan-500/10 border border-cyan-500/30">
-                                            <p class="text-[11px] text-gray-300 leading-relaxed"></p>
-                                        </div>
-
-                                        <!-- Policy-map config -->
-                                        <div class="bg-dark-800 rounded-xl p-3">
-                                            <div class="flex items-center justify-between mb-1">
-                                                <p class="text-[10px] text-gray-500 uppercase tracking-wider">Policy-map Cisco IOS-XE</p>
-                                                <button onclick="copyToClipboard(event, 'qos-config-out')" class="text-[10px] text-accent-cyan hover:underline">Copier</button>
-                                            </div>
-                                            <pre id="qos-config-out" class="text-[10px] font-mono text-accent-cyan whitespace-pre-wrap"></pre>
-                                        </div>
-                                    </div>
-
-                                    <!-- DSCP Reference Table -->
-                                    <details class="mt-3">
-                                        <summary class="text-[11px] text-gray-500 cursor-pointer hover:text-gray-300 transition">📋 Table de référence DSCP complète</summary>
-                                        <div class="mt-2 overflow-x-auto">
-                                            <table class="w-full text-[10px]">
-                                                <thead>
-                                                    <tr class="text-gray-500 uppercase tracking-wider">
-                                                        <th class="text-left py-1 px-1">PHB</th>
-                                                        <th class="text-left py-1 px-1">DSCP</th>
-                                                        <th class="text-left py-1 px-1">Décimal</th>
-                                                        <th class="text-left py-1 px-1">CoS</th>
-                                                        <th class="text-left py-1 px-1">WMM</th>
-                                                        <th class="text-left py-1 px-1">Usage</th>
-                                                    </tr>
-                                                </thead>
-                                                <tbody id="qos-ref-table" class="text-gray-300"></tbody>
-                                            </table>
-                                        </div>
-                                    </details>
-                                </div>
-                            </div>
-
                         </div>
 
                         <!-- ────── COLONNE DROITE : Pôle Réseau / NAC (Green) ────── -->
@@ -5127,7 +5036,7 @@
                             <!-- Tool 4 : dACL Cisco ISE Generator (NEW) -->
                             <div id="tool-dacl" class="fade-in">
                                 <div class="glass-card rounded-2xl p-6 border-l-2 border-accent-green/40">
-                                    <h4 class="text-lg font-bold text-white mb-5 flex items-center gap-3">
+                                    <h4 class="text-lg font-bold text-white mb-1 flex items-center gap-3">
                                         <svg class="w-5 h-5 text-accent-green" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"></path></svg>
                                         Générateur dACL — Cisco ISE
                                     </h4>
@@ -5171,7 +5080,7 @@
                             <!-- Tool 5 : PoE Budget Calculator (NEW) -->
                             <div id="tool-poe" class="fade-in">
                                 <div class="glass-card rounded-2xl p-6 border-l-2 border-accent-green/40">
-                                    <h4 class="text-lg font-bold text-white mb-5 flex items-center gap-3">
+                                    <h4 class="text-lg font-bold text-white mb-1 flex items-center gap-3">
                                         <svg class="w-5 h-5 text-accent-green" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path></svg>
                                         PoE Budget Calculator
                                     </h4>
@@ -5241,7 +5150,7 @@
                             <!-- Tool 6 : IPv4 / CIDR Subnet Calculator -->
                             <div id="tool-ipv4" class="fade-in">
                                 <div class="glass-card rounded-2xl p-6 border-l-2 border-accent-green/40">
-                                    <h4 class="text-lg font-bold text-white mb-5 flex items-center gap-3">
+                                    <h4 class="text-lg font-bold text-white mb-1 flex items-center gap-3">
                                         <svg class="w-5 h-5 text-accent-green" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 12a9 9 0 01-9 9m9-9a9 9 0 00-9-9m9 9H3m9 9a9 9 0 01-9-9m9 9c1.657 0 3-4.03 3-9s-1.343-9-3-9m0 18c-1.657 0-3-4.03-3-9s1.343-9 3-9m-9 9a9 9 0 019-9"></path></svg>
                                         Calculateur IPv4 / CIDR
                                     </h4>
@@ -5320,7 +5229,7 @@
                             <!-- Tool 7 : DHCP Option 43 -->
                             <div id="tool-dhcp" class="fade-in">
                                 <div class="glass-card rounded-2xl p-6 border-l-2 border-accent-green/40">
-                                    <h4 class="text-lg font-bold text-white mb-5 flex items-center gap-3">
+                                    <h4 class="text-lg font-bold text-white mb-1 flex items-center gap-3">
                                         <svg class="w-5 h-5 text-accent-green" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 12h14M5 12a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v4a2 2 0 01-2 2M5 12a2 2 0 00-2 2v4a2 2 0 002 2h14a2 2 0 002-2v-4a2 2 0 00-2-2m-2-4h.01M17 16h.01"></path></svg>
                                         DHCP Option 43 — Cisco WLC
                                     </h4>
@@ -5353,7 +5262,7 @@
                             <!-- Tool 8 : MAC Formatter -->
                             <div id="tool-mac" class="fade-in">
                                 <div class="glass-card rounded-2xl p-6 border-l-2 border-accent-green/40">
-                                    <h4 class="text-lg font-bold text-white mb-5 flex items-center gap-3">
+                                    <h4 class="text-lg font-bold text-white mb-1 flex items-center gap-3">
                                         <svg class="w-5 h-5 text-accent-green" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4"></path></svg>
                                         MAC Address Formatter
                                     </h4>
@@ -5449,52 +5358,6 @@
                                 </div>
                             </div>
 
-                            <!-- Tool 10 : 802.1X EAP Troubleshooter (NEW) -->
-                            <div id="tool-eap" class="fade-in">
-                                <div class="glass-card rounded-2xl p-6 border-l-2 border-accent-green/40">
-                                    <h4 class="text-lg font-bold text-white mb-1 flex items-center gap-3">
-                                        <svg class="w-5 h-5 text-accent-green" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"></path></svg>
-                                        802.1X / EAP Troubleshooter
-                                    </h4>
-                                    <p class="text-[11px] text-gray-500 mb-4 ml-8">Diagnostic interactif des erreurs d'authentification 802.1X — arbre de décision basé sur les symptômes terrain.</p>
-                                    <div class="mb-4">
-                                        <label class="block text-xs text-gray-400 mb-2">Quel symptôme observez-vous ?</label>
-                                        <select id="eap-symptom" onchange="diagnoseEAP()"
-                                            class="w-full px-3 py-2.5 bg-dark-800 border border-white/10 rounded-lg text-white focus:border-accent-green focus:outline-none transition text-sm">
-                                            <option value="">-- Sélectionnez un symptôme --</option>
-                                            <option value="timeout">Le client ne s'authentifie pas (timeout)</option>
-                                            <option value="reject">Authentification rejetée par le RADIUS</option>
-                                            <option value="cert">Erreur de certificat (TLS handshake failed)</option>
-                                            <option value="vlan">Mauvais VLAN après authentification</option>
-                                            <option value="loop">Boucle d'authentification (re-auth constante)</option>
-                                            <option value="mab">MAB échoue — device non reconnu</option>
-                                            <option value="guest">Pas de redirection portail invité</option>
-                                            <option value="coa">CoA/Disconnect non reçu par le switch</option>
-                                        </select>
-                                    </div>
-                                    <div id="eap-diagnosis" class="hidden space-y-3">
-                                        <div class="bg-dark-800 rounded-xl p-4">
-                                            <div class="flex items-center gap-2 mb-2">
-                                                <span class="w-2 h-2 rounded-full bg-red-400"></span>
-                                                <p class="text-xs font-bold text-white" id="eap-cause-title">Cause probable</p>
-                                            </div>
-                                            <p id="eap-cause-desc" class="text-xs text-gray-400 leading-relaxed mb-3"></p>
-                                            <div class="border-t border-white/5 pt-3">
-                                                <p class="text-[10px] font-semibold text-accent-green uppercase tracking-wider mb-2">Checklist de résolution</p>
-                                                <ul id="eap-checklist" class="space-y-1.5 text-xs text-gray-300"></ul>
-                                            </div>
-                                        </div>
-                                        <div class="bg-dark-800 rounded-xl p-4">
-                                            <div class="flex items-center justify-between mb-1">
-                                                <p class="text-[10px] text-gray-500 uppercase tracking-wider">Commandes debug</p>
-                                                <button onclick="copyToClipboard(event, 'eap-debug-cmds')" class="text-[10px] text-accent-green hover:underline">Copier</button>
-                                            </div>
-                                            <pre id="eap-debug-cmds" class="text-[10px] font-mono text-accent-green whitespace-pre-wrap"></pre>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-
                             <!-- Tool 11 : Syslog / SNMP Severity Decoder -->
                             <div id="tool-syslog" class="fade-in">
                                 <div class="glass-card rounded-2xl p-6 border-l-2 border-accent-green/40">
@@ -5557,7 +5420,7 @@
 
                                     <!-- Severity Reference -->
                                     <details class="mt-3">
-                                        <summary class="text-[11px] text-gray-500 cursor-pointer hover:text-gray-300 transition">📋 Table des niveaux syslog (RFC 5424)</summary>
+                                        <summary class="text-[11px] text-gray-500 cursor-pointer hover:text-gray-300 transition">▸Table des niveaux syslog (RFC 5424)</summary>
                                         <div class="mt-2 overflow-x-auto">
                                             <table class="w-full text-[10px]">
                                                 <thead>
@@ -5686,6 +5549,135 @@
                                 </div>
                             </div>
 
+                            <!-- QoS Policy Builder / DSCP-WMM Mapper -->
+                            <div id="tool-qos" class="fade-in">
+                                <div class="glass-card rounded-2xl p-6 border-l-2 border-accent-green/40">
+                                    <h4 class="text-lg font-bold text-white mb-1 flex items-center gap-3">
+                                        <svg class="w-5 h-5 text-accent-green" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path></svg>
+                                        QoS Policy Builder
+                                    </h4>
+                                    <p class="text-[11px] text-gray-500 mb-4 ml-8">Mapping DSCP ↔ CoS ↔ WMM ↔ UP et génération de policy-map Cisco IOS-XE. Indispensable voix/vidéo/IoT.</p>
+
+                                    <div class="space-y-3 mb-4">
+                                        <div>
+                                            <label class="block text-xs text-gray-400 mb-2">Type de trafic</label>
+                                            <div id="qos-traffic-btns" class="grid grid-cols-3 gap-2">
+                                                <button onclick="selectQosTraffic('voice')" class="qos-traffic-btn px-2 py-2 rounded-lg text-[11px] font-semibold border border-white/10 bg-dark-800 text-gray-400 hover:border-accent-green/40 hover:text-white transition-all" data-type="voice">Voix</button>
+                                                <button onclick="selectQosTraffic('video')" class="qos-traffic-btn px-2 py-2 rounded-lg text-[11px] font-semibold border border-white/10 bg-dark-800 text-gray-400 hover:border-accent-green/40 hover:text-white transition-all" data-type="video">Vidéo</button>
+                                                <button onclick="selectQosTraffic('signaling')" class="qos-traffic-btn px-2 py-2 rounded-lg text-[11px] font-semibold border border-white/10 bg-dark-800 text-gray-400 hover:border-accent-green/40 hover:text-white transition-all" data-type="signaling">Signaling</button>
+                                                <button onclick="selectQosTraffic('critical')" class="qos-traffic-btn px-2 py-2 rounded-lg text-[11px] font-semibold border border-white/10 bg-dark-800 text-gray-400 hover:border-accent-green/40 hover:text-white transition-all" data-type="critical">Critique</button>
+                                                <button onclick="selectQosTraffic('best-effort')" class="qos-traffic-btn px-2 py-2 rounded-lg text-[11px] font-semibold border border-white/10 bg-dark-800 text-gray-400 hover:border-accent-green/40 hover:text-white transition-all" data-type="best-effort">Best Effort</button>
+                                                <button onclick="selectQosTraffic('scavenger')" class="qos-traffic-btn px-2 py-2 rounded-lg text-[11px] font-semibold border border-white/10 bg-dark-800 text-gray-400 hover:border-accent-green/40 hover:text-white transition-all" data-type="scavenger">Scavenger</button>
+                                            </div>
+                                        </div>
+                                        <div>
+                                            <label class="block text-xs text-gray-400 mb-1">Interface d'application</label>
+                                            <input id="qos-interface" type="text" value="GigabitEthernet0/0/1" placeholder="GigabitEthernet0/0/1"
+                                                class="w-full px-3 py-2.5 bg-dark-800 border border-white/10 rounded-lg text-white placeholder-gray-600 focus:border-accent-green focus:outline-none transition text-sm font-mono">
+                                        </div>
+                                    </div>
+
+                                    <div id="qos-result" class="hidden space-y-3">
+                                        <div class="grid grid-cols-4 gap-2">
+                                            <div class="bg-dark-800 rounded-xl p-2.5 text-center">
+                                                <p class="text-[10px] text-gray-500 uppercase tracking-wider mb-0.5">DSCP</p>
+                                                <p id="qos-dscp" class="text-lg font-bold text-accent-green">--</p>
+                                                <p id="qos-dscp-name" class="text-[10px] text-gray-500"></p>
+                                            </div>
+                                            <div class="bg-dark-800 rounded-xl p-2.5 text-center">
+                                                <p class="text-[10px] text-gray-500 uppercase tracking-wider mb-0.5">CoS / 802.1p</p>
+                                                <p id="qos-cos" class="text-lg font-bold text-white">--</p>
+                                            </div>
+                                            <div class="bg-dark-800 rounded-xl p-2.5 text-center">
+                                                <p class="text-[10px] text-gray-500 uppercase tracking-wider mb-0.5">WMM / AC</p>
+                                                <p id="qos-wmm" class="text-lg font-bold text-yellow-400">--</p>
+                                            </div>
+                                            <div class="bg-dark-800 rounded-xl p-2.5 text-center">
+                                                <p class="text-[10px] text-gray-500 uppercase tracking-wider mb-0.5">UP (User Pr.)</p>
+                                                <p id="qos-up" class="text-lg font-bold text-purple-400">--</p>
+                                            </div>
+                                        </div>
+
+                                        <div id="qos-phb-info" class="rounded-lg p-3 bg-green-500/10 border border-green-500/30">
+                                            <p class="text-[11px] text-gray-300 leading-relaxed"></p>
+                                        </div>
+
+                                        <div class="bg-dark-800 rounded-xl p-3">
+                                            <div class="flex items-center justify-between mb-1">
+                                                <p class="text-[10px] text-gray-500 uppercase tracking-wider">Policy-map Cisco IOS-XE</p>
+                                                <button onclick="copyToClipboard(event, 'qos-config-out')" class="text-[10px] text-accent-green hover:underline">Copier</button>
+                                            </div>
+                                            <pre id="qos-config-out" class="text-[10px] font-mono text-accent-green whitespace-pre-wrap"></pre>
+                                        </div>
+                                    </div>
+
+                                    <details class="mt-3">
+                                        <summary class="text-[11px] text-gray-500 cursor-pointer hover:text-gray-300 transition">▸Table de référence DSCP complète</summary>
+                                        <div class="mt-2 overflow-x-auto">
+                                            <table class="w-full text-[10px]">
+                                                <thead>
+                                                    <tr class="text-gray-500 uppercase tracking-wider">
+                                                        <th class="text-left py-1 px-1">PHB</th>
+                                                        <th class="text-left py-1 px-1">DSCP</th>
+                                                        <th class="text-left py-1 px-1">Décimal</th>
+                                                        <th class="text-left py-1 px-1">CoS</th>
+                                                        <th class="text-left py-1 px-1">WMM</th>
+                                                        <th class="text-left py-1 px-1">Usage</th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody id="qos-ref-table" class="text-gray-300"></tbody>
+                                            </table>
+                                        </div>
+                                    </details>
+                                </div>
+                            </div>
+
+                            <!-- 802.1X / EAP Troubleshooter -->
+                            <div id="tool-eap" class="fade-in">
+                                <div class="glass-card rounded-2xl p-6 border-l-2 border-accent-green/40">
+                                    <h4 class="text-lg font-bold text-white mb-1 flex items-center gap-3">
+                                        <svg class="w-5 h-5 text-accent-green" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"></path></svg>
+                                        802.1X / EAP Troubleshooter
+                                    </h4>
+                                    <p class="text-[11px] text-gray-500 mb-4 ml-8">Diagnostic interactif des erreurs d'authentification 802.1X — arbre de décision basé sur les symptômes terrain.</p>
+                                    <div class="mb-4">
+                                        <label class="block text-xs text-gray-400 mb-2">Quel symptôme observez-vous ?</label>
+                                        <select id="eap-symptom" onchange="diagnoseEAP()"
+                                            class="w-full px-3 py-2.5 bg-dark-800 border border-white/10 rounded-lg text-white focus:border-accent-green focus:outline-none transition text-sm">
+                                            <option value="">-- Sélectionnez un symptôme --</option>
+                                            <option value="timeout">Le client ne s'authentifie pas (timeout)</option>
+                                            <option value="reject">Authentification rejetée par le RADIUS</option>
+                                            <option value="cert">Erreur de certificat (TLS handshake failed)</option>
+                                            <option value="vlan">Mauvais VLAN après authentification</option>
+                                            <option value="loop">Boucle d'authentification (re-auth constante)</option>
+                                            <option value="mab">MAB échoue — device non reconnu</option>
+                                            <option value="guest">Pas de redirection portail invité</option>
+                                            <option value="coa">CoA/Disconnect non reçu par le switch</option>
+                                        </select>
+                                    </div>
+                                    <div id="eap-diagnosis" class="hidden space-y-3">
+                                        <div class="bg-dark-800 rounded-xl p-4">
+                                            <div class="flex items-center gap-2 mb-2">
+                                                <span class="w-2 h-2 rounded-full bg-red-400"></span>
+                                                <p class="text-xs font-bold text-white" id="eap-cause-title">Cause probable</p>
+                                            </div>
+                                            <p id="eap-cause-desc" class="text-xs text-gray-400 leading-relaxed mb-3"></p>
+                                            <div class="border-t border-white/5 pt-3">
+                                                <p class="text-[10px] font-semibold text-accent-green uppercase tracking-wider mb-2">Checklist de résolution</p>
+                                                <ul id="eap-checklist" class="space-y-1.5 text-xs text-gray-300"></ul>
+                                            </div>
+                                        </div>
+                                        <div class="bg-dark-800 rounded-xl p-4">
+                                            <div class="flex items-center justify-between mb-1">
+                                                <p class="text-[10px] text-gray-500 uppercase tracking-wider">Commandes debug</p>
+                                                <button onclick="copyToClipboard(event, 'eap-debug-cmds')" class="text-[10px] text-accent-green hover:underline">Copier</button>
+                                            </div>
+                                            <pre id="eap-debug-cmds" class="text-[10px] font-mono text-accent-green whitespace-pre-wrap"></pre>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
                         </div>
 
                     </div><!-- /grid -->
@@ -5763,12 +5755,11 @@
                     <ul class="space-y-2 text-sm text-gray-500">
                         <li><a href="#" data-view="blog" class="hover:text-accent-cyan transition-colors">Blog
                                 technique</a></li>
-                        <li><a href="https://www.linkedin.com/in/romaric-okemba-27833230/" target="_blank"
+                        <li><a href="https://www.linkedin.com/in/romaric-okemba-27833230/" target="_blank" rel="noopener noreferrer"
                                 class="hover:text-accent-cyan transition-colors">LinkedIn</a></li>
                         <li><a href="#"
                                 onclick="Calendly.initPopupWidget({url:'https://calendly.com/r-okemba-ornetwork/30min'});return false;"
-                                class="hover:text-accent-cyan transition-colors">Prendre
-                                RDV</a></li>
+                                class="hover:text-accent-cyan transition-colors">Prendre rendez-vous</a></li>
                     </ul>
                 </div>
                 <div>
@@ -5784,11 +5775,11 @@
             </div>
             <div
                 class="border-t border-white/5 pt-6 flex flex-col sm:flex-row items-center justify-between text-xs text-gray-600">
-                <p>© 2025 ORNET. Tous droits réservés.</p>
+                <p>© 2026 ORNET. Tous droits réservés.</p>
                 <div class="flex gap-4 mt-2 sm:mt-0">
-                    <a href="#" class="hover:text-gray-400 transition-colors">Mentions légales</a>
-                    <a href="#" class="hover:text-gray-400 transition-colors">Politique RGPD</a>
-                    <a href="#" class="hover:text-gray-400 transition-colors">CGV</a>
+                    <a href="mentions-legales.html" class="hover:text-gray-400 transition-colors">Mentions légales</a>
+                    <a href="politique-rgpd.html" class="hover:text-gray-400 transition-colors">Politique RGPD</a>
+                    <a href="cgv.html" class="hover:text-gray-400 transition-colors">CGV</a>
                 </div>
             </div>
         </div>
@@ -7349,13 +7340,13 @@
             window.selectQosTraffic = function (type) {
                 // Toggle button style
                 document.querySelectorAll('.qos-traffic-btn').forEach(btn => {
-                    btn.classList.remove('border-accent-cyan', 'text-accent-cyan', 'bg-accent-cyan/10');
+                    btn.classList.remove('border-accent-green', 'text-accent-green', 'bg-accent-green/10');
                     btn.classList.add('border-white/10', 'text-gray-400', 'bg-dark-800');
                 });
                 const activeBtn = document.querySelector('.qos-traffic-btn[data-type="' + type + '"]');
                 if (activeBtn) {
                     activeBtn.classList.remove('border-white/10', 'text-gray-400', 'bg-dark-800');
-                    activeBtn.classList.add('border-accent-cyan', 'text-accent-cyan', 'bg-accent-cyan/10');
+                    activeBtn.classList.add('border-accent-green', 'text-accent-green', 'bg-accent-green/10');
                 }
 
                 const p = qosProfiles[type];
@@ -7432,7 +7423,7 @@
                 config += '!\n';
                 config += 'interface ' + iface + '\n';
                 config += ' service-policy output PM-QOS-MARKING\n';
-                config += ' mls qos trust dscp\n';
+                config += ' trust device cisco-phone\n';
                 config += '!';
 
                 document.getElementById('qos-config-out').textContent = config;
