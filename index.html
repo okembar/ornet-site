@@ -4524,7 +4524,7 @@
                             <span class="w-8 h-px bg-accent-cyan"></span><span>Engineering Lab</span>
                         </div>
                         <h2 class="text-3xl sm:text-5xl font-bold tracking-tight mb-4">Outils terrain</h2>
-                        <p class="text-lg text-gray-400 leading-relaxed">15 outils d'ingénierie réseau — RF, Channel Planner, Link Budget, SNR, MCS, FSPL, Airtime, dACL, PoE, Subnet, DHCP, MAC, VLAN, 802.1X, Reason Codes — directement dans le navigateur.</p>
+                        <p class="text-lg text-gray-400 leading-relaxed">18 outils d'ingénierie réseau — RF, Channel Planner, Link Budget, SNR, MCS, FSPL, Airtime, QoS, dACL, PoE, Subnet, DHCP, MAC, VLAN, 802.1X, Syslog, ACL Builder, Reason Codes — directement dans le navigateur.</p>
                     </div>
 
                     <!-- ===== 2-Column Grid Layout ===== -->
@@ -5026,6 +5026,95 @@
                                 </div>
                             </div>
 
+                            <!-- Tool 9 : QoS Policy Builder / DSCP-WMM Mapper -->
+                            <div id="tool-qos" class="fade-in">
+                                <div class="glass-card rounded-2xl p-6 border-l-2 border-accent-cyan/40">
+                                    <h4 class="text-lg font-bold text-white mb-1 flex items-center gap-3">
+                                        <svg class="w-5 h-5 text-accent-cyan" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path></svg>
+                                        QoS Policy Builder
+                                    </h4>
+                                    <p class="text-[11px] text-gray-500 mb-4 ml-8">Mapping DSCP ↔ CoS ↔ WMM ↔ UP et génération de policy-map Cisco IOS-XE. Indispensable voix/vidéo/IoT.</p>
+
+                                    <!-- Traffic type selector -->
+                                    <div class="space-y-3 mb-4">
+                                        <div>
+                                            <label class="block text-xs text-gray-400 mb-2">Type de trafic</label>
+                                            <div id="qos-traffic-btns" class="grid grid-cols-3 gap-2">
+                                                <button onclick="selectQosTraffic('voice')" class="qos-traffic-btn px-2 py-2 rounded-lg text-[11px] font-semibold border border-white/10 bg-dark-800 text-gray-400 hover:border-accent-cyan/40 hover:text-white transition-all" data-type="voice">🎙 Voix</button>
+                                                <button onclick="selectQosTraffic('video')" class="qos-traffic-btn px-2 py-2 rounded-lg text-[11px] font-semibold border border-white/10 bg-dark-800 text-gray-400 hover:border-accent-cyan/40 hover:text-white transition-all" data-type="video">📹 Vidéo</button>
+                                                <button onclick="selectQosTraffic('signaling')" class="qos-traffic-btn px-2 py-2 rounded-lg text-[11px] font-semibold border border-white/10 bg-dark-800 text-gray-400 hover:border-accent-cyan/40 hover:text-white transition-all" data-type="signaling">📞 Signaling</button>
+                                                <button onclick="selectQosTraffic('critical')" class="qos-traffic-btn px-2 py-2 rounded-lg text-[11px] font-semibold border border-white/10 bg-dark-800 text-gray-400 hover:border-accent-cyan/40 hover:text-white transition-all" data-type="critical">⚡ Critique</button>
+                                                <button onclick="selectQosTraffic('best-effort')" class="qos-traffic-btn px-2 py-2 rounded-lg text-[11px] font-semibold border border-white/10 bg-dark-800 text-gray-400 hover:border-accent-cyan/40 hover:text-white transition-all" data-type="best-effort">🌐 Best Effort</button>
+                                                <button onclick="selectQosTraffic('scavenger')" class="qos-traffic-btn px-2 py-2 rounded-lg text-[11px] font-semibold border border-white/10 bg-dark-800 text-gray-400 hover:border-accent-cyan/40 hover:text-white transition-all" data-type="scavenger">🗑 Scavenger</button>
+                                            </div>
+                                        </div>
+                                        <div>
+                                            <label class="block text-xs text-gray-400 mb-1">Interface d'application</label>
+                                            <input id="qos-interface" type="text" value="GigabitEthernet0/0/1" placeholder="GigabitEthernet0/0/1"
+                                                class="w-full px-3 py-2.5 bg-dark-800 border border-white/10 rounded-lg text-white placeholder-gray-600 focus:border-accent-cyan focus:outline-none transition text-sm font-mono">
+                                        </div>
+                                    </div>
+
+                                    <!-- QoS Results -->
+                                    <div id="qos-result" class="hidden space-y-3">
+                                        <!-- Mapping cards -->
+                                        <div class="grid grid-cols-4 gap-2">
+                                            <div class="bg-dark-800 rounded-xl p-2.5 text-center">
+                                                <p class="text-[10px] text-gray-500 uppercase tracking-wider mb-0.5">DSCP</p>
+                                                <p id="qos-dscp" class="text-lg font-bold text-accent-cyan">--</p>
+                                                <p id="qos-dscp-name" class="text-[10px] text-gray-500"></p>
+                                            </div>
+                                            <div class="bg-dark-800 rounded-xl p-2.5 text-center">
+                                                <p class="text-[10px] text-gray-500 uppercase tracking-wider mb-0.5">CoS / 802.1p</p>
+                                                <p id="qos-cos" class="text-lg font-bold text-white">--</p>
+                                            </div>
+                                            <div class="bg-dark-800 rounded-xl p-2.5 text-center">
+                                                <p class="text-[10px] text-gray-500 uppercase tracking-wider mb-0.5">WMM / AC</p>
+                                                <p id="qos-wmm" class="text-lg font-bold text-yellow-400">--</p>
+                                            </div>
+                                            <div class="bg-dark-800 rounded-xl p-2.5 text-center">
+                                                <p class="text-[10px] text-gray-500 uppercase tracking-wider mb-0.5">UP (User Pr.)</p>
+                                                <p id="qos-up" class="text-lg font-bold text-purple-400">--</p>
+                                            </div>
+                                        </div>
+
+                                        <!-- PHB + Queue info -->
+                                        <div id="qos-phb-info" class="rounded-lg p-3 bg-cyan-500/10 border border-cyan-500/30">
+                                            <p class="text-[11px] text-gray-300 leading-relaxed"></p>
+                                        </div>
+
+                                        <!-- Policy-map config -->
+                                        <div class="bg-dark-800 rounded-xl p-3">
+                                            <div class="flex items-center justify-between mb-1">
+                                                <p class="text-[10px] text-gray-500 uppercase tracking-wider">Policy-map Cisco IOS-XE</p>
+                                                <button onclick="copyToClipboard(event, 'qos-config-out')" class="text-[10px] text-accent-cyan hover:underline">Copier</button>
+                                            </div>
+                                            <pre id="qos-config-out" class="text-[10px] font-mono text-accent-cyan whitespace-pre-wrap"></pre>
+                                        </div>
+                                    </div>
+
+                                    <!-- DSCP Reference Table -->
+                                    <details class="mt-3">
+                                        <summary class="text-[11px] text-gray-500 cursor-pointer hover:text-gray-300 transition">📋 Table de référence DSCP complète</summary>
+                                        <div class="mt-2 overflow-x-auto">
+                                            <table class="w-full text-[10px]">
+                                                <thead>
+                                                    <tr class="text-gray-500 uppercase tracking-wider">
+                                                        <th class="text-left py-1 px-1">PHB</th>
+                                                        <th class="text-left py-1 px-1">DSCP</th>
+                                                        <th class="text-left py-1 px-1">Décimal</th>
+                                                        <th class="text-left py-1 px-1">CoS</th>
+                                                        <th class="text-left py-1 px-1">WMM</th>
+                                                        <th class="text-left py-1 px-1">Usage</th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody id="qos-ref-table" class="text-gray-300"></tbody>
+                                            </table>
+                                        </div>
+                                    </details>
+                                </div>
+                            </div>
+
                         </div>
 
                         <!-- ────── COLONNE DROITE : Pôle Réseau / NAC (Green) ────── -->
@@ -5401,6 +5490,197 @@
                                                 <button onclick="copyToClipboard(event, 'eap-debug-cmds')" class="text-[10px] text-accent-green hover:underline">Copier</button>
                                             </div>
                                             <pre id="eap-debug-cmds" class="text-[10px] font-mono text-accent-green whitespace-pre-wrap"></pre>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Tool 11 : Syslog / SNMP Severity Decoder -->
+                            <div id="tool-syslog" class="fade-in">
+                                <div class="glass-card rounded-2xl p-6 border-l-2 border-accent-green/40">
+                                    <h4 class="text-lg font-bold text-white mb-1 flex items-center gap-3">
+                                        <svg class="w-5 h-5 text-accent-green" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path></svg>
+                                        Syslog / SNMP Decoder
+                                    </h4>
+                                    <p class="text-[11px] text-gray-500 mb-4 ml-8">Décodage des messages syslog Cisco — severity, facility, mnémonique. Collez un message brut ou sélectionnez un niveau.</p>
+
+                                    <div class="space-y-3 mb-4">
+                                        <div>
+                                            <label class="block text-xs text-gray-400 mb-1">Message syslog brut</label>
+                                            <textarea id="syslog-input" rows="2" placeholder="%LINK-3-UPDOWN: Interface GigabitEthernet0/1, changed state to down" oninput="decodeSyslog()"
+                                                class="w-full px-3 py-2.5 bg-dark-800 border border-white/10 rounded-lg text-white placeholder-gray-600 focus:border-accent-green focus:outline-none transition text-sm font-mono resize-none"></textarea>
+                                        </div>
+                                        <div>
+                                            <label class="block text-xs text-gray-400 mb-2">Ou sélectionnez un niveau de sévérité</label>
+                                            <div id="syslog-severity-btns" class="grid grid-cols-4 gap-1.5">
+                                                <button onclick="selectSyslogSeverity(0)" class="syslog-sev-btn px-1.5 py-1.5 rounded-lg text-[10px] font-bold border border-white/10 bg-dark-800 text-gray-400 hover:border-red-500/50 transition-all" data-sev="0">0 Emerg</button>
+                                                <button onclick="selectSyslogSeverity(1)" class="syslog-sev-btn px-1.5 py-1.5 rounded-lg text-[10px] font-bold border border-white/10 bg-dark-800 text-gray-400 hover:border-red-500/50 transition-all" data-sev="1">1 Alert</button>
+                                                <button onclick="selectSyslogSeverity(2)" class="syslog-sev-btn px-1.5 py-1.5 rounded-lg text-[10px] font-bold border border-white/10 bg-dark-800 text-gray-400 hover:border-red-500/50 transition-all" data-sev="2">2 Crit</button>
+                                                <button onclick="selectSyslogSeverity(3)" class="syslog-sev-btn px-1.5 py-1.5 rounded-lg text-[10px] font-bold border border-white/10 bg-dark-800 text-gray-400 hover:border-orange-500/50 transition-all" data-sev="3">3 Error</button>
+                                                <button onclick="selectSyslogSeverity(4)" class="syslog-sev-btn px-1.5 py-1.5 rounded-lg text-[10px] font-bold border border-white/10 bg-dark-800 text-gray-400 hover:border-yellow-500/50 transition-all" data-sev="4">4 Warn</button>
+                                                <button onclick="selectSyslogSeverity(5)" class="syslog-sev-btn px-1.5 py-1.5 rounded-lg text-[10px] font-bold border border-white/10 bg-dark-800 text-gray-400 hover:border-cyan-500/50 transition-all" data-sev="5">5 Notice</button>
+                                                <button onclick="selectSyslogSeverity(6)" class="syslog-sev-btn px-1.5 py-1.5 rounded-lg text-[10px] font-bold border border-white/10 bg-dark-800 text-gray-400 hover:border-blue-500/50 transition-all" data-sev="6">6 Info</button>
+                                                <button onclick="selectSyslogSeverity(7)" class="syslog-sev-btn px-1.5 py-1.5 rounded-lg text-[10px] font-bold border border-white/10 bg-dark-800 text-gray-400 hover:border-gray-500/50 transition-all" data-sev="7">7 Debug</button>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <!-- Syslog Results -->
+                                    <div id="syslog-result" class="hidden space-y-2">
+                                        <div class="grid sm:grid-cols-3 gap-2">
+                                            <div class="bg-dark-800 rounded-xl p-3 text-center">
+                                                <p class="text-[10px] text-gray-500 uppercase tracking-wider mb-0.5">Sévérité</p>
+                                                <p id="syslog-severity" class="text-lg font-bold text-red-400">--</p>
+                                                <p id="syslog-severity-name" class="text-[10px] text-gray-500"></p>
+                                            </div>
+                                            <div class="bg-dark-800 rounded-xl p-3 text-center">
+                                                <p class="text-[10px] text-gray-500 uppercase tracking-wider mb-0.5">Facility</p>
+                                                <p id="syslog-facility" class="text-sm font-bold text-white">--</p>
+                                            </div>
+                                            <div class="bg-dark-800 rounded-xl p-3 text-center">
+                                                <p class="text-[10px] text-gray-500 uppercase tracking-wider mb-0.5">Mnémonique</p>
+                                                <p id="syslog-mnemonic" class="text-sm font-bold text-accent-green">--</p>
+                                            </div>
+                                        </div>
+                                        <div id="syslog-detail" class="bg-dark-800 rounded-xl p-3">
+                                            <p class="text-[10px] text-gray-500 uppercase tracking-wider mb-1">Explication &amp; Action recommandée</p>
+                                            <p id="syslog-explanation" class="text-xs text-gray-300 leading-relaxed"></p>
+                                        </div>
+                                        <div class="bg-dark-800 rounded-xl p-3">
+                                            <div class="flex items-center justify-between mb-1">
+                                                <p class="text-[10px] text-gray-500 uppercase tracking-wider">Config Syslog IOS recommandée</p>
+                                                <button onclick="copyToClipboard(event, 'syslog-config-out')" class="text-[10px] text-accent-green hover:underline">Copier</button>
+                                            </div>
+                                            <pre id="syslog-config-out" class="text-[10px] font-mono text-accent-green whitespace-pre-wrap"></pre>
+                                        </div>
+                                    </div>
+
+                                    <!-- Severity Reference -->
+                                    <details class="mt-3">
+                                        <summary class="text-[11px] text-gray-500 cursor-pointer hover:text-gray-300 transition">📋 Table des niveaux syslog (RFC 5424)</summary>
+                                        <div class="mt-2 overflow-x-auto">
+                                            <table class="w-full text-[10px]">
+                                                <thead>
+                                                    <tr class="text-gray-500 uppercase tracking-wider">
+                                                        <th class="text-left py-1 px-1">Niveau</th>
+                                                        <th class="text-left py-1 px-1">Mot-clé</th>
+                                                        <th class="text-left py-1 px-1">Description</th>
+                                                        <th class="text-left py-1 px-1">SNMP Trap</th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody id="syslog-ref-table" class="text-gray-300"></tbody>
+                                            </table>
+                                        </div>
+                                    </details>
+                                </div>
+                            </div>
+
+                            <!-- Tool 12 : ACL Builder / Tester -->
+                            <div id="tool-acl" class="fade-in">
+                                <div class="glass-card rounded-2xl p-6 border-l-2 border-accent-green/40">
+                                    <h4 class="text-lg font-bold text-white mb-1 flex items-center gap-3">
+                                        <svg class="w-5 h-5 text-accent-green" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 4a1 1 0 011-1h16a1 1 0 011 1v2.586a1 1 0 01-.293.707l-6.414 6.414a1 1 0 00-.293.707V17l-4 4v-6.586a1 1 0 00-.293-.707L3.293 7.293A1 1 0 013 6.586V4z"></path></svg>
+                                        ACL Builder / Tester
+                                    </h4>
+                                    <p class="text-[11px] text-gray-500 mb-4 ml-8">Constructeur d'ACL étendue Cisco — simulez le matching d'un paquet et générez la config IOS prête à coller.</p>
+
+                                    <div class="space-y-3 mb-4">
+                                        <!-- ACL Rules builder -->
+                                        <div>
+                                            <label class="block text-xs text-gray-400 mb-1">Nom de l'ACL</label>
+                                            <input id="acl-name" type="text" value="ACL-ORNET-FILTER" placeholder="ACL-ORNET-FILTER"
+                                                class="w-full px-3 py-2.5 bg-dark-800 border border-white/10 rounded-lg text-white placeholder-gray-600 focus:border-accent-green focus:outline-none transition text-sm font-mono">
+                                        </div>
+
+                                        <!-- Quick presets -->
+                                        <div>
+                                            <label class="block text-xs text-gray-400 mb-2">Preset rapide</label>
+                                            <div class="grid grid-cols-3 gap-2">
+                                                <button onclick="applyAclPreset('web')" class="px-2 py-1.5 rounded-lg text-[10px] font-semibold border border-white/10 bg-dark-800 text-gray-400 hover:border-accent-green/40 hover:text-white transition-all">🌐 Web (80/443)</button>
+                                                <button onclick="applyAclPreset('dns')" class="px-2 py-1.5 rounded-lg text-[10px] font-semibold border border-white/10 bg-dark-800 text-gray-400 hover:border-accent-green/40 hover:text-white transition-all">🔍 DNS (53)</button>
+                                                <button onclick="applyAclPreset('voip')" class="px-2 py-1.5 rounded-lg text-[10px] font-semibold border border-white/10 bg-dark-800 text-gray-400 hover:border-accent-green/40 hover:text-white transition-all">📞 VoIP (RTP)</button>
+                                                <button onclick="applyAclPreset('ssh')" class="px-2 py-1.5 rounded-lg text-[10px] font-semibold border border-white/10 bg-dark-800 text-gray-400 hover:border-accent-green/40 hover:text-white transition-all">🔐 SSH (22)</button>
+                                                <button onclick="applyAclPreset('radius')" class="px-2 py-1.5 rounded-lg text-[10px] font-semibold border border-white/10 bg-dark-800 text-gray-400 hover:border-accent-green/40 hover:text-white transition-all">🛡 RADIUS</button>
+                                                <button onclick="applyAclPreset('deny-all')" class="px-2 py-1.5 rounded-lg text-[10px] font-semibold border border-white/10 bg-dark-800 text-gray-400 hover:border-red-500/40 hover:text-red-300 transition-all">🚫 Deny All</button>
+                                            </div>
+                                        </div>
+
+                                        <!-- Manual ACE inputs -->
+                                        <div class="grid grid-cols-12 gap-2">
+                                            <div class="col-span-2">
+                                                <label class="block text-[10px] text-gray-500 mb-1">Action</label>
+                                                <select id="acl-action" class="w-full px-2 py-2 bg-dark-800 border border-white/10 rounded-lg text-white text-[11px] focus:border-accent-green focus:outline-none transition">
+                                                    <option value="permit">permit</option>
+                                                    <option value="deny">deny</option>
+                                                </select>
+                                            </div>
+                                            <div class="col-span-2">
+                                                <label class="block text-[10px] text-gray-500 mb-1">Proto</label>
+                                                <select id="acl-proto" class="w-full px-2 py-2 bg-dark-800 border border-white/10 rounded-lg text-white text-[11px] focus:border-accent-green focus:outline-none transition">
+                                                    <option value="ip">ip</option>
+                                                    <option value="tcp">tcp</option>
+                                                    <option value="udp">udp</option>
+                                                    <option value="icmp">icmp</option>
+                                                </select>
+                                            </div>
+                                            <div class="col-span-3">
+                                                <label class="block text-[10px] text-gray-500 mb-1">Source</label>
+                                                <input id="acl-src" type="text" value="any" placeholder="10.0.0.0/24"
+                                                    class="w-full px-2 py-2 bg-dark-800 border border-white/10 rounded-lg text-white text-[11px] font-mono focus:border-accent-green focus:outline-none transition">
+                                            </div>
+                                            <div class="col-span-3">
+                                                <label class="block text-[10px] text-gray-500 mb-1">Destination</label>
+                                                <input id="acl-dst" type="text" value="any" placeholder="192.168.1.0/24"
+                                                    class="w-full px-2 py-2 bg-dark-800 border border-white/10 rounded-lg text-white text-[11px] font-mono focus:border-accent-green focus:outline-none transition">
+                                            </div>
+                                            <div class="col-span-2">
+                                                <label class="block text-[10px] text-gray-500 mb-1">Port</label>
+                                                <input id="acl-port" type="text" placeholder="443"
+                                                    class="w-full px-2 py-2 bg-dark-800 border border-white/10 rounded-lg text-white text-[11px] font-mono focus:border-accent-green focus:outline-none transition">
+                                            </div>
+                                        </div>
+
+                                        <div class="flex gap-2">
+                                            <button onclick="addAclRule()" class="flex-1 px-4 py-2.5 bg-accent-green/20 text-accent-green font-semibold rounded-lg hover:bg-accent-green/30 transition-all text-sm">+ Ajouter l'ACE</button>
+                                            <button onclick="clearAclRules()" class="px-4 py-2.5 bg-red-500/10 text-red-400 font-semibold rounded-lg hover:bg-red-500/20 transition-all text-sm">Reset</button>
+                                        </div>
+                                    </div>
+
+                                    <!-- ACL Results -->
+                                    <div id="acl-result" class="hidden space-y-2">
+                                        <div class="bg-dark-800 rounded-xl p-3">
+                                            <p class="text-[10px] text-gray-500 uppercase tracking-wider mb-1">ACEs configurées (<span id="acl-count">0</span> règles)</p>
+                                            <div id="acl-rules-list" class="space-y-1"></div>
+                                        </div>
+                                        <div class="bg-dark-800 rounded-xl p-3">
+                                            <div class="flex items-center justify-between mb-1">
+                                                <p class="text-[10px] text-gray-500 uppercase tracking-wider">Config IOS — Extended Named ACL</p>
+                                                <button onclick="copyToClipboard(event, 'acl-config-out')" class="text-[10px] text-accent-green hover:underline">Copier</button>
+                                            </div>
+                                            <pre id="acl-config-out" class="text-[10px] font-mono text-accent-green whitespace-pre-wrap"></pre>
+                                        </div>
+
+                                        <!-- Packet tester -->
+                                        <div class="border-t border-white/5 pt-3">
+                                            <p class="text-[10px] font-semibold text-accent-green uppercase tracking-wider mb-2">Simuler un paquet</p>
+                                            <div class="grid grid-cols-12 gap-2">
+                                                <div class="col-span-3">
+                                                    <input id="acl-test-proto" type="text" value="tcp" placeholder="tcp"
+                                                        class="w-full px-2 py-1.5 bg-dark-800 border border-white/10 rounded-lg text-white text-[11px] font-mono focus:border-accent-green focus:outline-none transition">
+                                                </div>
+                                                <div class="col-span-3">
+                                                    <input id="acl-test-src" type="text" placeholder="10.0.0.5"
+                                                        class="w-full px-2 py-1.5 bg-dark-800 border border-white/10 rounded-lg text-white text-[11px] font-mono focus:border-accent-green focus:outline-none transition">
+                                                </div>
+                                                <div class="col-span-3">
+                                                    <input id="acl-test-dst" type="text" placeholder="8.8.8.8"
+                                                        class="w-full px-2 py-1.5 bg-dark-800 border border-white/10 rounded-lg text-white text-[11px] font-mono focus:border-accent-green focus:outline-none transition">
+                                                </div>
+                                                <div class="col-span-3">
+                                                    <button onclick="testAclPacket()" class="w-full px-2 py-1.5 bg-accent-green/20 text-accent-green font-semibold rounded-lg hover:bg-accent-green/30 transition-all text-[11px]">Tester</button>
+                                                </div>
+                                            </div>
+                                            <p id="acl-test-verdict" class="mt-2 text-xs font-semibold text-center text-gray-500">--</p>
                                         </div>
                                     </div>
                                 </div>
@@ -7015,6 +7295,474 @@
             // Init MCS table
             setTimeout(calcMCS, 100);
 
+            // ======= QoS Policy Builder / DSCP-WMM Mapper =======
+            const qosProfiles = {
+                'voice': { dscp: 46, dscpName: 'EF', cos: 5, wmm: 'VO', up: 6, phb: 'Expedited Forwarding', color: 'cyan',
+                    desc: 'Trafic voix temps-réel (RTP). Exige latence < 150ms, jitter < 30ms, perte < 1%. Queue prioritaire stricte (LLQ).',
+                    bandwidth: '100-200 kbps/appel', queue: 'priority' },
+                'video': { dscp: 34, dscpName: 'AF41', cos: 4, wmm: 'VI', up: 5, phb: 'Assured Forwarding 41', color: 'yellow',
+                    desc: 'Trafic vidéo temps-réel (visio, surveillance). Bande passante garantie avec policing. AF41=basse proba de drop.',
+                    bandwidth: '2-10 Mbps/flux', queue: 'bandwidth remaining percent' },
+                'signaling': { dscp: 24, dscpName: 'CS3', cos: 3, wmm: 'VI', up: 4, phb: 'Class Selector 3', color: 'purple',
+                    desc: 'Signalisation voix/vidéo (SIP, H.323, SCCP). Faible volume mais critique pour l\'établissement d\'appels.',
+                    bandwidth: '32-64 kbps', queue: 'bandwidth remaining percent' },
+                'critical': { dscp: 26, dscpName: 'AF31', cos: 3, wmm: 'VI', up: 4, phb: 'Assured Forwarding 31', color: 'orange',
+                    desc: 'Trafic critique réseau (RADIUS, TACACS+, SNMP, NTP, syslog). Garantir la livraison pour le management.',
+                    bandwidth: 'Variable', queue: 'bandwidth remaining percent' },
+                'best-effort': { dscp: 0, dscpName: 'BE / CS0', cos: 0, wmm: 'BE', up: 0, phb: 'Best Effort (Default)', color: 'gray',
+                    desc: 'Trafic par défaut — web browsing, email, transferts. Aucune garantie de bande passante. Queue default.',
+                    bandwidth: 'Variable', queue: 'fair-queue' },
+                'scavenger': { dscp: 8, dscpName: 'CS1', cos: 1, wmm: 'BK', up: 1, phb: 'Class Selector 1 (Scavenger)', color: 'red',
+                    desc: 'Trafic non-essentiel — P2P, streaming personnel, gaming. Premier à être droppé en congestion.',
+                    bandwidth: 'Limité', queue: 'bandwidth remaining percent (minimal)' }
+            };
+
+            const dscpRefTable = [
+                { phb: 'EF', dscp: 'EF', decimal: 46, cos: 5, wmm: 'VO', usage: 'Voix (RTP)' },
+                { phb: 'AF41', dscp: 'AF41', decimal: 34, cos: 4, wmm: 'VI', usage: 'Vidéo interactive' },
+                { phb: 'AF42', dscp: 'AF42', decimal: 36, cos: 4, wmm: 'VI', usage: 'Vidéo (drop moyen)' },
+                { phb: 'AF43', dscp: 'AF43', decimal: 38, cos: 4, wmm: 'VI', usage: 'Vidéo (drop élevé)' },
+                { phb: 'AF31', dscp: 'AF31', decimal: 26, cos: 3, wmm: 'VI', usage: 'Données critiques' },
+                { phb: 'AF32', dscp: 'AF32', decimal: 28, cos: 3, wmm: 'VI', usage: 'Critique (drop moyen)' },
+                { phb: 'AF21', dscp: 'AF21', decimal: 18, cos: 2, wmm: 'BE', usage: 'Données transactionnelles' },
+                { phb: 'AF11', dscp: 'AF11', decimal: 10, cos: 1, wmm: 'BK', usage: 'Données bulk' },
+                { phb: 'CS7', dscp: 'CS7', decimal: 56, cos: 7, wmm: 'VO', usage: 'Network Control' },
+                { phb: 'CS6', dscp: 'CS6', decimal: 48, cos: 6, wmm: 'VO', usage: 'Internetwork Control' },
+                { phb: 'CS5', dscp: 'CS5', decimal: 40, cos: 5, wmm: 'VI', usage: 'Signaling (RSVP)' },
+                { phb: 'CS4', dscp: 'CS4', decimal: 32, cos: 4, wmm: 'VI', usage: 'Streaming vidéo' },
+                { phb: 'CS3', dscp: 'CS3', decimal: 24, cos: 3, wmm: 'VI', usage: 'Signaling (SIP, SCCP)' },
+                { phb: 'CS2', dscp: 'CS2', decimal: 16, cos: 2, wmm: 'BE', usage: 'OAM (management)' },
+                { phb: 'CS1', dscp: 'CS1', decimal: 8, cos: 1, wmm: 'BK', usage: 'Scavenger / Bulk' },
+                { phb: 'CS0', dscp: 'BE', decimal: 0, cos: 0, wmm: 'BE', usage: 'Best Effort (default)' }
+            ];
+
+            // Populate DSCP reference table on load
+            setTimeout(() => {
+                const tbody = document.getElementById('qos-ref-table');
+                if (tbody) {
+                    tbody.innerHTML = dscpRefTable.map(r =>
+                        '<tr class="border-t border-white/5"><td class="py-1 px-1 text-accent-cyan font-bold">' + r.phb + '</td><td class="py-1 px-1">' + r.dscp + '</td><td class="py-1 px-1 text-white font-semibold">' + r.decimal + '</td><td class="py-1 px-1">' + r.cos + '</td><td class="py-1 px-1 text-yellow-400">' + r.wmm + '</td><td class="py-1 px-1 text-gray-400">' + r.usage + '</td></tr>'
+                    ).join('');
+                }
+            }, 200);
+
+            window.selectQosTraffic = function (type) {
+                // Toggle button style
+                document.querySelectorAll('.qos-traffic-btn').forEach(btn => {
+                    btn.classList.remove('border-accent-cyan', 'text-accent-cyan', 'bg-accent-cyan/10');
+                    btn.classList.add('border-white/10', 'text-gray-400', 'bg-dark-800');
+                });
+                const activeBtn = document.querySelector('.qos-traffic-btn[data-type="' + type + '"]');
+                if (activeBtn) {
+                    activeBtn.classList.remove('border-white/10', 'text-gray-400', 'bg-dark-800');
+                    activeBtn.classList.add('border-accent-cyan', 'text-accent-cyan', 'bg-accent-cyan/10');
+                }
+
+                const p = qosProfiles[type];
+                if (!p) return;
+
+                document.getElementById('qos-result').classList.remove('hidden');
+                document.getElementById('qos-dscp').textContent = p.dscp;
+                document.getElementById('qos-dscp-name').textContent = p.dscpName;
+                document.getElementById('qos-cos').textContent = p.cos;
+                document.getElementById('qos-wmm').textContent = p.wmm;
+                document.getElementById('qos-up').textContent = p.up;
+
+                // PHB info
+                const colorMap = { cyan: 'cyan', yellow: 'yellow', purple: 'purple', orange: 'orange', gray: 'gray', red: 'red' };
+                const c = colorMap[p.color] || 'cyan';
+                const phbEl = document.getElementById('qos-phb-info');
+                phbEl.className = 'rounded-lg p-3 bg-' + c + '-500/10 border border-' + c + '-500/30';
+                phbEl.innerHTML = '<p class="text-[11px] font-bold text-white mb-1">' + p.phb + '</p><p class="text-[11px] text-gray-300 leading-relaxed">' + p.desc + '</p><p class="text-[10px] text-gray-500 mt-1">Bande passante typique : ' + p.bandwidth + ' | Queue : ' + p.queue + '</p>';
+
+                // Generate policy-map
+                const iface = document.getElementById('qos-interface').value || 'GigabitEthernet0/0/1';
+                let config = '! QoS Policy — ' + type.toUpperCase() + '\n';
+                config += 'class-map match-any CM-' + type.toUpperCase() + '\n';
+
+                if (type === 'voice') {
+                    config += ' match dscp ef\n';
+                    config += ' match protocol rtp\n';
+                } else if (type === 'video') {
+                    config += ' match dscp af41 af42 af43\n';
+                } else if (type === 'signaling') {
+                    config += ' match dscp cs3\n';
+                    config += ' match protocol sip\n';
+                } else if (type === 'critical') {
+                    config += ' match dscp af31 af32 af33\n';
+                    config += ' match access-group name ACL-CRITICAL-TRAFFIC\n';
+                } else if (type === 'best-effort') {
+                    config += ' match dscp default\n';
+                } else if (type === 'scavenger') {
+                    config += ' match dscp cs1\n';
+                }
+
+                config += '!\n';
+                config += 'policy-map PM-QOS-MARKING\n';
+
+                if (type === 'voice') {
+                    config += ' class CM-VOICE\n';
+                    config += '  priority percent 10\n';
+                    config += '  set dscp ef\n';
+                } else if (type === 'video') {
+                    config += ' class CM-VIDEO\n';
+                    config += '  bandwidth remaining percent 30\n';
+                    config += '  set dscp af41\n';
+                } else if (type === 'signaling') {
+                    config += ' class CM-SIGNALING\n';
+                    config += '  bandwidth remaining percent 5\n';
+                    config += '  set dscp cs3\n';
+                } else if (type === 'critical') {
+                    config += ' class CM-CRITICAL\n';
+                    config += '  bandwidth remaining percent 10\n';
+                    config += '  set dscp af31\n';
+                } else if (type === 'best-effort') {
+                    config += ' class class-default\n';
+                    config += '  fair-queue\n';
+                    config += '  set dscp default\n';
+                } else if (type === 'scavenger') {
+                    config += ' class CM-SCAVENGER\n';
+                    config += '  bandwidth remaining percent 1\n';
+                    config += '  set dscp cs1\n';
+                    config += '  police rate 1000000 bps burst 125000 bytes\n';
+                    config += '   conform-action transmit\n';
+                    config += '   exceed-action drop\n';
+                }
+
+                config += '!\n';
+                config += 'interface ' + iface + '\n';
+                config += ' service-policy output PM-QOS-MARKING\n';
+                config += ' mls qos trust dscp\n';
+                config += '!';
+
+                document.getElementById('qos-config-out').textContent = config;
+            };
+
+            // ======= Syslog / SNMP Decoder =======
+            const syslogSeverities = [
+                { level: 0, name: 'Emergency', keyword: 'emergencies', desc: 'Système inutilisable — crash imminent, panne matérielle critique.', snmp: 'N/A', color: 'red', action: 'Intervention immédiate requise. Escalade NOC/TAC.' },
+                { level: 1, name: 'Alert', keyword: 'alerts', desc: 'Action immédiate nécessaire — ex: base de données corrompue, perte de redondance.', snmp: 'N/A', color: 'red', action: 'Intervention urgente. Notifier l\'équipe on-call.' },
+                { level: 2, name: 'Critical', keyword: 'critical', desc: 'Condition critique — perte d\'interface, stack overflow, temperature critique.', snmp: 'N/A', color: 'red', action: 'Vérifier l\'état hardware. Consulter les logs précédents.' },
+                { level: 3, name: 'Error', keyword: 'errors', desc: 'Erreur applicative — OSPF neighbor down, config parse error, memory allocation failure.', snmp: 'Oui', color: 'orange', action: 'Analyser la cause root. Vérifier les dépendances (liens, voisins).' },
+                { level: 4, name: 'Warning', keyword: 'warnings', desc: 'Avertissement — seuil mémoire, flapping interface, certificat expirant.', snmp: 'Oui', color: 'yellow', action: 'Surveiller l\'évolution. Planifier une maintenance si récurrent.' },
+                { level: 5, name: 'Notification', keyword: 'notifications', desc: 'Événement normal significatif — interface up/down, config changed, user login.', snmp: 'Oui', color: 'cyan', action: 'Information. Corréler avec les changements planifiés.' },
+                { level: 6, name: 'Informational', keyword: 'informational', desc: 'Information pure — ACL hit, NTP sync, DHCP binding. Volume élevé.', snmp: 'Non', color: 'blue', action: 'Filtrage recommandé. Utile pour le troubleshooting actif.' },
+                { level: 7, name: 'Debug', keyword: 'debugging', desc: 'Messages de debug — très verbeux. Utiliser uniquement en troubleshooting actif.', snmp: 'Non', color: 'gray', action: 'Ne pas activer en production. Utiliser avec « debug condition ».' }
+            ];
+
+            const syslogFacilities = {
+                'LINK': 'Interface physique (up/down, flapping)',
+                'LINEPROTO': 'Protocole de ligne (CDP, LLDP, keepalive)',
+                'SYS': 'Système général (reload, config, memory)',
+                'OSPF': 'OSPF (neighbor, SPF, area)',
+                'BGP': 'BGP (peer, route, update)',
+                'HSRP': 'HSRP/VRRP (state change)',
+                'EIGRP': 'EIGRP (neighbor, topology)',
+                'DHCP': 'DHCP (binding, relay, conflict)',
+                'DOT1X': '802.1X (auth success/failure)',
+                'MAB': 'MAC Auth Bypass (endpoint)',
+                'EPM': 'Endpoint Policy Manager (ISE)',
+                'RADIUS': 'RADIUS (auth, accounting)',
+                'AUTHMGR': 'Authentication Manager',
+                'PLATFORM': 'Hardware platform (TCAM, PoE, PSU)',
+                'SWITCH': 'Switch platform (stack, SDM)',
+                'STP': 'Spanning Tree (topology change, root)',
+                'SECURITY': 'Sécurité (port-security, DHCP snooping)',
+                'CDP': 'Cisco Discovery Protocol',
+                'SNMP': 'SNMP (trap, community)',
+                'NTP': 'Network Time Protocol',
+                'ACL': 'Access Control List (hit, log)',
+                'IP': 'IP (routing, ARP, duplex)',
+                'PM': 'Port Manager (err-disable, recovery)',
+                'ILPOWER': 'Inline Power / PoE',
+                'ENVIRONMENT': 'Environnement (temp, fan, PSU)',
+                'STACK': 'Stack (member join/leave)',
+                'LICENSE': 'Licensing (smart, DNA)',
+                'CRYPTO': 'Crypto (VPN, PKI, certificats)'
+            };
+
+            // Populate syslog reference table on load
+            setTimeout(() => {
+                const tbody = document.getElementById('syslog-ref-table');
+                if (tbody) {
+                    tbody.innerHTML = syslogSeverities.map(s => {
+                        const colorClass = { red: 'text-red-400', orange: 'text-orange-400', yellow: 'text-yellow-400', cyan: 'text-cyan-400', blue: 'text-blue-400', gray: 'text-gray-400' }[s.color] || 'text-gray-400';
+                        return '<tr class="border-t border-white/5"><td class="py-1 px-1 ' + colorClass + ' font-bold">' + s.level + '</td><td class="py-1 px-1 text-white">' + s.name + '</td><td class="py-1 px-1 text-gray-400">' + s.desc.substring(0, 60) + '…</td><td class="py-1 px-1">' + s.snmp + '</td></tr>';
+                    }).join('');
+                }
+            }, 200);
+
+            window.selectSyslogSeverity = function (level) {
+                document.querySelectorAll('.syslog-sev-btn').forEach(btn => {
+                    btn.classList.remove('border-accent-green', 'text-white', 'bg-accent-green/10');
+                    btn.classList.add('border-white/10', 'text-gray-400', 'bg-dark-800');
+                });
+                const activeBtn = document.querySelector('.syslog-sev-btn[data-sev="' + level + '"]');
+                if (activeBtn) {
+                    activeBtn.classList.remove('border-white/10', 'text-gray-400', 'bg-dark-800');
+                    activeBtn.classList.add('border-accent-green', 'text-white', 'bg-accent-green/10');
+                }
+
+                const sev = syslogSeverities[level];
+                if (!sev) return;
+
+                document.getElementById('syslog-result').classList.remove('hidden');
+                const colorClass = { red: 'text-red-400', orange: 'text-orange-400', yellow: 'text-yellow-400', cyan: 'text-cyan-400', blue: 'text-blue-400', gray: 'text-gray-400' }[sev.color] || 'text-gray-400';
+                document.getElementById('syslog-severity').className = 'text-lg font-bold ' + colorClass;
+                document.getElementById('syslog-severity').textContent = sev.level;
+                document.getElementById('syslog-severity-name').textContent = sev.name;
+                document.getElementById('syslog-facility').textContent = '--';
+                document.getElementById('syslog-mnemonic').textContent = '--';
+                document.getElementById('syslog-explanation').textContent = sev.desc + ' Action : ' + sev.action;
+
+                // Config recommandée
+                let config = 'logging buffered ' + sev.keyword + '\n';
+                config += 'logging console ' + sev.keyword + '\n';
+                config += 'logging trap ' + sev.keyword + '\n';
+                config += 'logging host 10.0.0.100\n';
+                config += 'logging source-interface Loopback0\n';
+                config += 'logging origin-id hostname\n';
+                config += 'service timestamps log datetime msec localtime show-timezone\n';
+                config += 'service sequence-numbers\n';
+                config += '!';
+                document.getElementById('syslog-config-out').textContent = config;
+            };
+
+            window.decodeSyslog = function () {
+                const input = document.getElementById('syslog-input').value.trim();
+                if (!input) {
+                    document.getElementById('syslog-result').classList.add('hidden');
+                    return;
+                }
+
+                // Parse Cisco syslog format: %FACILITY-SEVERITY-MNEMONIC: message
+                const match = input.match(/%([A-Z_]+)-(\d)-([A-Z_]+)/);
+                if (!match) {
+                    // Try to at least detect severity from other formats
+                    document.getElementById('syslog-result').classList.remove('hidden');
+                    document.getElementById('syslog-severity').textContent = '?';
+                    document.getElementById('syslog-severity-name').textContent = 'Format non reconnu';
+                    document.getElementById('syslog-facility').textContent = '--';
+                    document.getElementById('syslog-mnemonic').textContent = '--';
+                    document.getElementById('syslog-explanation').textContent = 'Format attendu : %FACILITY-SEVERITY-MNEMONIC: message. Exemple : %LINK-3-UPDOWN: Interface Gi0/1, changed state to down';
+                    document.getElementById('syslog-config-out').textContent = '';
+                    return;
+                }
+
+                const facility = match[1];
+                const sevLevel = parseInt(match[2]);
+                const mnemonic = match[3];
+                const sev = syslogSeverities[sevLevel];
+
+                document.getElementById('syslog-result').classList.remove('hidden');
+
+                // Update severity buttons
+                document.querySelectorAll('.syslog-sev-btn').forEach(btn => {
+                    btn.classList.remove('border-accent-green', 'text-white', 'bg-accent-green/10');
+                    btn.classList.add('border-white/10', 'text-gray-400', 'bg-dark-800');
+                });
+                const activeBtn = document.querySelector('.syslog-sev-btn[data-sev="' + sevLevel + '"]');
+                if (activeBtn) {
+                    activeBtn.classList.remove('border-white/10', 'text-gray-400', 'bg-dark-800');
+                    activeBtn.classList.add('border-accent-green', 'text-white', 'bg-accent-green/10');
+                }
+
+                const colorClass = sev ? ({ red: 'text-red-400', orange: 'text-orange-400', yellow: 'text-yellow-400', cyan: 'text-cyan-400', blue: 'text-blue-400', gray: 'text-gray-400' }[sev.color] || 'text-gray-400') : 'text-gray-400';
+                document.getElementById('syslog-severity').className = 'text-lg font-bold ' + colorClass;
+                document.getElementById('syslog-severity').textContent = sevLevel;
+                document.getElementById('syslog-severity-name').textContent = sev ? sev.name : 'Inconnu';
+                document.getElementById('syslog-facility').textContent = facility;
+                document.getElementById('syslog-mnemonic').textContent = mnemonic;
+
+                const facilityDesc = syslogFacilities[facility] || 'Facility non référencée dans la base locale.';
+                let explanation = 'Facility : ' + facilityDesc + '\n';
+                explanation += 'Sévérité ' + sevLevel + ' (' + (sev ? sev.name : '?') + ') : ' + (sev ? sev.desc : '') + '\n';
+                explanation += 'Action : ' + (sev ? sev.action : 'Analyser le contexte.');
+                document.getElementById('syslog-explanation').textContent = explanation;
+
+                // Config
+                let config = '! Filtrage syslog recommandé pour ' + facility + '-' + sevLevel + '-' + mnemonic + '\n';
+                config += 'logging buffered ' + (sev ? sev.keyword : 'informational') + '\n';
+                config += 'logging trap ' + (sev ? sev.keyword : 'informational') + '\n';
+                config += 'logging host 10.0.0.100\n';
+                config += 'logging source-interface Loopback0\n';
+                if (sevLevel <= 3) {
+                    config += '! ALERTE : sévérité critique — configurer SNMP trap\n';
+                    config += 'snmp-server enable traps syslog\n';
+                    config += 'snmp-server host 10.0.0.100 version 2c ORNET-MONITOR\n';
+                }
+                config += 'service timestamps log datetime msec localtime show-timezone\n';
+                config += '!';
+                document.getElementById('syslog-config-out').textContent = config;
+            };
+
+            // ======= ACL Builder / Tester =======
+            let aclRules = [];
+
+            function cidrToWildcard(cidr) {
+                if (cidr === 'any') return { addr: 'any', wildcard: '' };
+                if (cidr === 'host' || !cidr.includes('/')) {
+                    // Single IP
+                    const ip = cidr.replace('host ', '').trim();
+                    if (/^\d+\.\d+\.\d+\.\d+$/.test(ip)) return { addr: 'host ' + ip, wildcard: '' };
+                    return { addr: cidr, wildcard: '' };
+                }
+                const [ip, prefix] = cidr.split('/');
+                const prefixNum = parseInt(prefix);
+                if (isNaN(prefixNum) || prefixNum < 0 || prefixNum > 32) return { addr: cidr, wildcard: '' };
+
+                const mask = prefixNum === 0 ? 0 : (~0 << (32 - prefixNum)) >>> 0;
+                const wild = (~mask) >>> 0;
+                const ipParts = ip.split('.').map(Number);
+                const netParts = [
+                    (ipParts[0] & (mask >>> 24)) & 255,
+                    (ipParts[1] & (mask >>> 16)) & 255,
+                    (ipParts[2] & (mask >>> 8)) & 255,
+                    (ipParts[3] & mask) & 255
+                ];
+                const wildStr = [(wild >>> 24) & 255, (wild >>> 16) & 255, (wild >>> 8) & 255, wild & 255].join('.');
+                return { addr: netParts.join('.') + ' ' + wildStr, wildcard: wildStr };
+            }
+
+            function buildAceString(rule) {
+                let ace = rule.action + ' ' + rule.proto;
+                ace += ' ' + cidrToWildcard(rule.src).addr;
+                ace += ' ' + cidrToWildcard(rule.dst).addr;
+                if (rule.port && rule.proto !== 'ip' && rule.proto !== 'icmp') {
+                    ace += ' eq ' + rule.port;
+                }
+                return ace;
+            }
+
+            function renderAcl() {
+                const resultEl = document.getElementById('acl-result');
+                if (aclRules.length === 0) {
+                    resultEl.classList.add('hidden');
+                    return;
+                }
+                resultEl.classList.remove('hidden');
+                document.getElementById('acl-count').textContent = aclRules.length;
+
+                // Rules list
+                const listEl = document.getElementById('acl-rules-list');
+                listEl.innerHTML = aclRules.map((rule, i) => {
+                    const aceStr = buildAceString(rule);
+                    const color = rule.action === 'permit' ? 'text-green-400' : 'text-red-400';
+                    return '<div class="flex items-center justify-between py-1 border-b border-white/5"><span class="text-[10px] font-mono ' + color + '">' + (i + 10) + ' ' + aceStr + '</span><button onclick="removeAclRule(' + i + ')" class="text-[10px] text-red-400 hover:text-red-300 ml-2">✕</button></div>';
+                }).join('');
+
+                // IOS config
+                const aclName = document.getElementById('acl-name').value || 'ACL-ORNET-FILTER';
+                let config = 'ip access-list extended ' + aclName + '\n';
+                aclRules.forEach((rule, i) => {
+                    config += ' ' + (i * 10 + 10) + ' ' + buildAceString(rule) + '\n';
+                });
+                config += '!';
+                document.getElementById('acl-config-out').textContent = config;
+            }
+
+            window.addAclRule = function () {
+                const rule = {
+                    action: document.getElementById('acl-action').value,
+                    proto: document.getElementById('acl-proto').value,
+                    src: document.getElementById('acl-src').value.trim() || 'any',
+                    dst: document.getElementById('acl-dst').value.trim() || 'any',
+                    port: document.getElementById('acl-port').value.trim()
+                };
+                aclRules.push(rule);
+                renderAcl();
+            };
+
+            window.removeAclRule = function (index) {
+                aclRules.splice(index, 1);
+                renderAcl();
+            };
+
+            window.clearAclRules = function () {
+                aclRules = [];
+                renderAcl();
+            };
+
+            window.applyAclPreset = function (preset) {
+                aclRules = [];
+                switch (preset) {
+                    case 'web':
+                        aclRules.push({ action: 'permit', proto: 'tcp', src: 'any', dst: 'any', port: '80' });
+                        aclRules.push({ action: 'permit', proto: 'tcp', src: 'any', dst: 'any', port: '443' });
+                        break;
+                    case 'dns':
+                        aclRules.push({ action: 'permit', proto: 'udp', src: 'any', dst: 'any', port: '53' });
+                        aclRules.push({ action: 'permit', proto: 'tcp', src: 'any', dst: 'any', port: '53' });
+                        break;
+                    case 'voip':
+                        aclRules.push({ action: 'permit', proto: 'udp', src: 'any', dst: 'any', port: '5060' });
+                        aclRules.push({ action: 'permit', proto: 'udp', src: 'any', dst: 'any', port: '5061' });
+                        aclRules.push({ action: 'permit', proto: 'udp', src: 'any', dst: 'any', port: '' }); // RTP range
+                        break;
+                    case 'ssh':
+                        aclRules.push({ action: 'permit', proto: 'tcp', src: 'any', dst: 'any', port: '22' });
+                        break;
+                    case 'radius':
+                        aclRules.push({ action: 'permit', proto: 'udp', src: 'any', dst: 'any', port: '1812' });
+                        aclRules.push({ action: 'permit', proto: 'udp', src: 'any', dst: 'any', port: '1813' });
+                        aclRules.push({ action: 'permit', proto: 'udp', src: 'any', dst: 'any', port: '1645' });
+                        aclRules.push({ action: 'permit', proto: 'udp', src: 'any', dst: 'any', port: '1646' });
+                        aclRules.push({ action: 'permit', proto: 'udp', src: 'any', dst: 'any', port: '1700' });
+                        break;
+                    case 'deny-all':
+                        aclRules.push({ action: 'deny', proto: 'ip', src: 'any', dst: 'any', port: '' });
+                        break;
+                }
+                document.getElementById('acl-name').value = 'ACL-' + preset.toUpperCase().replace('-', '_');
+                renderAcl();
+            };
+
+            window.testAclPacket = function () {
+                const testProto = document.getElementById('acl-test-proto').value.trim().toLowerCase();
+                const testSrc = document.getElementById('acl-test-src').value.trim();
+                const testDst = document.getElementById('acl-test-dst').value.trim();
+                const verdictEl = document.getElementById('acl-test-verdict');
+
+                if (!testSrc || !testDst) {
+                    verdictEl.textContent = 'Remplissez source et destination';
+                    verdictEl.className = 'mt-2 text-xs font-semibold text-center text-yellow-400';
+                    return;
+                }
+
+                function ipMatchesCidr(ip, cidr) {
+                    if (cidr === 'any') return true;
+                    if (!cidr.includes('/')) return ip === cidr.replace('host ', '').trim();
+                    const [net, prefix] = cidr.split('/');
+                    const prefixNum = parseInt(prefix);
+                    const mask = prefixNum === 0 ? 0 : (~0 << (32 - prefixNum)) >>> 0;
+                    const ipNum = ip.split('.').reduce((acc, oct) => (acc << 8) + parseInt(oct), 0) >>> 0;
+                    const netNum = net.split('.').reduce((acc, oct) => (acc << 8) + parseInt(oct), 0) >>> 0;
+                    return (ipNum & mask) === (netNum & mask);
+                }
+
+                for (let i = 0; i < aclRules.length; i++) {
+                    const rule = aclRules[i];
+                    const protoMatch = rule.proto === 'ip' || rule.proto === testProto;
+                    const srcMatch = ipMatchesCidr(testSrc, rule.src);
+                    const dstMatch = ipMatchesCidr(testDst, rule.dst);
+
+                    if (protoMatch && srcMatch && dstMatch) {
+                        if (rule.action === 'permit') {
+                            verdictEl.innerHTML = '<span class="text-green-400">✓ PERMIT</span> — matché par ACE ' + (i * 10 + 10) + ' : ' + buildAceString(rule);
+                            verdictEl.className = 'mt-2 text-xs font-semibold text-center';
+                        } else {
+                            verdictEl.innerHTML = '<span class="text-red-400">✗ DENY</span> — matché par ACE ' + (i * 10 + 10) + ' : ' + buildAceString(rule);
+                            verdictEl.className = 'mt-2 text-xs font-semibold text-center';
+                        }
+                        return;
+                    }
+                }
+
+                // Implicit deny
+                verdictEl.innerHTML = '<span class="text-red-400">✗ DENY (implicit)</span> — aucune ACE ne matche ce paquet';
+                verdictEl.className = 'mt-2 text-xs font-semibold text-center';
+            };
+
             // ======= VLAN Trunking Validator =======
             window.calcVlanTrunk = function () {
                 const nativeVlan = parseInt(document.getElementById('vlan-native').value) || 1;
@@ -7356,6 +8104,39 @@
                     };
                 }
 
+                // QoS Policy Builder
+                const qosDscp = document.getElementById('qos-dscp').textContent.trim();
+                if (qosDscp && qosDscp !== '--') {
+                    data.qos_policy = {
+                        dscp: qosDscp,
+                        dscp_name: document.getElementById('qos-dscp-name').textContent.trim(),
+                        cos: document.getElementById('qos-cos').textContent.trim(),
+                        wmm: document.getElementById('qos-wmm').textContent.trim(),
+                        policy_map: document.getElementById('qos-config-out').textContent.trim()
+                    };
+                }
+
+                // Syslog Decoder
+                const syslogSev = document.getElementById('syslog-severity').textContent.trim();
+                if (syslogSev && syslogSev !== '--') {
+                    data.syslog_decoder = {
+                        severity: syslogSev,
+                        severity_name: document.getElementById('syslog-severity-name').textContent.trim(),
+                        facility: document.getElementById('syslog-facility').textContent.trim(),
+                        mnemonic: document.getElementById('syslog-mnemonic').textContent.trim(),
+                        config: document.getElementById('syslog-config-out').textContent.trim()
+                    };
+                }
+
+                // ACL Builder
+                if (aclRules.length > 0) {
+                    data.acl_builder = {
+                        name: document.getElementById('acl-name').value,
+                        rules_count: aclRules.length,
+                        config: document.getElementById('acl-config-out').textContent.trim()
+                    };
+                }
+
                 let content = "";
                 let mimeType = "";
 
@@ -7398,6 +8179,9 @@
                     if (data.mac_formatter) content += `[MAC Formatter]\nCisco IOS: ${data.mac_formatter.cisco_ios}\nStandard: ${data.mac_formatter.standard}\n\n`;
                     if (data.vlan_trunking) content += `[VLAN Trunking]\nVLANs: ${data.vlan_trunking.vlan_count}\nNatif: ${data.vlan_trunking.native_vlan}\nVerdict: ${data.vlan_trunking.verdict}\nConfig IOS:\n${data.vlan_trunking.ios_config}\n\n`;
                     if (data.eap_troubleshooter) content += `[802.1X EAP Troubleshooter]\nSymptôme: ${data.eap_troubleshooter.symptom}\nCause: ${data.eap_troubleshooter.cause}\nCommandes debug:\n${data.eap_troubleshooter.debug_commands}\n\n`;
+                    if (data.syslog_decoder) content += `[Syslog Decoder]\nSévérité: ${data.syslog_decoder.severity} (${data.syslog_decoder.severity_name})\nFacility: ${data.syslog_decoder.facility}\nMnémonique: ${data.syslog_decoder.mnemonic}\nConfig:\n${data.syslog_decoder.config}\n\n`;
+                    if (data.acl_builder) content += `[ACL Builder]\nNom: ${data.acl_builder.name}\nRègles: ${data.acl_builder.rules_count}\nConfig:\n${data.acl_builder.config}\n\n`;
+                    if (data.qos_policy) content += `[QoS Policy]\nDSCP: ${data.qos_policy.dscp} (${data.qos_policy.dscp_name})\nCoS: ${data.qos_policy.cos}\nWMM: ${data.qos_policy.wmm}\nPolicy-map:\n${data.qos_policy.policy_map}\n\n`;
                     content += "Generé via or-net.com";
                     mimeType = "text/plain;charset=utf-8";
                 }
