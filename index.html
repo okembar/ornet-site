@@ -4516,7 +4516,7 @@
 
         <!-- ========== VUE : ENGINEERING LAB (OUTILS) ========== -->
         <section id="view-outils" class="view px-6">
-            <div class="pt-6 pb-16 md:pt-8 md:pb-20">
+            <div class="pt-8 pb-16 md:pt-10 md:pb-20">
                 <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                     <!-- Header -->
                     <div class="max-w-3xl mb-8 fade-in">
@@ -5509,6 +5509,9 @@
                 const target = document.getElementById('view-' + viewId);
                 if (target) { target.classList.add('active'); window.scrollTo({ top: 0, behavior: 'instant' }); setTimeout(() => animateFadeIns(target), 50); if (viewId === 'wifi') { startWifiCanvas() } else { stopWifiCanvas() } if (viewId === 'accueil') { animateCounters() } }
                 navLinks.forEach(l => { l.classList.toggle('active', l.dataset.view === viewId) });
+                // Afficher cas-clients uniquement sur accueil
+                const casClients = document.getElementById('cas-clients');
+                if (casClients) { casClients.style.display = (viewId === 'accueil') ? 'block' : 'none'; }
             }
 
             document.querySelectorAll('[data-view]').forEach(el => {
