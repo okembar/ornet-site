@@ -4524,7 +4524,7 @@
                             <span class="w-8 h-px bg-accent-cyan"></span><span>Engineering Lab</span>
                         </div>
                         <h2 class="text-3xl sm:text-5xl font-bold tracking-tight mb-4">Outils terrain</h2>
-                        <p class="text-lg text-gray-400 leading-relaxed">8 calculateurs et générateurs réseau — RF, FSPL, Subnet, dACL, PoE, DHCP Opt.43, MAC, Reason Codes — directement dans le navigateur.</p>
+                        <p class="text-lg text-gray-400 leading-relaxed">15 outils d'ingénierie réseau — RF, Channel Planner, Link Budget, SNR, MCS, FSPL, Airtime, dACL, PoE, Subnet, DHCP, MAC, VLAN, 802.1X, Reason Codes — directement dans le navigateur.</p>
                     </div>
 
                     <!-- ===== 2-Column Grid Layout ===== -->
@@ -4544,6 +4544,7 @@
                                         <svg class="w-5 h-5 text-accent-cyan" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path></svg>
                                         Calculateur RF — dBm / mW / EIRP
                                     </h4>
+                                    <p class="text-[11px] text-gray-500 mb-4 ml-8">Conversion instantanée dBm ⇄ mW, calcul EIRP avec gain antenne et perte câble. Alerte ETSI 20 dBm intégrée.</p>
                                     <div class="grid sm:grid-cols-2 gap-3 mb-4">
                                         <div>
                                             <label class="block text-xs text-gray-400 mb-1">Puissance (dBm)</label>
@@ -4593,6 +4594,7 @@
                                         <svg class="w-5 h-5 text-accent-cyan" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"></path></svg>
                                         FSPL — Perte en espace libre
                                     </h4>
+                                    <p class="text-[11px] text-gray-500 mb-4 ml-8">Calcul de l'atténuation en propagation libre (Free Space Path Loss) selon la distance et la fréquence.</p>
                                     <div class="grid sm:grid-cols-2 gap-3 mb-4">
                                         <div>
                                             <label class="block text-xs text-gray-400 mb-1">Distance (mètres)</label>
@@ -4623,6 +4625,7 @@
                                         <svg class="w-5 h-5 text-accent-cyan" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path></svg>
                                         Reason &amp; Status Codes 802.11
                                     </h4>
+                                    <p class="text-[11px] text-gray-500 mb-4 ml-8">Dictionnaire interactif des codes de déconnexion Wi-Fi — diagnostic terrain en un clic.</p>
                                     <div class="mb-4">
                                         <label class="block text-xs text-gray-400 mb-1">Code numérique (Reason ou Status)</label>
                                         <div class="flex gap-3">
@@ -4663,10 +4666,11 @@
                             <!-- Tool 4 : Channel Planner / DFS Checker (NEW) -->
                             <div id="tool-channel" class="fade-in">
                                 <div class="glass-card rounded-2xl p-6 border-l-2 border-accent-cyan/40">
-                                    <h4 class="text-lg font-bold text-white mb-5 flex items-center gap-3">
+                                    <h4 class="text-lg font-bold text-white mb-1 flex items-center gap-3">
                                         <svg class="w-5 h-5 text-accent-cyan" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8.111 16.404a5.5 5.5 0 017.778 0M12 20h.01m-7.08-7.071c3.904-3.905 10.236-3.905 14.14 0M1.394 9.393c5.857-5.858 15.355-5.858 21.213 0"></path></svg>
                                         Channel Planner / DFS Checker
                                     </h4>
+                                    <p class="text-[11px] text-gray-500 mb-4 ml-8">Carte des canaux par sous-bande UNII — DFS, LPI/VLP, AFC — selon ETSI, FCC et MKK.</p>
                                     <div class="grid sm:grid-cols-2 gap-3 mb-4">
                                         <div>
                                             <label class="block text-xs text-gray-400 mb-1">Bande</label>
@@ -4674,7 +4678,7 @@
                                                 class="w-full px-3 py-2.5 bg-dark-800 border border-white/10 rounded-lg text-white focus:border-accent-cyan focus:outline-none transition text-sm">
                                                 <option value="2.4">2.4 GHz</option>
                                                 <option value="5" selected>5 GHz</option>
-                                                <option value="6">6 GHz (Wi-Fi 6E)</option>
+                                                <option value="6">6 GHz (Wi-Fi 6E / 7)</option>
                                             </select>
                                         </div>
                                         <div>
@@ -4689,20 +4693,22 @@
                                     </div>
                                     <div class="mb-3">
                                         <label class="block text-xs text-gray-400 mb-1">Largeur canal</label>
-                                        <div class="flex gap-2">
-                                            <button onclick="setChannelWidth(20)" id="chw-20" class="flex-1 px-3 py-1.5 text-xs font-semibold rounded-lg bg-accent-cyan/20 text-accent-cyan transition">20 MHz</button>
-                                            <button onclick="setChannelWidth(40)" id="chw-40" class="flex-1 px-3 py-1.5 text-xs font-semibold rounded-lg bg-dark-800 text-gray-400 hover:text-white transition">40 MHz</button>
-                                            <button onclick="setChannelWidth(80)" id="chw-80" class="flex-1 px-3 py-1.5 text-xs font-semibold rounded-lg bg-dark-800 text-gray-400 hover:text-white transition">80 MHz</button>
-                                            <button onclick="setChannelWidth(160)" id="chw-160" class="flex-1 px-3 py-1.5 text-xs font-semibold rounded-lg bg-dark-800 text-gray-400 hover:text-white transition">160 MHz</button>
+                                        <div class="flex gap-1.5">
+                                            <button onclick="setChannelWidth(20)" id="chw-20" class="flex-1 px-2 py-1.5 text-xs font-semibold rounded-lg bg-accent-cyan/20 text-accent-cyan transition">20</button>
+                                            <button onclick="setChannelWidth(40)" id="chw-40" class="flex-1 px-2 py-1.5 text-xs font-semibold rounded-lg bg-dark-800 text-gray-400 hover:text-white transition">40</button>
+                                            <button onclick="setChannelWidth(80)" id="chw-80" class="flex-1 px-2 py-1.5 text-xs font-semibold rounded-lg bg-dark-800 text-gray-400 hover:text-white transition">80</button>
+                                            <button onclick="setChannelWidth(160)" id="chw-160" class="flex-1 px-2 py-1.5 text-xs font-semibold rounded-lg bg-dark-800 text-gray-400 hover:text-white transition">160</button>
+                                            <button onclick="setChannelWidth(320)" id="chw-320" class="flex-1 px-2 py-1.5 text-xs font-semibold rounded-lg bg-dark-800 text-gray-400 hover:text-white transition">320</button>
                                         </div>
                                     </div>
                                     <!-- Channel Map -->
-                                    <div id="channel-map" class="space-y-2 mb-3"></div>
+                                    <div id="channel-map" class="space-y-1 mb-3"></div>
                                     <!-- Legend -->
                                     <div class="flex flex-wrap gap-3 text-[10px] text-gray-500 pt-2 border-t border-white/5">
                                         <span class="flex items-center gap-1"><span class="w-2 h-2 rounded-sm bg-accent-cyan/60"></span>Standard</span>
                                         <span class="flex items-center gap-1"><span class="w-2 h-2 rounded-sm bg-orange-400/60"></span>DFS</span>
-                                        <span class="flex items-center gap-1"><span class="w-2 h-2 rounded-sm bg-purple-400/60"></span>LPI/VLP (6 GHz)</span>
+                                        <span class="flex items-center gap-1"><span class="w-2 h-2 rounded-sm bg-purple-400/60"></span>LPI/VLP</span>
+                                        <span class="flex items-center gap-1"><span class="w-2 h-2 rounded-sm bg-blue-400/60"></span>SP/AFC</span>
                                         <span class="flex items-center gap-1"><span class="w-2 h-2 rounded-sm bg-red-500/40"></span>Interdit</span>
                                     </div>
                                 </div>
@@ -4715,6 +4721,7 @@
                                         <svg class="w-5 h-5 text-accent-cyan" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6"></path></svg>
                                         Link Budget Calculator
                                     </h4>
+                                    <p class="text-[11px] text-gray-500 mb-4 ml-8">Bilan de liaison complet : TX → obstacles → FSPL → signal reçu. Verdict instantané selon le seuil applicatif.</p>
                                     <div class="grid sm:grid-cols-2 gap-3 mb-3">
                                         <div>
                                             <label class="block text-xs text-gray-400 mb-1">TX Power (dBm)</label>
@@ -4830,6 +4837,7 @@
                                         <svg class="w-5 h-5 text-accent-cyan" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
                                         Airtime / Capacity Estimator
                                     </h4>
+                                    <p class="text-[11px] text-gray-500 mb-4 ml-8">Estimation de la charge airtime par AP selon le nombre de clients, le débit et le standard Wi-Fi.</p>
                                     <div class="grid sm:grid-cols-2 gap-3 mb-3">
                                         <div>
                                             <label class="block text-xs text-gray-400 mb-1">Nb de clients par AP</label>
@@ -4898,6 +4906,7 @@
                                         <svg class="w-5 h-5 text-accent-cyan" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"></path></svg>
                                         SNR Calculator
                                     </h4>
+                                    <p class="text-[11px] text-gray-500 mb-4 ml-8">Rapport signal/bruit — l'indicateur #1 de qualité de la liaison radio.</p>
                                     <div class="grid sm:grid-cols-2 gap-3 mb-4">
                                         <div>
                                             <label class="block text-xs text-gray-400 mb-1">Signal reçu (dBm)</label>
@@ -4952,6 +4961,7 @@
                                         <svg class="w-5 h-5 text-accent-cyan" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 15a4 4 0 004 4h9a5 5 0 10-.1-9.999 5.002 5.002 0 10-9.78 2.096A4.001 4.001 0 003 15z"></path></svg>
                                         Throughput Estimator (MCS)
                                     </h4>
+                                    <p class="text-[11px] text-gray-500 mb-4 ml-8">Table MCS complète avec débit PHY par spatial stream, largeur canal et guard interval.</p>
                                     <div class="grid sm:grid-cols-2 gap-3 mb-3">
                                         <div>
                                             <label class="block text-xs text-gray-400 mb-1">Standard Wi-Fi</label>
@@ -5032,6 +5042,7 @@
                                         <svg class="w-5 h-5 text-accent-green" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"></path></svg>
                                         Générateur dACL — Cisco ISE
                                     </h4>
+                                    <p class="text-[11px] text-gray-500 mb-4 ml-8">Génération de Downloadable ACLs pour profils d'autorisation ISE — presets inclus.</p>
                                     <div class="space-y-3 mb-4">
                                         <div>
                                             <label class="block text-xs text-gray-400 mb-1">Nom de la dACL</label>
@@ -5075,6 +5086,7 @@
                                         <svg class="w-5 h-5 text-accent-green" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path></svg>
                                         PoE Budget Calculator
                                     </h4>
+                                    <p class="text-[11px] text-gray-500 mb-4 ml-8">Dimensionnement du budget Power over Ethernet : APs, caméras, marge et alertes de dépassement.</p>
                                     <div class="grid sm:grid-cols-2 gap-3 mb-4">
                                         <div>
                                             <label class="block text-xs text-gray-400 mb-1">Budget switch total (W)</label>
@@ -5144,6 +5156,7 @@
                                         <svg class="w-5 h-5 text-accent-green" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 12a9 9 0 01-9 9m9-9a9 9 0 00-9-9m9 9H3m9 9a9 9 0 01-9-9m9 9c1.657 0 3-4.03 3-9s-1.343-9-3-9m0 18c-1.657 0-3-4.03-3-9s1.343-9 3-9m-9 9a9 9 0 019-9"></path></svg>
                                         Calculateur IPv4 / CIDR
                                     </h4>
+                                    <p class="text-[11px] text-gray-500 mb-4 ml-8">Calcul réseau, broadcast, masque, wildcard, hôtes — avec Split/Join interactif de sous-réseaux.</p>
                                     <div class="mb-4">
                                         <label class="block text-xs text-gray-400 mb-1">Adresse CIDR</label>
                                         <div class="flex gap-3">
@@ -5222,6 +5235,7 @@
                                         <svg class="w-5 h-5 text-accent-green" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 12h14M5 12a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v4a2 2 0 01-2 2M5 12a2 2 0 00-2 2v4a2 2 0 002 2h14a2 2 0 002-2v-4a2 2 0 00-2-2m-2-4h.01M17 16h.01"></path></svg>
                                         DHCP Option 43 — Cisco WLC
                                     </h4>
+                                    <p class="text-[11px] text-gray-500 mb-4 ml-8">Encodage hex de l'option 43 pour la découverte automatique des contrôleurs WLC.</p>
                                     <div class="mb-4">
                                         <label class="block text-xs text-gray-400 mb-1">Adresses IP du WLC (virgules)</label>
                                         <input id="wlc-ips" type="text" placeholder="10.0.0.1, 10.0.0.2" oninput="generateOption43()"
@@ -5254,6 +5268,7 @@
                                         <svg class="w-5 h-5 text-accent-green" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4"></path></svg>
                                         MAC Address Formatter
                                     </h4>
+                                    <p class="text-[11px] text-gray-500 mb-4 ml-8">Conversion MAC vers les formats Cisco IOS, Linux et Windows en temps réel.</p>
                                     <div class="mb-4">
                                         <label class="block text-xs text-gray-400 mb-1">Adresse MAC (tout format)</label>
                                         <input id="mac-input" type="text" placeholder="AA:BB:CC:DD:EE:FF ou AABB.CCDD.EEFF" oninput="formatMac()"
@@ -5285,6 +5300,112 @@
                                     </div>
                                 </div>
                             </div>
+
+                            <!-- Tool 9 : VLAN Trunking Validator (NEW) -->
+                            <div id="tool-vlan" class="fade-in">
+                                <div class="glass-card rounded-2xl p-6 border-l-2 border-accent-green/40">
+                                    <h4 class="text-lg font-bold text-white mb-1 flex items-center gap-3">
+                                        <svg class="w-5 h-5 text-accent-green" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10"></path></svg>
+                                        VLAN Trunking Validator
+                                    </h4>
+                                    <p class="text-[11px] text-gray-500 mb-4 ml-8">Vérification du trunk 802.1Q — VLAN natif, tagged/untagged, allowed list. Essentiel pour le debug NAC.</p>
+                                    <div class="space-y-3 mb-4">
+                                        <div>
+                                            <label class="block text-xs text-gray-400 mb-1">VLAN natif (untagged)</label>
+                                            <input id="vlan-native" type="number" min="1" max="4094" value="1" oninput="calcVlanTrunk()"
+                                                class="w-full px-3 py-2.5 bg-dark-800 border border-white/10 rounded-lg text-white placeholder-gray-600 focus:border-accent-green focus:outline-none transition text-sm">
+                                        </div>
+                                        <div>
+                                            <label class="block text-xs text-gray-400 mb-1">VLANs autorisés (ex: 10,20,30-50,100)</label>
+                                            <input id="vlan-allowed" type="text" placeholder="10,20,30-50,100" oninput="calcVlanTrunk()"
+                                                class="w-full px-3 py-2.5 bg-dark-800 border border-white/10 rounded-lg text-white placeholder-gray-600 focus:border-accent-green focus:outline-none transition text-sm font-mono">
+                                        </div>
+                                        <div>
+                                            <label class="block text-xs text-gray-400 mb-1">VLAN à vérifier</label>
+                                            <div class="flex gap-3">
+                                                <input id="vlan-check" type="number" min="1" max="4094" placeholder="100"
+                                                    class="flex-1 px-3 py-2.5 bg-dark-800 border border-white/10 rounded-lg text-white placeholder-gray-600 focus:border-accent-green focus:outline-none transition text-sm"
+                                                    onkeydown="if(event.key==='Enter')calcVlanTrunk()">
+                                                <button onclick="calcVlanTrunk()"
+                                                    class="px-5 py-2.5 bg-accent-green/20 text-accent-green font-semibold rounded-lg hover:bg-accent-green/30 transition-all text-sm">Vérifier</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!-- Results -->
+                                    <div id="vlan-result" class="space-y-2">
+                                        <div class="grid sm:grid-cols-3 gap-2">
+                                            <div class="bg-dark-800 rounded-xl p-3 text-center">
+                                                <p class="text-[10px] text-gray-500 uppercase tracking-wider mb-0.5">VLANs dans le trunk</p>
+                                                <p id="vlan-count" class="text-lg font-bold text-accent-green">--</p>
+                                            </div>
+                                            <div class="bg-dark-800 rounded-xl p-3 text-center">
+                                                <p class="text-[10px] text-gray-500 uppercase tracking-wider mb-0.5">VLAN natif</p>
+                                                <p id="vlan-native-display" class="text-lg font-bold text-white">1</p>
+                                            </div>
+                                            <div class="bg-dark-800 rounded-xl p-3 text-center">
+                                                <p class="text-[10px] text-gray-500 uppercase tracking-wider mb-0.5">Vérification</p>
+                                                <p id="vlan-verdict" class="text-sm font-bold text-gray-500">--</p>
+                                            </div>
+                                        </div>
+                                        <div id="vlan-config-out" class="hidden">
+                                            <div class="bg-dark-800 rounded-xl p-3">
+                                                <div class="flex items-center justify-between mb-1">
+                                                    <p class="text-[10px] text-gray-500 uppercase tracking-wider">Config IOS suggérée</p>
+                                                    <button onclick="copyToClipboard(event, 'vlan-ios-config')" class="text-[10px] text-accent-green hover:underline">Copier</button>
+                                                </div>
+                                                <pre id="vlan-ios-config" class="text-[10px] font-mono text-accent-green whitespace-pre-wrap"></pre>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Tool 10 : 802.1X EAP Troubleshooter (NEW) -->
+                            <div id="tool-eap" class="fade-in">
+                                <div class="glass-card rounded-2xl p-6 border-l-2 border-accent-green/40">
+                                    <h4 class="text-lg font-bold text-white mb-1 flex items-center gap-3">
+                                        <svg class="w-5 h-5 text-accent-green" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"></path></svg>
+                                        802.1X / EAP Troubleshooter
+                                    </h4>
+                                    <p class="text-[11px] text-gray-500 mb-4 ml-8">Diagnostic interactif des erreurs d'authentification 802.1X — arbre de décision basé sur les symptômes terrain.</p>
+                                    <div class="mb-4">
+                                        <label class="block text-xs text-gray-400 mb-2">Quel symptôme observez-vous ?</label>
+                                        <select id="eap-symptom" onchange="diagnoseEAP()"
+                                            class="w-full px-3 py-2.5 bg-dark-800 border border-white/10 rounded-lg text-white focus:border-accent-green focus:outline-none transition text-sm">
+                                            <option value="">-- Sélectionnez un symptôme --</option>
+                                            <option value="timeout">Le client ne s'authentifie pas (timeout)</option>
+                                            <option value="reject">Authentification rejetée par le RADIUS</option>
+                                            <option value="cert">Erreur de certificat (TLS handshake failed)</option>
+                                            <option value="vlan">Mauvais VLAN après authentification</option>
+                                            <option value="loop">Boucle d'authentification (re-auth constante)</option>
+                                            <option value="mab">MAB échoue — device non reconnu</option>
+                                            <option value="guest">Pas de redirection portail invité</option>
+                                            <option value="coa">CoA/Disconnect non reçu par le switch</option>
+                                        </select>
+                                    </div>
+                                    <div id="eap-diagnosis" class="hidden space-y-3">
+                                        <div class="bg-dark-800 rounded-xl p-4">
+                                            <div class="flex items-center gap-2 mb-2">
+                                                <span class="w-2 h-2 rounded-full bg-red-400"></span>
+                                                <p class="text-xs font-bold text-white" id="eap-cause-title">Cause probable</p>
+                                            </div>
+                                            <p id="eap-cause-desc" class="text-xs text-gray-400 leading-relaxed mb-3"></p>
+                                            <div class="border-t border-white/5 pt-3">
+                                                <p class="text-[10px] font-semibold text-accent-green uppercase tracking-wider mb-2">Checklist de résolution</p>
+                                                <ul id="eap-checklist" class="space-y-1.5 text-xs text-gray-300"></ul>
+                                            </div>
+                                        </div>
+                                        <div class="bg-dark-800 rounded-xl p-4">
+                                            <div class="flex items-center justify-between mb-1">
+                                                <p class="text-[10px] text-gray-500 uppercase tracking-wider">Commandes debug</p>
+                                                <button onclick="copyToClipboard(event, 'eap-debug-cmds')" class="text-[10px] text-accent-green hover:underline">Copier</button>
+                                            </div>
+                                            <pre id="eap-debug-cmds" class="text-[10px] font-mono text-accent-green whitespace-pre-wrap"></pre>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
                         </div>
 
                     </div><!-- /grid -->
@@ -6435,16 +6556,73 @@
             // === CHANNEL PLANNER / DFS CHECKER ===
             let currentChannelWidth = 20;
 
+            // UNII sub-band definitions per regulation
+            const uniiSubBands = {
+                '5': {
+                    FCC: [
+                        { name: 'UNII-1', range: '5.150-5.250 GHz', channels: [36,40,44,48], type: 'standard', power: '30 dBm EIRP indoor', color: 'cyan' },
+                        { name: 'UNII-2', range: '5.250-5.350 GHz', channels: [52,56,60,64], type: 'dfs', power: '24 dBm EIRP, DFS+TPC', color: 'orange' },
+                        { name: 'UNII-2C', range: '5.470-5.725 GHz', channels: [100,104,108,112,116,120,124,128,132,136,140,144], type: 'dfs', power: '24 dBm EIRP, DFS+TPC', color: 'orange' },
+                        { name: 'UNII-3', range: '5.725-5.850 GHz', channels: [149,153,157,161,165], type: 'standard', power: '36 dBm EIRP', color: 'cyan' }
+                    ],
+                    ETSI: [
+                        { name: 'UNII-1', range: '5.150-5.250 GHz', channels: [36,40,44,48], type: 'standard', power: '23 dBm EIRP, indoor only', color: 'cyan' },
+                        { name: 'UNII-2', range: '5.250-5.350 GHz', channels: [52,56,60,64], type: 'dfs', power: '23 dBm EIRP, DFS+TPC', color: 'orange' },
+                        { name: 'UNII-2C', range: '5.470-5.725 GHz', channels: [100,104,108,112,116,120,124,128,132,136,140,144], type: 'dfs', power: '30 dBm EIRP, DFS+TPC', color: 'orange' },
+                        { name: 'UNII-3', range: '5.725-5.850 GHz', channels: [149,153,157,161,165], type: 'standard', power: '14 dBm EIRP (SRD)', color: 'cyan' }
+                    ],
+                    MKK: [
+                        { name: 'UNII-1', range: '5.150-5.250 GHz', channels: [36,40,44,48], type: 'standard', power: '23 dBm EIRP, indoor', color: 'cyan' },
+                        { name: 'UNII-2', range: '5.250-5.350 GHz', channels: [52,56,60,64], type: 'dfs', power: '23 dBm EIRP, DFS', color: 'orange' },
+                        { name: 'UNII-2C', range: '5.470-5.725 GHz', channels: [100,104,108,112,116,132,136,140], type: 'dfs', power: '23 dBm EIRP, DFS (120-128 interdit)', color: 'orange' },
+                        { name: 'UNII-3', range: '5.725-5.850 GHz', channels: [149,153,157,161,165], type: 'standard', power: '23 dBm EIRP', color: 'cyan' }
+                    ]
+                },
+                '6': {
+                    FCC: [
+                        { name: 'UNII-5', range: '5.925-6.425 GHz', channels: [], type: 'lpi', power: 'LPI 30 dBm / SP 36 dBm EIRP (AFC)', color: 'purple' },
+                        { name: 'UNII-6', range: '6.425-6.525 GHz', channels: [], type: 'sp', power: 'SP 36 dBm EIRP (AFC)', color: 'blue' },
+                        { name: 'UNII-7', range: '6.525-6.875 GHz', channels: [], type: 'afc', power: 'AFC requis > 30 dBm, 320 MHz', color: 'blue' },
+                        { name: 'UNII-8', range: '6.875-7.125 GHz', channels: [], type: 'afc', power: 'AFC pleine puissance', color: 'blue' }
+                    ],
+                    ETSI: [
+                        { name: 'UNII-5', range: '5.925-6.425 GHz', channels: [], type: 'lpi', power: 'LPI 23 dBm / VLP 14 dBm EIRP', color: 'purple' },
+                        { name: 'UNII-6', range: '6.425-6.525 GHz', channels: [], type: 'blocked', power: 'Non encore autorisé en Europe', color: 'red' },
+                        { name: 'UNII-7', range: '6.525-6.875 GHz', channels: [], type: 'blocked', power: 'Non encore autorisé en Europe', color: 'red' },
+                        { name: 'UNII-8', range: '6.875-7.125 GHz', channels: [], type: 'blocked', power: 'Non encore autorisé en Europe', color: 'red' }
+                    ],
+                    MKK: [
+                        { name: 'UNII-5', range: '5.925-6.425 GHz', channels: [], type: 'lpi', power: 'LPI indoor uniquement', color: 'purple' },
+                        { name: 'UNII-6', range: '6.425-6.525 GHz', channels: [], type: 'blocked', power: 'En cours de réglementation', color: 'red' },
+                        { name: 'UNII-7', range: '6.525-6.875 GHz', channels: [], type: 'blocked', power: 'Non autorisé', color: 'red' },
+                        { name: 'UNII-8', range: '6.875-7.125 GHz', channels: [], type: 'blocked', power: 'Non autorisé', color: 'red' }
+                    ]
+                }
+            };
+
+            // Populate 6 GHz UNII channel ranges
+            const all6Channels = [];
+            for (let ch = 1; ch <= 233; ch += 4) all6Channels.push(ch);
+            if (uniiSubBands['6']) {
+                Object.values(uniiSubBands['6']).forEach(regionBands => {
+                    const ranges = [[1,93],[97,109],[113,189],[193,233]];
+                    regionBands.forEach((band, idx) => {
+                        if (ranges[idx]) {
+                            band.channels = all6Channels.filter(ch => ch >= ranges[idx][0] && ch <= ranges[idx][1]);
+                        }
+                    });
+                });
+            }
+
             const channelDB = {
                 '2.4': {
                     channels: [1,2,3,4,5,6,7,8,9,10,11,12,13],
                     freqs: {1:2412,2:2417,3:2422,4:2427,5:2432,6:2437,7:2442,8:2447,9:2452,10:2457,11:2462,12:2467,13:2472},
-                    dfs: [],
-                    maxWidth: 40,
+                    dfs: [], maxWidth: 40,
                     restrictions: {
-                        ETSI: { blocked: [], notes: 'Canaux 1-13 autorisés.' },
-                        FCC: { blocked: [12,13], notes: 'Canaux 1-11 uniquement.' },
-                        MKK: { blocked: [], notes: 'Canaux 1-13 autorisés (14 legacy 802.11b uniquement, non inclus).' }
+                        ETSI: { blocked: [], notes: 'Canaux 1-13 autorisés. Puissance max 20 dBm EIRP.' },
+                        FCC: { blocked: [12,13], notes: 'Canaux 1-11 uniquement. Max 30 dBm EIRP (avec TPC).' },
+                        MKK: { blocked: [], notes: 'Canaux 1-13. Canal 14 802.11b legacy non inclus.' }
                     }
                 },
                 '5': {
@@ -6453,29 +6631,23 @@
                     dfs: [52,56,60,64,100,104,108,112,116,120,124,128,132,136,140,144],
                     maxWidth: 160,
                     restrictions: {
-                        ETSI: { blocked: [], notes: 'UNII-1 (36-48) indoor. UNII-2/2C (52-144) DFS+TPC requis. UNII-3 (149-165) autorisé.' },
-                        FCC: { blocked: [], notes: 'Tous les canaux autorisés. DFS requis sur 52-144.' },
-                        MKK: { blocked: [120,124,128], notes: 'Canaux 120-128 interdits (radar météo). DFS requis sur 52-144.' }
+                        ETSI: { blocked: [] }, FCC: { blocked: [] }, MKK: { blocked: [120,124,128] }
                     }
                 },
                 '6': {
-                    channels: [1,5,9,13,17,21,25,29,33,37,41,45,49,53,57,61,65,69,73,77,81,85,89,93],
-                    freqs: {},
-                    dfs: [],
-                    maxWidth: 320,
-                    restrictions: {
-                        ETSI: { blocked: [], notes: 'LPI (Low Power Indoor) : 23 dBm EIRP. VLP (Very Low Power) : 14 dBm EIRP portable.' },
-                        FCC: { blocked: [], notes: 'Standard Power avec AFC. LPI indoor 30 dBm EIRP.' },
-                        MKK: { blocked: [], notes: 'En cours de déploiement. Vérifiez la réglementation locale.' }
-                    }
+                    channels: [], freqs: {}, dfs: [], maxWidth: 320,
+                    restrictions: { ETSI: { blocked: [] }, FCC: { blocked: [] }, MKK: { blocked: [] } }
                 }
             };
-            // Generate 6 GHz freqs
-            channelDB['6'].channels.forEach((ch, i) => { channelDB['6'].freqs[ch] = 5955 + (ch - 1) * 5; });
+            // Build 6 GHz channels + freqs dynamically
+            for (let ch = 1; ch <= 233; ch += 4) {
+                channelDB['6'].channels.push(ch);
+                channelDB['6'].freqs[ch] = 5950 + ch * 5;
+            }
 
             window.setChannelWidth = function(w) {
                 currentChannelWidth = w;
-                [20,40,80,160].forEach(bw => {
+                [20,40,80,160,320].forEach(bw => {
                     const btn = document.getElementById('chw-' + bw);
                     if (btn) btn.className = bw === w
                         ? 'flex-1 px-3 py-1.5 text-xs font-semibold rounded-lg bg-accent-cyan/20 text-accent-cyan transition'
@@ -6493,61 +6665,98 @@
 
                 const width = Math.min(currentChannelWidth, db.maxWidth);
                 const blocked = db.restrictions[region] ? db.restrictions[region].blocked : [];
-                const channelsPerGroup = width / 20;
-
                 let html = '';
 
-                // Group channels by width
-                const groups = [];
-                let i = 0;
-                while (i < db.channels.length) {
-                    const group = [];
-                    for (let j = 0; j < channelsPerGroup && (i + j) < db.channels.length; j++) {
-                        group.push(db.channels[i + j]);
+                // For 5 GHz and 6 GHz — render by UNII sub-band
+                if ((band === '5' || band === '6') && uniiSubBands[band] && uniiSubBands[band][region]) {
+                    const bands = uniiSubBands[band][region];
+                    bands.forEach(subBand => {
+                        const channelsPerGroup = width / 20;
+                        const subChannels = subBand.channels.filter(ch => !blocked.includes(ch));
+                        const colorMap = {
+                            cyan: { bg: 'bg-accent-cyan/10', text: 'text-accent-cyan', border: 'border-accent-cyan/30' },
+                            orange: { bg: 'bg-orange-400/10', text: 'text-orange-400', border: 'border-orange-400/30' },
+                            purple: { bg: 'bg-purple-400/10', text: 'text-purple-300', border: 'border-purple-400/30' },
+                            blue: { bg: 'bg-blue-400/10', text: 'text-blue-300', border: 'border-blue-400/30' },
+                            red: { bg: 'bg-red-500/10', text: 'text-red-400', border: 'border-red-500/30' }
+                        };
+                        const c = colorMap[subBand.color] || colorMap.cyan;
+                        const typeLabels = { standard:'', dfs:'DFS', lpi:'LPI', sp:'SP', afc:'AFC', blocked:'✕' };
+
+                        // Sub-band header
+                        html += '<div class="mb-3">';
+                        html += '<div class="flex items-center justify-between mb-1.5">';
+                        html += '<div class="flex items-center gap-2">';
+                        html += '<span class="text-xs font-bold ' + c.text + '">' + subBand.name + '</span>';
+                        html += '<span class="text-[9px] text-gray-500">' + subBand.range + '</span>';
+                        html += '</div>';
+                        html += '<span class="text-[9px] text-gray-500 max-w-[55%] text-right">' + subBand.power + '</span>';
+                        html += '</div>';
+
+                        if (subBand.type === 'blocked') {
+                            html += '<div class="' + c.bg + ' border ' + c.border + ' rounded-lg px-3 py-2 text-center">';
+                            html += '<span class="text-[10px] ' + c.text + ' font-semibold">Non autorisé dans cette réglementation</span>';
+                            html += '</div>';
+                        } else if (subChannels.length > 0) {
+                            html += '<div class="flex flex-wrap gap-1">';
+                            const groups = [];
+                            let idx = 0;
+                            while (idx < subChannels.length) {
+                                const group = [];
+                                for (let j = 0; j < channelsPerGroup && (idx + j) < subChannels.length; j++) {
+                                    group.push(subChannels[idx + j]);
+                                }
+                                groups.push(group);
+                                idx += Math.max(channelsPerGroup, 1);
+                            }
+                            groups.forEach(group => {
+                                const label = group.length === 1 ? group[0] : group[0] + '-' + group[group.length - 1];
+                                const freq = db.freqs[group[0]] || '';
+                                const tag = typeLabels[subBand.type] || '';
+                                html += '<div class="' + c.bg + ' border ' + c.border + ' rounded-lg px-1.5 py-1 text-center min-w-[2.5rem]">';
+                                html += '<p class="text-[10px] font-bold ' + c.text + '">' + label + '</p>';
+                                html += '<p class="text-[8px] text-gray-600">' + freq + '</p>';
+                                if (tag) html += '<span class="text-[7px] font-semibold ' + c.text + ' opacity-70">' + tag + '</span>';
+                                html += '</div>';
+                            });
+                            html += '</div>';
+                        } else {
+                            html += '<div class="' + c.bg + ' border ' + c.border + ' rounded-lg px-3 py-2 text-center">';
+                            html += '<span class="text-[10px] ' + c.text + '">Ch. ' + (band === '6' ? '1-233' : '--') + ' (par groupes de ' + width + ' MHz)</span>';
+                            html += '</div>';
+                        }
+                        html += '</div>';
+                    });
+                } else {
+                    // 2.4 GHz — simple rendering
+                    const channelsPerGroup = width / 20 || 1;
+                    html += '<div class="flex flex-wrap gap-1">';
+                    const groups = [];
+                    let i = 0;
+                    const chs = db.channels.filter(ch => !blocked.includes(ch));
+                    while (i < chs.length) {
+                        const group = [];
+                        for (let j = 0; j < channelsPerGroup && (i + j) < chs.length; j++) { group.push(chs[i + j]); }
+                        groups.push(group);
+                        i += Math.max(channelsPerGroup, 1);
                     }
-                    groups.push(group);
-                    i += channelsPerGroup;
-                }
-
-                html += '<div class="flex flex-wrap gap-1">';
-                groups.forEach(group => {
-                    const isBlocked = group.some(ch => blocked.includes(ch));
-                    const isDfs = group.some(ch => db.dfs.includes(ch));
-                    const is6ghz = band === '6';
-
-                    let bgClass, textClass, borderClass;
-                    if (isBlocked) {
-                        bgClass = 'bg-red-500/10'; textClass = 'text-red-400'; borderClass = 'border-red-500/30';
-                    } else if (isDfs) {
-                        bgClass = 'bg-orange-400/10'; textClass = 'text-orange-400'; borderClass = 'border-orange-400/30';
-                    } else if (is6ghz) {
-                        bgClass = 'bg-purple-400/10'; textClass = 'text-purple-300'; borderClass = 'border-purple-400/30';
-                    } else {
-                        bgClass = 'bg-accent-cyan/10'; textClass = 'text-accent-cyan'; borderClass = 'border-accent-cyan/30';
-                    }
-
-                    const label = group.length === 1 ? group[0] : group[0] + '-' + group[group.length - 1];
-                    const freq = db.freqs[group[0]] || '';
-                    const tag = isBlocked ? '✕' : isDfs ? 'DFS' : is6ghz ? 'LPI' : '';
-
-                    html += '<div class="' + bgClass + ' border ' + borderClass + ' rounded-lg px-2 py-1.5 text-center min-w-[3rem]">';
-                    html += '<p class="text-xs font-bold ' + textClass + '">' + label + '</p>';
-                    html += '<p class="text-[9px] text-gray-500">' + freq + '</p>';
-                    if (tag) html += '<span class="text-[8px] font-semibold ' + textClass + ' uppercase">' + tag + '</span>';
+                    groups.forEach(group => {
+                        const label = group.length === 1 ? group[0] : group[0] + '-' + group[group.length - 1];
+                        const freq = db.freqs[group[0]] || '';
+                        html += '<div class="bg-accent-cyan/10 border border-accent-cyan/30 rounded-lg px-2 py-1.5 text-center min-w-[2.5rem]">';
+                        html += '<p class="text-[10px] font-bold text-accent-cyan">' + label + '</p>';
+                        html += '<p class="text-[8px] text-gray-600">' + freq + '</p>';
+                        html += '</div>';
+                    });
                     html += '</div>';
-                });
-                html += '</div>';
-
-                // Region notes
-                const notes = db.restrictions[region] ? db.restrictions[region].notes : '';
-                html += '<div class="text-[10px] text-gray-500 mt-2 p-2 bg-dark-800/50 rounded-lg">';
-                html += '<strong class="text-gray-400">' + region + ' :</strong> ' + notes;
-                html += '</div>';
-
+                    const notes = db.restrictions[region] ? db.restrictions[region].notes : '';
+                    if (notes) {
+                        html += '<div class="text-[10px] text-gray-500 mt-2 p-2 bg-dark-800/50 rounded-lg">';
+                        html += '<strong class="text-gray-400">' + region + ' :</strong> ' + notes + '</div>';
+                    }
+                }
                 container.innerHTML = html;
             };
-
-            // Init channel map on page load
             setTimeout(renderChannelMap, 100);
 
             // === LINK BUDGET CALCULATOR ===
@@ -6806,6 +7015,220 @@
             // Init MCS table
             setTimeout(calcMCS, 100);
 
+            // ======= VLAN Trunking Validator =======
+            window.calcVlanTrunk = function () {
+                const nativeVlan = parseInt(document.getElementById('vlan-native').value) || 1;
+                const allowedRaw = document.getElementById('vlan-allowed').value.trim();
+                const checkVlan = parseInt(document.getElementById('vlan-check').value);
+
+                // Parse VLAN list (supports ranges like 10,20,30-50,100)
+                function parseVlanList(str) {
+                    if (!str) return [];
+                    const vlans = new Set();
+                    str.split(',').forEach(part => {
+                        part = part.trim();
+                        if (part.includes('-')) {
+                            const [start, end] = part.split('-').map(Number);
+                            if (!isNaN(start) && !isNaN(end) && start >= 1 && end <= 4094) {
+                                for (let i = Math.min(start, end); i <= Math.max(start, end); i++) vlans.add(i);
+                            }
+                        } else {
+                            const v = parseInt(part);
+                            if (v >= 1 && v <= 4094) vlans.add(v);
+                        }
+                    });
+                    return [...vlans].sort((a, b) => a - b);
+                }
+
+                const vlanList = parseVlanList(allowedRaw);
+
+                // Update display
+                document.getElementById('vlan-count').textContent = vlanList.length || '--';
+                document.getElementById('vlan-native-display').textContent = nativeVlan;
+
+                // Verdict
+                const verdictEl = document.getElementById('vlan-verdict');
+                const configOutEl = document.getElementById('vlan-config-out');
+                const iosEl = document.getElementById('vlan-ios-config');
+
+                if (!isNaN(checkVlan) && checkVlan >= 1 && checkVlan <= 4094 && vlanList.length > 0) {
+                    const isAllowed = vlanList.includes(checkVlan);
+                    const isNative = checkVlan === nativeVlan;
+
+                    if (isAllowed && isNative) {
+                        verdictEl.innerHTML = '<span class="text-yellow-400">⚠ Autorisé (natif, untagged)</span>';
+                    } else if (isAllowed) {
+                        verdictEl.innerHTML = '<span class="text-green-400">✓ Autorisé (tagged)</span>';
+                    } else {
+                        verdictEl.innerHTML = '<span class="text-red-400">✗ Non autorisé</span>';
+                    }
+                } else {
+                    verdictEl.textContent = '--';
+                }
+
+                // Generate IOS config
+                if (vlanList.length > 0) {
+                    configOutEl.classList.remove('hidden');
+                    // Compress VLAN list to range notation
+                    function compressVlans(vlans) {
+                        if (vlans.length === 0) return '';
+                        const ranges = [];
+                        let start = vlans[0], end = vlans[0];
+                        for (let i = 1; i < vlans.length; i++) {
+                            if (vlans[i] === end + 1) { end = vlans[i]; }
+                            else { ranges.push(start === end ? String(start) : start + '-' + end); start = vlans[i]; end = vlans[i]; }
+                        }
+                        ranges.push(start === end ? String(start) : start + '-' + end);
+                        return ranges.join(',');
+                    }
+                    const compressedList = compressVlans(vlanList);
+                    let config = 'interface GigabitEthernet0/1\n';
+                    config += ' switchport mode trunk\n';
+                    config += ' switchport trunk encapsulation dot1q\n';
+                    config += ' switchport trunk native vlan ' + nativeVlan + '\n';
+                    config += ' switchport trunk allowed vlan ' + compressedList + '\n';
+                    config += ' spanning-tree portfast trunk\n';
+                    config += '!';
+                    iosEl.textContent = config;
+                } else {
+                    configOutEl.classList.add('hidden');
+                }
+            };
+
+            // ======= 802.1X / EAP Troubleshooter =======
+            const eapDiagnostics = {
+                timeout: {
+                    title: 'Timeout EAP — Pas de réponse du client ou RADIUS',
+                    desc: 'Le switch envoie les EAP-Request/Identity mais ne reçoit aucune réponse. Causes typiques : supplicant désactivé côté client, port non configuré en dot1x, RADIUS inaccessible, ou firewall bloquant le port UDP 1812.',
+                    checklist: [
+                        'Vérifier que le supplicant 802.1X est activé sur le client',
+                        'Tester la connectivité IP switch → RADIUS (ping / telnet 1812)',
+                        'Vérifier la config <code>authentication port-control auto</code>',
+                        'Vérifier <code>aaa authentication dot1x default group radius</code>',
+                        'Vérifier le shared secret RADIUS (attention aux espaces invisibles)',
+                        'Vérifier les ACLs/firewalls entre switch et RADIUS'
+                    ],
+                    debug: 'debug dot1x all\ndebug radius authentication\nshow dot1x interface Gi0/1 details\nshow authentication sessions interface Gi0/1\ntest aaa group radius server <ip> username password new-code'
+                },
+                reject: {
+                    title: 'Authentification rejetée — Access-Reject',
+                    desc: 'Le RADIUS répond avec un Access-Reject. Le username/password est incorrect, l\'utilisateur n\'est pas dans le bon groupe AD, ou la policy ISE ne match pas.',
+                    checklist: [
+                        'Vérifier les credentials (login/password) côté client',
+                        'Vérifier le group membership AD dans ISE (Identity Groups)',
+                        'Vérifier la policy set : Authentication + Authorization rules',
+                        'Vérifier les Allowed Protocols (PEAP, EAP-TLS, etc.)',
+                        'Consulter les Live Logs ISE : Operations > RADIUS > Live Logs',
+                        'Vérifier le certificat EAP côté ISE (pas expiré)'
+                    ],
+                    debug: 'debug dot1x all\nshow authentication sessions\n# Sur ISE :\n# Operations > RADIUS > Live Logs\n# Filtrer par MAC address\n# Vérifier "Failure Reason" dans le détail'
+                },
+                cert: {
+                    title: 'Erreur de certificat — TLS Handshake Failed',
+                    desc: 'Le handshake TLS échoue. Le certificat du serveur RADIUS (ISE) n\'est pas approuvé par le client, est expiré, ou le certificat client (EAP-TLS) est invalide.',
+                    checklist: [
+                        'Vérifier la date d\'expiration du certificat ISE (Administration > Certificates)',
+                        'Vérifier que le CA root est déployé sur le client (GPO ou MDM)',
+                        'Vérifier le SAN (Subject Alternative Name) du certificat',
+                        'Pour EAP-TLS : vérifier le certificat machine/user côté client',
+                        'Vérifier la chaîne de certification complète',
+                        'Tester avec "Validate Server Certificate" désactivé temporairement'
+                    ],
+                    debug: 'debug dot1x all\ndebug ssl openssl errors\nshow crypto pki certificates\n# Sur ISE :\n# Administration > System > Certificates\n# Vérifier la date "Expiration"'
+                },
+                vlan: {
+                    title: 'Mauvais VLAN assigné après authentification',
+                    desc: 'Le client s\'authentifie avec succès mais atterrit dans le mauvais VLAN. La policy ISE retourne un VLAN incorrect, ou le profil d\'autorisation est mal configuré.',
+                    checklist: [
+                        'Vérifier le profil d\'autorisation ISE (Authorization Profile)',
+                        'Vérifier l\'attribut RADIUS Tunnel-Private-Group-ID (VLAN)',
+                        'Vérifier les Authorization Rules (ordre de priorité)',
+                        'Vérifier que le VLAN existe sur le switch (show vlan brief)',
+                        'Vérifier que le trunk autorise ce VLAN',
+                        'Comparer le VLAN retourné dans les Live Logs ISE'
+                    ],
+                    debug: 'show authentication sessions interface Gi0/1 details\nshow vlan brief\ndebug radius authentication\n# Chercher : Tunnel-Private-Group-ID dans la réponse\n# Sur ISE : Live Logs > détail > Authorization Profile'
+                },
+                loop: {
+                    title: 'Boucle de ré-authentification constante',
+                    desc: 'Le client s\'authentifie, puis se déconnecte et se ré-authentifie en boucle. Causes fréquentes : reauthentication timer trop court, CoA qui déclenche un reset, ou conflit entre MAB et dot1x.',
+                    checklist: [
+                        'Vérifier le timer <code>authentication timer reauthenticate</code>',
+                        'Vérifier si un CoA/Disconnect est envoyé de manière répétée',
+                        'Vérifier l\'ordre : <code>authentication order dot1x mab</code>',
+                        'Vérifier <code>authentication priority dot1x mab</code>',
+                        'Vérifier les events de sécurité ISE déclenchant un CoA',
+                        'Désactiver temporairement la reauthentication pour tester'
+                    ],
+                    debug: 'show authentication sessions interface Gi0/1\ndebug dot1x all\ndebug coa\nshow dot1x interface Gi0/1 statistics\n# Compter les AuthStart dans les logs'
+                },
+                mab: {
+                    title: 'MAB échoue — Endpoint non reconnu',
+                    desc: 'L\'authentification MAB (MAC Authentication Bypass) échoue car l\'adresse MAC n\'est pas dans la base ISE, le format MAC envoyé ne correspond pas, ou la policy MAB n\'est pas configurée.',
+                    checklist: [
+                        'Vérifier que la MAC est enregistrée dans ISE (Context Visibility > Endpoints)',
+                        'Vérifier le format MAC envoyé par le switch (show radius statistics)',
+                        'Vérifier la config : <code>mab</code> sur l\'interface',
+                        'Vérifier <code>authentication order mab dot1x</code> ou inverse',
+                        'Vérifier la policy MAB dans ISE (Authentication > MAB)',
+                        'Ajouter manuellement la MAC dans Endpoint Identity Groups si besoin'
+                    ],
+                    debug: 'debug mab all\nshow authentication sessions\ndebug radius authentication\n# Vérifier le format : xxxx.xxxx.xxxx vs XX:XX:XX:XX:XX:XX\n# Sur ISE : Identity > Endpoints > filtrer par MAC'
+                },
+                guest: {
+                    title: 'Pas de redirection vers le portail invité',
+                    desc: 'Le client tombe dans le bon VLAN guest mais le navigateur ne redirige pas vers le portail captif ISE. Causes : ACL de redirection manquante, DNS non résolu, ou HTTPS interception bloquée.',
+                    checklist: [
+                        'Vérifier la redirect-ACL sur le switch (retournée par ISE)',
+                        'Vérifier que l\'ACL est bien appliquée : <code>show ip access-list</code>',
+                        'Vérifier la résolution DNS dans le VLAN guest',
+                        'Vérifier le portail ISE : Guest Access > Configure > Portals',
+                        'Tester HTTP (pas HTTPS) en premier — http://1.1.1.1',
+                        'Vérifier que le client obtient une IP via DHCP dans le VLAN guest'
+                    ],
+                    debug: 'show authentication sessions interface Gi0/1 details\nshow ip access-lists | section REDIRECT\ndebug ip http all\n# Vérifier url-redirect et url-redirect-acl\n# nslookup depuis le VLAN guest'
+                },
+                coa: {
+                    title: 'CoA / Disconnect non reçu par le switch',
+                    desc: 'ISE envoie un Change of Authorization (CoA) mais le switch ne le reçoit pas ou l\'ignore. Le port UDP 1700/3799 est bloqué, la config CoA manque, ou le shared secret est incorrect.',
+                    checklist: [
+                        'Vérifier <code>aaa server radius dynamic-author</code> sur le switch',
+                        'Vérifier le client (ISE IP) dans la config dynamic-author',
+                        'Vérifier le port CoA : 1700 (Cisco) ou 3799 (RFC)',
+                        'Vérifier le shared secret (identique switch ↔ ISE)',
+                        'Vérifier les ACLs/firewalls : autoriser UDP 1700 ISE → switch',
+                        'Tester un CoA manuel depuis ISE : Operations > Troubleshoot > Session Trace'
+                    ],
+                    debug: 'debug coa\ndebug radius\nshow aaa servers\nshow aaa server radius dynamic-author\n# Packet capture sur le switch si besoin\n# Sur ISE : Operations > Troubleshoot > Diagnostic Tools'
+                }
+            };
+
+            window.diagnoseEAP = function () {
+                const symptom = document.getElementById('eap-symptom').value;
+                const diagBox = document.getElementById('eap-diagnosis');
+
+                if (!symptom) {
+                    diagBox.classList.add('hidden');
+                    return;
+                }
+
+                const diag = eapDiagnostics[symptom];
+                if (!diag) return;
+
+                diagBox.classList.remove('hidden');
+                document.getElementById('eap-cause-title').textContent = diag.title;
+                document.getElementById('eap-cause-desc').textContent = diag.desc;
+
+                // Checklist
+                const checklistEl = document.getElementById('eap-checklist');
+                checklistEl.innerHTML = diag.checklist.map(item =>
+                    '<li class="flex items-start gap-2"><span class="text-accent-green mt-0.5">▸</span><span>' + item + '</span></li>'
+                ).join('');
+
+                // Debug commands
+                document.getElementById('eap-debug-cmds').textContent = diag.debug;
+            };
+
             // Global Toolkit Export
             window.exportToolkit = function (format = 'txt') {
                 const data = {};
@@ -6912,6 +7335,27 @@
                     data.throughput_estimator = { max_phy_rate: mcsMax };
                 }
 
+                // VLAN Trunking
+                const vlanCount = document.getElementById('vlan-count').textContent.trim();
+                if (vlanCount && vlanCount !== '--') {
+                    data.vlan_trunking = {
+                        vlan_count: vlanCount,
+                        native_vlan: document.getElementById('vlan-native-display').textContent.trim(),
+                        verdict: document.getElementById('vlan-verdict').textContent.trim(),
+                        ios_config: document.getElementById('vlan-ios-config').textContent.trim()
+                    };
+                }
+
+                // EAP Troubleshooter
+                const eapDiag = document.getElementById('eap-diagnosis');
+                if (eapDiag && !eapDiag.classList.contains('hidden')) {
+                    data.eap_troubleshooter = {
+                        symptom: document.getElementById('eap-symptom').value,
+                        cause: document.getElementById('eap-cause-title').textContent.trim(),
+                        debug_commands: document.getElementById('eap-debug-cmds').textContent.trim()
+                    };
+                }
+
                 let content = "";
                 let mimeType = "";
 
@@ -6952,6 +7396,8 @@
                     }
                     if (data.dhcp_option_43) content += `[DHCP Option 43]\nHex: ${data.dhcp_option_43.hex_value}\nCmd: ${data.dhcp_option_43.command}\n\n`;
                     if (data.mac_formatter) content += `[MAC Formatter]\nCisco IOS: ${data.mac_formatter.cisco_ios}\nStandard: ${data.mac_formatter.standard}\n\n`;
+                    if (data.vlan_trunking) content += `[VLAN Trunking]\nVLANs: ${data.vlan_trunking.vlan_count}\nNatif: ${data.vlan_trunking.native_vlan}\nVerdict: ${data.vlan_trunking.verdict}\nConfig IOS:\n${data.vlan_trunking.ios_config}\n\n`;
+                    if (data.eap_troubleshooter) content += `[802.1X EAP Troubleshooter]\nSymptôme: ${data.eap_troubleshooter.symptom}\nCause: ${data.eap_troubleshooter.cause}\nCommandes debug:\n${data.eap_troubleshooter.debug_commands}\n\n`;
                     content += "Generé via or-net.com";
                     mimeType = "text/plain;charset=utf-8";
                 }
